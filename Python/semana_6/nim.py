@@ -13,9 +13,9 @@ def usuario_escolhe_jogada(n,m):
 
 
 def partida():
-    print("Bem-vindo ao jogo do NIM! Escolha:")
+    print("Bem-vindo ao jogo do NIM! Escolha:\n")
     print("1 - para jogar uma partida isolada")
-    print("2 - para jogar um campeonato")
+    print("2 - para jogar um campeonato\n")
     resp=input("Digite a opcao: ")
     while resp!='1' and resp!='2':
         print("Resposta invalida! Digite 1 ou 2")
