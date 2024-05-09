@@ -20,7 +20,13 @@ int main(){
     int N = 10;
 
     printf("Sem ordenar:\n");
-    bubbleSort2(vet,N);
     for(i=0; i<N; i++){
         printf("%d\n",vet[i]);
     }
+
+    bubbleSort2(vet,N);
+    printf("Depois de ordenar:\n");
+    for(i=0; i<N; i++){
+        printf("%d\n",vet[i]);
+    }
+}
