@@ -28,11 +28,4 @@ void main () {
   qsort (uf, 60, 60*sizeof(char),strcmp);
   printuf(uf);
 
-  struct timespec start, end;
-  double execution_time;
-  clock_gettime(CLOCK_MONOTONIC, &start);
-  clock_gettime(CLOCK_MONOTONIC, &end);
-
-  execution_time=(end.tv_sec-start.tv_sec)+(end.tv_nsec-start.tv_nsec)/1e9
-  printf("Tempo de execucao: %.9f segundos\n", execution_time);
 }

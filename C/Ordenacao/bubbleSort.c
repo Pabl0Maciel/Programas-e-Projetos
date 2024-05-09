@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
 void bubbleSort2(int *V  , int N){//otimizado
     int i, continua, aux, fim = N;
     do{
