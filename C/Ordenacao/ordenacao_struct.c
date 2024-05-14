@@ -40,8 +40,7 @@ int main(){
                          {3,"Ana",5.7,6.1,7.4}};
 
     //insertionSortMatricula(V,4);
-    //insertionSortNome(V,4);
-    qsort(V,4,sizeof(struct aluno),strcmp((*(struct aluno*)));
+    insertionSortNome(V,4);
     for(i = 0; i < 4; i++)
         printf("%d) %s - %.2f,%.2f,%.2f\n",V[i].matricula,V[i].nome,V[i].n1,V[i].n2,V[i].n3);
 
