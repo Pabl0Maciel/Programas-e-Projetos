@@ -30,7 +30,7 @@ int main() {
     
     do{
         
-        printf("Insira o tamanho do array: ");
+        printf("Insira o tamanho do array de inteiros: ");
         scanf("%d", &tam);
 
         vetor = criar_array(tam);
