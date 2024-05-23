@@ -61,9 +61,9 @@ int main() {
         free(vetor);
 
         cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-        int cpu_time_used_minutos = (int)cpu_time_used / 60;
-        double cpu_time_used_segundos = cpu_time_used - (cpu_time_used_minutos * 60);
-        printf("Tempo de execucao: %d minutos e %.2f segundos\n", cpu_time_used_minutos, cpu_time_used_segundos);
+        int cpu_time_used_minutes = (int)cpu_time_used / 60;
+        double cpu_time_used_seconds = cpu_time_used - (cpu_time_used_minutes * 60);
+        printf("Tempo de execucao: %d minutos e %.2f segundos\n", cpu_time_used_minutes, cpu_time_used_seconds);
 
 
         printf("Deseja gerar outro array? Responda 'sim' ou 'nao': ");
