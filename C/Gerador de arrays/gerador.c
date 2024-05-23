@@ -16,10 +16,20 @@ int* criar_array(int tam){
     srand(time(NULL));
 
     for(int i = 0; i < tam; i++){
-        array[i] = rand();
+        array[i] = rand()%100;
     }
 
     return array;
+}
+
+void insertionSort(int *V, int N){
+    int i, j, aux;
+    for(i = 1; i < N; i++){
+        aux = V[i];
+        for(j = i; (j > 0) && (aux < V[j - 1]); j--)
+            V[j] = V[j - 1];
+        V[j] = aux;
+    }
 }
 
 int main() {
@@ -35,7 +45,9 @@ int main() {
 
         vetor = criar_array(tam);
 
-        printf("Array gerado:\n");
+        insertionSort(vetor, tam);
+
+        printf("Array gerado e organizado:\n");
         for (int i=0; i < tam; i++){
             printf("%d ", vetor[i]);
         }
