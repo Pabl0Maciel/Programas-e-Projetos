@@ -10,13 +10,13 @@ int* criar_array(int tam){
         exit(EXIT_FAILURE);
     }
     else{
-        printf("alocado com sucesso!");
+        printf("alocado com sucesso!\n");
     }
 
     srand(time(NULL));
 
     for(int i = 0; i < tam; i++){
-        array[i] = rand()%100;
+        array[i] = rand();
     }
 
     return array;
@@ -36,7 +36,9 @@ int main() {
     
     int tam;
     int* vetor;    
-    char *resposta[10];
+    char resposta[10];
+    clock_t start, end;
+    double cpu_time_used;
     
     do{
         
@@ -45,8 +47,12 @@ int main() {
 
         vetor = criar_array(tam);
 
+        start = clock();
+
         insertionSort(vetor, tam);
 
+        end = clock();
+        
         printf("Array gerado e organizado:\n");
         for (int i=0; i < tam; i++){
             printf("%d ", vetor[i]);
@@ -54,21 +60,18 @@ int main() {
         puts("");
         free(vetor);
 
-        printf("Deseja gerar outro array? Responda 'sim' ou 'nao': ");
-        scanf(" %[^\n]s", resposta);
+        cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+        int cpu_time_used_minutos = (int)cpu_time_used / 60;
+        double cpu_time_used_segundos = cpu_time_used - (cpu_time_used_minutos * 60);
+        printf("Tempo de execucao: %d minutos e %.2f segundos\n", cpu_time_used_minutos, cpu_time_used_segundos);
 
-        if (strcmp(resposta,"nao") == 0){
-            break;
-        }
-        
-        else if (strcmp(resposta, "sim") != 0){
-            while (strcmp(resposta, "sim") != 0){
-                printf("Resposta invalida! Digite novamente: ");
-                scanf (" %[^\n]s", resposta);
-                if (strcmp(resposta,"nao") == 0){
-                    break;
-                }
-            }
+
+        printf("Deseja gerar outro array? Responda 'sim' ou 'nao': ");
+        scanf(" %s", resposta);
+
+        while (strcmp(resposta, "sim") != 0 && strcmp(resposta, "nao") != 0) {
+            printf("Resposta invalida! Digite novamente: ");
+            scanf("%s", resposta);
         }
         
     }while (strcmp(resposta, "sim") == 0);
