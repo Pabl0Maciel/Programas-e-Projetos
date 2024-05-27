@@ -46,11 +46,9 @@ int main() {
         scanf("%d", &tam);
 
         vetor = criar_array(tam);
-
+        
         start = clock();
-
         insertionSort(vetor, tam);
-
         end = clock();
         
         printf("Array gerado e organizado:\n");
