@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int* criar_array(int tam){
+int* criar_array(int tam, int *seed){
     int* array = (int*)malloc(tam*sizeof(int));
     if (array==NULL){
         printf("erro ao alocar");
@@ -13,7 +13,9 @@ int* criar_array(int tam){
         printf("alocado com sucesso!\n");
     }
 
-    srand(time(NULL));
+    *seed = time(NULL);
+    printf("semente usada: %d\n", *seed);
+    srand(*seed);
 
     for(int i = 0; i < tam; i++){
         array[i] = rand();
@@ -32,24 +34,40 @@ void insertionSort(int *V, int N){
     }
 }
 
+int comparaCrescente(const void *a, const void *b){
+    if (*(int*)a==*(int*)b){
+        return 0;//iguais
+    }
+    else{
+        if (*(int*)a<*(int*)b){
+            return -1;//vem antes
+        }
+        else{
+            return 1;//vem depois
+        }
+    }
+}
+
 int main() {
     
-    int tam;
+    int tam, seed;
     int* vetor;    
     char resposta[10];
-    clock_t start, end;
-    double cpu_time_used;
+    struct timespec start, end;
+    long long elapsed_nanoseconds;
+    long hours, minutes, seconds, nanoseconds;
     
     do{
         
         printf("Insira o tamanho do array de inteiros: ");
         scanf("%d", &tam);
 
-        vetor = criar_array(tam);
+        vetor = criar_array(tam, &seed);
         
-        start = clock();
-        insertionSort(vetor, tam);
-        end = clock();
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        //insertionSort(vetor, tam);
+        qsort(vetor, tam, sizeof(int),comparaCrescente);
+        clock_gettime(CLOCK_MONOTONIC, &end);
         
         printf("Array gerado e organizado:\n");
         for (int i=0; i < tam; i++){
@@ -58,10 +76,14 @@ int main() {
         puts("");
         free(vetor);
 
-        cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-        int cpu_time_used_minutes = (int)cpu_time_used / 60;
-        double cpu_time_used_seconds = cpu_time_used - (cpu_time_used_minutes * 60);
-        printf("Tempo de execucao: %d minutos e %.2f segundos\n", cpu_time_used_minutes, cpu_time_used_seconds);
+        elapsed_nanoseconds = (end.tv_sec - start.tv_sec) *1000000000LL + (end.tv_nsec - start.tv_nsec);
+        hours = elapsed_nanoseconds / (3600 * 1000000000LL);
+        elapsed_nanoseconds %= (3600 * 1000000000LL);
+        minutes = elapsed_nanoseconds / (60 * 1000000000LL);
+        elapsed_nanoseconds %= (60 * 1000000000LL);
+        seconds = elapsed_nanoseconds / 1000000000LL;
+        nanoseconds = elapsed_nanoseconds % 1000000000LL;
+        printf("Tempo de execucao: %ld minutos, %ld segundos e %ld nanosegundos\n", minutes, seconds, nanoseconds);
 
 
         printf("Deseja gerar outro array? Responda 'sim' ou 'nao': ");
