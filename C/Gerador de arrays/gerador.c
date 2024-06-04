@@ -55,7 +55,7 @@ int main() {
     char resposta[10];
     struct timespec start, end;
     long long elapsed_nanoseconds;
-    long hours, minutes, seconds, nanoseconds;
+    //long hours, minutes, seconds, nanoseconds;
     
     do{
         
@@ -65,8 +65,8 @@ int main() {
         vetor = criar_array(tam, &seed);
         
         clock_gettime(CLOCK_MONOTONIC, &start);
-        //insertionSort(vetor, tam);
-        qsort(vetor, tam, sizeof(int),comparaCrescente);
+        insertionSort(vetor, tam);
+        //qsort(vetor, tam, sizeof(int),comparaCrescente);
         clock_gettime(CLOCK_MONOTONIC, &end);
         
         printf("Array gerado e organizado:\n");
@@ -77,14 +77,14 @@ int main() {
         free(vetor);
 
         elapsed_nanoseconds = (end.tv_sec - start.tv_sec) *1000000000LL + (end.tv_nsec - start.tv_nsec);
-        hours = elapsed_nanoseconds / (3600 * 1000000000LL);
-        elapsed_nanoseconds %= (3600 * 1000000000LL);
-        minutes = elapsed_nanoseconds / (60 * 1000000000LL);
-        elapsed_nanoseconds %= (60 * 1000000000LL);
-        seconds = elapsed_nanoseconds / 1000000000LL;
-        nanoseconds = elapsed_nanoseconds % 1000000000LL;
-        printf("Tempo de execucao: %ld minutos, %ld segundos e %ld nanosegundos\n", minutes, seconds, nanoseconds);
-
+        //hours = elapsed_nanoseconds / (3600 * 1000000000LL);
+        //=elapsed_nanoseconds %= (3600 * 1000000000LL);
+        //minutes = elapsed_nanoseconds / (60 * 1000000000LL);
+        //elapsed_nanoseconds %= (60 * 1000000000LL);
+        //seconds = elapsed_nanoseconds / 1000000000LL;
+        //nanoseconds = elapsed_nanoseconds % 1000000000LL;
+        //printf("Tempo de execucao: %ld minutos, %ld segundos e %ld nanosegundos\n", minutes, seconds, nanoseconds);
+        printf("Tempo de execucao: %lld nanosegundos\n", elapsed_nanoseconds);
 
         printf("Deseja gerar outro array? Responda 'sim' ou 'nao': ");
         scanf(" %s", resposta);
