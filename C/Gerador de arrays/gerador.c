@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int* criar_array(int tam, int *seed){
+int* criar_array(int tam, int seed){
     int* array = (int*)malloc(tam*sizeof(int));
     if (array==NULL){
         printf("erro ao alocar");
@@ -13,9 +13,9 @@ int* criar_array(int tam, int *seed){
         printf("alocado com sucesso!\n");
     }
 
-    *seed = time(NULL);
-    printf("semente usada: %d\n", *seed);
-    srand(*seed);
+    seed = 1718018947;
+    printf("semente usada: %d\n", seed);
+    srand(seed);
 
     for(int i = 0; i < tam; i++){
         array[i] = rand();
@@ -63,17 +63,19 @@ int main() {
         scanf("%d", &tam);
 
         vetor = criar_array(tam, &seed);
+
+        printf("Ultimo elemento nao ordenado: %d\n", vetor[tam-1]);
         
         clock_gettime(CLOCK_MONOTONIC, &start);
-        insertionSort(vetor, tam);
-        //qsort(vetor, tam, sizeof(int),comparaCrescente);
+        //insertionSort(vetor, tam);
+        qsort(vetor, tam, sizeof(int),comparaCrescente);
         clock_gettime(CLOCK_MONOTONIC, &end);
         
-        printf("Array gerado e organizado:\n");
-        for (int i=0; i < tam; i++){
-            printf("%d ", vetor[i]);
-        }
-        puts("");
+        //printf("Array gerado e organizado:\n");
+        //for (int i=0; i < tam; i++){
+        //    printf("%d ", vetor[i]);
+        //}
+        //puts("");
         free(vetor);
 
         elapsed_nanoseconds = (end.tv_sec - start.tv_sec) *1000000000LL + (end.tv_nsec - start.tv_nsec);
@@ -90,7 +92,7 @@ int main() {
         scanf(" %s", resposta);
 
         while (strcmp(resposta, "sim") != 0 && strcmp(resposta, "nao") != 0) {
-            printf("Resposta invalida! Digite novamente: ");
+            printf("\nResposta invalida! Digite novamente: ");
             scanf("%s", resposta);
         }
         
