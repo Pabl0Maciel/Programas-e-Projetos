@@ -62,13 +62,13 @@ int main() {
         printf("Insira o tamanho do array de inteiros: ");
         scanf("%d", &tam);
 
-        vetor = criar_array(tam, &seed);
+        vetor = criar_array(tam, seed);
 
         printf("Ultimo elemento nao ordenado: %d\n", vetor[tam-1]);
         
         clock_gettime(CLOCK_MONOTONIC, &start);
-        //insertionSort(vetor, tam);
-        qsort(vetor, tam, sizeof(int),comparaCrescente);
+        insertionSort(vetor, tam);
+        //qsort(vetor, tam, sizeof(int),comparaCrescente);
         clock_gettime(CLOCK_MONOTONIC, &end);
         
         //printf("Array gerado e organizado:\n");
