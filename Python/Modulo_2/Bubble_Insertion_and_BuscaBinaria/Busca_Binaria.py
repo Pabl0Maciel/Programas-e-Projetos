@@ -12,4 +12,3 @@ def busca_binaria(lista, x): # O(log n)
             else:
                 primeiro = meio + 1
     return -1
-
