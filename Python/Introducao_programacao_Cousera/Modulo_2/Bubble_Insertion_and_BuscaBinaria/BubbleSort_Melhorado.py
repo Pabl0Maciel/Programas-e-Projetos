@@ -9,4 +9,7 @@ def BubbleSort(lista):
                 trocou = True
 
         if not trocou: #se nao trocou nenhuma vez e pq ja esta ordenado
-            return
+            return lista
+    return lista
+
+print(BubbleSort([6,7,8,3,10,19,4,1,0,61,30,16,17,82,29,34,43,21,11,39,56,67,12]))
