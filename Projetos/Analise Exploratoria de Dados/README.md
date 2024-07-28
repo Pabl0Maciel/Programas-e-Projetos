@@ -56,9 +56,9 @@ pip install pandas numpy matplotlib seaborn
    python analise_2.py
    ```
 
-   ## 🛠️ Estrutura do Repositório
+   ## 🛠️ Estrutura da Pasta
 
-Este repositório é organizado da seguinte forma:
+Esta Pasta é organizado da seguinte forma:
 
 - **`analise_1.py`** e **`analise_2.py`**: Os scripts principais contendo todas as funções e lógica da análise.
 - **`README.md`**: Este arquivo que você está lendo.
