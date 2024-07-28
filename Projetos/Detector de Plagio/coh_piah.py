@@ -141,3 +141,4 @@ def avalia_textos(textos, ass_cp):
             return i+1
         i+=1
 
+le_assinatura()

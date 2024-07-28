@@ -150,3 +150,4 @@ Python/Introducao_programacao_Cousera/Modulo_2/Strings/exercicios/maisculas_fras
 Python/Introducao_programacao_Cousera/Modulo_2/Strings/exercicios/ordem_lexicografica_ex.py
 Python/Introducao_programacao_Cousera/Modulo_2/Strings/strings.py
 *.pdf
+.vscode/tasks.json
