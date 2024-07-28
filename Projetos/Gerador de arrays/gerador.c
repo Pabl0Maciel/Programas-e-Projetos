@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int* criar_array(int tam, int seed){
+int* criar_array(int tam){
     int* array = (int*)malloc(tam*sizeof(int));
     if (array==NULL){
         printf("erro ao alocar");
@@ -13,8 +13,8 @@ int* criar_array(int tam, int seed){
         printf("alocado com sucesso!\n");
     }
 
-    seed = 1718018947;
-    printf("semente usada: %d\n", seed);
+    unsigned int seed = (unsigned int)time(NULL);
+    printf("semente usada: %u\n", seed);
     srand(seed);
 
     for(int i = 0; i < tam; i++){
@@ -50,7 +50,7 @@ int comparaCrescente(const void *a, const void *b){
 
 int main() {
     
-    int tam, seed;
+    int tam;
     int* vetor;    
     char resposta[10];
     struct timespec start, end;
@@ -62,7 +62,7 @@ int main() {
         printf("Insira o tamanho do array de inteiros: ");
         scanf("%d", &tam);
 
-        vetor = criar_array(tam, seed);
+        vetor = criar_array(tam);
 
         printf("Ultimo elemento nao ordenado: %d\n", vetor[tam-1]);
         
