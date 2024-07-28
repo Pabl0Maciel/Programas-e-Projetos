@@ -22,7 +22,7 @@ Para compilar e executar o programa, siga os seguintes passos:
    ```
  ## 🛠️ Estrutura da Pasta
 
-Este repositório é organizado da seguinte forma:
+Esta Pasta é organizado da seguinte forma:
 
 - **`gerador.c`**: Os scripts principais contendo todas as funções e lógica do gerador.
 - **`README.md`**: Este arquivo que você está lendo.
