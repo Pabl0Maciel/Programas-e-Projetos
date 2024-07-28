@@ -20,7 +20,7 @@ Para compilar e executar o programa, siga os seguintes passos:
    ```bash
    ./a.out
    ```
- ## 🛠️ Estrutura do Repositório
+ ## 🛠️ Estrutura da Pasta
 
 Este repositório é organizado da seguinte forma:
 
