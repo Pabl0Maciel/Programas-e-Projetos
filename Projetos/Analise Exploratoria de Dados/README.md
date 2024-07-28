@@ -2,7 +2,7 @@
 
 Este projeto realiza uma análise detalhada dos dados de vendas a partir de um arquivo CSV. O objetivo é responder a várias perguntas sobre o desempenho de vendas com base em diferentes categorias e segmentações. O projeto utiliza Python e as bibliotecas Pandas, Numpy, Matplotlib, Seaborn e DateTime para análise e visualização dos dados.
 
-## Perguntas
+## 📚 Perguntas
 - **1ª Pergunta**: Qual Cidade com Maior Valor de Venda de Produtos da Categoria 'Office Supplies'?
 - **2ª Pergunta**: Qual o Total de Vendas Por Data do Pedido? Demonstre o resultado através de um gráfico de barras.
 - **3ª Pergunta**: Qual o Total de Vendas por Estado? Demonstre o resultado através de um gráfico de barras.
@@ -17,11 +17,11 @@ Este projeto realiza uma análise detalhada dos dados de vendas a partir de um a
 - **9ª Pergunta**: Qual o Média de Vendas Por Segmento, Por Ano e Por Mês? Demonstre o resultado através de gráfico de linha.
 - **10ª Pergunta**: Qual o Total de Vendas Por Categoria e SubCategoria, Considerando Somente as Top 12 SubCategorias? Demonstre tudo através de um único gráfico.
 
-## Respostas
+## 🔄 Respostas
 
 As respostas podem ser visualizadas no arquivo [Respostas.md](https://github.com/Pabl0Maciel/Programas-e-Projetos/blob/main/Projetos/Analise%20Exploratoria%20de%20Dados/Respostas.md)
 
-## Dependências
+## 📦 Dependências
 
 Certifique-se de que as seguintes bibliotecas estão instaladas:
 
