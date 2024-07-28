@@ -23,6 +23,7 @@ Este repositório é organizado da seguinte forma:
 - **`C/`**: Contém arquivos e projetos relacionados à linguagem C.
 - **`Python/`**: Contém scripts e projetos relacionados à linguagem Python.
 - **`README.md`**: Este arquivo que você está lendo.
+- **`arquivos/`**: Contém arquivos usados como base em alguns programas
 
 ## 🎯 Objetivos
 
