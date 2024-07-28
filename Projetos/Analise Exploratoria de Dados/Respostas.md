@@ -40,6 +40,23 @@ A cidade com maior valor de vendas para categoria 'Office Supplies' foi New York
 
 ## Pergunta 7: Quantas Vendas Receberiam 15% de Desconto?
 **Resposta**:
+| Desconto | Quantidade |
+|-------|------------|
+| 10%  | 9243       |
+| 15%  | 457        |
+
+## Pergunta 8: Considere Que a Empresa Decida Conceder o Desconto de 15% do Item Anterior. Qual Seria a Média do Valor de Venda Antes e Depois do Desconto?
+**Resposta**: <br>
+Media das vendas antes do desconto de 15%: 2116.81 <br>
+Media das vendas depois do desconto de 15%: 1799.29
+
+## Pergunta 9: Qual o Média de Vendas Por Segmento, Por Ano e Por Mês?
+**Resposta**:
+![Gráfico de Vendas](Imagens/fig_p9.png)
+
+## Pergunta 10: Qual o Total de Vendas Por Categoria e SubCategoria, Considerando Somente as Top 12 SubCategorias?
+**Resposta**:
+![Gráfico de Vendas](Imagens/fig_p10.png)
 
 
 
