@@ -45,10 +45,6 @@ Esta Pasta é organizado da seguinte forma:
 - **`coh_piah.py`**: O script principal contendo todas as funções e lógica do detector.
 - **`README.md`**: Este arquivo que você está lendo.
 
-## 🎯 Objetivos
-
-Este projeto visa trabalhar com o módulo re da linguagem Python e exercitar o raciocínio lógico para resolver um problema de cópia de texto.
-
 ## 💬 Contato
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
