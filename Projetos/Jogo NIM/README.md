@@ -35,7 +35,7 @@ Ao iniciar o jogo, você terá duas opções:
 
 ## 🛠️ Estrutura da Pasta
 
-Este repositório é organizado da seguinte forma:
+Esta pasta é organizado da seguinte forma:
 
 - **`nim.py`**: O script principal contendo todas as funções e lógica do jogo.
 - **`README.md`**: Este arquivo que você está lendo.
