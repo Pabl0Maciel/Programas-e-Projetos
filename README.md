@@ -13,7 +13,7 @@ Bem-vindo ao meu repositório! Aqui você encontrará uma coleção de meus apre
 Para começar a explorar os projetos e exemplos, você pode clonar este repositório para o seu ambiente local:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/pabl0maciel/Programas-e-Projetos.git
 ```
 
 ## 🛠️ Estrutura do Repositório
