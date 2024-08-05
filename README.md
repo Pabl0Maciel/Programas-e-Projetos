@@ -13,7 +13,7 @@ Bem-vindo ao meu repositório! Aqui você encontrará uma coleção de meus apre
 Para começar a explorar os projetos e exemplos, você pode clonar este repositório para o seu ambiente local:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/pabl0maciel/Programas-e-Projetos.git
 ```
 
 ## 🛠️ Estrutura do Repositório
@@ -34,10 +34,10 @@ Este repositório visa ajudar tanto iniciantes quanto desenvolvedores intermedi�
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
 
 <p align="left">
-  <a href="mailto:pablocaballero07@usp.br" title="Gmail">
+  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
     <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
   </a>
-  <a href="https://www.linkedin.com/in/seu-perfil-link" title="LinkedIn">
+  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
     <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
   <a href="https://wa.me/11963934212" title="WhatsApp">
