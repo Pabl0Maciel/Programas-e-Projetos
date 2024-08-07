@@ -12,6 +12,7 @@ Nesta pasta, você encontrará uma variedade de conteúdos e exemplos relacionad
 - **If e Else:** Estruturas de controle de fluxo usando `if` e `else`.
 - **Matriz:** Trabalhando com matrizes, acesso e manipulação de elementos bidimensionais.
 - **Ordenação:** Algoritmos de ordenação, como bolha, seleção e inserção.
+- **Ponteiros:** Usos de ponteiros em arrays, structs e em funções.
 - **Relacionais:** Operadores relacionais e como usá-los para comparar valores.
 - **Scanf:** Uso da função `scanf` para leitura de dados do usuário.
 - **Strings:** Manipulação e operações com strings, funções de string.
@@ -31,6 +32,7 @@ A pasta está organizada da seguinte forma:
 - **`if_else/`**: Exemplos de estruturas condicionais `if` e `else`.
 - **`matriz/`**: Trabalhando com matrizes.
 - **`ordenacao/`**: Algoritmos de ordenação.
+- **`Ponteiros/`**: Usos de ponteiros
 - **`relacionais/`**: Operadores relacionais e suas aplicações.
 - **`scanf/`**: Exemplos de uso da função `scanf`.
 - **`strings/`**: Manipulação e operações com strings.
