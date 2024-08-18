@@ -27,15 +27,15 @@ typedef struct{
 }LISTA;
 
 // inicializa a lista como vazia
-inicializa_lista(LISTA *lista){
+void inicializa_lista(LISTA *lista){
     lista -> inicio = INVALIDO;
     lista -> disp = 0;
 
     // faz com que os todos elementos apontem para o proximo disponivel, com a lista vazia.
-    for (int i = 0; i < MAX; i++){
+    for (int i = 0; i < MAX-1; i++){
         lista -> elementos[i].prox = i+1;
     }
-    lista -> elementos[MAX].prox = INVALIDO; // ultimo elemento nao aponta para ninguem
+    lista -> elementos[MAX-1].prox = INVALIDO; // ultimo elemento nao aponta para ninguem
 }
 
 int tamanho_lista(LISTA *lista){
@@ -46,6 +46,7 @@ int tamanho_lista(LISTA *lista){
         tamanho++;
         pos_atual += lista -> elementos[pos_atual].prox;
     }
+    return tamanho;
 }
 
 void exibir_lista(LISTA *lista){
@@ -56,36 +57,74 @@ void exibir_lista(LISTA *lista){
     printf("\n");
 }
 
-int inserir_lista_ord(LISTA *lista, REGISTRO reg){
-    int anterior = INVALIDO;
-    int pos = lista -> inicio;
+// insere chaves ordenadamente
+int inserir_lista_ord(LISTA *lista, int chave){
 
+    // verifica se a lista esta cheia
     if (lista -> disp == INVALIDO) return -1;
 
-    while (pos != INVALIDO && (lista -> elementos[pos].reg.chave < reg.chave)){
-        anterior = pos;
-        pos = lista -> elementos[pos].prox;
+    // atribui ao novo elemento a primeira posicao disponivel e e faz ela apontar para a proxima posicao disponivel
+    int novo = lista -> disp;
+    lista -> disp = lista -> elementos[novo].prox;
+
+    // atribui a chave desejada para o novo elemento
+    lista -> elementos[novo].reg.chave = chave;
+
+    // Se a lista está vazia ou o novo elemento é menor que o primeiro elemento
+    if (lista -> inicio == INVALIDO || chave < lista -> elementos[lista -> inicio].reg.chave){
+        lista -> elementos[novo].prox = lista -> inicio;
+        lista -> inicio = novo;
     }
 
-    // pegando disponivel
-    int prox_disp = lista -> disp;
-    lista -> disp = lista -> elementos[prox_disp].prox;
+    // percorre a lista desde de o inicio, procurando a posicao correta para inserir o novo elemento
+    int atual = lista -> inicio;
+    int anterior = INVALIDO;
 
-    if (anterior == INVALIDO){
-        int antigo_prox = lista -> inicio;
-        lista -> elementos[prox_disp].reg = reg;
-        lista -> elementos[prox_disp].prox = antigo_prox;
-        lista -> inicio = prox_disp;
+    while (atual != INVALIDO && lista -> elementos[atual].reg.chave < lista -> elementos[novo].reg.chave){
+        anterior = atual;
+        atual = lista -> elementos[atual].prox;
     }
 
-    else{
-    int antigo_prox = lista -> elementos[anterior].prox;
-    lista -> elementos[anterior].prox = prox_disp;
-    lista -> elementos[prox_disp].reg = reg;
-    lista -> elementos[prox_disp].prox = antigo_prox;
-    }
+    // insere o elemento (como o elemento deve ser inserido atras da posicao atual, seu proximo recebe o atual e seu anterior aponta para o novo elemento)
+    lista -> elementos[novo].prox = atual;
+    lista -> elementos[anterior].prox = novo;
+
+    return 0;
 }
 
+// exclui um elemento pela chave passada
+int excluir_elemento(LISTA *lista, int chave){
+    // verifica se a lista esta vazia
+    if (lista -> inicio == INVALIDO) return -1;
+
+    int anterior = INVALIDO;
+    int atual = lista -> inicio;
+
+    // procura a posicao do elemento
+    while (atual != INVALIDO && lista -> elementos[atual].reg.chave != chave){
+        anterior = atual;
+        atual = lista -> elementos[atual].prox;
+    }
+
+    // se o elemento nao esta na lista
+    if (atual == INVALIDO) return -1;
+
+    // se o elemento e o primeiro da lista
+    if (anterior == INVALIDO){
+        lista -> inicio == lista -> elementos[atual].prox;
+    }
+
+    // pula o elemento excluido (faz com que seu anterior aponte diretamente para o proximo do elemento excluido)
+    else{
+        lista -> elementos[anterior].prox = lista -> elementos[atual].prox;
+    }
+
+    // faz com que o elemento exlcuido aponte para a posicao disponivel
+    lista -> elementos[atual].prox = lista -> disp;
+    lista -> disp = atual;
+
+    return 0;
+}
 
 int main(){
 
