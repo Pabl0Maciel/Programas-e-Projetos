@@ -44,7 +44,7 @@ int tamanho_lista(LISTA *lista){
 
     while(pos_atual != INVALIDO){
         tamanho++;
-        pos_atual += lista -> elementos[pos_atual].prox;
+        pos_atual = lista -> elementos[pos_atual].prox;
     }
     return tamanho;
 }
@@ -58,7 +58,7 @@ void exibir_lista(LISTA *lista){
 }
 
 // insere chaves ordenadamente
-int inserir_lista_ord(LISTA *lista, int chave){
+int inserir_lista_ord(LISTA *lista, REGISTRO reg){
 
     // verifica se a lista esta cheia
     if (lista -> disp == INVALIDO) return -1;
@@ -68,12 +68,13 @@ int inserir_lista_ord(LISTA *lista, int chave){
     lista -> disp = lista -> elementos[novo].prox;
 
     // atribui a chave desejada para o novo elemento
-    lista -> elementos[novo].reg.chave = chave;
+    lista -> elementos[novo].reg = reg;
 
     // Se a lista está vazia ou o novo elemento é menor que o primeiro elemento
-    if (lista -> inicio == INVALIDO || chave < lista -> elementos[lista -> inicio].reg.chave){
+    if (lista -> inicio == INVALIDO || reg.chave < lista -> elementos[lista -> inicio].reg.chave){
         lista -> elementos[novo].prox = lista -> inicio;
         lista -> inicio = novo;
+        return 0;
     }
 
     // percorre a lista desde de o inicio, procurando a posicao correta para inserir o novo elemento
@@ -111,7 +112,7 @@ int excluir_elemento(LISTA *lista, int chave){
 
     // se o elemento e o primeiro da lista
     if (anterior == INVALIDO){
-        lista -> inicio == lista -> elementos[atual].prox;
+        lista -> inicio = lista -> elementos[atual].prox;
     }
 
     // pula o elemento excluido (faz com que seu anterior aponte diretamente para o proximo do elemento excluido)
@@ -126,9 +127,62 @@ int excluir_elemento(LISTA *lista, int chave){
     return 0;
 }
 
+int busca_lista_sequencial(LISTA *lista, int chave_buscada){
+    if (lista -> inicio == INVALIDO) return -1;
+
+    int atual = lista -> inicio;
+
+    while (atual != INVALIDO && lista -> elementos[atual].reg.chave != chave_buscada){
+        atual = lista -> elementos[atual].prox;
+    }
+    
+    if (atual != INVALIDO && lista -> elementos[atual].reg.chave == chave_buscada){
+        printf("Chave %d na posicao %d", chave_buscada, atual);
+        return 0;
+    }
+    else return -1;
+}
+
+void reinicializar_lista(LISTA *lista){
+    inicializa_lista(lista);
+}
+
 int main(){
-
-
-
-    return 0;
+    LISTA l;
+	inicializa_lista(&l);
+	
+	for (int i = 0; i < 6; i++) {
+		REGISTRO r = {.chave = random()%100 };
+		printf("Inserindo elemento com chave = %d\n\t", r.chave);
+		inserir_lista_ord(&l, r);
+		exibir_lista(&l);
+	}
+	
+	
+	excluir_elemento(&l, 15);
+	exibir_lista(&l);
+	
+	excluir_elemento(&l, 93);
+	exibir_lista(&l);
+	
+	excluir_elemento(&l, 77);
+	exibir_lista(&l);
+	
+	excluir_elemento(&l, 99999);
+	exibir_lista(&l);
+	
+	random();
+	for (int i = 0; i < 6; i++) {
+		REGISTRO r = {.chave = random()%100 };
+		printf("Inserindo elemento com chave = %d\n\t", r.chave);
+		inserir_lista_ord(&l, r);
+		exibir_lista(&l);
+	}
+	
+	while (l.inicio != INVALIDO) {
+		excluir_elemento(&l, l.elementos[l.inicio].reg.chave);
+		exibir_lista(&l);
+	}
+		
+	return 0;
 }
