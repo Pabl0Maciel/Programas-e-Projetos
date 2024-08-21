@@ -15,9 +15,9 @@ typedef struct{
 } REGISTRO;
 
 // faz com que cada elemento possua uma variavel de registro e um ponteiro que aponta para o proximo registro
-typedef struct{
+typedef struct elemento_aux{
     REGISTRO reg;
-    struct elemento_aux *prox;
+    struct elemento_aux *prox; // notacao para indicar um ponteiro 'prox' do tipo ELEMENTO (usado pois a compilador ainda nao sabe da struct ELEMENTO)
 }ELEMENTO;
 
 // cria uma lista com esses elementos e um ponteiro de inicio
@@ -25,54 +25,63 @@ typedef struct{
     ELEMENTO *inicio;
 }LISTA;
 
+// inicializa a lista com o ponteiro inicio apontando para o vazio, ja que a lista esta vazia
 void inicializar_lista(LISTA *lista){
     lista -> inicio = NULL;
 }
 
 int tamanho_lista(LISTA *lista){
     int tamanho = 0;
-    ELEMENTO *ptr = lista -> inicio;
-    while(ptr != NULL){
+    ELEMENTO *pos_atual = lista -> inicio;
+    while(pos_atual != NULL){
         tamanho ++;
-        ptr = ptr -> prox;
+        pos_atual = pos_atual -> prox;
     }
     return tamanho;
 }
 
-void busca_auxiliar (LISTA *lista, int chave, ELEMENTO **anterior, int *achou){
+// retorna o endereco do elemento que possui a chave ou que vem depois dele, no caso de inserir, e o endereco de seu anterior
+ELEMENTO  *busca_auxiliar (LISTA *lista, int chave, ELEMENTO **anterior){
     *anterior = NULL;
-    *achou = -1;
     ELEMENTO *atual = lista -> inicio;
 
+    // procura o endereco
     while (atual != NULL && atual -> reg.chave < chave){
         *anterior = atual;
         atual = atual -> prox;
     }
-    if (atual != NULL && atual -> reg.chave == chave) *achou = 0;
+    // se achar a chave, devolve o endereco
+    if (atual != NULL && atual -> reg.chave == chave) return atual;
+    else return NULL;
 }
 
+// insere um registro ordenadamente
 int inserir_lista_ord(LISTA *lista, REGISTRO reg){
     ELEMENTO *anterior;
-    ELEMENTO *atual;
-    int achou;
+    ELEMENTO *novo_elemento;
 
-    ELEMENTO *novo_elemento = malloc(sizeof(ELEMENTO));
-    if (novo_elemento == NULL) return -1;
+    // acha a posicao em que o novo elemento deve ser inserido
+    novo_elemento = busca_auxiliar (lista, reg.chave, &anterior);
+
+    // quer dizer que foi encontrado um elemento com a chave que se deseja inserir, nao queremos chaves duplicadas
+    if (novo_elemento != NULL) return -1;
+
+    // aloca memoria dinamicamente para o novo elemento
+    novo_elemento = malloc(sizeof(ELEMENTO));
+
+    // testa se foi alocado memoria com sucesso
+    if (novo_elemento == NULL) return -1; 
+
+    // atribui o registro passado ao novo elemento
     novo_elemento -> reg = reg;
 
-    busca_auxiliar (lista, reg.chave, &anterior, &achou);
-
-    while (atual != NULL && atual -> reg.chave < reg.chave){
-        anterior = atual;
-        atual = atual -> prox;
-    }
-
-    if (achou) return -1;
-
+    // caso o elemento seja o primeiro da lista, seu proximo aponta para o que era o inicio (NULL) e o inicio aponta para ele
     if (anterior == NULL){
         novo_elemento -> prox = lista -> inicio;
         lista -> inicio = novo_elemento;
     }
+
+    // o proximo elemento apontado pelo anterior agora eh o novo elemento e o proximo elemento apontado pelo novo elemento eh o apontado pelo anterior
     else{
         novo_elemento -> prox = anterior -> prox;
         anterior -> prox = novo_elemento;
@@ -81,31 +90,65 @@ int inserir_lista_ord(LISTA *lista, REGISTRO reg){
     return 0;
 }
 
+// mostra o conteudo da lista
 void exibir_lista(LISTA *lista){
-    ELEMENTO *ptr = lista -> inicio;
+    ELEMENTO *pos_atual = lista -> inicio;
     printf("Tamanho: %d, Elementos: ", tamanho_lista(lista));
-    while(ptr != NULL){
-        printf("%i ", ptr -> reg.chave);
-        ptr = ptr -> prox;
+    while(pos_atual != NULL){
+        printf("%i ", pos_atual -> reg.chave);
+        pos_atual = pos_atual -> prox;
     }
+    printf("\n-----------------------------------------------------------------------------\n");
+}
+
+// exclui um elemento
+int excluir_elemento(LISTA *lista, int chave){
+    ELEMENTO *anterior, *atual;
+
+     atual = busca_auxiliar(lista, chave, &anterior);
+
+    if (atual == NULL) return -1;
+
+    // se o elemento eh o primeiro da lista, o inicio aponta para o seu proximo (NULL)
+    if (anterior == NULL){
+        lista -> inicio = atual -> prox;
+    }
+    // se o elemento tem anterior, seu anterior agora aponta para o proximo do atual (pula o elemento excluido)
+    else{
+        anterior -> prox = atual -> prox;
+    }
+    free(atual);
     return 0;
 }
 
-int excluir_elemento(LISTA *lista, int chave){
-    ELEMENTO *anterior;
-    int achou;
-    busca_auxiliar(lista, chave, &anterior, &achou);
-
-    if (!achou) return -1;
-
-    if (anterior == NULL){
-        ELEMENTO *a_dar_free = lista -> inicio;
-        lista -> inicio = lista -> inicio -> prox;
-        free (a_dar_free);
+void reinicializar_lista(LISTA *lista){
+    ELEMENTO *atual = lista -> inicio;
+    
+    while (atual != NULL){
+        ELEMENTO *apagar = atual;
+        atual = atual -> prox;
+        free(apagar);
     }
-    else{
-        ELEMENTO *a_dar_free = anterior -> prox;
-        anterior -> prox = anterior -> prox -> prox;
-        free (a_dar_free);
-    }
+    lista -> inicio = NULL;
+}
+
+int main() {
+    LISTA lista;
+    inicializar_lista(&lista);
+
+    for (int i = 0; i < 6; i++) {
+		REGISTRO r = {.chave = random()%100 };
+		printf("Inserindo elemento com chave = %d\n", r.chave);
+		inserir_lista_ord(&lista, r);
+		exibir_lista(&lista);
+	}
+	
+	excluir_elemento(&lista, 15);
+	exibir_lista(&lista);
+	excluir_elemento(&lista, 93);
+	exibir_lista(&lista);
+	excluir_elemento(&lista, 77);
+	exibir_lista(&lista);
+
+    return 0;
 }
