@@ -36,7 +36,7 @@ def grafico (n):
     plt.scatter(fora_x, fora_y, label = 'Pontos fora da Circunferencia')
     plt.xlim = 1
     plt.ylim = 1
-    plt.title('Estimativa de PI')
+    plt.title('Estimativa de PI com 10 Milhões de Pontos')
     plt.legend(loc = 'lower left')
     plt.show()
 
