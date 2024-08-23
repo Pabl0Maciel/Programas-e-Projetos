@@ -28,6 +28,7 @@ def grafico (n):
     
     # calcula pi
     pi = (4 * len(dentro_x)) / (len(dentro_x) + len (fora_x))
+    print(pi)
 
     # criando o grafico
     plt.figure()
@@ -39,4 +40,4 @@ def grafico (n):
     plt.legend(loc = 'lower left')
     plt.show()
 
-grafico(100000)
+grafico(10000000)
