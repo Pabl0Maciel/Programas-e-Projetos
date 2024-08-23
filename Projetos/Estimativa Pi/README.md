@@ -28,6 +28,7 @@ Para executar o programa, siga os seguintes passos:
 Esta Pasta é organizado da seguinte forma:
 
 - **`estimativa_pi.py`**: O script principal contendo a lógica para geração de pontos, cálculo da estimativa de Pi e plotagem do gráfico.
+- **`Grafico.png`**: O gráfico gerado pelo código com 10 milhões de pontos.
 - **`README.md`**: Este arquivo que você está lendo.
 
 ## 💬 Contato
