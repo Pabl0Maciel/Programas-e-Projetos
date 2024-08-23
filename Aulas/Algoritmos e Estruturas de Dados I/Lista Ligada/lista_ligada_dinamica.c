@@ -55,8 +55,20 @@ ELEMENTO  *busca_auxiliar (LISTA *lista, int chave, ELEMENTO **anterior){
     else return NULL;
 }
 
+ELEMENTO *busca_lista_ord(LISTA *lista, int chave, int *pos){
+    ELEMENTO *atual = lista -> inicio;
+    *pos = 0;
+    while (atual != NULL && atual -> reg.chave < chave){
+        atual = atual -> prox;
+        (*pos)++;
+    }
+
+    if (atual != NULL && atual -> reg.chave == chave) return atual;
+    else return NULL;
+}
+
 // insere um registro ordenadamente
-int inserir_lista_ord(LISTA *lista, REGISTRO reg){
+ELEMENTO *inserir_lista_ord(LISTA *lista, REGISTRO reg){
     ELEMENTO *anterior;
     ELEMENTO *novo_elemento;
 
@@ -64,13 +76,13 @@ int inserir_lista_ord(LISTA *lista, REGISTRO reg){
     novo_elemento = busca_auxiliar (lista, reg.chave, &anterior);
 
     // quer dizer que foi encontrado um elemento com a chave que se deseja inserir, nao queremos chaves duplicadas
-    if (novo_elemento != NULL) return -1;
+    if (novo_elemento != NULL) return NULL;
 
     // aloca memoria dinamicamente para o novo elemento
     novo_elemento = malloc(sizeof(ELEMENTO));
 
     // testa se foi alocado memoria com sucesso
-    if (novo_elemento == NULL) return -1; 
+    if (novo_elemento == NULL) return NULL; 
 
     // atribui o registro passado ao novo elemento
     novo_elemento -> reg = reg;
@@ -143,12 +155,26 @@ int main() {
 		exibir_lista(&lista);
 	}
 	
+    ELEMENTO *busca;
+    int chave_buscada = 77;
+    int pos;
+    busca = busca_lista_ord(&lista, chave_buscada, &pos);
+    if (busca != NULL){
+       printf ("Chave %d encontrada na posicao %d\n", chave_buscada, pos);
+    } else{
+        printf("Chave %d nao encontrada!\n", chave_buscada);
+    }
+
 	excluir_elemento(&lista, 15);
 	exibir_lista(&lista);
+
 	excluir_elemento(&lista, 93);
 	exibir_lista(&lista);
+
 	excluir_elemento(&lista, 77);
 	exibir_lista(&lista);
 
+    reinicializar_lista(&lista);
+    exibir_lista(&lista);
     return 0;
 }
