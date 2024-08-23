@@ -1,8 +1,3 @@
-# Este programa gera pontos(x,y) aleatorios e os insere dentro de um quadrado de lado 1. 
-# Dentro do quadrado eh tracada um quarto de circunferencia de raio 1, de forma a posicionar os pontos dentro ou fora dela
-# Estima o valor de PI da seguinte forma: PI = (4 * Pontos dentro) / Pontos totais
-# Quanto mais pontos gerados maior a precisao da estimativa
-
 import random, matplotlib.pyplot as plt
 
 def grafico (n):
@@ -36,7 +31,8 @@ def grafico (n):
     plt.scatter(fora_x, fora_y, label = 'Pontos fora da Circunferencia')
     plt.xlim = 1
     plt.ylim = 1
-    plt.title('Estimativa de PI com 10 Milhões de Pontos')
+    plt.title('Estimativa de PI com 10 Milhões de Pontos', y = 1.05)
+    plt.text(0.5, 1.06, f'Valor estimado de PI: {pi:.6f}', ha='center', fontsize=12)
     plt.legend(loc = 'lower left')
     plt.show()
 
