@@ -5,6 +5,10 @@
 typedef struct{
     int Min;
     int Max;
+    int LinMin;
+    int ColMin;
+    int LinMax;
+    int ColMax;
 }MinMax;
 
 // funcao para imprimir a matriz
@@ -19,12 +23,16 @@ void imprimeMatriz(int **matriz, int N){
 }
 
 MinMax Acha_MinMax(int **matriz, int lin_inicio, int lin_fim, int col_inicio, int col_fim){
-    MinMax Resultado, Resultado_Cima, Resultado_Baixo, Mat1, Mat2, Mat3, Mat4;
+    MinMax Resultado, Mat1, Mat2, Mat3, Mat4;
 
     // base: um elemento
     if ((lin_inicio == lin_fim) && (col_inicio == col_fim)){
         Resultado.Min = matriz[lin_inicio][col_inicio];
         Resultado.Max = matriz[lin_inicio][col_inicio];
+        Resultado.LinMin = lin_inicio;
+        Resultado.ColMin = col_inicio;
+        Resultado.LinMax = lin_inicio;
+        Resultado.ColMax = col_inicio;
         return Resultado;
     }
 
@@ -35,53 +43,49 @@ MinMax Acha_MinMax(int **matriz, int lin_inicio, int lin_fim, int col_inicio, in
     // calcula os min e max das quatro matrizes
     Mat1 = Acha_MinMax(matriz,lin_inicio, lin_meio, col_inicio, col_meio);
     Mat2 = Acha_MinMax(matriz,lin_inicio, lin_meio, col_meio+1, col_fim);
-    Mat3 = Acha_MinMax(matriz,lin_meio+1, lin_fim, col_meio+1, col_fim);
-    Mat4 = Acha_MinMax(matriz,lin_meio+1, lin_fim, col_inicio, col_meio);
+    Mat3 = Acha_MinMax(matriz,lin_meio+1, lin_fim, col_inicio, col_meio);
+    Mat4 = Acha_MinMax(matriz,lin_meio+1, lin_fim, col_meio+1, col_fim);
 
-    // compara minimo e maximo entre mat1 e mat2
-    if (Mat1.Min < Mat2.Min){
-        Resultado_Cima.Min = Mat1.Min;
-    }
-    else{
-        Resultado_Cima.Min = Mat2.Min;
-    }
+    // compara minimo entre as quatro matrizes e acha o menor deles
+    Resultado.Min = Mat1.Min;
+    Resultado.LinMin = Mat1.LinMin;
+    Resultado.ColMin = Mat1.ColMin;
 
-    if (Mat1.Max > Mat2.Max){
-        Resultado_Cima.Max = Mat1.Max;
+    if (Mat2.Min < Resultado.Min){
+        Resultado.Min = Mat2.Min;
+        Resultado.LinMin = Mat2.LinMin;
+        Resultado.ColMin = Mat2.ColMin;
     }
-    else{
-        Resultado_Cima.Max = Mat2.Max;
+    if (Mat3.Min < Resultado.Min){
+        Resultado.Min = Mat3.Min;
+        Resultado.LinMin = Mat3.LinMin;
+        Resultado.ColMin = Mat3.ColMin;
     }
-
-    // compara minimo e maximo entre mat3 e mat4
-
-    if (Mat3.Min < Mat4.Min){
-        Resultado_Baixo.Min = Mat3.Min;
-    }
-    else{
-        Resultado_Baixo.Min = Mat4.Min;
+    if (Mat4.Min < Resultado.Min){
+        Resultado.Min = Mat4.Min;
+        Resultado.LinMin = Mat4.LinMin;
+        Resultado.ColMin = Mat4.ColMin;
     }
 
-    if (Mat3.Max > Mat4.Max){
-        Resultado_Baixo.Max = Mat3.Max;
-    }
-    else{
-        Resultado_Baixo.Max = Mat4.Max;
-    }
+    // compara o maximo entre as quatro matrizes e acha o menor deles
+    Resultado.Max = Mat1.Max;
+    Resultado.LinMax = Mat1.LinMax;
+    Resultado.ColMax = Mat1.ColMax;
 
-    // compara min e max dos resultados de cima e baixo e fornece o resultado final
-    if (Resultado_Cima.Min < Resultado_Baixo.Min){
-        Resultado.Min = Resultado_Cima.Min;
+    if (Mat2.Max > Resultado.Max){
+        Resultado.Max = Mat2.Max;
+        Resultado.LinMax = Mat2.LinMax;
+        Resultado.ColMax = Mat2.ColMax;
     }
-    else{
-        Resultado.Min = Resultado_Baixo.Min;
+    if (Mat3.Max > Resultado.Max){
+        Resultado.Max = Mat3.Max;
+        Resultado.LinMax = Mat3.LinMax;
+        Resultado.ColMax = Mat3.ColMax;
     }
-
-    if (Resultado_Cima.Max > Resultado_Baixo.Max){
-        Resultado.Max = Resultado_Cima.Max;
-    }
-    else{
-        Resultado.Max = Resultado_Baixo.Max;
+    if (Mat4.Max > Resultado.Max){
+        Resultado.Max = Mat4.Max;
+        Resultado.LinMax = Mat4.LinMax;
+        Resultado.ColMax = Mat4.ColMax;
     }
 
     return Resultado;
@@ -115,9 +119,10 @@ int main(int argc, char *argv[]){
     // imprime a matriz
     imprimeMatriz(matriz, N);
 
+    // resultado
     MinMax Resultado = Acha_MinMax(matriz, 0, N-1, 0, N-1);
-    fprintf(minha_saida, "min = %d\n", Resultado.Min);
-    fprintf(minha_saida, "max = %d\n", Resultado.Max);
+    fprintf(minha_saida, "min = %d; pos = (%d, %d)\n", Resultado.Min, Resultado.LinMin, Resultado.ColMin);
+    fprintf(minha_saida, "max = %d; pos = (%d, %d)\n", Resultado.Max, Resultado.LinMax, Resultado.ColMax);
 
     fclose(minha_entrada);
     fclose(minha_saida);
