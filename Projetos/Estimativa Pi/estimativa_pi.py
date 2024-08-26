@@ -31,9 +31,9 @@ def grafico (n):
     plt.scatter(fora_x, fora_y, label = 'Pontos fora da Circunferencia')
     plt.xlim = 1
     plt.ylim = 1
-    plt.title('Estimativa de PI com 10 Milhões de Pontos', y = 1.05)
+    plt.title('Estimativa de PI com Mil Pontos', y = 1.05)
     plt.text(0.5, 1.06, f'Valor estimado de PI: {pi:.6f}', ha='center', fontsize=12)
     plt.legend(loc = 'lower left')
     plt.show()
 
-grafico(10000000)
+grafico(1000)
