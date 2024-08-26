@@ -1,2 +1,3 @@
 # Estimativas de PI:
-![Grafico](
+![Grafico](Graficos/Grafico_2.png)
+![Grafico](Graficos/Grafico.png)
