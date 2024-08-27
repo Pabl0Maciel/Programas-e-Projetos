@@ -192,7 +192,7 @@ int main(int argc, char *argv[]){
         matriz[i] = (int *)malloc(N * sizeof(int));
     }
 
-    // copia os numeros da matriz de entrada
+    // copia os numeros do arquivo de entrada para a matriz
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             fscanf(minha_entrada, "%d", &matriz[i][j]);
