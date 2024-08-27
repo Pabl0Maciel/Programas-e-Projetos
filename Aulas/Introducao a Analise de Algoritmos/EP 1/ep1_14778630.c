@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// estrutura para armazenar o minimo e maximo
+// estrutura para armazenar o minimo, maximo e suas coordenadas.
 typedef struct{
     int Min;
     int Max;
