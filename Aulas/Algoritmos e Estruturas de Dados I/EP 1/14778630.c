@@ -10,7 +10,7 @@
 
 
 /*
-A Maratona de Programacao que voce gerenciara tem um numero fixo de problemas definido na constante PROBLEMAS. Os problemas da maratona serao numerados de 0 (zero) ate PROBLEMAS-1. Havera uma lista ligada ordenada pela classificacao dos times, como discutido ao longo do enunciado.
+Este programa gerencia uma maratona de programacao que contem um numero de problemas igual a PROBLEMAS a serem resolvidos. A quantidade de times participantes e igual a nunTimes. Com as funcoes abaixo e possivel gerenciar os problemas que cada time acerta, bem como o numero de tentativas que tiveram ate o acerto e o tempo que demoraram para tal. Alem disso, existe tambem um campo de penalidades, que serve como criterio para classificacao do time, alem do numero de problemas resolvidos.
 */
 
 #include <stdlib.h>
