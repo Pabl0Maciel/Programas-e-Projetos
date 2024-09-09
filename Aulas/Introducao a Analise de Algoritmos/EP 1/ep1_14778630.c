@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Pablo Caballero Maciel        NUSP: 14778630
+
 // estrutura para armazenar o minimo, maximo e suas coordenadas.
 typedef struct{
     int Min;
