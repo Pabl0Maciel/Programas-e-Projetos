@@ -29,10 +29,6 @@ void inicializar_matriz(MATRIZ *matriz, int linha, int coluna){
     matriz -> linha = linha;
     matriz -> coluna = coluna;
     matriz -> elementos = malloc(linha * coluna * sizeof(int));
-
-    for (int i = 0; i < linha * coluna; i++){   
-        matriz -> elementos[i] = 0;
-    }
 }
 
 int atribuir_matriz (MATRIZ *matriz, int linha, int coluna, int valor){
@@ -46,9 +42,9 @@ int atribuir_matriz (MATRIZ *matriz, int linha, int coluna, int valor){
 }
 
 void exibir_matriz (MATRIZ *matriz){
-    for (int i = 0; i < matriz -> linha; i++){
+    for (int i = 1; i <= matriz -> linha; i++){
 
-        for (int j = 0; j < matriz -> coluna; j++){
+        for (int j = 1; j <= matriz -> coluna; j++){
             printf("%4d ", acessa_matriz(matriz, i, j));
         }
         printf("\n");
@@ -58,23 +54,23 @@ void exibir_matriz (MATRIZ *matriz){
 int main(){
 
     MATRIZ matriz;
-    int linha = 4;
+    int linha = 3;
     int coluna = 4;
-    int valores[linha * coluna];
 
     inicializar_matriz(&matriz, linha, coluna);
 
-    for (int i = 0; i < linha * coluna; i++){
-        valores[i] = random() % 100;
-    }
-
-    for (int l = 0; l < linha; l++){
+    for (int l = 1; l <= linha; l++){
         
-        for (int c = 0; c < coluna; c++){
-            atribuir_matriz(&matriz, l, c, valores[c]);
+        for (int c = 1; c <= coluna; c++){
+            atribuir_matriz(&matriz, l, c, random() % 100);
         }
     }
     exibir_matriz(&matriz);
+
+    atribuir_matriz(&matriz, 1, 1, 1234);
+	printf("\n");
+	atribuir_matriz(&matriz, 3, 4, 4321);
+	exibir_matriz(&matriz);
 
     return 0;
 }
