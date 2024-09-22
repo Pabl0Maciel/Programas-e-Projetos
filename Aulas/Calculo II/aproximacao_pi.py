@@ -1,7 +1,7 @@
 from decimal import Decimal, getcontext
 
 # Ajusta a precisao para 2110 casas decimais
-getcontext().prec = 100 
+getcontext().prec = 2110 
 
 # Calculo de arctan usando a Serie de Taylor
 def arctan(x, terms):
@@ -40,17 +40,16 @@ def pi_f_stormer(terms):
 terms = 1000  # numero de termos usados na Serie de Taylor (quanto mais, maior a precisao)
 
 pi_Machin = pi_machin(terms)
-
-#pi_takano = pi_k_takano(terms)
-#pi_stormer = pi_f_stormer(terms)
+pi_takano = pi_k_takano(terms)
+pi_stormer = pi_f_stormer(terms)
 
 # Mostra o Resultado
 print("Pi calculado com a fórmula de Machin:")
 print(str(pi_Machin))
 
 
-#print("Pi calculado com a fórmula de K. Takano:")
-#print(str(pi_takano))
+print("Pi calculado com a fórmula de K. Takano:")
+print(str(pi_takano))
 
-#print("\nPi calculado com a fórmula de F.C.M. Størmer:")
-#print(str(pi_stormer))
+print("\nPi calculado com a fórmula de F.C.M. Størmer:")
+print(str(pi_stormer))
