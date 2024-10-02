@@ -77,22 +77,22 @@ void free_SubArvore(ARVORE raiz){
 
     free_SubArvore(raiz -> esq);
     free_SubArvore(raiz -> dir);
-    free_SubArvore(raiz);
+    free(raiz);
 }
 
 int excluir(ARVORE *raiz, int chave_excluir){
     if ((*raiz) == NULL) return -1;
 
-    if (*(raiz) -> chave == chave_excluir){
+    if ((*raiz) -> chave == chave_excluir){
         free_SubArvore(*raiz);
         *raiz = NULL;
         return 0;
     }
 
-    int deu_certo = excluir((*raiz) -> esq, chave_excluir);
+    int deu_certo = excluir(&(*raiz) -> esq, chave_excluir);
     if (deu_certo == 0) return deu_certo;
 
-    return excluir((*raiz) -> dir, chave_excluir);
+    return excluir(&(*raiz) -> dir, chave_excluir);
 }
 
 int main(){
@@ -142,12 +142,30 @@ int main(){
     exibir_PreOrdem(raiz);
     printf("\n");
 
+    deu_certo = inserir(raiz, 200, 99, DIREITA);
+    if (deu_certo == -1){
+        printf ("Erro ao inserir!\n");
+    }
+
     deu_certo = inserir(raiz, 100, 99, DIREITA);
     if (deu_certo == -1){
         printf ("Erro ao inserir!\n");
     }
 
     deu_certo = excluir(&raiz, 3);
+    if (deu_certo == -1){
+        printf ("Erro ao excluir!\n");
+    }
+
+    exibir_PreOrdem(raiz);
+    printf("\n");
+
+    deu_certo = excluir(&raiz, 99);
+    if (deu_certo == -1){
+        printf ("Erro ao excluir!\n");
+    }
+
+    deu_certo = excluir(&raiz, 1);
     if (deu_certo == -1){
         printf ("Erro ao excluir!\n");
     }
