@@ -29,11 +29,11 @@ NO *busca_chave(int chave_buscada, NO *raiz){
     NO *atual = raiz -> primeiro_filho;
 
     while (atual != NULL){
-        NO *resp = busca_chave(chave_buscada, raiz);
+        NO *resp = busca_chave(chave_buscada, atual);
 
         if (resp != NULL) return resp;
 
-        atual -> prox_irmao;
+        atual = atual -> prox_irmao;
     }
     
     return (NULL);
@@ -126,6 +126,19 @@ int excluir (NO *raiz, int chave_exclusao){
 int main(){
 
     NO *arvore = inicializa(8);
+
+    inserir(arvore, 15, 8);
+    inserir(arvore, 23, 8);
+    inserir(arvore, 2, 8);
+
+    inserir(arvore, 20, 15);
+    inserir(arvore, 10, 15);
+    inserir(arvore, 28, 15);
+
+    inserir(arvore, 36, 2);
+    inserir(arvore, 7, 2);
+
+    exibir_arvore(arvore);
 
     return 0;
 }
