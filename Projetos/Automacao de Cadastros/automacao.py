@@ -7,6 +7,11 @@ import pyautogui as pag
 import pandas as pd
 import time
 
+# codigo para pegar a posicao do seu cursor para usar nos cliques
+######
+#time.sleep(5)
+#print(pag.position())
+######
 
 # define o tempo de pausa entre cada acao como 1 segundo
 pag.PAUSE = 1
@@ -24,6 +29,7 @@ pag.press('enter')
 pag.sleep(3)
 
 # preenche o email e a senha
+
 pag.click(x=879, y=401) # clica no campo de email
 pag.write('pythonimpressionador@gmail.com', interval=0.005)
 pag.click(x=849, y=496) # clica no campo da senha
