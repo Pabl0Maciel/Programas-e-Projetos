@@ -20,10 +20,13 @@ git clone https://github.com/pabl0maciel/Programas-e-Projetos.git
 
 Este repositório é organizado da seguinte forma:
 
+- **`Aulas/`**: Uma pasta com arquivos relacionados à aulas da faculdade.
 - **`C/`**: Contém arquivos e projetos relacionados à linguagem C.
+- **`Certificados`**: Possui meus certificados conquistados.
+- **`Projetos`**: Onde estão localizados meus projetos relacionados à programação.
 - **`Python/`**: Contém scripts e projetos relacionados à linguagem Python.
+- **`arquivos/`**: Contém arquivos usados como base em alguns programas.
 - **`README.md`**: Este arquivo que você está lendo.
-- **`arquivos/`**: Contém arquivos usados como base em alguns programas
 
 ## 🎯 Objetivos
 
