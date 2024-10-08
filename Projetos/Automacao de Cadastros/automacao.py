@@ -1,4 +1,6 @@
-
+'''
+Este codigo automatiza um processo de cadastro de produtos em um sistema. Tanto o site quanto os dados sao ficticios e visam somente o aprendizado.
+'''
 
 # modulos usados
 import pyautogui as pag
@@ -78,9 +80,9 @@ for linha in range(linhas):
         pag.write(str(obs), interval=0.005) # digita a obs
     pag.press('tab') # aperta tab para passar para o proximo campo
 
-    pag.press('enter')
+    pag.press('enter') # envia o cadastro
 
-    pag.scroll(5000)
+    pag.scroll(5000) # volta o scroll para cima
 
 
 
