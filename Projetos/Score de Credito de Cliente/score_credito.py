@@ -49,4 +49,16 @@ previsao_KNN = modelo_KNN.predict(x_teste)
 
 # verificando a acuracia
 print(accuracy_score(y_teste, previsao_ArvoreDecisao))
-print(accuracy_score(y_teste, modelo_KNN))
+print(accuracy_score(y_teste, previsao_KNN))
+
+# importando novos dados para previsao
+novos_dados = pd.read_csv('Projetos/Score de Credito de Cliente/novos_clientes.csv')
+
+# usando o Label Encoder novamente
+novos_dados['profissao'] = codificador.fit_transform(novos_dados['profissao'])
+novos_dados['mix_credito'] = codificador2.fit_transform(novos_dados['mix_credito'])
+novos_dados['comportamento_pagamento'] = codificador3.fit_transform(novos_dados['comportamento_pagamento'])
+
+# gerando a previsao
+previsao = modelo_ArvoreDecisao.predict(novos_dados)
+print(previsao)
