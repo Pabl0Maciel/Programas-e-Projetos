@@ -76,6 +76,82 @@ void exibir_EmOrdem(NO *arvore){
     printf(")");
 }
 
+NO *buscar_iterativo(NO* arv, int valor_buscado, NO **pai) {
+
+    *pai = NULL;
+
+	while (arv != NULL) {
+		if (arv->chave == valor_buscado) {
+			return arv;
+		}
+
+        *pai = arv;
+		if (valor_buscado > arv->chave) {
+			arv = arv->dir;
+		}
+		
+		if (valor_buscado < arv->chave) {
+			arv = arv->esq;
+		}
+	}
+	
+	return NULL;
+}
+
+NO *excluir(NO *arvore, int chave_excluir){
+
+    if (arvore == NULL) return NULL;
+
+    NO *excluido, *pai_do_excluido, *substituto;
+    excluido = buscar_iterativo(arvore, chave_excluir, &pai_do_excluido);
+
+    if (excluido == NULL) return arvore;
+    
+    if (excluido -> dir == NULL){
+        substituto = excluido -> esq;
+    }
+
+    else if (excluido -> esq == NULL){
+        substituto = excluido -> dir;
+    }
+
+    else{
+        NO *pai_do_substituto = excluido;
+        substituto = excluido -> dir;
+        
+        while (substituto -> esq != NULL){
+            pai_do_substituto = substituto;
+            substituto = substituto -> esq;
+        }
+
+        if (pai_do_substituto != excluido){
+            pai_do_substituto -> esq = substituto -> dir;
+            substituto -> dir = excluido -> dir;
+        }
+
+        substituto -> esq = excluido -> esq;
+    }
+
+    if (pai_do_excluido == NULL){
+        free (excluido);
+        return substituto;
+    }
+
+    else{
+        
+        if (pai_do_excluido -> esq != NULL && pai_do_excluido -> esq -> chave == excluido -> chave){
+            pai_do_excluido -> esq = substituto;
+        }
+        
+        else{
+            pai_do_excluido -> dir = substituto;
+        }
+        free (excluido);
+        return arvore;
+    }
+
+}
+
 int main(){
     NO * minha_arvore = inicializar();
 
