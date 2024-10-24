@@ -1,6 +1,6 @@
 # Aprendizados e Projetos em C e Python
 
-Bem-vindo ao meu repositório! Aqui você encontrará uma coleção de meus aprendizados e projetos desenvolvidos nas linguagens C e Python.
+Bem-vindo ao meu repositório! Aqui você encontrará uma coleção de meus aprendizados e projetos desenvolvidos principalmente nas linguagens C e Python.
 
 ## 📚 O que você encontrará aqui
 
@@ -22,9 +22,10 @@ Este repositório é organizado da seguinte forma:
 
 - **`Aulas/`**: Uma pasta com arquivos relacionados à aulas da faculdade.
 - **`C/`**: Contém arquivos e projetos relacionados à linguagem C.
-- **`Certificados`**: Possui meus certificados conquistados.
-- **`Projetos`**: Onde estão localizados meus projetos relacionados à programação.
+- **`Certificados/`**: Possui meus certificados conquistados.
+- **`Projetos/`**: Onde estão localizados meus projetos relacionados à programação.
 - **`Python/`**: Contém scripts e projetos relacionados à linguagem Python.
+- **`R/`**: Aprendizados em R.
 - **`arquivos/`**: Contém arquivos usados como base em alguns programas.
 - **`README.md`**: Este arquivo que você está lendo.
 
