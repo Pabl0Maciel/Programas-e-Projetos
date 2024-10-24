@@ -17,26 +17,30 @@ typedef struct {
 typedef Registro1000 Registro;
 
 void insertionSort(Registro *V, int N, int *num_comp, int *num_mov){
-    int i, j, aux;
+    int i, j;
+
+    Registro aux;
 
     for(j = 1; j < N; j++){
-        aux = V[j].chave;
+        aux = V[j];
         i = j-1;
 
-        while (i >= 0 && V[i].chave > aux){
+        while (i >= 0 && V[i].chave > aux.chave){
             (*num_comp)++;
-            V[i+1].chave = V[i].chave;
+            V[i+1] = V[i];
             (*num_mov)++;
             i--;
         }
         (*num_comp)++;
-        V[i+1].chave = aux;
+        V[i+1] = aux;
         (*num_mov)++;
     }
 }
 
 void SelectionSort(Registro *V, int N, int *num_comp, int *num_mov){
-    int i, j, min, x;
+    int i, j, min;
+
+    Registro x;
 
     for (i = 0; i < N-1; i++){
         min = i;
@@ -50,9 +54,9 @@ void SelectionSort(Registro *V, int N, int *num_comp, int *num_mov){
         }
 
         if (min != i){
-            x = V[i].chave;
-            V[i].chave = V[min].chave;
-            V[min].chave = x;
+            x = V[i];
+            V[i] = V[min];
+            V[min] = x;
             (*num_mov) += 3;
         }
         
@@ -60,16 +64,19 @@ void SelectionSort(Registro *V, int N, int *num_comp, int *num_mov){
 }
 
 void BubbleSort(Registro *V, int N, int *num_comp, int *num_mov){
-    int i, trocou, aux, fim = N;
+    int i, trocou, fim = N;
+
+    Registro aux;
+
     do{
         trocou = 0;
         for(i = 0; i < fim-1; i++){
             
             (*num_comp)++;
             if (V[i].chave > V[i+1].chave){
-                aux = V[i].chave;
-                V[i].chave = V[i+1].chave;
-                V[i+1].chave = aux;
+                aux = V[i];
+                V[i] = V[i+1];
+                V[i+1] = aux;
                 trocou = i;
                 (*num_mov) +=3;
             }
@@ -79,7 +86,9 @@ void BubbleSort(Registro *V, int N, int *num_comp, int *num_mov){
 }
 
 void ShellSort(Registro *V, int N, int *num_comp, int *num_mov) {
-    int i, j, h, chave;
+    int i, j, h;
+
+    Registro chave;
 
     for (h = 1; h < N; h = 3*h+1);
 
@@ -87,18 +96,20 @@ void ShellSort(Registro *V, int N, int *num_comp, int *num_mov) {
     while (h > 0) {
 
         for(j = h; j < N; j++) {
-            chave = V[j].chave;
+            chave = V[j];
             i = j;
 
             (*num_comp)++;
-            while (i >= h && V[i - h].chave > chave) {
-                V[i].chave = V[i - h].chave;
+            while (i >= h && V[i - h].chave > chave.chave) {
+                (*num_comp)++;
+                V[i] = V[i - h]; 
                 i -= h;
                 (*num_mov)++;
-                (*num_comp)++;
             }
 
-            V[i].chave = chave;
+            if (i >= h) (*num_comp)++;
+
+            V[i] = chave;
             (*num_mov)++;
         }
         h = (h-1)/3;
@@ -113,12 +124,12 @@ void Merge(Registro *V, int esq, int meio, int dir, int *num_comp, int *num_mov)
     Registro *R = (Registro *)malloc(n2 * sizeof(Registro));
 
     for (int i = 0; i < n1; i++) {
-        L[i].chave = V[esq + i].chave;
+        L[i] = V[esq + i];
         (*num_mov)++; 
     }
 
     for (int j = 0; j < n2; j++) {
-        R[j].chave = V[meio + 1 + j].chave;
+        R[j] = V[meio + 1 + j];
         (*num_mov)++; 
     }
 
@@ -129,12 +140,12 @@ void Merge(Registro *V, int esq, int meio, int dir, int *num_comp, int *num_mov)
         
         (*num_comp)++;
         if (k1 < n1 && (k2 >= n2 || L[k1].chave <= R[k2].chave)){
-            V[k].chave = L[k1].chave;
+            V[k] = L[k1];
             k1++;
             (*num_mov)++;
         }
-        else{
-            V[k].chave = R[k2].chave;
+        else if (k2 < n2){
+            V[k] = R[k2];
             k2++;
             (*num_mov)++;
         }
@@ -203,11 +214,60 @@ void HeapSort(Registro *V, int N, int *num_comp, int *num_mov){
     }
 }
 
+int particao(Registro *V, int p, int r, int *num_comp, int *num_mov) {
+    Registro x = V[r];
+    int i = p - 1;
+
+    for (int j = p; j <= r - 1; j++) {
+
+        (*num_comp)++;
+        if (V[j].chave <= x.chave) {
+            i++;
+            Registro aux = V[i];
+            V[i] = V[j];
+            V[j] = aux;
+            (*num_mov) += 3;
+        }
+    }
+
+    Registro aux = V[i + 1];
+    V[i + 1] = V[r];
+    V[r] = aux;
+    (*num_mov) += 3;
+
+    return i + 1;
+}
+
+int particaoAleatoria(Registro *V, int p, int r, int *num_comp, int *num_mov){
+    int deslocamento, i;
+
+    Registro aux;
+
+    deslocamento = rand() % (r-p+1); 
+    i = p + deslocamento; 
+   
+    aux = V[r];
+    V[r] = V[i];
+    V[i] = aux;
+    (*num_mov) += 3;
+
+    return particao(V, p, r, num_comp, num_mov);
+}
+
+void quickSortAleatorio(Registro *V, int p, int r, int *num_comp, int *num_mov){
+    if (p < r){
+        int q = particaoAleatoria(V, p, r, num_comp, num_mov);
+        quickSortAleatorio(V, p, q - 1, num_comp, num_mov);
+        quickSortAleatorio(V, q + 1, r, num_comp, num_mov);
+    }
+}
 
 int main(int argc, char *argv[]){
 
     /*-----------------------------------------------------Leitura do arquivo e inicializacoes---------------------------------------------------------------*/
 
+    srand((unsigned) time(NULL));
+    
     char *algoritmos[] = {"InsertionSort", "SelectionSort", "BubbleSort", "ShellSort", "MergeSort", "HeapSort", "QuickSort"};
 
     // verifica se foi passada a quantidade de argumentos certa
@@ -272,7 +332,7 @@ int main(int argc, char *argv[]){
     // fecha o arquivo
     fclose(entrada);
 
-    saida = fopen("10000_Decrescente.txt", "w");
+    saida = fopen("Resultado_Decrescente.txt", "a");
     if (saida == NULL){
         printf("Erro ao abrir!\n");
         exit(-1);
@@ -303,7 +363,8 @@ int main(int argc, char *argv[]){
     printf("Numero de Movimentacoes: %d\n", num_mov_InsertionSort);
     printf("Tempo de execucao: %f segundos\n", tempo_execucao);
 
-    fprintf(saida, "%s;%f;%d;%d\n", algoritmos[0], tempo_execucao, num_comp_InsertionSort, num_mov_InsertionSort);
+
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[0], N, tempo_execucao, num_comp_InsertionSort, num_mov_InsertionSort);
 
     /*
     printf("Lista ordenada:\n");
@@ -332,7 +393,7 @@ int main(int argc, char *argv[]){
     printf("Numero de Movimentacoes: %d\n", num_mov_SelectionSort);
     printf("Tempo de execucao: %f segundos\n", tempo_execucao);
 
-    fprintf(saida, "%s;%f;%d;%d\n", algoritmos[1], tempo_execucao, num_comp_SelectionSort, num_mov_SelectionSort);
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[1], N, tempo_execucao, num_comp_SelectionSort, num_mov_SelectionSort);
 
     /*
     printf("Lista ordenada:\n");
@@ -360,7 +421,7 @@ int main(int argc, char *argv[]){
     printf("Numero de Movimentacoes: %d\n", num_mov_BubbleSort);
     printf("Tempo de execucao: %f segundos\n", tempo_execucao);
 
-    fprintf(saida, "%s;%f;%d;%d\n", algoritmos[2], tempo_execucao, num_comp_BubbleSort, num_mov_BubbleSort);
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[2], N, tempo_execucao, num_comp_BubbleSort, num_mov_BubbleSort);
 
     /*
     printf("Lista ordenada:\n");
@@ -388,7 +449,7 @@ int main(int argc, char *argv[]){
     printf("Numero de Movimentacoes: %d\n", num_mov_ShellSort);
     printf("Tempo de execucao: %f segundos\n", tempo_execucao);
 
-    fprintf(saida, "%s;%f;%d;%d\n", algoritmos[3], tempo_execucao, num_comp_ShellSort, num_mov_ShellSort);
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[3], N, tempo_execucao, num_comp_ShellSort, num_mov_ShellSort);
 
     /*
     printf("Lista ordenada:\n");
@@ -416,7 +477,7 @@ int main(int argc, char *argv[]){
     printf("Numero de Movimentacoes: %d\n", num_mov_MergeSort);
     printf("Tempo de execucao: %f segundos\n", tempo_execucao);
 
-    fprintf(saida, "%s;%f;%d;%d\n", algoritmos[4], tempo_execucao, num_comp_MergeSort, num_mov_MergeSort);
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[4], N, tempo_execucao, num_comp_MergeSort, num_mov_MergeSort);
 
     /*
     printf("Lista ordenada:\n");
@@ -444,12 +505,40 @@ int main(int argc, char *argv[]){
     printf("Numero de Movimentacoes: %d\n", num_mov_HeapSort);
     printf("Tempo de execucao: %f segundos\n", tempo_execucao);
 
-    fprintf(saida, "%s;%f;%d;%d\n", algoritmos[5], tempo_execucao, num_comp_HeapSort, num_mov_HeapSort);
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[5], N, tempo_execucao, num_comp_HeapSort, num_mov_HeapSort);
 
     /*
     printf("Lista ordenada:\n");
     for (int i = 0; i < N; i++){
         printf("%d ", V6[i].chave);
+    }
+    printf("\n");
+    */
+
+    printf("-----------------------------------------------------\n");
+
+    // QuickSort
+    printf("QuickSort\n");
+
+    int num_comp_QuickSort = 0;
+    int num_mov_QuickSort = 0;
+
+    inicio = clock();
+    quickSortAleatorio(V7, 0, N-1, &num_comp_QuickSort, &num_mov_QuickSort);
+    fim = clock();
+
+    tempo_execucao = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    printf("Numero de Comparacoes: %d\n", num_comp_QuickSort);
+    printf("Numero de Movimentacoes: %d\n", num_mov_QuickSort);
+    printf("Tempo de execucao: %f segundos\n", tempo_execucao);
+
+    fprintf(saida, "%s;1000;%d;%f;%d;%d\n", algoritmos[6], N, tempo_execucao, num_comp_QuickSort, num_mov_QuickSort);
+
+    /*
+    printf("Lista ordenada:\n");
+    for (int i = 0; i < N; i++){
+        printf("%d ", V7[i].chave);
     }
     printf("\n");
     */
