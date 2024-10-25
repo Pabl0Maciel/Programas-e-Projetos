@@ -151,6 +151,7 @@ void exibir_emNivel(NO *arvore){
     enqueue (&fila, &arvore);
 
     while (fila.vazia != 0){
+        
         NO *aux;
 
         aux = dequeue(&fila);
