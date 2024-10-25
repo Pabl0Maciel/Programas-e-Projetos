@@ -3,6 +3,13 @@
 #define MAX 1000
 
 typedef struct{
+    int comeco;
+    int fim;
+    int vazia;
+    NO *nos[MAX];
+}FILA;
+
+typedef struct{
     int topo;
     NO *nos[1000];
 }PILHA;
@@ -97,6 +104,8 @@ int pilha_vazia (PILHA *pilha){
 }
 
 void exibir_PreOrdemIterativo(NO *arvore){
+    if (arvore == NULL) return;
+    
     PILHA pilha;
 
     push(&pilha, arvore);
@@ -113,7 +122,45 @@ void exibir_PreOrdemIterativo(NO *arvore){
     }
 }
 
+void inicializar_fila(FILA *fila){
+    fila -> comeco = 0;
+    fila -> fim = 0;
+    fila -> vazia = 0;
+}
 
+void enqueue(FILA *fila, NO *no){
+    fila -> nos[fila -> fim++] = no;
+    fila -> fim = fila -> fim % MAX;
+    fila -> vazia = -1;
+}
+
+NO *dequeue (FILA *fila){
+    NO * aux = fila -> nos[fila -> comeco];
+    fila -> comeco = (fila -> comeco + 1) % MAX;
+
+    if (fila -> comeco == fila -> fim) fila -> vazia = 0;
+
+    return aux;
+}
+
+void exibir_emNivel(NO *arvore){
+    if (arvore == NULL) return;
+
+    FILA fila;
+
+    enqueue (&fila, &arvore);
+
+    while (fila.vazia != 0){
+        NO *aux;
+
+        aux = dequeue(&fila);
+
+        printf("%d ", aux -> chave);
+
+        if (aux -> esq != NULL )enqueue(&fila, aux -> esq);
+        if (aux -> dir != NULL )enqueue(&fila, aux -> dir);
+    }
+}
 
 NO *buscar_iterativo(NO* arv, int valor_buscado, NO **pai) {
 
