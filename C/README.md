@@ -1,6 +1,6 @@
 # Conteúdos de Programação em C
 
-Nesta pasta, você encontrará uma variedade de conteúdos e exemplos relacionados à programação em C. Os arquivos aqui presentes cobrem uma ampla gama de conceitos fundamentais e avançados da linguagem C.
+Nesta pasta, você encontrará uma variedade de conteúdos e exemplos relacionados à programação em C. Os arquivos aqui presentes cobrem uma ampla gama de conceitos fundamentais e intermediários da linguagem C.
 
 ## 📚 O que você encontrará aqui
 
@@ -24,20 +24,20 @@ Nesta pasta, você encontrará uma variedade de conteúdos e exemplos relacionad
 
 A pasta está organizada da seguinte forma:
 
-- **`argc_argv/`**: Exemplos de uso dos parâmetros de linha de comando.
-- **`arrays/`**: Exemplos e exercícios sobre arrays.
-- **`bit_hex_math/`**: Operações bit a bit, hexadecimal e cálculos matemáticos.
-- **`busca/`**: Implementações de algoritmos de busca.
-- **`funcoes/`**: Exemplos de funções e como utilizá-las.
-- **`if_else/`**: Exemplos de estruturas condicionais `if` e `else`.
-- **`matriz/`**: Trabalhando com matrizes.
-- **`ordenacao/`**: Algoritmos de ordenação.
+- **`Argc e Argv/`**: Exemplos de uso dos parâmetros de linha de comando.
+- **`Arrays/`**: Exemplos e exercícios sobre arrays.
+- **`Bit a bit, hexadecimal e operacoes matematicas/`**: Operações bit a bit, hexadecimal e cálculos matemáticos.
+- **`Busca/`**: Implementações de algoritmos de busca.
+- **`Funcoes/`**: Exemplos de funções e como utilizá-las.
+- **`If e Else/`**: Exemplos de estruturas condicionais `if` e `else`.
+- **`Matriz/`**: Trabalhando com matrizes.
+- **`Ordenacao/`**: Algoritmos de ordenação.
 - **`Ponteiros/`**: Usos de ponteiros
-- **`relacionais/`**: Operadores relacionais e suas aplicações.
-- **`scanf/`**: Exemplos de uso da função `scanf`.
-- **`strings/`**: Manipulação e operações com strings.
-- **`structs/`**: Exemplos de definição e uso de structs.
-- **`switch_loops/`**: Uso de `switch`, `for`, `while` e `do-while`.
+- **`Relacionais/`**: Operadores relacionais e suas aplicações.
+- **`Scanf/`**: Exemplos de uso da função `scanf`.
+- **`Strings/`**: Manipulação e operações com strings.
+- **`Structs/`**: Exemplos de definição e uso de structs.
+- **`Switch case e loops/`**: Uso de `switch`, `for`, `while` e `do-while`.
 - **`main/`**: Exemplos e explicações sobre a função `main`.
 
 ## 🚀 Como Utilizar
