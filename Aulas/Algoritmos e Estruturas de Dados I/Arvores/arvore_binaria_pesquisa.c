@@ -1,5 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 1000
+
+typedef struct{
+    int topo;
+    NO *nos[1000];
+}PILHA;
 
 typedef struct aux {
     int chave;
@@ -75,6 +81,39 @@ void exibir_EmOrdem(NO *arvore){
     exibir_EmOrdem(arvore -> dir);
     printf(")");
 }
+
+void push(PILHA *pilha, NO * no){
+    pilha -> nos[pilha -> topo++] = no;
+}
+
+void pop (PILHA *pilha, NO **no){
+    pilha -> topo--;
+
+    *no = pilha -> nos[pilha -> topo];
+}
+
+int pilha_vazia (PILHA *pilha){
+    return pilha -> topo == 0;
+}
+
+void exibir_PreOrdemIterativo(NO *arvore){
+    PILHA pilha;
+
+    push(&pilha, arvore);
+
+    while (pilha_vazia(&pilha) != 0){
+        NO *aux;
+        pop(&pilha, &aux);
+
+        printf("%d ", aux -> chave);
+
+        if (aux -> dir != NULL) push (&pilha, aux -> dir);
+
+        if (aux -> esq != NULL) push (&pilha, aux -> esq);
+    }
+}
+
+
 
 NO *buscar_iterativo(NO* arv, int valor_buscado, NO **pai) {
 
@@ -160,6 +199,8 @@ int profundidade(NO* arv) {
 	if (pesq > pdir) return 1 + pesq;
 	else	return 1+ pdir; 
 }
+
+
 
 
 int main(){
