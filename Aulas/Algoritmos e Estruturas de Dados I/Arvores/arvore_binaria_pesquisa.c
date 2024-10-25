@@ -152,6 +152,16 @@ NO *excluir(NO *arvore, int chave_excluir){
 
 }
 
+int profundidade(NO* arv) {
+	if (!arv) return 0;
+	int pesq = profundidade(arv->esq);
+	int pdir = profundidade(arv->dir);
+	
+	if (pesq > pdir) return 1 + pesq;
+	else	return 1+ pdir; 
+}
+
+
 int main(){
     NO * minha_arvore = inicializar();
 
@@ -202,6 +212,32 @@ int main(){
     else{
         printf("Nao achou!");
     }
+
+    minha_arvore = inserir(minha_arvore, 40);
+	minha_arvore = inserir(minha_arvore, 90);
+
+	printf("tamanho %d\n", tamanho(minha_arvore));
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	exibir_EmOrdem(minha_arvore);
+	printf("\n");
+
+    printf("teste excluir -1\n");
+	minha_arvore = excluir(minha_arvore, -1);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	printf("teste excluir 12\n");
+	minha_arvore = excluir(minha_arvore, 12);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	printf("teste excluir 36\n");
+	minha_arvore = excluir(minha_arvore, 36);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	printf("teste excluir 50\n");
+	minha_arvore = excluir(minha_arvore, 50);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
 
     return 0;
 }
