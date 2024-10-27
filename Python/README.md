@@ -13,9 +13,3 @@ Este repositório contém informações dos cursos que concluí nas plataformas 
 - **Hashtag Programação** 💻
   - Contém os cursos que realizei na plataforma Hashtag Programação. Veja o conteúdo dos cursos no arquivo [Hashtag Programação/README.md](Hashtag%20Programacao/README.md).
 
-## 📄 Instruções
-
-Cada pasta contém:
-- 📝 Um `README.md` com a descrição dos cursos e tópicos principais estudados.
-
-
