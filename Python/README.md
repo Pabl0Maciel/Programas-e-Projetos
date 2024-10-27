@@ -1,6 +1,6 @@
-# 🎓 Repositório de Certificados e Conteúdos de Cursos
+# 🎓 Repositório de Conteúdos de Cursos
 
-Este repositório contém informações e certificados dos cursos que concluí nas plataformas **Coursera**, **Data Science Academy** e **Hashtag Programação**. Em cada uma das pastas abaixo, há um arquivo `README.md` que fornece detalhes sobre os conteúdos abordados em cada curso.
+Este repositório contém informações dos cursos que concluí nas plataformas **Coursera**, **Data Science Academy** e **Hashtag Programação**. Em cada uma das pastas abaixo, há um arquivo `README.md` que fornece detalhes sobre os conteúdos abordados em cada curso.
 
 ## 🗂️ Estrutura do Repositório
 
@@ -16,8 +16,6 @@ Este repositório contém informações e certificados dos cursos que concluí n
 ## 📄 Instruções
 
 Cada pasta contém:
-- 📜 Certificados dos cursos.
 - 📝 Um `README.md` com a descrição dos cursos e tópicos principais estudados.
 
-### 🗂️ Exemplo de Estrutura de Pastas
 
