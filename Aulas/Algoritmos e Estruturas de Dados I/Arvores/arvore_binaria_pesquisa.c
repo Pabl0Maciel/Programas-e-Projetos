@@ -1,5 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 1000
+
+typedef struct{
+    int comeco;
+    int fim;
+    int vazia;
+    NO *nos[MAX];
+}FILA;
+
+typedef struct{
+    int topo;
+    NO *nos[1000];
+}PILHA;
 
 typedef struct aux {
     int chave;
@@ -74,6 +87,80 @@ void exibir_EmOrdem(NO *arvore){
     exibir_EmOrdem(arvore -> esq);
     exibir_EmOrdem(arvore -> dir);
     printf(")");
+}
+
+void push(PILHA *pilha, NO * no){
+    pilha -> nos[pilha -> topo++] = no;
+}
+
+void pop (PILHA *pilha, NO **no){
+    pilha -> topo--;
+
+    *no = pilha -> nos[pilha -> topo];
+}
+
+int pilha_vazia (PILHA *pilha){
+    return pilha -> topo == 0;
+}
+
+void exibir_PreOrdemIterativo(NO *arvore){
+    if (arvore == NULL) return;
+    
+    PILHA pilha;
+
+    push(&pilha, arvore);
+
+    while (pilha_vazia(&pilha) != 0){
+        NO *aux;
+        pop(&pilha, &aux);
+
+        printf("%d ", aux -> chave);
+
+        if (aux -> dir != NULL) push (&pilha, aux -> dir);
+
+        if (aux -> esq != NULL) push (&pilha, aux -> esq);
+    }
+}
+
+void inicializar_fila(FILA *fila){
+    fila -> comeco = 0;
+    fila -> fim = 0;
+    fila -> vazia = 0;
+}
+
+void enqueue(FILA *fila, NO *no){
+    fila -> nos[fila -> fim++] = no;
+    fila -> fim = fila -> fim % MAX;
+    fila -> vazia = -1;
+}
+
+NO *dequeue (FILA *fila){
+    NO * aux = fila -> nos[fila -> comeco];
+    fila -> comeco = (fila -> comeco + 1) % MAX;
+
+    if (fila -> comeco == fila -> fim) fila -> vazia = 0;
+
+    return aux;
+}
+
+void exibir_emNivel(NO *arvore){
+    if (arvore == NULL) return;
+
+    FILA fila;
+
+    enqueue (&fila, &arvore);
+
+    while (fila.vazia != 0){
+        
+        NO *aux;
+
+        aux = dequeue(&fila);
+
+        printf("%d ", aux -> chave);
+
+        if (aux -> esq != NULL )enqueue(&fila, aux -> esq);
+        if (aux -> dir != NULL )enqueue(&fila, aux -> dir);
+    }
 }
 
 NO *buscar_iterativo(NO* arv, int valor_buscado, NO **pai) {
@@ -152,6 +239,18 @@ NO *excluir(NO *arvore, int chave_excluir){
 
 }
 
+int profundidade(NO* arv) {
+	if (!arv) return 0;
+	int pesq = profundidade(arv->esq);
+	int pdir = profundidade(arv->dir);
+	
+	if (pesq > pdir) return 1 + pesq;
+	else	return 1+ pdir; 
+}
+
+
+
+
 int main(){
     NO * minha_arvore = inicializar();
 
@@ -202,6 +301,32 @@ int main(){
     else{
         printf("Nao achou!");
     }
+
+    minha_arvore = inserir(minha_arvore, 40);
+	minha_arvore = inserir(minha_arvore, 90);
+
+	printf("tamanho %d\n", tamanho(minha_arvore));
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	exibir_EmOrdem(minha_arvore);
+	printf("\n");
+
+    printf("teste excluir -1\n");
+	minha_arvore = excluir(minha_arvore, -1);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	printf("teste excluir 12\n");
+	minha_arvore = excluir(minha_arvore, 12);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	printf("teste excluir 36\n");
+	minha_arvore = excluir(minha_arvore, 36);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
+	printf("teste excluir 50\n");
+	minha_arvore = excluir(minha_arvore, 50);
+	exibir_PreOrdem(minha_arvore);
+	printf("\n");
 
     return 0;
 }
