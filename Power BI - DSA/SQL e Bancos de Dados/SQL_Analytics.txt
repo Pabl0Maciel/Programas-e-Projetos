@@ -1,0 +1,124 @@
+/*
+-- seleciona TUDO (*) da tabela, LIMITANDO para as 10 primeiras linhas
+SELECT * 
+FROM TB_DSA_CLIENTES
+LIMIT 10;
+*/
+
+/*
+-- seleciona os segmentos DISTINTOS
+SELECT DISTINCT segmento
+FROM TB_DSA_CLIENTES;
+*/
+
+/*
+-- seleciona as linhas onde o ano eh IGUAL a 2014
+SELECT *
+FROM TB_DSA_PEDIDOS
+WHERE ano = 2014;
+*/
+
+/*
+-- seleciona as linhas onde a quantidade vendida eh MAIOR que 10. outros operadores sao: '=', '<', '<=', '>=', '!='
+SELECT *
+FROM TB_DSA_VENDAS
+WHERE Quantidade_Vendida > 10;
+*/
+
+/*
+-- seleciona as linhas onde a quantidade vendida for MENOR OU IGUAL a 2 E o valor de venda for MAIOR que 900. outro operador eh o 'OR'
+SELECT *
+FROM TB_DSA_VENDAS
+WHERE Quantidade_Vendida <= 2 AND Valor_Venda > 900;
+*/
+
+/*
+-- seleciona as linhas onde o valor de venda esta ENTRE 310 E 320
+SELECT *
+FROM TB_DSA_VENDAS
+WHERE Valor_Venda BETWEEN 310 AND 320;
+*/
+
+/*
+-- seleciona as linhas onde existe a palavra 'Clock' na coluna de Nome_Produto
+SELECT *
+FROM TB_DSA_PRODUTOS
+WHERE Nome_Produto LIKE '%Clock%';
+*/
+
+/*
+-- seleciona as linhas onde a Categoria pertence a 'Moveis' e 'Tecnologia'. poderia ser usado NOT IN para selecionar tudo que nao esta nessas categorias
+SELECT *
+FROM TB_DSA_PRODUTOS
+WHERE Categoria IN ('Moveis', 'Tecnologia');
+*/
+
+/*
+-- seleciona tudo e ORGANIZA as linhas pela ordem crescente da coluna de Nome_Pedido
+SELECT *
+FROM TB_DSA_PRODUTOS
+ORDER BY Nome_Produto;
+*/
+
+/*
+-- mostra o minimo, maximo, media, soma e contagem de Valor_Venda
+SELECT MIN(Valor_Venda), MAX(Valor_Venda), AVG(Valor_Venda), SUM(Valor_Venda), COUNT(Valor_Venda)
+FROM TB_DSA_VENDAS;
+*/
+
+/*
+-- mostra os produtos agrupados por minimo, maximo, media, soma e contagem de Valor_Venda. alem disso, muda o nome da coluna criada
+SELECT Produto, 
+    MIN(Valor_Venda) AS Valor_Minimo,
+    MAX(Valor_Venda) AS Valor_Maximo, 
+    AVG(Valor_Venda) AS Valor_Medio, 
+    SUM(Valor_Venda) As Valor_Total, 
+    COUNT(Valor_Venda) AS Contagem
+FROM TB_DSA_VENDAS
+GROUP BY Produto;
+*/
+
+/*
+-- arredonda os resultados da busca acima e ordena as linhas de maneira decrescente a partir da coluna de contagem
+SELECT Produto, 
+    ROUND(MIN(Valor_Venda)) AS Valor_Minimo,
+    ROUND(MAX(Valor_Venda)) AS Valor_Maximo, 
+    ROUND(AVG(Valor_Venda)) AS Valor_Medio, 
+    ROUND(SUM(Valor_Venda)) As Valor_Total, 
+    ROUND(COUNT(Valor_Venda)) AS Contagem
+FROM TB_DSA_VENDAS
+GROUP BY Produto
+ORDER BY Contagem DESC;
+*/
+
+/*
+-- mostra o nome do produto no lugar do ID
+SELECT Nome_Produto, 
+    ROUND(MIN(Valor_Venda), 2) AS Valor_Minimo,
+    ROUND(MAX(Valor_Venda), 2) AS Valor_Maximo, 
+    ROUND(AVG(Valor_Venda), 2) AS Valor_Medio, 
+    ROUND(SUM(Valor_Venda), 2) As Valor_Total, 
+    ROUND(COUNT(Valor_Venda)) AS Contagem
+FROM TB_DSA_VENDAS, TB_DSA_PRODUTOS
+WHERE TB_DSA_VENDAS.Produto = TB_DSA_PRODUTOS.ID_Produto
+GROUP BY Produto
+ORDER BY Contagem DESC;
+*/
+
+/*
+-- adiciona a coluna de ano na query
+SELECT Nome_Produto, 
+    ROUND(MIN(Valor_Venda), 2) AS Valor_Minimo,
+    ROUND(MAX(Valor_Venda), 2) AS Valor_Maximo, 
+    ROUND(AVG(Valor_Venda), 2) AS Valor_Medio, 
+    ROUND(SUM(Valor_Venda), 2) As Valor_Total, 
+    ROUND(COUNT(Valor_Venda)) AS Contagem,
+    Ano
+FROM TB_DSA_VENDAS, TB_DSA_PRODUTOS, TB_DSA_PEDIDOS
+WHERE TB_DSA_VENDAS.Produto = TB_DSA_PRODUTOS.ID_Produto
+AND TB_DSA_VENDAS.Pedido = TB_DSA_PEDIDOS.ID_Pedido
+GROUP BY Produto, Ano
+ORDER BY Contagem DESC;
+*/
+
+
