@@ -1,4 +1,4 @@
-# 🎓 Repositório de Conteúdos de Cursos
+# 🎓 Repositório de Conteúdos de Cursos Envolvendo Python
 
 Este repositório contém informações dos cursos que concluí nas plataformas **Coursera**, **Data Science Academy** e **Hashtag Programação**. Em cada uma das pastas abaixo, há um arquivo `README.md` que fornece detalhes sobre os conteúdos abordados em cada curso.
 
