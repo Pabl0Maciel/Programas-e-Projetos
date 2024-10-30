@@ -83,6 +83,7 @@ int contarArranjos(PONT atual){
 	int res = 0;
 	int i;
 	if (atual->filhos){
+		//printf("No em endereco: %p\n", (int*)atual);
 		res++; 
 		for (i=0;i<LETRAS;i++)
 			if (atual->filhos[i])
@@ -244,6 +245,8 @@ Observacao: o no raiz nunca devera ser excluido, porem seu arranjo de filhos pod
 int excluirTodas_Aux(PONT raiz, char *palavra, int n, int caractere_atual) {
     if (raiz == NULL) return -1;  
 
+	//printf("Excluindo no em endereco: %p\n", (void*)raiz);
+
     int letra = palavra[caractere_atual] - VALOR_a;
 
     if (caractere_atual == n) {
@@ -256,7 +259,7 @@ int excluirTodas_Aux(PONT raiz, char *palavra, int n, int caractere_atual) {
 
             return 1; 
         } 
-		
+
 		else {
             return -1;
         }
@@ -267,14 +270,16 @@ int excluirTodas_Aux(PONT raiz, char *palavra, int n, int caractere_atual) {
     if (raiz->filhos != NULL && raiz->filhos[letra] != NULL) {
 
         if (excluirTodas_Aux(raiz->filhos[letra], palavra, n, caractere_atual + 1) == 1) {
+			//printf("No em endereco %p excluido.\n", (void*)raiz->filhos[letra]);
             free(raiz->filhos[letra]);  
             raiz->filhos[letra] = NULL; 
         }
 
-    } else {
-
-        return -1;
-    }
+    } 
+	
+	else{
+		return -1;
+	}
 
     
     for (int i = 0; i < LETRAS; i++) {
