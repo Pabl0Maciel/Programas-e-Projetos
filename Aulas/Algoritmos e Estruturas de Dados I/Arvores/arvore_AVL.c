@@ -18,6 +18,14 @@ void rotacao_para_esq(NO **p){
     *p = u;
 }
 
+void rotacao_para_dir(NO **p){
+    NO *u = (*p) -> esq;
+
+    (*p) -> esq = u -> dir;
+    u -> dir = (*p);
+    *p = u;
+}
+
 NO *criar_no(int val){
     NO *novo = malloc(sizeof(NO));
 
