@@ -273,6 +273,7 @@ int excluirTodas_Aux(PONT raiz, char *palavra, int n, int caractere_atual) {
 			//printf("No em endereco %p excluido.\n", (void*)raiz->filhos[letra]);
             free(raiz->filhos[letra]);  
             raiz->filhos[letra] = NULL; 
+            //raiz->filhos = NULL;
         }
 
     } 
