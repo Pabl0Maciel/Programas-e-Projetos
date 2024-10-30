@@ -10,6 +10,14 @@ typedef struct NO_{
 
 }NO;
 
+void rotacao_para_esq(NO **p){
+    NO *u = (*p) -> dir;
+
+    (*p) -> dir = u -> esq;
+    u -> esq = (*p);
+    *p = u;
+}
+
 NO *criar_no(int val){
     NO *novo = malloc(sizeof(NO));
 
@@ -89,7 +97,7 @@ int main(){
 
     NO *arv = NULL;
     int valor;
-    inserir_avl(&arv, valor);
+    inserir_avl(&arv, 50);
 
     return 0;
 }
