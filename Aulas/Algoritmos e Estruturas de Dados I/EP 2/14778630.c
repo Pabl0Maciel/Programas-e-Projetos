@@ -154,11 +154,6 @@ void exibir(PONT raiz, char* palavra){
 }
 
 
-
-/*
-Funcao que recebe o endereco do no raiz de uma trie (raiz), o endereco de um arranjo de caracteres (palavra) e o tamanho da palavra presente no arranjo de caracteres (n) e retorna o numero de copias dessa palavra na trie. Provavelmente voce desejara realizar a busca chamando uma funcao auxiliar recursiva (desenvolvida por voce) que tenha, ao menos, um parametro adicional para indicar qual a letra atual da busca. Caso a palavra nao exista na trie, sua funcao devera retornar 0 (zero), caso contrario, devera retornar o valor do campo contador do no correspondente a ultima letra da palavra.
-*/
-
 // Funcao recursiva que percorre a trie caractere por caractere procurando a palavra, recebe a raiz, o array de caracteres da palavra, o tamanho dela e o caractere atual (comeca em 0).
 PONT buscarPalavra_Aux(PONT raiz, char *palavra, int n, int caractere_atual){
 	int letra = palavra[caractere_atual] - VALOR_a; // calcula o valor da letra atual segundo a tabela ASCII
@@ -173,7 +168,7 @@ PONT buscarPalavra_Aux(PONT raiz, char *palavra, int n, int caractere_atual){
 																					// existentes daquela palavra.
 }
 
-// Funcao que busca a palavra em si. Usa a funcao de buscaCaractere e retorna o valor do contador daquele no caso tenha encontrado a palavra.
+// Funcao que busca a palavra em si. Usa a funcao de buscaPalavra_Aux e retorna o valor do contador daquele no caso tenha encontrado a palavra.
 int buscarPalavra(PONT raiz, char* palavra, int n){
   int resposta = 0; // assume que a resposta eh 0, ou seja, que nao encontrou a palavra
   
@@ -187,25 +182,16 @@ int buscarPalavra(PONT raiz, char* palavra, int n){
 }
 
 
-/*
-Funcao que recebe o endereco do no raiz de uma trie (raiz), o endereco de um arranjo de caracteres (palavra) e o tamanho da palavra presente no arranjo de caracteres (n) e insere essa palavra na trie. Provavelmente voce desejara realizar a insercao chamando uma funcao auxiliar recursiva (desenvolvida por voce) que tenha, ao menos, um parametro adicional para indicar qual a letra atual da chamada recursiva (assumindo que a cada chamada recursiva uma letra sera inserida/processada). Voce pode assumir que todos os parametros desta funcao terao valores validos e a palavra a ser inserida (presente no arranjo de caracteres) possuira apenas letras minusculas (sem acentos ou caracteres especiais). A insercao funciona da seguinte forma (potencialmente recursiva):
-  (i) se ainda falta inserir caractere(s) e o no atual nao possui arranjo de filhos, e necessario:
-     (a) criar esse arranjo, preencher suas posicoes com valores NULL e atribuir o endereco dele no campo filhos do no atual;
-     (b) criar o no correspondente ao proximo caractere, acertar seus campos (se voce usar a funcao criarNo ela ja acerta esses valores) e colocar o endereco dele na posicao correspondente do arranjo filhos; e
-     (c) continuar recursivamente com o processo sendo que, se voce acabou de criar o ultimo caractere da palavra, o campo contador deve receber o valor 1 e a insercao foi concluida.
-  (ii) se ainda falta inserir caractere(s) e o no atual possui o arranjo de filhos: caso o no correspondente ao proximo caractere ja exista no arranjo de filhos, basta prosseguir a insercao (recursivamente) a partir dele, caso contrario e necessario prosseguir de acordo com o processo (i.b).
-  (iii) se voce chegou ao ultimo caractere da palavra e ele ja existe na trie, e necessario incrementar seu campo contador em uma unidade.
-*/
-
 // funcao que insere uma palavra na trie, letra por letra, verificando se ja existe aquela letra ou aquela palavra.
 void inserir_Aux(PONT raiz, char *palavra, int n, int caractere_atual){
 	int letra = palavra[caractere_atual] - VALOR_a; // calcula a letra atual
 	
 	if (raiz -> filhos == NULL) { // se o no atual nao tiver um array de filhos, cria ele e inicializa como NULL
 
-        raiz -> filhos = malloc(LETRAS * sizeof(PONT));
+        raiz -> filhos = malloc(LETRAS * sizeof(PONT)); // aloca memoria para o arranjo dos filhos
 
-        for (int i = 0; i < LETRAS; i++) {
+        for (int i = 0; i < LETRAS; i++) { // atribui NULL para cada letra no arranjo dos filhos
+
             raiz -> filhos[i] = NULL;
         }
     }
@@ -216,6 +202,7 @@ void inserir_Aux(PONT raiz, char *palavra, int n, int caractere_atual){
     }
 
 	if (n-1 == caractere_atual){ // se o caractere atual eh o ultimo a ser inserido, aumenta o contador da palavra
+
 		raiz -> filhos[letra] -> contador++;
 		return;
 	}
@@ -230,100 +217,98 @@ void inserir(PONT raiz, char* palavra, int n){
 }
 
 
-
-/*
-Funcao que recebe o endereco do no raiz de uma trie (raiz), o endereco de um arranjo de caracteres (palavra) e o tamanho da palavra presente no arranjo de caracteres (n) e exclui todas as copias dessa palavra da trie. Provavelmente voce desejara realizar a exclusao chamando uma funcao auxiliar recursiva (desenvolvida por voce) que tenha, ao menos, um parametro adicional para indicar qual a letra atual da chamada recursiva (assumindo que cada chamada recursiva avancara uma letra na arvore). Adicionalmente, se a operacao de exclusao resultar na eliminacao de um no, pode ser necessario, recursivamente, apagar alguns dos nos anteriores, neste caso, voce pode precisar de mais um parametro adicional na sua funcao auxiliar recursiva ou ela pode ter um retorno (potencialmente booleano) para indicar que e necessario excluir nos na volta da chamada recursiva. Voce pode assumir que todos os parametros desta funcao terao valores validos e a palavra a ser excluida (presente no arranjo de caracteres) possuira apenas letras minusculas (sem acentos ou caracteres especiais). E possivel que a palavra nao exista na sua trie, entao a funcao de exclusao nao causara nenhuma mudanca na trie. A exclusao funciona da seguinte forma (potencialmente recursiva):
- Voce navegara na trie, caractere a caractere, ate passar por toda a palavra, isto e, chegar no caractere final da palavra. 
- (i) Se isto nao for possivel, isto e, se a sequencia de caracteres que forma a palavra nao esta presente na trie, sua funcao devera encerrar sem realizar nenhuma mudanca na estrutura; caso contrario, ha duas possibilidades principais:
- (ii) A palavra nao existe na trie (isto e, apesar de suas letras estarem la, o campo contador da ultima letra e igual a zero), neste caso, sua funcao deve encerrar sem modificar a estrutura;    
- (iii) A palavra existe na trie, neste caso ela dever ser excluida, considerando duas situacoes:
-    (a) O no correspondente a ultima letra possui filhos, neste caso o contador dele devera ser zerado e nao ha mais nada a ser feito pela funcao; 
-    (b) Caso o no correspondente a ultima letra nao possua filhos ele devera ser excluido, e o ponteiro para ele no arranjo de filhos de seu pai deve ser atualizado para NULL. Se apos essa exclusao, o pai desse no nao possuir mais filhos, seu arranjo de filhos deve ser excluido (memoria liberada) e seu campo filhos deve receber o valor NULL. Adicionalmente, se o campo contador do no pai valer zero este tambem deve ser apagado (e o processo iii.b deve ser repetido enquanto cada no [na volta da recursao] nao possuir mais filhos e nao for um no final de uma palavra).
-Observacao: o no raiz nunca devera ser excluido, porem seu arranjo de filhos podera ser excluido caso este no nao possua filhos (trie sem nenhuma palavra) e, neste caso, seu campo filhos devera ser atualizado para NULL.
-*/
-
+// Funcao que exclui todas as copias de uma palavra existente na trie. Caso alguma letra dessa palavra nao faca parte de alguma outra palavra, exclui esse no. O funcionamento geral da funcao se baseia em chamadas recursivas que sempre retornarao 1 caso o no possa ser excluido, -1 caso nao possa e NULL se ele nao existe.
 int excluirTodas_Aux(PONT raiz, char *palavra, int n, int caractere_atual) {
-    if (raiz == NULL) return -1;  
+    if (raiz == NULL) return -1; // se a raiz for nula, retorna null
 
 	//printf("Excluindo no em endereco: %p\n", (void*)raiz);
 
-    int letra = palavra[caractere_atual] - VALOR_a;
+    int letra = palavra[caractere_atual] - VALOR_a; // calcula a letra atual
 
-    if (caractere_atual == n) {
+    if (caractere_atual == n) { // se chegou na palavra
 
-        if (raiz->contador > 0) {
-            raiz->contador = 0;  
+        if (raiz -> contador > 0) { // se ela de fato existe
+
+            raiz -> contador = 0; // zera suas copias
         }
 
-        if (raiz->filhos == NULL) {
+        if (raiz -> filhos == NULL) { // se ela nao for parte de outra palavra, pode excluir
 
             return 1; 
         } 
 
-		else {
+		else { // senao, nao pode
+
             return -1;
         }
     }
 
 
     
-    if (raiz->filhos != NULL && raiz->filhos[letra] != NULL) {
+    if (raiz -> filhos != NULL && raiz -> filhos[letra] != NULL) { // se o no atual tiver um arranjo de filhos e eles possuirem uma letra da palavra
 
-        if (excluirTodas_Aux(raiz->filhos[letra], palavra, n, caractere_atual + 1) == 1) {
+        if (excluirTodas_Aux(raiz->filhos[letra], palavra, n, caractere_atual + 1) == 1) { // se pode excluir, exclui o no da letra
+
 			//printf("No em endereco %p excluido.\n", (void*)raiz->filhos[letra]);
-            free(raiz->filhos[letra]);  
-            raiz->filhos[letra] = NULL; 
-            //raiz->filhos = NULL;
+            free(raiz -> filhos[letra]);  
+            raiz -> filhos[letra] = NULL; 
         }
 
     } 
 	
-	else{
+	else{ // se o no nao tiver a letra da palavra, nao faz nada
+
 		return -1;
 	}
 
-    
-    for (int i = 0; i < LETRAS; i++) {
+    // verifica se o array de filhos eh nulo
+    for (int i = 0; i < LETRAS; i++) { 
 
-        if (raiz->filhos != NULL && raiz->filhos[i] != NULL) {
+        if (raiz -> filhos != NULL && raiz -> filhos[i] != NULL) {
+
             return -1;  
         }
     }
 
-    if (raiz->contador == 0){
+    if (raiz -> contador == 0){ // se a palavra nao tem mais copias, pode excluir
 
 		return 1;
 	}
 
-	else{
+	else{ // se nao, nao pode
+
 		return -1;
 	}
 }
 
 void excluirTodas(PONT raiz, char* palavra, int n) {
+
     excluirTodas_Aux(raiz, palavra, n, 0);
 }
 
 
 
-/*
-Funcao que recebe o endereco do no raiz de uma trie (raiz), o endereco de um arranjo de caracteres (palavra) e o tamanho da palavra presente no arranjo de caracteres (n) e exclui uma copia dessa palavra da trie (isto e, caso a palavra exista na trie, diminui o contador correspondente a sua ultima letra em uma unidade). Observacoes: se a palavra nao existir na trie, nao ha nada a ser feito pela funcao; se a palavra existir e o contador valer 1 (um) antes da exclusao, entao a exclusao tera o mesmo comportamento da funcao excluirTodas.
-*/
+// Funcao que exclui apenas uma copia da palavra caso ela exista. Se a palavra tem mais de uma copia, exclui uma delas. Se a palavra tem exatamente uma copia, chama a funcao excluir todas.
 void excluir(PONT raiz, char* palavra, int n){
 
-	if (raiz == NULL) return;
+	if (raiz == NULL) return; // se a raiz for nula, retorna null;
 
-	PONT achou = buscarPalavra_Aux(raiz, palavra, n, 0);
+	PONT achou = buscarPalavra_Aux(raiz, palavra, n, 0); // procura a palavra
 
-	if (achou != NULL) {
-		if (achou -> contador == 1) {
-			excluirTodas(raiz, palavra, n);
+	if (achou != NULL) { // se achou ela
+
+		if (achou -> contador == 1) { // se so tem uma copia
+
+			excluirTodas(raiz, palavra, n); // exclui todas
 		}
 
-		else if(achou -> contador == 0){
+		else if(achou -> contador == 0){ // se nao tem copia, nao faz nada
+
 			return;
 		}
-		else{
+
+		else{ // se tem mais de uma copia, diminui em 1 o numero delas
+
 			achou -> contador--;
 		}
 	}
