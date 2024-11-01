@@ -34,7 +34,7 @@ Este repositório é organizado da seguinte forma:
 
 ## 🎯 Objetivos
 
-Este repositório visa ajudar tanto iniciantes quanto desenvolvedores intermediários a praticar e aprimorar suas habilidades em C e Python através de exemplos práticos e projetos reais.
+Este repositório visa ajudar tanto iniciantes quanto desenvolvedores intermediários a praticar e aprimorar suas habilidades em C, Python, SQL e Power BI através de exemplos práticos e projetos reais.
 
 ## 💬 Contato
 
