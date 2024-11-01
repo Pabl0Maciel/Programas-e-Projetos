@@ -8,6 +8,10 @@
 /**								                                    **/
 /*********************************************************************/
 
+/*
+Este codigo eh responsavel pela criacao e administracao de uma Trie (arvore de prefixos). Faz uso de funcoes como Insercao, Busca e Exclusao, bem como outras funcoes auxiliares. Existe uma breve descricao de cada funcao logo acima dela e tambem comentarios explicando trechos de codigos.
+*/
+
 
 #include <stdlib.h>
 #include <stdio.h>
