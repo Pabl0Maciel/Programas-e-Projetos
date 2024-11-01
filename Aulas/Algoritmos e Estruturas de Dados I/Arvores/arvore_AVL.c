@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct NO_{
 
@@ -101,11 +102,89 @@ int inserir_avl(NO **arv, int novo_valor){
     return -1;
 }
 
+
+int profundidade(NO* arv) {
+	if (!arv) return 0;
+	int pesq = profundidade(arv->esq);
+	int pdir = profundidade(arv->dir);
+	
+	if (pesq > pdir) return 1 + pesq;
+	else	return 1+ pdir; 
+}
+
+void exibe_nivel(NO *arv, int nivel, int spaces, bool first) {
+    #define NUMDIGI 2
+    if (nivel < 0) {
+        return;
+    } else if (nivel == 1) {
+            
+        if (arv) {
+            printf("%*d", NUMDIGI * ((first) ? spaces : spaces*2), arv->val);
+        } else {
+            printf("%*c", NUMDIGI * ((first) ? spaces : spaces*2), ' ');
+        }
+    } else {
+        if (arv) {
+            exibe_nivel(arv->esq, nivel-1, spaces, first & true);
+            exibe_nivel(arv->dir, nivel-1, spaces, false);
+        } else {
+            exibe_nivel(NULL, nivel-1, spaces, first & true);
+            exibe_nivel(NULL, nivel-1, spaces, false);
+        }
+    }
+}
+
+void exibe_nivel_bal(NO *arv, int nivel, int spaces, bool first) {
+    if (nivel < 0) {
+        return;
+    } else if (nivel == 1) {
+            
+        if (arv) {
+            printf("%*d", NUMDIGI * ((first) ? spaces : spaces*2), arv->bal);
+        } else {
+            printf("%*c", NUMDIGI * ((first) ? spaces : spaces*2), ' ');
+        }
+    } else {
+        if (arv) {
+            exibe_nivel_bal(arv->esq, nivel-1, spaces, first & true);
+            exibe_nivel_bal(arv->dir, nivel-1, spaces, false);
+        } else {
+            exibe_nivel_bal(NULL, nivel-1, spaces, first & true);
+            exibe_nivel_bal(NULL, nivel-1, spaces, false);
+        }
+    }
+}
+
+void exibir_em_nivel(NO* arv) {
+    if (!arv) return;
+
+    int prof = profundidade(arv);
+
+    for (int i = 1; i <= prof; i++) {
+        
+        int spaces = 1 << (prof-i);
+        exibe_nivel(arv, i, spaces, true);
+        printf("%*c", spaces*2, '|');
+        exibe_nivel_bal(arv, i, spaces, true);
+        printf("\n");
+    }
+}
+
 int main(){
 
     NO *arv = NULL;
-    int valor;
-    inserir_avl(&arv, 50);
 
+	inserir_avl(&arv, 50);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 60);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 80);
+	exibir_em_nivel(arv); printf("\n");
+
+	rotacao_para_esq(&arv);
+	exibir_em_nivel(arv); printf("\n");
+	
     return 0;
 }
