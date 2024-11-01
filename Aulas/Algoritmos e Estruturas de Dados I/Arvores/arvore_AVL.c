@@ -38,6 +38,38 @@ NO *criar_no(int val){
     return novo;
 }
 
+void tratar_desbalanceamento_dir(NO **arv){
+    NO *p = *arv;
+    NO *u = p -> dir;
+
+    if (u -> bal == 1){
+        // caso RR
+        p -> bal = 0;
+        u -> bal = 0;
+    
+        rotacao_para_esq(arv);
+    }
+    else{
+        printf("Caso nao tratado %s\n", __func__);
+    }
+}
+
+void tratar_desbalanceamento_esq(NO **arv){
+    NO *p = *arv;
+    NO *u = p -> esq;
+
+    if (u -> bal == -1){
+        // caso LL
+        p -> bal = 0;
+        u -> bal = 0;
+    
+        rotacao_para_dir(arv);
+    }
+    else{
+        printf("Caso nao tratado %s\n", __func__);
+    }
+}
+
 // retorna se houve aumento de altura
 int inserir_avl(NO **arv, int novo_valor){
 
@@ -68,6 +100,7 @@ int inserir_avl(NO **arv, int novo_valor){
 
                 case 1:
                     printf("houve desbalanceamento na direita\n");
+                    tratar_desbalanceamento_dir(arv);
                     break;
 
                 default:
@@ -80,23 +113,26 @@ int inserir_avl(NO **arv, int novo_valor){
     else{
         int aumentou_altura = inserir_avl(&aux -> esq, novo_valor);
 
-        switch (aux -> bal){
+        if (aumentou_altura == 1){
+            switch (aux -> bal){
 
-                case 1:
-                    aux -> bal = 0;
-                    return -1;
+                    case 1:
+                        aux -> bal = 0;
+                        return -1;
 
-                case 0:
-                    aux -> bal = -1;
-                    return 1;
+                    case 0:
+                        aux -> bal = -1;
+                        return 1;
 
-                case -1:
-                    printf("houve desbalanceamento na esquerda\n");
-                    break;
+                    case -1:
+                        printf("houve desbalanceamento na esquerda\n");
+                        tratar_desbalanceamento_esq(arv);
+                        break;
 
-                default:
-                    printf("caso nao esperado\n");
-                    break;
+                    default:
+                        printf("caso nao esperado\n");
+                        break;
+            }
         }
     }
     return -1;
@@ -161,7 +197,7 @@ void exibir_em_nivel(NO* arv) {
     int prof = profundidade(arv);
 
     for (int i = 1; i <= prof; i++) {
-        
+
         int spaces = 1 << (prof-i);
         exibe_nivel(arv, i, spaces, true);
         printf("%*c", spaces*2, '|');
@@ -170,8 +206,28 @@ void exibir_em_nivel(NO* arv) {
     }
 }
 
+void testar_RR(){
+    NO *arv = NULL;
+
+    for (int i = 0; i < 15; i++){
+        inserir_avl(&arv, i);
+        exibir_em_nivel(arv); printf("\n");
+    }
+}
+
+void testar_LL(){
+    NO *arv = NULL;
+
+    for (int i = 0; i < 15; i++){
+        inserir_avl(&arv, 50 - i);
+        exibir_em_nivel(arv); printf("\n");
+    }
+}
+
 int main(){
 
+    testar_LL();
+/*
     NO *arv = NULL;
 
 	inserir_avl(&arv, 50);
@@ -185,6 +241,6 @@ int main(){
 
 	rotacao_para_esq(&arv);
 	exibir_em_nivel(arv); printf("\n");
-	
+*/
     return 0;
 }
