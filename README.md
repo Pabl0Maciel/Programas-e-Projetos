@@ -1,13 +1,14 @@
-# Aprendizados e Projetos em C e Python
+# Aprendizados e Projetos
 
-Bem-vindo ao meu repositório! Aqui você encontrará uma coleção de meus aprendizados e projetos desenvolvidos principalmente nas linguagens C e Python.
+Bem-vindo ao meu repositório! Aqui você encontrará uma coleção de meus aprendizados e projetos desenvolvidos principalmente nas linguagens C, Python e SQL.
 
 ## 📚 O que você encontrará aqui
 
 - **Aprendizados em C**: Exemplos e exercícios para ajudar no entendimento e prática da linguagem C.
 - **Aprendizados em Python**: Scripts e exemplos que demonstram conceitos e técnicas em Python.
-- **Projetos**: Projetos variados que mostram como aplicar conhecimentos adquiridos em C e Python em situações práticas.
-
+- **Aprendizados em Power BI**: Dashboards criados para praticar o uso da ferramenta.
+- **Aprendizados em SQL**: Códigos que vão desde o básico até o avançado, além de SGBD`s.
+- **Projetos**: Projetos variados que mostram como aplicar conhecimentos adquiridos em C e Python em situações práticas, envolvendo desde automações até análise de dados e machine learning.
 ## 🚀 Começando
 
 Para começar a explorar os projetos e exemplos, você pode clonar este repositório para o seu ambiente local:
