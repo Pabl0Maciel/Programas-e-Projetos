@@ -49,8 +49,27 @@ void tratar_desbalanceamento_dir(NO **arv){
     
         rotacao_para_esq(arv);
     }
-    else{
-        printf("Caso nao tratado %s\n", __func__);
+    else if (u -> bal == -1){
+        // caso RL
+        NO *v = u -> esq;
+
+        if (v -> bal == 0){
+
+            u -> bal = 0;
+            p -> bal = 0;
+        }
+        else if (v -> bal == -1){
+
+            u -> bal = 1;
+            p -> bal = 0;
+        }
+        else {
+            u -> bal = 0;
+            p -> bal = -1;
+        }
+
+        rotacao_para_dir(&(p -> dir));
+        rotacao_para_esq(arv);
     }
 }
 
@@ -65,9 +84,34 @@ void tratar_desbalanceamento_esq(NO **arv){
     
         rotacao_para_dir(arv);
     }
-    else{
-        printf("Caso nao tratado %s\n", __func__);
-    }
+    else if (u->bal == 1) {
+		// caso LR
+		NO *v = u->dir;
+
+		if (v->bal == 0) {
+
+			p->bal = 0;
+			u->bal = 0;
+		} 
+        else if (v->bal == 1) {
+
+			p->bal = 0;
+			u->bal = -1;
+			v->bal = 0;
+		} 
+        else {
+
+			p->bal = 1;
+			u->bal = 0;
+			v->bal = 0;
+		}
+		
+		rotacao_para_esq(&(p -> esq));
+		rotacao_para_dir(arv); 
+	} 
+    else {
+		printf("Caso nao tratado %s\n", __func__);
+	}
 }
 
 // retorna se houve aumento de altura
@@ -141,8 +185,8 @@ int inserir_avl(NO **arv, int novo_valor){
 
 int profundidade(NO* arv) {
 	if (!arv) return 0;
-	int pesq = profundidade(arv->esq);
-	int pdir = profundidade(arv->dir);
+	int pesq = profundidade(arv -> esq);
+	int pdir = profundidade(arv -> dir);
 	
 	if (pesq > pdir) return 1 + pesq;
 	else	return 1+ pdir; 
@@ -224,9 +268,60 @@ void testar_LL(){
     }
 }
 
+void testar_LR() {
+	NO *arv = NULL;
+	printf("%s\n", __func__);
+	
+	inserir_avl(&arv, 30);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 10);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 20);
+	exibir_em_nivel(arv); printf("\n");
+}
+
+void testar_RL() {
+	NO *arv = NULL;
+	printf("%s\n", __func__);
+	
+	inserir_avl(&arv, 50);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 30);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 80);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 60);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 20);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 40);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 10);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 35);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 45);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 46);
+	exibir_em_nivel(arv); printf("\n");
+}
+
+
+
 int main(){
 
-    testar_LL();
+    testar_RL();
 /*
     NO *arv = NULL;
 
