@@ -71,6 +71,18 @@ void tratar_desbalanceamento_dir(NO **arv){
         rotacao_para_dir(&(p -> dir));
         rotacao_para_esq(arv);
     }
+
+    else if (u -> bal == 0){
+        // caso R0
+        u -> bal = -1;
+        //p -> bal = 1;
+
+        rotacao_para_esq(arv);
+    }
+
+    else{
+		printf("Caso nao tratado %s\n", __func__);
+    }
 }
 
 void tratar_desbalanceamento_esq(NO **arv){
@@ -108,7 +120,16 @@ void tratar_desbalanceamento_esq(NO **arv){
 		
 		rotacao_para_esq(&(p -> esq));
 		rotacao_para_dir(arv); 
-	} 
+	}
+
+    else if (u -> bal == 0){
+        // caso L0
+        u -> bal = 1;
+        //p -> bal = -1;
+        
+        rotacao_para_dir(arv);
+    }
+
     else {
 		printf("Caso nao tratado %s\n", __func__);
 	}
@@ -180,6 +201,91 @@ int inserir_avl(NO **arv, int novo_valor){
         }
     }
     return -1;
+}
+
+int excluir_avl(NO ** arv, int val_del){
+    if (*arv == NULL) return -1;
+
+    NO *aux = *arv;
+
+    if (aux -> val == val_del){
+
+        if (aux -> esq == NULL || aux -> dir == NULL){
+
+            NO *subst = (aux -> esq == NULL) ? aux -> dir : aux -> esq;
+
+            *arv = subst;
+            free(aux);
+
+            return 1;
+        }
+
+        else{
+
+            NO *subst = aux -> dir;
+
+            while (subst -> esq != NULL){
+                subst = subst -> esq;
+            }
+
+            aux -> val = subst -> val;
+            val_del = subst -> val;
+        }
+
+    }
+
+    if (val_del >= aux -> val){
+
+        int diminuiu = excluir_avl(&(aux -> dir), val_del);
+
+        if (diminuiu == 1){
+
+            switch (aux -> bal){
+
+                case -1:
+                    tratar_desbalanceamento_esq(arv);
+                    aux -> bal = *arv;
+
+                    if (aux -> bal == 0){
+                        return 1;
+                    }
+
+                case 0:
+                    aux -> bal = -1;
+                    return -1;
+
+                case 1:
+                    aux -> bal = 0;
+                    return 1;
+            }
+        }
+        else {
+            int diminuiu = excluir_avl(&(aux -> esq), val_del);
+
+            if (diminuiu == 1){
+                switch (aux -> bal){
+
+                case -1:
+                    aux -> bal = 0;
+                    return 1;
+
+                case 0:
+                    aux -> bal = 1;
+                    return -1;
+
+                case 1:
+                    tratar_desbalanceamento_dir(arv);
+                    aux = *arv;
+
+                    if (aux -> bal == 0){
+                        return 1;
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
 }
 
 
@@ -317,11 +423,33 @@ void testar_RL() {
 	exibir_em_nivel(arv); printf("\n");
 }
 
+void testar_excluir1(){
+    NO *arv = NULL;
+	printf("%s\n", __func__);
+	
+	inserir_avl(&arv, 50);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 30);
+	exibir_em_nivel(arv); printf("\n");
+
+	inserir_avl(&arv, 80);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 20);
+	exibir_em_nivel(arv); printf("\n");
+
+    inserir_avl(&arv, 40);
+	exibir_em_nivel(arv); printf("\n");
+
+    excluir_avl(&arv, 80);
+    exibir_em_nivel(arv); printf ("\n");
+}
 
 
 int main(){
 
-    testar_RL();
+    testar_excluir1();
 /*
     NO *arv = NULL;
 
