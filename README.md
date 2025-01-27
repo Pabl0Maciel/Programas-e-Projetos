@@ -24,12 +24,12 @@ Este repositório é organizado da seguinte forma:
 - **`Aulas/`**: Uma pasta com arquivos relacionados à aulas da faculdade.
 - **`C/`**: Contém arquivos e projetos relacionados à linguagem C.
 - **`Certificados/`**: Possui meus certificados conquistados.
-- **`Hashtag Programacao`**: Conteúdos vistos na plataforma da Hashtag Programação. Incluem SQL, como MySQL e Oracle, Bancos de Dados e Excel.
-- **`Power BI - DSA`**: Dashboards feitos durante o curso de Power BI.
+- **`Hashtag Programacao/`**: Conteúdos vistos na plataforma da Hashtag Programação. Incluem SQL, como MySQL e Oracle, Bancos de Dados e Excel.
+- **`Power BI - DSA/`**: Dashboards feitos durante o curso de Power BI.
 - **`Projetos/`**: Onde estão localizados meus projetos relacionados à programação.
 - **`Python/`**: Contém scripts e projetos relacionados à linguagem Python.
 - **`R/`**: Aprendizados em R.
-- **`SQL - Hashtag Programacao`**: Conteúdos de SQL, como MySQL, Oracle e Bancos de Dados.
+- **`SQL - Hashtag Programacao/`**: Conteúdos de SQL, como MySQL, Oracle e Bancos de Dados.
 - **`arquivos/`**: Contém arquivos usados como base em alguns programas.
 - **`README.md`**: Este arquivo que você está lendo.
 
