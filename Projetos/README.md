@@ -6,6 +6,7 @@ Bem-vindo à minha coleção de projetos! Aqui você encontrará uma variedade d
 
 - **Análise Exploratória de Dados**: Uma investigação aprofundada de um dataset com foco na extração de insights, visualizações e padrões relevantes. Utiliza bibliotecas como `pandas` e `matplotlib`.
 - **Segmentação de Clientes**: Projeto de clustering que agrupa clientes com base em características semelhantes, usando técnicas como K-means. Aplicado para criar perfis de clientes.
+- **Case Integral Trust**: Manipulação de dataset de vendas e criação de um dashboard interativo revelando os insights obtidos. Feito durante uma vaga para estágio.
 
 ## 🤖 Automação e Algoritmos
 
