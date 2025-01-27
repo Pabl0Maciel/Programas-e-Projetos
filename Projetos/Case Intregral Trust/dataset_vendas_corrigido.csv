@@ -1,0 +1,1001 @@
+,data_venda,categoria,produto,preco,quantidade_vendida,regiao
+0,2024-08-03,Eletrônicos,Celular,623.93,28,Leste
+1,2024-09-05,Roupas,Calça,1028.93,50,Oeste
+2,2024-07-20,Eletrônicos,Câmera,1174.57,33,Leste
+3,2024-05-24,Roupas,Vestido,124.03,6,Sul
+4,2024-12-18,Eletrônicos,Laptop,619.16,13,Oeste
+5,2024-03-12,Roupas,Casaco,310.78,5,Oeste
+6,2024-04-19,Beleza,Perfume,391.86,33,Sul
+7,2024-01-31,Beleza,Maquiagem,874.44,12,Norte
+8,2024-06-15,Beleza,Shampoo,1338.92,5,Oeste
+9,2024-09-03,Roupas,Casaco,1815.46,18,Leste
+10,2024-08-28,Beleza,Creme,1383.02,26,Norte
+11,2024-04-08,Roupas,Calça,586.19,50,Centro-Oeste
+12,2024-03-27,Eletrônicos,Fone de Ouvido,1688.42,47,Centro-Oeste
+13,2024-11-01,Esportes,Bola de Futebol,1859.11,14,Oeste
+14,2024-09-02,Esportes,Raquete,1842.93,33,Centro-Oeste
+15,2024-04-05,Esportes,Capacete,1281.32,34,Oeste
+16,2024-12-10,Beleza,Maquiagem,1157.73,6,Sul
+17,2024-10-21,Esportes,Bola de Futebol,1498.27,21,Norte
+18,2024-04-22,Beleza,Perfume,1392.55,8,Sul
+19,2024-01-27,Beleza,Maquiagem,558.39,43,Oeste
+20,2024-05-16,Beleza,Creme,651.31,1,Norte
+21,2024-02-20,Eletrônicos,Laptop,339.75,38,Leste
+22,2024-06-17,Eletrônicos,Celular,861.15,50,Centro-Oeste
+23,2024-01-05,Roupas,Calça,1859.21,11,Sul
+24,2024-05-24,Esportes,Corda,30.86,10,Norte
+25,2024-08-31,Roupas,Camisa,303.55,1,Leste
+26,2024-06-16,Esportes,Raquete,1340.67,9,Norte
+27,2024-01-15,Roupas,Calça,1432.82,10,Norte
+28,2024-08-27,Esportes,Capacete,711.75,12,Centro-Oeste
+29,2024-10-22,Livros,Biografia,860.32,19,Centro-Oeste
+30,2024-10-20,Roupas,Vestido,732.69,12,Leste
+31,2024-04-14,Livros,Técnico,135.23,14,Centro-Oeste
+32,2024-07-11,Livros,Ficção Científica,1145.71,37,Leste
+33,2024-08-23,Roupas,Calça,706.93,39,Norte
+34,2024-10-20,Esportes,Raquete,1987.34,49,Centro-Oeste
+35,2024-06-07,Esportes,Corda,690.7,3,Oeste
+36,2024-06-24,Roupas,Calça,927.15,39,Leste
+37,2024-08-19,Eletrônicos,Fone de Ouvido,1970.7,12,Leste
+38,2024-11-17,Livros,Romance,1483.01,21,Centro-Oeste
+39,2024-08-02,Livros,Ficção Científica,1408.45,21,Oeste
+40,2024-10-09,Esportes,Raquete,1494.4,27,Norte
+41,2024-07-13,Eletrônicos,Laptop,1248.27,33,Norte
+42,2024-03-10,Beleza,Maquiagem,1677.54,38,Sul
+43,2024-02-26,Livros,Técnico,273.44,45,Leste
+44,2024-11-15,Esportes,Raquete,1465.72,47,Centro-Oeste
+45,2023-12-28,Beleza,Maquiagem,763.31,49,Leste
+46,2024-04-07,Roupas,Casaco,1120.44,34,Oeste
+47,2024-02-05,Beleza,Maquiagem,1719.26,12,Norte
+48,2024-11-16,Eletrônicos,Celular,1497.17,49,Oeste
+49,2024-05-23,Esportes,Raquete,1309.04,42,Norte
+50,2024-09-25,Eletrônicos,Laptop,1917.25,46,Centro-Oeste
+51,2024-04-03,Beleza,Shampoo,851.31,37,Norte
+52,2024-03-11,Roupas,Casaco,58.33,21,Leste
+53,2024-07-01,Eletrônicos,Câmera,1922.97,34,Sul
+54,2024-12-01,Beleza,Perfume,822.71,19,Centro-Oeste
+55,2024-06-25,Livros,Técnico,1217.23,10,Oeste
+56,2024-04-06,Eletrônicos,Fone de Ouvido,1665.48,26,Sul
+57,2024-07-13,Esportes,Bola de Futebol,1570.39,43,Oeste
+58,2024-05-30,Esportes,Raquete,434.48,30,Sul
+59,2024-02-15,Roupas,Vestido,401.04,8,Leste
+60,2024-08-18,Esportes,Corda,1466.13,12,Sul
+61,2024-07-06,Eletrônicos,Celular,832.17,17,Norte
+62,2024-04-08,Roupas,Camisa,1259.2,50,Centro-Oeste
+63,2024-11-29,Eletrônicos,Câmera,1469.97,49,Leste
+64,2024-03-01,Livros,Ficção Científica,1356.25,11,Centro-Oeste
+65,2024-09-20,Eletrônicos,Fone de Ouvido,1473.14,48,Centro-Oeste
+66,2024-01-01,Roupas,Vestido,667.93,41,Norte
+67,2024-03-15,Esportes,Capacete,1262.79,24,Oeste
+68,2024-05-05,Beleza,Maquiagem,1911.37,29,Oeste
+69,2024-04-05,Roupas,Casaco,13.91,20,Norte
+70,2024-09-26,Eletrônicos,Câmera,1961.05,16,Sul
+71,2024-09-25,Esportes,Bola de Futebol,749.91,3,Sul
+72,2024-11-24,Esportes,Raquete,563.49,29,Leste
+73,2024-11-06,Eletrônicos,Laptop,1373.87,25,Norte
+74,2024-02-06,Roupas,Vestido,471.79,47,Sul
+75,2024-09-06,Beleza,Maquiagem,448.75,41,Sul
+76,2024-01-07,Eletrônicos,Câmera,1408.3,1,Oeste
+77,2024-06-12,Beleza,Shampoo,1179.58,20,Leste
+78,2024-04-24,Esportes,Raquete,1305.58,13,Centro-Oeste
+79,2024-04-29,Eletrônicos,Celular,1772.27,33,Oeste
+80,2024-08-23,Eletrônicos,Celular,43.57,42,Leste
+81,2024-09-30,Esportes,Bola de Futebol,798.32,6,Oeste
+82,2024-12-17,Eletrônicos,Laptop,592.69,39,Leste
+83,2024-03-09,Esportes,Corda,1678.6,16,Oeste
+84,2024-05-02,Livros,Romance,817.22,23,Norte
+85,2024-06-02,Beleza,Shampoo,728.54,15,Norte
+86,2024-10-23,Beleza,Creme,1209.2,12,Norte
+87,2024-12-21,Eletrônicos,Fone de Ouvido,1170.3,17,Oeste
+88,2024-02-13,Livros,Romance,256.3,6,Leste
+89,2024-08-30,Livros,Romance,1576.5,22,Centro-Oeste
+90,2024-02-12,Eletrônicos,Câmera,1870.55,11,Leste
+91,2024-04-01,Livros,Romance,1523.3,38,Oeste
+92,2024-05-12,Esportes,Corda,672.03,42,Centro-Oeste
+93,2024-10-16,Roupas,Calça,675.63,38,Norte
+94,2024-10-01,Roupas,Calça,197.35,6,Leste
+95,2024-12-14,Livros,Técnico,364.75,7,Sul
+96,2024-06-26,Esportes,Raquete,1750.48,5,Sul
+97,2024-06-14,Roupas,Vestido,388.36,46,Oeste
+98,2024-03-02,Roupas,Camisa,901.45,42,Leste
+99,2024-09-17,Roupas,Calça,337.22,36,Oeste
+100,2024-11-15,Eletrônicos,Fone de Ouvido,1353.21,5,Leste
+101,2024-05-11,Esportes,Capacete,379.08,37,Centro-Oeste
+102,2024-06-09,Livros,Romance,1596.56,14,Leste
+103,2024-11-19,Roupas,Calça,119.49,26,Norte
+104,2024-06-12,Livros,Ficção Científica,617.33,16,Oeste
+105,2024-06-02,Eletrônicos,Celular,331.61,36,Oeste
+106,2024-05-15,Livros,Ficção Científica,1078.88,24,Sul
+107,2024-08-08,Beleza,Perfume,660.15,43,Leste
+108,2024-02-04,Esportes,Corda,1235.26,7,Sul
+109,2024-01-29,Livros,Romance,1148.46,6,Leste
+110,2024-07-29,Esportes,Corda,659.02,40,Leste
+111,2024-10-31,Livros,Técnico,87.94,33,Oeste
+112,2024-06-18,Livros,Técnico,652.92,47,Leste
+113,2024-02-14,Livros,Biografia,237.66,22,Leste
+114,2024-02-01,Roupas,Vestido,1974.94,35,Leste
+115,2024-01-01,Esportes,Raquete,965.8,22,Oeste
+116,2024-11-02,Eletrônicos,Celular,1659.23,39,Centro-Oeste
+117,2024-07-16,Livros,Biografia,1699.92,28,Oeste
+118,2024-11-23,Roupas,Casaco,1158.99,38,Centro-Oeste
+119,2024-09-23,Livros,Técnico,559.85,25,Leste
+120,2024-05-24,Roupas,Camisa,1152.34,15,Oeste
+121,2024-09-05,Roupas,Vestido,1622.09,30,Norte
+122,2024-06-29,Roupas,Casaco,491.61,3,Norte
+123,2024-03-27,Livros,Biografia,549.34,5,Norte
+124,2024-05-26,Eletrônicos,Fone de Ouvido,1334.59,48,Leste
+125,2024-08-29,Eletrônicos,Fone de Ouvido,1468.67,5,Sul
+126,2024-09-30,Livros,Biografia,12.54,2,Sul
+127,2024-02-01,Beleza,Maquiagem,1262.45,29,Centro-Oeste
+128,2024-06-06,Beleza,Maquiagem,994.89,39,Centro-Oeste
+129,2024-01-17,Livros,Romance,1327.71,43,Sul
+130,2024-09-13,Beleza,Maquiagem,1528.93,23,Sul
+131,2024-11-16,Livros,Ficção Científica,64.96,44,Norte
+132,2024-04-19,Beleza,Creme,17.79,8,Oeste
+133,2024-08-15,Livros,Ficção Científica,360.15,43,Centro-Oeste
+134,2024-03-01,Esportes,Corda,729.21,19,Leste
+135,2024-04-21,Beleza,Shampoo,994.76,8,Oeste
+136,2024-04-12,Livros,Biografia,1113.47,44,Centro-Oeste
+137,2024-07-17,Esportes,Capacete,1549.9,5,Leste
+138,2024-02-12,Livros,Ficção Científica,813.8,10,Leste
+139,2024-07-29,Beleza,Perfume,1865.86,43,Leste
+140,2024-09-10,Livros,Romance,1566.23,13,Oeste
+141,2024-09-14,Livros,Técnico,1924.71,15,Oeste
+142,2024-05-05,Roupas,Casaco,1667.4,35,Leste
+143,2023-12-26,Beleza,Perfume,1476.53,3,Leste
+144,2024-02-20,Livros,Ficção Científica,930.1,42,Norte
+145,2023-12-26,Roupas,Camisa,1988.02,50,Oeste
+146,2024-01-31,Livros,Biografia,744.36,32,Norte
+147,2024-05-05,Beleza,Perfume,334.53,49,Norte
+148,2024-10-13,Livros,Romance,1760.52,8,Centro-Oeste
+149,2024-05-05,Roupas,Vestido,929.19,13,Leste
+150,2024-06-18,Esportes,Bola de Futebol,1728.64,13,Sul
+151,2024-11-18,Beleza,Maquiagem,938.9,30,Centro-Oeste
+152,2024-03-12,Esportes,Raquete,1678.95,16,Centro-Oeste
+153,2024-03-29,Livros,Romance,165.67,37,Sul
+154,2024-05-19,Eletrônicos,Fone de Ouvido,112.28,10,Oeste
+155,2024-12-02,Beleza,Creme,930.74,48,Oeste
+156,2024-09-10,Livros,Romance,1645.97,14,Sul
+157,2024-08-03,Beleza,Perfume,1667.21,46,Oeste
+158,2024-06-22,Beleza,Shampoo,234.23,16,Leste
+159,2024-04-05,Roupas,Casaco,314.56,13,Sul
+160,2024-07-24,Esportes,Corda,1330.93,44,Sul
+161,2024-03-01,Roupas,Casaco,321.69,12,Sul
+162,2024-12-24,Eletrônicos,Laptop,1139.95,14,Sul
+163,2024-06-17,Roupas,Casaco,258.47,6,Centro-Oeste
+164,2024-05-29,Eletrônicos,Celular,869.91,16,Sul
+165,2023-12-31,Livros,Romance,692.01,11,Oeste
+166,2024-02-04,Livros,Ficção Científica,749.36,30,Centro-Oeste
+167,2023-12-27,Esportes,Bola de Futebol,999.23,8,Centro-Oeste
+168,2024-02-05,Eletrônicos,Laptop,1877.33,43,Centro-Oeste
+169,2024-05-02,Eletrônicos,Laptop,129.33,48,Norte
+170,2024-10-02,Roupas,Calça,258.56,35,Norte
+171,2024-03-15,Beleza,Creme,1943.85,20,Leste
+172,2024-04-25,Eletrônicos,Laptop,921.35,30,Oeste
+173,2024-07-24,Livros,Ficção Científica,993.05,23,Oeste
+174,2024-02-08,Beleza,Maquiagem,1085.67,10,Leste
+175,2024-07-07,Livros,Romance,1196.72,12,Sul
+176,2024-10-23,Roupas,Casaco,42.41,11,Sul
+177,2024-04-20,Roupas,Camisa,1854.08,17,Sul
+178,2024-12-05,Beleza,Creme,1396.79,17,Norte
+179,2024-01-30,Eletrônicos,Fone de Ouvido,1454.69,42,Leste
+180,2024-02-03,Roupas,Calça,1864.12,40,Leste
+181,2024-07-24,Eletrônicos,Câmera,228.0,19,Leste
+182,2024-08-21,Beleza,Creme,1018.12,35,Leste
+183,2024-04-16,Beleza,Maquiagem,467.88,20,Norte
+184,2024-10-08,Esportes,Raquete,503.4,15,Norte
+185,2024-01-18,Beleza,Creme,59.62,10,Leste
+186,2024-03-30,Beleza,Maquiagem,1333.16,12,Norte
+187,2024-12-17,Esportes,Bola de Futebol,1541.04,2,Norte
+188,2024-11-14,Roupas,Casaco,1815.65,4,Norte
+189,2024-02-07,Livros,Técnico,1541.85,29,Sul
+190,2024-09-16,Beleza,Shampoo,1229.7,11,Sul
+191,2024-02-27,Livros,Ficção Científica,1885.97,32,Sul
+192,2024-06-15,Eletrônicos,Câmera,736.07,43,Oeste
+193,2024-02-28,Livros,Romance,637.92,42,Norte
+194,2024-02-28,Eletrônicos,Celular,643.14,42,Leste
+195,2024-06-23,Livros,Técnico,1180.16,9,Centro-Oeste
+196,2024-04-04,Esportes,Capacete,108.96,8,Centro-Oeste
+197,2024-12-11,Eletrônicos,Laptop,1053.69,22,Sul
+198,2024-11-12,Eletrônicos,Fone de Ouvido,985.16,24,Oeste
+199,2024-09-20,Esportes,Corda,1163.17,28,Norte
+200,2024-02-29,Livros,Biografia,1866.0,13,Centro-Oeste
+201,2024-06-13,Roupas,Vestido,1373.5,6,Sul
+202,2024-09-24,Roupas,Camisa,662.5,18,Sul
+203,2024-11-13,Livros,Romance,961.04,13,Oeste
+204,2024-08-03,Livros,Biografia,1020.02,11,Norte
+205,2024-01-05,Esportes,Bola de Futebol,1851.57,36,Sul
+206,2024-07-30,Livros,Ficção Científica,1286.49,32,Leste
+207,2024-05-20,Esportes,Corda,701.45,5,Leste
+208,2024-01-01,Livros,Biografia,1776.2,30,Oeste
+209,2024-02-11,Roupas,Camisa,98.0,37,Leste
+210,2024-02-03,Eletrônicos,Laptop,350.92,30,Oeste
+211,2024-04-24,Esportes,Bola de Futebol,564.58,44,Leste
+212,2024-01-27,Livros,Ficção Científica,1912.95,19,Leste
+213,2024-08-26,Livros,Técnico,1754.09,3,Centro-Oeste
+214,2024-10-19,Roupas,Casaco,496.87,26,Norte
+215,2024-05-22,Roupas,Casaco,1172.43,23,Centro-Oeste
+216,2024-03-16,Roupas,Casaco,582.42,2,Centro-Oeste
+217,2024-04-03,Roupas,Casaco,1872.0,18,Centro-Oeste
+218,2024-10-01,Esportes,Corda,1250.46,15,Sul
+219,2024-05-23,Beleza,Perfume,1460.12,13,Sul
+220,2024-03-24,Roupas,Calça,1863.15,47,Oeste
+221,2024-06-22,Eletrônicos,Fone de Ouvido,1614.05,44,Sul
+222,2024-09-01,Esportes,Capacete,1857.91,6,Sul
+223,2024-08-12,Esportes,Capacete,311.36,16,Oeste
+224,2024-07-08,Eletrônicos,Fone de Ouvido,526.2,10,Norte
+225,2024-07-30,Roupas,Calça,1743.58,25,Norte
+226,2024-11-15,Livros,Ficção Científica,1694.3,42,Centro-Oeste
+227,2024-05-16,Beleza,Maquiagem,1537.99,29,Oeste
+228,2024-03-07,Esportes,Bola de Futebol,1441.73,8,Leste
+229,2024-06-08,Beleza,Creme,1710.69,5,Oeste
+230,2024-08-30,Beleza,Maquiagem,955.47,39,Sul
+231,2024-11-03,Beleza,Shampoo,209.7,25,Norte
+232,2023-12-29,Livros,Ficção Científica,1457.11,20,Oeste
+233,2024-08-10,Beleza,Shampoo,501.39,38,Oeste
+234,2024-06-06,Beleza,Perfume,1222.07,36,Oeste
+235,2024-08-15,Esportes,Capacete,1124.06,17,Norte
+236,2024-03-25,Livros,Biografia,784.32,41,Oeste
+237,2024-04-14,Esportes,Corda,1314.44,38,Sul
+238,2024-05-08,Esportes,Capacete,776.98,47,Oeste
+239,2024-07-12,Eletrônicos,Laptop,201.26,42,Oeste
+240,2024-04-25,Esportes,Capacete,1722.34,40,Norte
+241,2024-06-26,Esportes,Raquete,1695.27,35,Oeste
+242,2024-08-26,Roupas,Calça,573.07,32,Sul
+243,2024-11-21,Eletrônicos,Fone de Ouvido,1124.4,28,Sul
+244,2024-10-17,Roupas,Calça,277.69,47,Norte
+245,2024-10-07,Beleza,Shampoo,1478.65,32,Norte
+246,2024-06-24,Roupas,Calça,916.07,47,Norte
+247,2024-12-01,Beleza,Shampoo,772.4,37,Leste
+248,2024-10-10,Esportes,Raquete,1863.59,49,Norte
+249,2024-09-29,Eletrônicos,Fone de Ouvido,1656.81,49,Norte
+250,2024-12-10,Livros,Romance,1687.42,42,Norte
+251,2024-04-02,Eletrônicos,Câmera,1614.51,12,Centro-Oeste
+252,2024-05-07,Livros,Técnico,1456.52,46,Sul
+253,2024-04-09,Eletrônicos,Fone de Ouvido,1807.47,15,Leste
+254,2024-10-22,Esportes,Bola de Futebol,645.55,31,Sul
+255,2024-02-27,Beleza,Shampoo,1839.92,4,Oeste
+256,2024-03-07,Esportes,Corda,836.66,7,Sul
+257,2024-12-01,Esportes,Capacete,1508.62,45,Sul
+258,2024-03-21,Beleza,Creme,701.41,39,Sul
+259,2024-12-09,Beleza,Perfume,947.6,21,Leste
+260,2024-06-22,Eletrônicos,Celular,505.12,47,Centro-Oeste
+261,2024-04-29,Roupas,Calça,243.17,11,Leste
+262,2024-08-31,Roupas,Vestido,647.72,8,Norte
+263,2024-01-04,Livros,Ficção Científica,116.72,28,Leste
+264,2024-05-18,Beleza,Shampoo,632.12,5,Centro-Oeste
+265,2024-06-27,Roupas,Calça,660.7,31,Centro-Oeste
+266,2024-08-23,Beleza,Perfume,164.03,10,Oeste
+267,2024-10-27,Eletrônicos,Fone de Ouvido,1153.95,26,Norte
+268,2024-12-25,Eletrônicos,Laptop,1684.13,12,Norte
+269,2024-09-24,Livros,Técnico,1224.89,41,Norte
+270,2024-04-15,Esportes,Bola de Futebol,217.99,4,Oeste
+271,2024-09-13,Roupas,Vestido,506.44,47,Sul
+272,2024-03-31,Beleza,Perfume,599.73,34,Leste
+273,2024-01-03,Livros,Ficção Científica,631.19,15,Centro-Oeste
+274,2024-02-03,Esportes,Capacete,1460.21,33,Sul
+275,2024-06-21,Esportes,Capacete,844.66,12,Leste
+276,2024-10-04,Livros,Ficção Científica,136.83,6,Oeste
+277,2024-07-14,Roupas,Vestido,1393.93,40,Oeste
+278,2024-11-07,Livros,Ficção Científica,460.66,27,Sul
+279,2024-12-10,Beleza,Shampoo,1982.81,45,Oeste
+280,2024-03-05,Esportes,Corda,56.31,48,Centro-Oeste
+281,2024-03-11,Livros,Técnico,1641.49,43,Oeste
+282,2024-11-07,Roupas,Casaco,1026.01,12,Oeste
+283,2024-05-24,Eletrônicos,Fone de Ouvido,539.43,11,Norte
+284,2024-09-22,Esportes,Raquete,315.38,22,Sul
+285,2024-08-15,Eletrônicos,Câmera,415.21,18,Leste
+286,2024-05-02,Roupas,Vestido,579.5,23,Centro-Oeste
+287,2024-07-27,Eletrônicos,Celular,137.0,28,Centro-Oeste
+288,2024-02-15,Livros,Romance,1733.63,15,Leste
+289,2024-01-07,Eletrônicos,Laptop,451.65,19,Norte
+290,2024-07-03,Beleza,Creme,142.97,12,Sul
+291,2024-06-03,Livros,Biografia,988.46,50,Norte
+292,2024-12-06,Eletrônicos,Fone de Ouvido,268.85,34,Leste
+293,2024-06-24,Eletrônicos,Laptop,714.72,37,Sul
+294,2024-10-28,Eletrônicos,Celular,1751.07,39,Centro-Oeste
+295,2024-11-30,Beleza,Creme,1734.74,28,Centro-Oeste
+296,2024-06-14,Eletrônicos,Fone de Ouvido,1901.68,6,Leste
+297,2024-05-16,Roupas,Vestido,1300.54,45,Sul
+298,2023-12-30,Beleza,Maquiagem,1754.08,16,Sul
+299,2024-03-11,Beleza,Perfume,934.42,12,Leste
+300,2024-08-02,Esportes,Corda,1237.45,13,Leste
+301,2024-03-14,Esportes,Capacete,1220.67,34,Norte
+302,2024-01-21,Esportes,Capacete,1924.14,21,Norte
+303,2024-07-03,Eletrônicos,Celular,1838.56,19,Oeste
+304,2024-02-15,Esportes,Corda,1975.73,2,Centro-Oeste
+305,2024-09-07,Eletrônicos,Fone de Ouvido,1865.13,44,Norte
+306,2024-01-29,Eletrônicos,Câmera,442.65,40,Norte
+307,2024-09-30,Livros,Técnico,1920.71,27,Norte
+308,2024-07-14,Esportes,Bola de Futebol,157.0,14,Centro-Oeste
+309,2024-09-20,Beleza,Perfume,562.15,19,Norte
+310,2024-09-11,Roupas,Casaco,1586.44,21,Sul
+311,2024-12-25,Esportes,Corda,1995.71,48,Sul
+312,2024-07-28,Eletrônicos,Celular,241.05,39,Centro-Oeste
+313,2024-05-31,Beleza,Maquiagem,609.47,31,Norte
+314,2024-08-20,Livros,Ficção Científica,940.2,12,Leste
+315,2024-04-12,Esportes,Corda,775.83,40,Sul
+316,2024-03-15,Beleza,Shampoo,397.03,16,Norte
+317,2024-01-25,Livros,Biografia,507.22,33,Norte
+318,2024-06-09,Eletrônicos,Fone de Ouvido,1623.54,2,Centro-Oeste
+319,2024-01-03,Roupas,Casaco,116.3,6,Leste
+320,2024-07-24,Eletrônicos,Câmera,1634.03,41,Norte
+321,2024-06-28,Esportes,Corda,678.43,36,Centro-Oeste
+322,2024-09-29,Livros,Ficção Científica,1366.06,40,Sul
+323,2024-10-09,Eletrônicos,Fone de Ouvido,1669.69,35,Centro-Oeste
+324,2024-05-07,Roupas,Camisa,1245.89,46,Centro-Oeste
+325,2024-10-08,Roupas,Casaco,491.16,28,Leste
+326,2024-12-15,Livros,Ficção Científica,1396.06,4,Sul
+327,2023-12-27,Eletrônicos,Câmera,1317.25,18,Norte
+328,2024-03-11,Beleza,Creme,1837.49,45,Norte
+329,2024-08-21,Beleza,Shampoo,594.23,47,Leste
+330,2024-04-18,Roupas,Casaco,81.06,21,Oeste
+331,2024-11-13,Livros,Ficção Científica,355.82,3,Oeste
+332,2024-10-17,Beleza,Creme,1934.88,2,Norte
+333,2024-11-26,Livros,Biografia,1274.72,31,Norte
+334,2024-12-04,Esportes,Capacete,840.35,45,Oeste
+335,2024-10-19,Eletrônicos,Câmera,1377.86,44,Centro-Oeste
+336,2024-11-01,Roupas,Camisa,672.44,26,Leste
+337,2024-06-05,Roupas,Casaco,244.02,42,Oeste
+338,2024-06-17,Livros,Ficção Científica,1195.76,47,Sul
+339,2024-09-24,Beleza,Maquiagem,1826.44,26,Norte
+340,2024-07-12,Esportes,Capacete,160.88,15,Sul
+341,2024-09-23,Roupas,Camisa,762.03,27,Centro-Oeste
+342,2024-04-14,Roupas,Calça,947.52,46,Sul
+343,2024-01-19,Livros,Biografia,1214.44,40,Oeste
+344,2024-01-10,Roupas,Camisa,1896.23,24,Sul
+345,2024-01-28,Beleza,Shampoo,1687.78,10,Centro-Oeste
+346,2024-05-08,Roupas,Casaco,1937.13,27,Norte
+347,2024-05-21,Esportes,Bola de Futebol,951.65,49,Norte
+348,2024-08-31,Livros,Técnico,826.23,20,Oeste
+349,2024-06-03,Livros,Biografia,1516.6,24,Sul
+350,2024-05-21,Esportes,Capacete,444.42,24,Norte
+351,2024-10-24,Beleza,Perfume,834.22,5,Centro-Oeste
+352,2024-09-01,Esportes,Capacete,349.55,24,Sul
+353,2024-09-21,Livros,Ficção Científica,207.69,11,Sul
+354,2024-10-16,Eletrônicos,Câmera,1574.73,47,Leste
+355,2024-08-30,Livros,Técnico,44.67,5,Leste
+356,2024-10-20,Beleza,Shampoo,1408.65,42,Sul
+357,2024-03-25,Esportes,Corda,1635.59,24,Oeste
+358,2024-04-13,Livros,Ficção Científica,1875.53,39,Centro-Oeste
+359,2024-07-01,Livros,Biografia,1667.84,34,Leste
+360,2024-05-29,Beleza,Shampoo,1619.94,15,Leste
+361,2024-07-28,Roupas,Calça,1905.86,44,Sul
+362,2023-12-26,Livros,Romance,779.33,25,Norte
+363,2024-08-25,Esportes,Raquete,476.06,3,Oeste
+364,2024-06-11,Livros,Romance,234.09,7,Norte
+365,2024-08-28,Roupas,Vestido,309.21,46,Centro-Oeste
+366,2024-04-16,Beleza,Shampoo,335.88,14,Oeste
+367,2024-09-12,Beleza,Perfume,753.57,10,Sul
+368,2024-07-01,Beleza,Maquiagem,1142.39,25,Norte
+369,2024-02-23,Esportes,Raquete,218.26,11,Norte
+370,2024-05-28,Livros,Romance,1523.88,14,Oeste
+371,2024-09-12,Beleza,Creme,1621.75,8,Norte
+372,2024-11-10,Eletrônicos,Fone de Ouvido,62.44,32,Centro-Oeste
+373,2024-06-10,Livros,Romance,822.19,45,Centro-Oeste
+374,2024-12-16,Roupas,Camisa,543.76,47,Oeste
+375,2024-05-27,Beleza,Shampoo,1912.19,16,Centro-Oeste
+376,2024-09-28,Eletrônicos,Câmera,1546.25,13,Leste
+377,2024-12-17,Beleza,Creme,1027.69,26,Centro-Oeste
+378,2024-12-07,Roupas,Calça,1094.05,12,Oeste
+379,2024-10-18,Beleza,Perfume,186.61,1,Leste
+380,2024-11-13,Livros,Ficção Científica,713.15,25,Leste
+381,2024-08-09,Roupas,Casaco,1587.81,33,Sul
+382,2024-10-01,Roupas,Casaco,143.08,4,Norte
+383,2024-08-15,Eletrônicos,Fone de Ouvido,700.45,39,Norte
+384,2024-04-21,Livros,Romance,1606.78,41,Sul
+385,2024-06-25,Eletrônicos,Câmera,1008.68,2,Leste
+386,2024-07-25,Livros,Biografia,1363.26,7,Leste
+387,2024-05-17,Livros,Romance,817.56,31,Sul
+388,2024-04-22,Esportes,Bola de Futebol,190.03,47,Centro-Oeste
+389,2024-06-05,Beleza,Perfume,1312.05,12,Oeste
+390,2024-11-07,Roupas,Camisa,1027.67,37,Leste
+391,2024-12-14,Roupas,Camisa,1239.01,37,Leste
+392,2024-08-09,Roupas,Casaco,82.68,45,Sul
+393,2024-09-01,Esportes,Corda,65.19,50,Sul
+394,2024-10-20,Eletrônicos,Celular,1856.29,30,Centro-Oeste
+395,2024-02-29,Roupas,Vestido,1777.08,2,Sul
+396,2024-05-08,Eletrônicos,Laptop,1026.39,12,Centro-Oeste
+397,2024-01-09,Roupas,Calça,828.25,17,Leste
+398,2024-06-07,Esportes,Bola de Futebol,204.61,31,Sul
+399,2024-06-13,Esportes,Raquete,1669.52,50,Oeste
+400,2024-06-14,Beleza,Creme,1571.28,33,Leste
+401,2024-04-24,Livros,Técnico,1317.75,18,Oeste
+402,2024-01-20,Esportes,Bola de Futebol,1606.58,34,Leste
+403,2024-09-15,Beleza,Perfume,994.24,48,Leste
+404,2024-03-23,Esportes,Bola de Futebol,1671.0,14,Leste
+405,2024-05-02,Livros,Biografia,356.95,23,Norte
+406,2024-03-24,Beleza,Perfume,146.8,40,Norte
+407,2024-05-20,Eletrônicos,Fone de Ouvido,1099.93,27,Norte
+408,2024-01-04,Roupas,Camisa,1121.08,33,Oeste
+409,2024-08-24,Roupas,Vestido,1162.14,5,Centro-Oeste
+410,2024-05-05,Beleza,Perfume,468.3,6,Centro-Oeste
+411,2024-02-24,Livros,Ficção Científica,793.84,47,Oeste
+412,2024-03-06,Beleza,Maquiagem,250.78,37,Centro-Oeste
+413,2024-11-09,Livros,Romance,1627.02,34,Centro-Oeste
+414,2024-12-05,Eletrônicos,Celular,1696.35,6,Sul
+415,2024-07-06,Eletrônicos,Fone de Ouvido,1300.49,28,Sul
+416,2024-11-30,Esportes,Capacete,1933.19,41,Sul
+417,2024-01-21,Esportes,Capacete,1260.71,24,Leste
+418,2024-10-22,Livros,Biografia,1871.71,34,Sul
+419,2024-02-02,Eletrônicos,Laptop,1615.62,34,Norte
+420,2024-03-03,Esportes,Bola de Futebol,1790.67,15,Centro-Oeste
+421,2024-08-16,Beleza,Creme,748.98,4,Norte
+422,2024-01-07,Roupas,Casaco,196.57,5,Oeste
+423,2024-03-23,Livros,Romance,299.42,29,Oeste
+424,2024-09-03,Esportes,Capacete,1284.36,25,Leste
+425,2024-03-04,Beleza,Maquiagem,1581.78,49,Oeste
+426,2023-12-29,Livros,Técnico,888.98,31,Leste
+427,2024-09-05,Esportes,Raquete,1586.37,33,Oeste
+428,2024-07-15,Livros,Romance,1362.36,20,Oeste
+429,2024-12-14,Beleza,Maquiagem,417.54,40,Oeste
+430,2024-12-16,Beleza,Perfume,386.19,20,Leste
+431,2024-09-14,Roupas,Camisa,410.85,42,Norte
+432,2024-06-12,Beleza,Maquiagem,542.41,12,Centro-Oeste
+433,2024-09-13,Esportes,Capacete,511.93,50,Norte
+434,2024-06-10,Roupas,Vestido,1093.58,9,Leste
+435,2024-03-04,Beleza,Perfume,483.11,43,Leste
+436,2024-04-16,Eletrônicos,Câmera,1150.92,47,Norte
+437,2024-05-28,Eletrônicos,Celular,1246.59,3,Centro-Oeste
+438,2024-06-14,Roupas,Camisa,1597.02,48,Oeste
+439,2024-04-24,Esportes,Raquete,1327.79,10,Centro-Oeste
+440,2024-07-19,Roupas,Casaco,1529.07,50,Oeste
+441,2024-01-09,Roupas,Camisa,978.35,45,Leste
+442,2024-02-25,Roupas,Calça,65.76,11,Centro-Oeste
+443,2024-06-28,Beleza,Perfume,669.27,19,Centro-Oeste
+444,2024-02-25,Roupas,Camisa,1257.6,3,Centro-Oeste
+445,2024-12-07,Roupas,Camisa,966.66,21,Leste
+446,2024-12-08,Roupas,Casaco,1838.82,37,Centro-Oeste
+447,2024-02-05,Beleza,Shampoo,374.35,26,Oeste
+448,2024-09-07,Beleza,Perfume,72.8,28,Centro-Oeste
+449,2024-02-09,Esportes,Capacete,886.99,11,Sul
+450,2024-06-26,Livros,Romance,451.41,3,Norte
+451,2024-11-06,Esportes,Raquete,1691.22,11,Oeste
+452,2024-10-05,Esportes,Raquete,1085.54,28,Norte
+453,2024-04-13,Eletrônicos,Laptop,1434.01,5,Leste
+454,2024-10-05,Esportes,Bola de Futebol,1295.57,40,Oeste
+455,2024-10-30,Livros,Técnico,474.56,22,Sul
+456,2024-04-22,Eletrônicos,Câmera,817.33,35,Sul
+457,2024-04-21,Roupas,Casaco,1691.12,31,Leste
+458,2024-05-25,Beleza,Shampoo,491.55,37,Leste
+459,2024-01-07,Livros,Ficção Científica,1863.03,42,Leste
+460,2024-08-09,Esportes,Corda,1612.17,48,Centro-Oeste
+461,2024-11-08,Beleza,Perfume,1025.1,22,Leste
+462,2024-04-07,Esportes,Bola de Futebol,1087.14,34,Centro-Oeste
+463,2024-05-02,Livros,Romance,1027.35,45,Sul
+464,2024-10-16,Beleza,Shampoo,1433.09,11,Sul
+465,2024-06-22,Livros,Técnico,1284.52,10,Centro-Oeste
+466,2024-01-21,Beleza,Shampoo,1633.11,1,Oeste
+467,2024-01-18,Esportes,Corda,1055.68,32,Sul
+468,2024-10-18,Esportes,Raquete,1789.91,12,Sul
+469,2024-09-03,Eletrônicos,Fone de Ouvido,174.28,16,Norte
+470,2024-09-27,Roupas,Calça,1581.63,1,Norte
+471,2024-11-11,Livros,Biografia,1762.11,45,Norte
+472,2024-04-18,Esportes,Capacete,1580.44,48,Centro-Oeste
+473,2024-03-20,Livros,Biografia,245.95,21,Norte
+474,2024-12-21,Roupas,Camisa,1035.79,13,Norte
+475,2024-12-22,Roupas,Calça,263.37,32,Sul
+476,2024-06-19,Beleza,Shampoo,1334.51,35,Oeste
+477,2024-08-28,Roupas,Casaco,1175.54,37,Leste
+478,2024-04-24,Esportes,Bola de Futebol,1410.76,33,Norte
+479,2024-07-25,Beleza,Shampoo,1323.98,19,Centro-Oeste
+480,2024-12-20,Eletrônicos,Celular,1091.07,45,Sul
+481,2024-03-14,Beleza,Perfume,1490.59,39,Oeste
+482,2024-05-20,Roupas,Camisa,1904.88,13,Sul
+483,2024-11-30,Beleza,Maquiagem,669.21,5,Norte
+484,2024-01-21,Roupas,Casaco,568.99,14,Centro-Oeste
+485,2024-06-07,Beleza,Creme,1829.13,17,Leste
+486,2024-01-10,Roupas,Calça,1179.87,14,Leste
+487,2024-01-11,Livros,Técnico,143.88,9,Centro-Oeste
+488,2024-10-29,Livros,Biografia,632.03,35,Centro-Oeste
+489,2024-12-19,Roupas,Vestido,765.05,1,Oeste
+490,2024-01-30,Roupas,Casaco,936.2,17,Sul
+491,2024-05-17,Roupas,Calça,1229.54,7,Norte
+492,2023-12-28,Eletrônicos,Laptop,583.83,31,Centro-Oeste
+493,2024-04-18,Livros,Biografia,212.78,28,Norte
+494,2024-04-23,Roupas,Vestido,950.76,39,Oeste
+495,2024-01-17,Roupas,Camisa,1888.22,38,Norte
+496,2023-12-26,Beleza,Perfume,434.6,21,Leste
+497,2024-01-07,Esportes,Corda,1503.25,33,Sul
+498,2024-08-24,Beleza,Maquiagem,204.36,40,Centro-Oeste
+499,2024-01-11,Eletrônicos,Fone de Ouvido,1029.53,44,Sul
+500,2024-02-24,Esportes,Capacete,1036.9,13,Oeste
+501,2024-11-29,Esportes,Corda,387.99,2,Sul
+502,2024-08-12,Esportes,Corda,1148.37,33,Sul
+503,2024-11-27,Livros,Biografia,1793.27,50,Centro-Oeste
+504,2024-02-29,Livros,Biografia,1688.52,49,Norte
+505,2024-06-25,Eletrônicos,Celular,1835.3,46,Oeste
+506,2024-09-03,Livros,Romance,540.52,17,Centro-Oeste
+507,2024-01-26,Esportes,Corda,1490.72,18,Sul
+508,2024-08-09,Beleza,Shampoo,1545.66,7,Centro-Oeste
+509,2024-02-18,Esportes,Corda,167.66,20,Centro-Oeste
+510,2024-01-02,Beleza,Maquiagem,1804.82,46,Sul
+511,2024-10-09,Roupas,Camisa,1457.67,26,Centro-Oeste
+512,2024-07-30,Esportes,Raquete,1490.88,1,Norte
+513,2024-02-16,Eletrônicos,Laptop,389.4,34,Centro-Oeste
+514,2024-10-29,Roupas,Vestido,264.63,49,Oeste
+515,2024-02-03,Livros,Técnico,1302.25,26,Centro-Oeste
+516,2024-01-24,Beleza,Creme,1938.12,6,Oeste
+517,2024-09-26,Roupas,Vestido,977.88,11,Norte
+518,2024-01-20,Eletrônicos,Laptop,1886.99,16,Leste
+519,2024-08-17,Roupas,Vestido,723.36,15,Centro-Oeste
+520,2024-10-22,Livros,Ficção Científica,914.98,10,Norte
+521,2024-09-07,Esportes,Bola de Futebol,513.08,21,Oeste
+522,2024-02-08,Esportes,Corda,1505.28,34,Norte
+523,2024-03-13,Roupas,Casaco,1983.33,25,Sul
+524,2024-11-08,Esportes,Bola de Futebol,662.55,15,Sul
+525,2024-02-02,Esportes,Bola de Futebol,1773.24,26,Norte
+526,2024-12-22,Esportes,Bola de Futebol,495.66,50,Norte
+527,2024-07-02,Esportes,Raquete,44.57,28,Oeste
+528,2024-06-11,Livros,Romance,274.53,21,Oeste
+529,2024-01-26,Roupas,Casaco,152.45,23,Oeste
+530,2024-02-08,Beleza,Shampoo,859.1,16,Centro-Oeste
+531,2024-06-26,Esportes,Bola de Futebol,1466.45,42,Leste
+532,2024-09-29,Roupas,Calça,169.46,19,Centro-Oeste
+533,2024-11-23,Roupas,Casaco,1155.34,19,Sul
+534,2024-06-16,Eletrônicos,Celular,526.79,24,Sul
+535,2024-07-07,Eletrônicos,Celular,699.31,11,Norte
+536,2024-10-03,Eletrônicos,Fone de Ouvido,1609.83,2,Centro-Oeste
+537,2024-12-04,Eletrônicos,Fone de Ouvido,1750.6,5,Oeste
+538,2024-02-29,Eletrônicos,Laptop,1351.45,26,Centro-Oeste
+539,2024-07-22,Esportes,Bola de Futebol,1491.91,29,Oeste
+540,2024-02-03,Beleza,Maquiagem,1894.84,15,Centro-Oeste
+541,2024-02-17,Livros,Biografia,1139.46,16,Leste
+542,2024-11-22,Eletrônicos,Laptop,1687.0,22,Oeste
+543,2024-05-18,Esportes,Raquete,307.95,37,Norte
+544,2024-10-04,Roupas,Vestido,1738.55,8,Centro-Oeste
+545,2024-11-19,Eletrônicos,Celular,98.94,10,Centro-Oeste
+546,2024-06-06,Esportes,Corda,52.74,24,Leste
+547,2024-07-11,Beleza,Shampoo,461.71,12,Leste
+548,2024-02-14,Eletrônicos,Celular,1593.04,24,Norte
+549,2024-01-26,Beleza,Perfume,1421.3,42,Sul
+550,2024-08-25,Roupas,Camisa,1762.25,38,Norte
+551,2024-07-09,Roupas,Casaco,691.6,15,Norte
+552,2024-01-08,Beleza,Maquiagem,1783.0,26,Leste
+553,2024-10-04,Eletrônicos,Laptop,1630.91,43,Centro-Oeste
+554,2024-12-01,Esportes,Bola de Futebol,874.82,16,Centro-Oeste
+555,2024-07-27,Roupas,Camisa,1715.86,16,Leste
+556,2024-03-31,Roupas,Casaco,659.82,32,Norte
+557,2024-01-31,Roupas,Casaco,1191.42,3,Centro-Oeste
+558,2024-10-04,Eletrônicos,Fone de Ouvido,467.64,28,Centro-Oeste
+559,2024-10-28,Beleza,Shampoo,568.76,43,Sul
+560,2024-05-20,Beleza,Shampoo,1512.95,4,Norte
+561,2024-12-08,Beleza,Maquiagem,1779.42,22,Oeste
+562,2024-05-18,Roupas,Camisa,17.13,46,Oeste
+563,2024-07-18,Livros,Técnico,1634.36,33,Oeste
+564,2024-12-15,Esportes,Capacete,1681.88,4,Sul
+565,2024-04-29,Roupas,Vestido,1945.62,49,Norte
+566,2024-07-31,Livros,Biografia,1350.84,24,Centro-Oeste
+567,2024-09-22,Eletrônicos,Laptop,283.52,44,Sul
+568,2024-08-04,Roupas,Calça,1906.25,7,Leste
+569,2024-07-25,Esportes,Bola de Futebol,1773.08,18,Leste
+570,2024-05-26,Eletrônicos,Câmera,1492.09,47,Sul
+571,2024-12-12,Livros,Romance,1022.25,41,Leste
+572,2024-04-23,Esportes,Bola de Futebol,1356.91,1,Oeste
+573,2024-03-29,Livros,Técnico,1153.8,49,Norte
+574,2024-08-01,Esportes,Bola de Futebol,1015.25,40,Sul
+575,2024-09-20,Livros,Biografia,183.27,46,Sul
+576,2024-01-30,Roupas,Calça,777.14,1,Centro-Oeste
+577,2024-02-23,Beleza,Creme,791.2,19,Centro-Oeste
+578,2024-08-16,Livros,Romance,921.18,29,Centro-Oeste
+579,2024-05-31,Eletrônicos,Câmera,1653.67,49,Oeste
+580,2024-11-20,Esportes,Bola de Futebol,605.6,30,Centro-Oeste
+581,2024-10-22,Livros,Biografia,225.27,14,Norte
+582,2024-05-15,Livros,Técnico,415.49,4,Oeste
+583,2024-10-06,Esportes,Capacete,1118.83,24,Oeste
+584,2024-04-14,Esportes,Capacete,811.07,26,Norte
+585,2024-12-25,Esportes,Corda,1940.26,36,Sul
+586,2024-05-11,Eletrônicos,Laptop,264.73,25,Norte
+587,2024-07-09,Beleza,Shampoo,1037.02,7,Sul
+588,2024-05-19,Eletrônicos,Fone de Ouvido,1613.0,8,Centro-Oeste
+589,2024-01-03,Roupas,Casaco,580.47,28,Norte
+590,2023-12-29,Beleza,Creme,1787.19,43,Centro-Oeste
+591,2023-12-26,Eletrônicos,Fone de Ouvido,1654.2,6,Oeste
+592,2024-02-19,Eletrônicos,Celular,845.43,15,Centro-Oeste
+593,2024-04-04,Eletrônicos,Laptop,1524.07,10,Leste
+594,2024-10-08,Livros,Ficção Científica,861.94,36,Oeste
+595,2024-09-15,Eletrônicos,Laptop,1568.53,25,Leste
+596,2024-09-20,Eletrônicos,Laptop,682.54,41,Norte
+597,2024-03-16,Beleza,Maquiagem,1134.31,14,Sul
+598,2024-09-04,Livros,Biografia,822.68,2,Centro-Oeste
+599,2024-12-10,Esportes,Bola de Futebol,581.42,47,Oeste
+600,2024-02-17,Esportes,Raquete,914.14,50,Leste
+601,2024-03-07,Esportes,Bola de Futebol,837.06,40,Leste
+602,2024-02-08,Livros,Ficção Científica,1438.19,18,Centro-Oeste
+603,2024-11-11,Beleza,Shampoo,477.04,5,Leste
+604,2024-07-03,Livros,Romance,1891.56,37,Centro-Oeste
+605,2024-10-06,Eletrônicos,Fone de Ouvido,1501.49,9,Oeste
+606,2024-06-30,Roupas,Calça,1503.56,19,Centro-Oeste
+607,2024-09-09,Esportes,Capacete,802.76,18,Sul
+608,2024-02-12,Beleza,Shampoo,1796.75,47,Oeste
+609,2024-04-11,Roupas,Calça,1135.07,11,Oeste
+610,2024-04-05,Livros,Técnico,1785.62,3,Leste
+611,2024-11-07,Beleza,Creme,955.17,5,Oeste
+612,2024-02-17,Beleza,Shampoo,1929.26,25,Centro-Oeste
+613,2024-11-28,Beleza,Creme,541.72,16,Leste
+614,2024-01-10,Esportes,Corda,424.29,5,Sul
+615,2024-03-01,Livros,Técnico,460.48,14,Norte
+616,2024-12-16,Beleza,Perfume,730.42,25,Sul
+617,2024-09-05,Eletrônicos,Celular,1560.23,50,Oeste
+618,2024-05-10,Livros,Técnico,100.9,29,Sul
+619,2024-11-05,Beleza,Shampoo,1232.11,2,Norte
+620,2024-10-11,Roupas,Camisa,630.51,2,Sul
+621,2024-04-29,Esportes,Bola de Futebol,988.51,48,Sul
+622,2024-03-12,Livros,Técnico,599.8,25,Oeste
+623,2024-08-27,Roupas,Vestido,799.99,17,Centro-Oeste
+624,2024-01-31,Beleza,Creme,842.88,14,Sul
+625,2024-07-07,Beleza,Perfume,256.02,5,Oeste
+626,2024-10-29,Eletrônicos,Laptop,1486.07,37,Norte
+627,2024-07-05,Esportes,Capacete,695.57,7,Norte
+628,2024-02-20,Esportes,Corda,197.78,37,Oeste
+629,2024-08-27,Livros,Romance,1635.08,35,Oeste
+630,2024-04-01,Eletrônicos,Fone de Ouvido,442.95,17,Oeste
+631,2024-04-28,Eletrônicos,Celular,1454.05,7,Sul
+632,2024-03-08,Roupas,Vestido,1194.15,30,Centro-Oeste
+633,2024-08-28,Roupas,Calça,85.46,28,Centro-Oeste
+634,2024-02-08,Esportes,Capacete,1893.37,21,Oeste
+635,2024-08-21,Eletrônicos,Fone de Ouvido,1941.02,14,Sul
+636,2024-09-11,Eletrônicos,Celular,1467.33,35,Centro-Oeste
+637,2024-09-19,Roupas,Camisa,195.21,25,Sul
+638,2024-03-29,Eletrônicos,Câmera,1397.75,22,Sul
+639,2024-05-10,Esportes,Capacete,392.2,3,Norte
+640,2024-10-31,Roupas,Vestido,932.08,28,Norte
+641,2024-05-29,Esportes,Bola de Futebol,995.93,1,Norte
+642,2024-10-19,Beleza,Maquiagem,516.48,28,Centro-Oeste
+643,2024-02-04,Livros,Biografia,1650.59,48,Leste
+644,2024-04-10,Beleza,Maquiagem,258.24,33,Centro-Oeste
+645,2024-10-21,Roupas,Casaco,961.66,33,Sul
+646,2024-12-20,Beleza,Creme,1214.6,39,Norte
+647,2024-05-24,Livros,Romance,1510.03,40,Leste
+648,2024-07-29,Esportes,Corda,1722.57,50,Norte
+649,2024-05-12,Eletrônicos,Fone de Ouvido,1145.97,1,Centro-Oeste
+650,2024-01-07,Livros,Ficção Científica,1941.22,4,Leste
+651,2024-08-29,Beleza,Shampoo,135.19,1,Norte
+652,2024-05-02,Livros,Romance,679.36,15,Leste
+653,2024-03-24,Eletrônicos,Câmera,1614.68,19,Sul
+654,2024-05-27,Eletrônicos,Laptop,448.31,41,Leste
+655,2024-01-08,Eletrônicos,Fone de Ouvido,831.63,14,Oeste
+656,2024-10-15,Eletrônicos,Fone de Ouvido,880.38,2,Centro-Oeste
+657,2024-06-06,Esportes,Bola de Futebol,1050.39,20,Leste
+658,2024-07-21,Livros,Romance,278.08,8,Norte
+659,2024-04-08,Beleza,Shampoo,1524.31,44,Leste
+660,2024-10-23,Roupas,Vestido,1956.23,15,Sul
+661,2024-10-31,Roupas,Calça,1277.5,28,Oeste
+662,2024-02-25,Esportes,Bola de Futebol,1391.3,40,Sul
+663,2024-12-17,Beleza,Shampoo,515.17,50,Oeste
+664,2024-04-05,Eletrônicos,Laptop,401.88,16,Norte
+665,2024-01-13,Beleza,Perfume,706.17,20,Oeste
+666,2024-10-10,Esportes,Raquete,573.26,36,Centro-Oeste
+667,2024-04-07,Roupas,Vestido,829.17,24,Oeste
+668,2024-10-01,Roupas,Camisa,1074.41,32,Norte
+669,2024-01-25,Livros,Técnico,1007.32,26,Leste
+670,2024-05-04,Esportes,Bola de Futebol,1289.74,38,Leste
+671,2024-09-02,Roupas,Camisa,474.01,43,Norte
+672,2024-06-04,Esportes,Raquete,333.77,41,Oeste
+673,2023-12-29,Roupas,Casaco,479.9,24,Leste
+674,2024-10-21,Esportes,Bola de Futebol,198.97,46,Centro-Oeste
+675,2024-09-14,Esportes,Bola de Futebol,576.13,1,Centro-Oeste
+676,2024-04-07,Livros,Ficção Científica,522.47,48,Norte
+677,2024-03-23,Beleza,Shampoo,1126.05,2,Sul
+678,2024-09-05,Roupas,Camisa,1575.57,5,Norte
+679,2024-12-21,Eletrônicos,Celular,574.29,39,Sul
+680,2024-11-08,Esportes,Raquete,1231.51,50,Oeste
+681,2024-11-24,Livros,Romance,655.85,18,Sul
+682,2024-10-23,Eletrônicos,Fone de Ouvido,217.84,38,Sul
+683,2024-09-26,Beleza,Maquiagem,802.39,19,Leste
+684,2024-03-04,Beleza,Perfume,160.74,28,Centro-Oeste
+685,2024-04-02,Esportes,Bola de Futebol,1075.35,34,Centro-Oeste
+686,2024-05-17,Roupas,Camisa,1973.76,42,Oeste
+687,2024-12-19,Roupas,Camisa,52.69,11,Norte
+688,2024-11-09,Esportes,Corda,972.7,29,Sul
+689,2024-07-16,Roupas,Calça,449.19,27,Leste
+690,2024-08-28,Livros,Romance,1913.1,26,Oeste
+691,2024-02-08,Esportes,Corda,850.48,20,Norte
+692,2024-03-01,Livros,Biografia,1198.64,40,Oeste
+693,2024-07-06,Beleza,Perfume,784.13,17,Oeste
+694,2024-03-12,Roupas,Calça,878.4,2,Centro-Oeste
+695,2024-11-28,Esportes,Capacete,174.78,17,Leste
+696,2024-08-02,Roupas,Camisa,573.99,46,Norte
+697,2024-08-18,Roupas,Calça,1701.64,24,Centro-Oeste
+698,2024-08-12,Livros,Técnico,906.54,50,Leste
+699,2024-01-23,Livros,Técnico,1439.37,12,Sul
+700,2024-06-01,Eletrônicos,Celular,576.29,22,Leste
+701,2024-04-14,Esportes,Capacete,1613.97,22,Centro-Oeste
+702,2024-11-05,Livros,Romance,1268.4,30,Centro-Oeste
+703,2024-09-20,Esportes,Bola de Futebol,1981.64,23,Centro-Oeste
+704,2024-09-14,Eletrônicos,Celular,656.53,29,Centro-Oeste
+705,2024-01-11,Beleza,Perfume,478.38,36,Sul
+706,2024-04-04,Livros,Romance,513.2,44,Centro-Oeste
+707,2023-12-28,Eletrônicos,Câmera,956.78,28,Oeste
+708,2024-01-06,Beleza,Maquiagem,1703.2,12,Sul
+709,2024-10-31,Esportes,Bola de Futebol,1637.72,49,Centro-Oeste
+710,2024-08-17,Eletrônicos,Celular,213.0,46,Oeste
+711,2024-02-25,Esportes,Raquete,1422.91,50,Leste
+712,2024-05-01,Roupas,Calça,341.64,32,Leste
+713,2024-03-01,Eletrônicos,Celular,1375.02,50,Centro-Oeste
+714,2024-12-05,Eletrônicos,Laptop,997.46,23,Centro-Oeste
+715,2024-05-31,Roupas,Casaco,1078.52,19,Centro-Oeste
+716,2024-03-25,Livros,Biografia,1596.4,12,Leste
+717,2024-08-08,Livros,Romance,747.38,13,Leste
+718,2024-07-26,Esportes,Capacete,1013.75,37,Centro-Oeste
+719,2024-11-07,Esportes,Capacete,1173.47,37,Leste
+720,2024-03-11,Esportes,Corda,1164.24,31,Leste
+721,2024-12-15,Roupas,Camisa,924.83,12,Sul
+722,2024-01-07,Roupas,Calça,645.55,27,Centro-Oeste
+723,2024-08-31,Esportes,Capacete,562.34,2,Centro-Oeste
+724,2024-07-23,Roupas,Casaco,1482.99,49,Norte
+725,2024-10-13,Livros,Romance,1508.91,42,Centro-Oeste
+726,2024-11-23,Esportes,Corda,1645.47,1,Norte
+727,2024-12-05,Roupas,Camisa,669.74,31,Oeste
+728,2024-03-08,Esportes,Corda,1717.49,11,Norte
+729,2024-06-19,Roupas,Camisa,333.75,16,Oeste
+730,2024-11-30,Roupas,Vestido,637.06,35,Centro-Oeste
+731,2024-07-25,Esportes,Corda,1250.39,16,Sul
+732,2024-09-06,Livros,Ficção Científica,879.29,29,Centro-Oeste
+733,2024-06-17,Roupas,Calça,1443.31,31,Oeste
+734,2024-08-12,Esportes,Bola de Futebol,1337.23,48,Oeste
+735,2024-08-22,Esportes,Raquete,1300.67,39,Leste
+736,2024-05-04,Livros,Romance,949.26,26,Oeste
+737,2024-11-09,Roupas,Vestido,146.76,9,Sul
+738,2024-05-08,Livros,Biografia,1709.85,45,Centro-Oeste
+739,2024-05-15,Beleza,Creme,565.64,27,Leste
+740,2024-02-09,Beleza,Shampoo,108.08,49,Oeste
+741,2024-10-20,Esportes,Raquete,1093.0,5,Norte
+742,2024-10-28,Livros,Romance,1015.53,34,Centro-Oeste
+743,2024-01-01,Roupas,Vestido,92.09,2,Oeste
+744,2024-06-05,Livros,Ficção Científica,1027.07,35,Leste
+745,2024-05-15,Eletrônicos,Fone de Ouvido,1535.75,24,Norte
+746,2024-03-07,Beleza,Perfume,1143.6,17,Norte
+747,2024-06-29,Livros,Biografia,1487.1,34,Oeste
+748,2024-11-27,Beleza,Perfume,556.36,33,Centro-Oeste
+749,2024-12-09,Eletrônicos,Fone de Ouvido,1138.81,22,Oeste
+750,2024-03-23,Roupas,Casaco,1473.43,11,Centro-Oeste
+751,2024-10-01,Livros,Biografia,25.96,28,Leste
+752,2024-09-15,Eletrônicos,Celular,284.39,22,Leste
+753,2024-10-05,Beleza,Maquiagem,1711.03,16,Norte
+754,2024-11-24,Beleza,Perfume,1344.32,47,Oeste
+755,2024-08-29,Eletrônicos,Laptop,1456.71,6,Norte
+756,2024-11-02,Beleza,Perfume,581.04,29,Centro-Oeste
+757,2024-12-09,Roupas,Vestido,886.92,2,Oeste
+758,2024-10-11,Eletrônicos,Celular,997.61,42,Leste
+759,2024-10-02,Roupas,Calça,36.32,7,Norte
+760,2024-12-05,Livros,Ficção Científica,251.96,41,Centro-Oeste
+761,2024-08-27,Livros,Técnico,354.72,24,Oeste
+762,2024-12-10,Livros,Ficção Científica,108.08,3,Leste
+763,2024-12-17,Beleza,Perfume,504.93,21,Norte
+764,2024-05-23,Livros,Ficção Científica,85.65,26,Centro-Oeste
+765,2024-10-17,Livros,Ficção Científica,764.09,47,Centro-Oeste
+766,2024-08-14,Esportes,Capacete,399.66,7,Norte
+767,2023-12-31,Livros,Biografia,1007.97,38,Leste
+768,2024-09-10,Eletrônicos,Laptop,583.58,11,Centro-Oeste
+769,2024-11-27,Livros,Ficção Científica,1073.31,41,Norte
+770,2024-12-21,Livros,Biografia,1218.4,45,Centro-Oeste
+771,2024-03-08,Roupas,Calça,1575.83,6,Oeste
+772,2024-08-20,Livros,Ficção Científica,1235.35,27,Norte
+773,2024-10-11,Beleza,Perfume,816.99,36,Centro-Oeste
+774,2024-07-04,Eletrônicos,Câmera,1365.95,28,Centro-Oeste
+775,2024-06-03,Livros,Romance,1813.21,8,Sul
+776,2024-10-15,Roupas,Vestido,1811.55,28,Sul
+777,2024-05-26,Roupas,Camisa,1307.39,25,Leste
+778,2024-02-26,Livros,Romance,247.1,12,Oeste
+779,2024-02-23,Eletrônicos,Celular,1224.84,26,Centro-Oeste
+780,2024-09-14,Livros,Biografia,1167.7,5,Norte
+781,2024-06-09,Livros,Técnico,1598.15,28,Norte
+782,2024-05-22,Esportes,Raquete,1135.7,21,Norte
+783,2024-06-15,Beleza,Perfume,204.97,38,Leste
+784,2024-11-11,Beleza,Shampoo,1625.61,27,Oeste
+785,2024-10-07,Esportes,Corda,924.55,10,Oeste
+786,2024-09-30,Livros,Técnico,1160.74,21,Oeste
+787,2024-08-31,Eletrônicos,Câmera,710.53,15,Centro-Oeste
+788,2024-10-11,Esportes,Bola de Futebol,827.61,25,Sul
+789,2024-03-18,Esportes,Bola de Futebol,97.0,33,Leste
+790,2024-04-02,Livros,Técnico,1019.97,26,Norte
+791,2024-01-19,Livros,Ficção Científica,1070.87,13,Sul
+792,2024-09-23,Esportes,Raquete,1650.1,7,Sul
+793,2024-12-22,Beleza,Shampoo,727.01,13,Oeste
+794,2024-02-25,Roupas,Calça,395.72,21,Leste
+795,2024-12-12,Roupas,Camisa,1953.06,1,Oeste
+796,2024-08-02,Roupas,Calça,1720.39,32,Sul
+797,2023-12-26,Livros,Biografia,548.85,46,Oeste
+798,2024-04-20,Livros,Técnico,1918.98,25,Leste
+799,2024-12-13,Esportes,Bola de Futebol,308.9,27,Norte
+800,2024-10-11,Livros,Biografia,244.22,44,Sul
+801,2024-03-06,Livros,Técnico,1628.93,26,Norte
+802,2024-02-02,Beleza,Shampoo,69.13,33,Centro-Oeste
+803,2024-02-23,Beleza,Perfume,31.84,32,Norte
+804,2024-04-01,Livros,Técnico,1936.78,28,Oeste
+805,2024-03-03,Eletrônicos,Laptop,167.12,9,Sul
+806,2024-05-28,Eletrônicos,Laptop,1477.09,29,Norte
+807,2024-04-03,Livros,Ficção Científica,553.9,21,Leste
+808,2024-07-15,Eletrônicos,Câmera,1146.18,18,Sul
+809,2024-12-10,Eletrônicos,Laptop,960.74,11,Sul
+810,2024-09-01,Eletrônicos,Fone de Ouvido,294.51,44,Oeste
+811,2024-06-06,Eletrônicos,Câmera,215.07,37,Leste
+812,2024-04-28,Esportes,Bola de Futebol,1233.96,36,Centro-Oeste
+813,2024-07-22,Esportes,Bola de Futebol,430.92,48,Leste
+814,2024-10-03,Eletrônicos,Fone de Ouvido,1110.75,15,Norte
+815,2024-06-07,Roupas,Vestido,379.89,42,Norte
+816,2024-07-03,Esportes,Raquete,1608.83,50,Sul
+817,2024-06-23,Roupas,Vestido,1148.62,12,Oeste
+818,2024-02-10,Livros,Ficção Científica,1776.97,5,Oeste
+819,2024-04-01,Roupas,Calça,592.53,25,Oeste
+820,2024-08-17,Esportes,Raquete,304.66,12,Centro-Oeste
+821,2024-04-26,Esportes,Raquete,1920.9,31,Oeste
+822,2024-04-03,Roupas,Vestido,1234.15,12,Norte
+823,2024-04-02,Livros,Romance,388.91,14,Oeste
+824,2024-10-01,Roupas,Vestido,435.16,20,Norte
+825,2024-04-14,Eletrônicos,Câmera,355.1,48,Oeste
+826,2024-05-19,Beleza,Maquiagem,1400.93,43,Centro-Oeste
+827,2024-08-18,Esportes,Raquete,1534.65,25,Norte
+828,2024-07-12,Esportes,Bola de Futebol,601.5,10,Leste
+829,2024-01-04,Livros,Romance,446.02,11,Oeste
+830,2024-07-07,Esportes,Corda,316.5,41,Sul
+831,2024-12-24,Beleza,Perfume,1763.65,4,Sul
+832,2024-09-01,Esportes,Corda,1368.27,11,Sul
+833,2024-07-12,Roupas,Camisa,62.31,13,Leste
+834,2024-07-08,Roupas,Camisa,1688.59,8,Oeste
+835,2024-03-13,Eletrônicos,Câmera,193.81,5,Sul
+836,2024-06-06,Eletrônicos,Fone de Ouvido,228.36,19,Norte
+837,2024-04-09,Beleza,Creme,1415.77,23,Oeste
+838,2024-10-04,Eletrônicos,Laptop,1122.36,30,Leste
+839,2024-09-05,Livros,Biografia,97.44,12,Oeste
+840,2024-10-16,Beleza,Perfume,837.2,33,Sul
+841,2024-05-31,Beleza,Maquiagem,491.56,6,Norte
+842,2024-10-01,Livros,Técnico,200.51,29,Sul
+843,2024-01-09,Roupas,Calça,936.15,37,Norte
+844,2024-01-03,Eletrônicos,Fone de Ouvido,307.55,14,Norte
+845,2024-06-03,Livros,Ficção Científica,867.04,28,Centro-Oeste
+846,2024-07-28,Roupas,Vestido,1467.88,26,Leste
+847,2024-01-28,Esportes,Bola de Futebol,1124.13,25,Oeste
+848,2024-10-31,Beleza,Creme,1657.88,9,Centro-Oeste
+849,2024-04-12,Beleza,Perfume,1685.22,39,Sul
+850,2024-09-27,Beleza,Perfume,668.96,34,Leste
+851,2024-11-05,Roupas,Calça,1194.31,40,Norte
+852,2024-01-04,Beleza,Shampoo,384.72,25,Leste
+853,2024-01-06,Eletrônicos,Laptop,701.53,7,Sul
+854,2024-07-04,Esportes,Capacete,826.88,12,Sul
+855,2024-09-14,Esportes,Capacete,425.13,15,Centro-Oeste
+856,2024-11-04,Livros,Técnico,1605.01,32,Leste
+857,2024-05-25,Esportes,Bola de Futebol,1311.74,28,Norte
+858,2024-07-20,Livros,Romance,1204.41,25,Sul
+859,2024-05-09,Esportes,Raquete,799.54,2,Leste
+860,2024-07-26,Eletrônicos,Celular,300.27,17,Norte
+861,2024-06-26,Livros,Romance,448.43,11,Leste
+862,2024-07-16,Esportes,Capacete,400.15,27,Centro-Oeste
+863,2024-06-15,Esportes,Raquete,1583.09,46,Leste
+864,2024-07-28,Livros,Técnico,129.81,35,Norte
+865,2024-10-09,Eletrônicos,Fone de Ouvido,1582.79,31,Centro-Oeste
+866,2024-10-05,Beleza,Maquiagem,939.04,12,Norte
+867,2024-09-24,Livros,Biografia,1465.52,8,Oeste
+868,2024-12-09,Beleza,Perfume,1679.33,35,Oeste
+869,2024-06-27,Roupas,Camisa,1280.9,33,Centro-Oeste
+870,2024-08-06,Roupas,Vestido,1243.34,44,Oeste
+871,2024-03-06,Livros,Técnico,385.52,17,Leste
+872,2024-11-03,Beleza,Creme,457.21,29,Centro-Oeste
+873,2024-08-10,Esportes,Raquete,1305.39,34,Leste
+874,2024-10-14,Roupas,Vestido,1882.13,28,Norte
+875,2024-01-04,Esportes,Corda,1077.57,40,Centro-Oeste
+876,2024-08-17,Roupas,Camisa,44.95,20,Sul
+877,2024-05-12,Livros,Ficção Científica,1696.83,45,Centro-Oeste
+878,2024-03-16,Livros,Ficção Científica,1820.92,9,Leste
+879,2024-04-23,Beleza,Shampoo,285.42,19,Centro-Oeste
+880,2024-06-10,Eletrônicos,Câmera,801.65,35,Norte
+881,2024-01-20,Esportes,Capacete,1431.09,26,Sul
+882,2024-03-20,Esportes,Capacete,870.96,25,Centro-Oeste
+883,2024-02-01,Eletrônicos,Celular,942.36,2,Oeste
+884,2024-02-28,Roupas,Vestido,1603.76,19,Centro-Oeste
+885,2024-10-27,Eletrônicos,Laptop,1592.26,49,Sul
+886,2024-08-17,Beleza,Maquiagem,1045.02,34,Oeste
+887,2024-06-18,Roupas,Casaco,1359.23,3,Sul
+888,2024-08-26,Roupas,Calça,611.39,38,Oeste
+889,2024-02-13,Esportes,Bola de Futebol,1169.78,33,Sul
+890,2024-12-22,Roupas,Camisa,1269.95,17,Centro-Oeste
+891,2024-07-06,Eletrônicos,Laptop,518.66,15,Norte
+892,2024-04-26,Livros,Biografia,68.99,4,Centro-Oeste
+893,2024-11-18,Livros,Técnico,1659.01,46,Oeste
+894,2024-06-13,Roupas,Camisa,754.1,30,Leste
+895,2024-11-24,Eletrônicos,Celular,1972.94,50,Centro-Oeste
+896,2024-09-20,Livros,Ficção Científica,236.31,35,Centro-Oeste
+897,2024-02-24,Beleza,Perfume,1178.92,6,Centro-Oeste
+898,2024-07-02,Livros,Romance,1974.82,38,Leste
+899,2024-10-24,Beleza,Creme,198.52,38,Sul
+900,2024-11-18,Roupas,Camisa,1007.49,37,Norte
+901,2024-04-02,Esportes,Capacete,1004.92,24,Norte
+902,2024-07-03,Esportes,Capacete,785.11,3,Centro-Oeste
+903,2024-05-06,Beleza,Shampoo,551.65,50,Centro-Oeste
+904,2024-09-26,Roupas,Camisa,768.12,34,Oeste
+905,2024-07-16,Beleza,Perfume,1914.09,46,Oeste
+906,2024-10-01,Beleza,Perfume,26.81,37,Leste
+907,2024-10-31,Eletrônicos,Câmera,280.42,11,Leste
+908,2024-03-22,Beleza,Shampoo,792.3,15,Oeste
+909,2024-10-22,Esportes,Raquete,541.72,16,Leste
+910,2024-01-12,Eletrônicos,Fone de Ouvido,1306.27,44,Centro-Oeste
+911,2024-05-14,Eletrônicos,Câmera,1715.17,28,Norte
+912,2024-12-18,Beleza,Maquiagem,1057.93,21,Leste
+913,2024-07-11,Esportes,Bola de Futebol,565.1,17,Oeste
+914,2024-04-06,Beleza,Perfume,1424.89,3,Sul
+915,2024-05-26,Livros,Técnico,277.17,16,Sul
+916,2024-11-05,Roupas,Vestido,1033.53,40,Leste
+917,2024-07-20,Roupas,Camisa,1939.22,34,Norte
+918,2024-09-03,Roupas,Casaco,1477.86,20,Centro-Oeste
+919,2024-12-07,Beleza,Maquiagem,1858.71,5,Leste
+920,2024-08-13,Livros,Romance,1962.69,49,Leste
+921,2024-02-01,Roupas,Casaco,128.93,16,Centro-Oeste
+922,2024-04-23,Esportes,Capacete,1651.44,39,Sul
+923,2024-12-07,Eletrônicos,Câmera,949.99,21,Centro-Oeste
+924,2024-02-14,Livros,Romance,445.97,12,Sul
+925,2024-07-08,Livros,Ficção Científica,905.98,26,Leste
+926,2024-02-18,Roupas,Casaco,345.59,21,Sul
+927,2024-02-20,Beleza,Maquiagem,1207.24,5,Centro-Oeste
+928,2024-01-19,Livros,Ficção Científica,1067.53,17,Oeste
+929,2024-12-22,Beleza,Perfume,334.0,42,Norte
+930,2024-05-06,Livros,Técnico,1609.31,20,Oeste
+931,2024-03-10,Esportes,Bola de Futebol,1462.39,45,Oeste
+932,2024-01-12,Roupas,Camisa,58.42,21,Sul
+933,2024-01-05,Livros,Ficção Científica,965.35,48,Oeste
+934,2024-07-03,Esportes,Bola de Futebol,1558.2,6,Oeste
+935,2024-06-25,Beleza,Perfume,1275.18,35,Oeste
+936,2024-01-25,Esportes,Corda,1169.53,21,Centro-Oeste
+937,2024-08-04,Esportes,Bola de Futebol,1832.3,2,Leste
+938,2024-07-16,Roupas,Calça,842.03,38,Norte
+939,2024-01-14,Esportes,Raquete,1399.86,35,Sul
+940,2024-02-18,Esportes,Raquete,1698.11,19,Centro-Oeste
+941,2024-08-26,Esportes,Corda,69.95,42,Oeste
+942,2024-06-24,Beleza,Perfume,806.13,30,Norte
+943,2024-07-31,Esportes,Raquete,334.28,30,Centro-Oeste
+944,2024-02-16,Roupas,Casaco,1807.76,7,Oeste
+945,2024-07-31,Eletrônicos,Laptop,1055.39,29,Centro-Oeste
+946,2024-04-04,Esportes,Bola de Futebol,1589.6,50,Sul
+947,2024-01-26,Roupas,Casaco,125.96,31,Sul
+948,2024-04-21,Esportes,Corda,1163.9,4,Oeste
+949,2024-05-12,Livros,Romance,347.26,2,Leste
+950,2024-12-17,Eletrônicos,Câmera,972.01,9,Oeste
+951,2024-02-14,Esportes,Capacete,589.37,27,Centro-Oeste
+952,2024-12-02,Roupas,Calça,1100.36,12,Norte
+953,2024-06-24,Livros,Romance,244.14,8,Sul
+954,2024-12-14,Eletrônicos,Fone de Ouvido,1170.52,1,Oeste
+955,2024-05-17,Roupas,Vestido,58.88,16,Centro-Oeste
+956,2024-01-11,Eletrônicos,Laptop,1219.72,26,Leste
+957,2024-05-02,Roupas,Casaco,1905.59,49,Norte
+958,2024-02-04,Eletrônicos,Fone de Ouvido,367.81,27,Leste
+959,2024-12-02,Eletrônicos,Celular,1522.12,41,Sul
+960,2024-02-03,Beleza,Shampoo,1584.41,48,Norte
+961,2024-08-24,Beleza,Perfume,1340.8,35,Centro-Oeste
+962,2024-09-13,Esportes,Bola de Futebol,1682.09,1,Leste
+963,2024-02-06,Beleza,Perfume,1198.15,23,Norte
+964,2024-04-23,Eletrônicos,Laptop,1437.76,50,Oeste
+965,2024-09-06,Eletrônicos,Câmera,647.83,47,Leste
+966,2024-04-23,Beleza,Perfume,1833.33,39,Centro-Oeste
+967,2024-08-07,Esportes,Corda,1427.23,34,Leste
+968,2024-05-15,Beleza,Shampoo,1318.71,45,Centro-Oeste
+969,2024-03-05,Eletrônicos,Câmera,690.24,35,Norte
+970,2024-10-20,Beleza,Creme,1363.07,37,Leste
+971,2023-12-28,Livros,Técnico,1207.94,33,Norte
+972,2024-09-06,Eletrônicos,Fone de Ouvido,885.89,25,Centro-Oeste
+973,2024-10-13,Eletrônicos,Fone de Ouvido,1119.4,10,Centro-Oeste
+974,2024-06-27,Livros,Ficção Científica,1754.2,31,Norte
+975,2024-05-31,Roupas,Vestido,878.06,4,Centro-Oeste
+976,2024-05-31,Roupas,Camisa,675.22,40,Oeste
+977,2024-08-27,Roupas,Calça,1325.86,14,Norte
+978,2024-03-18,Esportes,Capacete,198.22,41,Oeste
+979,2024-01-30,Eletrônicos,Celular,1694.06,25,Oeste
+980,2024-06-05,Beleza,Maquiagem,1795.06,38,Centro-Oeste
+981,2024-11-21,Roupas,Camisa,1418.45,18,Sul
+982,2024-04-07,Roupas,Casaco,1740.36,12,Leste
+983,2024-07-01,Beleza,Maquiagem,1541.39,28,Norte
+984,2024-06-10,Esportes,Capacete,401.36,47,Centro-Oeste
+985,2024-09-10,Roupas,Calça,1286.26,31,Oeste
+986,2024-07-04,Eletrônicos,Fone de Ouvido,1098.32,3,Centro-Oeste
+987,2024-12-04,Roupas,Camisa,1458.19,42,Oeste
+988,2024-05-20,Esportes,Corda,905.49,30,Centro-Oeste
+989,2024-02-20,Livros,Biografia,1546.97,32,Centro-Oeste
+990,2024-06-09,Beleza,Shampoo,713.98,6,Centro-Oeste
+991,2024-11-04,Esportes,Corda,357.73,41,Centro-Oeste
+992,2024-03-14,Beleza,Creme,82.82,2,Oeste
+993,2024-10-16,Esportes,Bola de Futebol,471.34,34,Sul
+994,2024-06-07,Beleza,Perfume,1520.47,38,Norte
+995,2024-08-25,Esportes,Bola de Futebol,1724.14,23,Sul
+996,2024-10-20,Roupas,Vestido,1431.91,48,Norte
+997,2024-03-09,Livros,Romance,679.95,45,Leste
+998,2024-04-07,Esportes,Corda,1707.11,11,Leste
+999,2024-01-22,Esportes,Raquete,916.5,22,Centro-Oeste
