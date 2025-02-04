@@ -29,7 +29,6 @@ Este repositório é organizado da seguinte forma:
 - **`Projetos/`**: Onde estão localizados meus projetos relacionados à programação.
 - **`Python/`**: Contém scripts e projetos relacionados à linguagem Python.
 - **`R/`**: Aprendizados em R.
-- **`SQL - Hashtag Programacao/`**: Conteúdos de SQL, como MySQL, Oracle e Bancos de Dados.
 - **`arquivos/`**: Contém arquivos usados como base em alguns programas.
 - **`README.md`**: Este arquivo que você está lendo.
 
