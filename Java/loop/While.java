@@ -20,5 +20,7 @@ public class While {
             }          
         }
         System.out.println("Media das notas: " + media_avaliacao / totalDeNotas);
+
+        leitura.close();
     }
 }

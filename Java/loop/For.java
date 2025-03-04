@@ -16,5 +16,7 @@ public class For {
             media_avaliacao += nota;
         }
         System.out.println("Media das notas: " + media_avaliacao / 3);
+        
+        leitura.close();
     }
 }
