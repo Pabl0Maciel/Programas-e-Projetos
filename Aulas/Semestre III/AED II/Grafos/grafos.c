@@ -89,7 +89,7 @@ typedef struct {
 } VERTICE;
 
 // Inicializa o grafo com todas as listas vazias
-void inicializar(VERTICE *g){
+void inicializarGrafo(VERTICE *g){
     for (int i = 1; i <= V; i++){
         g[i].inicio = NULL;
     }
@@ -301,7 +301,7 @@ void exibirGrafo(VERTICE *g) {
 // -----------------------------
 int main() {
     VERTICE g[V + 1];
-    inicializar(g);
+    inicializarGrafo(g);
 
     // ----------------------------
     // Teste 1: Grau, remoção, DFS
