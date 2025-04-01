@@ -29,6 +29,12 @@ void inicializarGrafo(VERTICE *g) {
     }
 }
 
+void zerarFlags(VERTICE *g) {
+    for (int i = 1; i <= V; i++) {
+        g[i].flag = 0;
+    }
+}
+
 void inserirAresta(VERTICE *g, int i, int j) {
     NO *novo1 = malloc(sizeof(NO));
     novo1->adj = j;
@@ -39,6 +45,24 @@ void inserirAresta(VERTICE *g, int i, int j) {
     novo2->adj = i;
     novo2->prox = g[j].inicio;
     g[j].inicio = novo2;
+}
+
+bool excluirAresta(VERTICE *g, int i, int j) {
+    NO *ant = NULL;
+    NO *p = g[i].inicio;
+    while (p) {
+        if (p->adj == j) {
+            if (ant)
+                ant->prox = p->prox;
+            else
+                g[i].inicio = p->prox;
+            free(p);
+            return true;
+        }
+        ant = p;
+        p = p->prox;
+    }
+    return false;
 }
 
 void exibirGrafo(VERTICE *g) {
@@ -55,19 +79,21 @@ void exibirGrafo(VERTICE *g) {
 }
 
 /**************************************/
-/*    DETECÇÃO DE CICLO COM DFS       */
+/*       DFS COM DETECÇÃO DE CICLO    */
 /**************************************/
 
-bool dfsCicloNaoDirigido(VERTICE *g, int atual, int pai) {
+bool dfsCicloNaoDirigido(VERTICE *g, int atual, int pai, int *cicloU, int *cicloV) {
     g[atual].flag = 1;
 
     NO *p = g[atual].inicio;
     while (p) {
         if (g[p->adj].flag == 0) {
-            if (dfsCicloNaoDirigido(g, p->adj, atual))
+            if (dfsCicloNaoDirigido(g, p->adj, atual, cicloU, cicloV))
                 return true;
         } else if (p->adj != pai) {
-            return true; // ciclo detectado
+            *cicloU = atual;
+            *cicloV = p->adj;
+            return true;
         }
         p = p->prox;
     }
@@ -75,16 +101,33 @@ bool dfsCicloNaoDirigido(VERTICE *g, int atual, int pai) {
     return false;
 }
 
-bool temCiclo(VERTICE *g) {
-    
+bool removeCiclo(VERTICE *g) {
+    int u = -1, v = -1;
+    zerarFlags(g);
+
     for (int i = 1; i <= V; i++) {
         if (g[i].flag == 0) {
-            if (dfsCicloNaoDirigido(g, i, -1)) {
+            if (dfsCicloNaoDirigido(g, i, -1, &u, &v)) {
+                excluirAresta(g, u, v);
+                excluirAresta(g, v, u);
+                printf("Aresta removida: %d - %d\n", u, v);
                 return true;
             }
         }
     }
     return false;
+}
+
+/**************************************/
+/*        REMOVE TODOS OS CICLOS      */
+/**************************************/
+
+void removeTodosOsCiclos(VERTICE *g) {
+    int removidos = 0;
+    while (removeCiclo(g)) {
+        removidos++;
+    }
+    printf("\n✅ Remoção concluída. Total de arestas removidas: %d\n", removidos);
 }
 
 /**************************************/
@@ -95,44 +138,24 @@ int main() {
     VERTICE grafo[V + 1];
     inicializarGrafo(grafo);
 
-
-
-    // Grafo com ciclo: estrutura mais complexa
+    // Exemplo com múltiplos ciclos
     inserirAresta(grafo, 1, 2);
-    inserirAresta(grafo, 1, 3);
-    inserirAresta(grafo, 2, 4);
+    inserirAresta(grafo, 2, 3);
+    inserirAresta(grafo, 3, 4);
+    inserirAresta(grafo, 4, 5);
+    inserirAresta(grafo, 5, 2); // ciclo A
+    inserirAresta(grafo, 3, 5); // ciclo B
     inserirAresta(grafo, 4, 6);
     inserirAresta(grafo, 6, 7);
-    inserirAresta(grafo, 7, 5);
-    inserirAresta(grafo, 5, 3); // esta fecha o ciclo
+    inserirAresta(grafo, 7, 3); // ciclo C
 
+    printf("ANTES da remoção de ciclos:\n");
     exibirGrafo(grafo);
 
-    if (temCiclo(grafo)) {
-        printf("\n⚠️  Ciclo detectado no grafo!\n\n");
-    } else {
-        printf("\n✅ O grafo NÃO possui ciclos.\n");
-    }
+    removeTodosOsCiclos(grafo);
 
-    // Grafo SEM ciclo (removemos a aresta que fechava o ciclo)
-    inicializarGrafo(grafo);
-
-    inserirAresta(grafo, 1, 2);
-    inserirAresta(grafo, 1, 3);
-    inserirAresta(grafo, 2, 4);
-    inserirAresta(grafo, 4, 6);
-    inserirAresta(grafo, 6, 7);
-    inserirAresta(grafo, 7, 5);
-    // Aresta 5–3 foi removida (sem ciclo)
-
+    printf("\nDEPOIS da remoção de ciclos:\n");
     exibirGrafo(grafo);
-
-    if (temCiclo(grafo)) {
-        printf("\n⚠️  Ciclo detectado no grafo!\n");
-    } else {
-        printf("\n✅ O grafo NÃO possui ciclos.\n");
-    }
-
 
     return 0;
 }
