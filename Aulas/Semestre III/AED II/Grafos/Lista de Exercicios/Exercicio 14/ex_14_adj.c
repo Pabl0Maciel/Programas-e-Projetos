@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define V 7
+#define V 5
 
 /**************************************/
 /*         ESTRUTURA DO GRAFO         */
@@ -111,18 +111,17 @@ int main() {
 
     // Exemplo com ciclos
     inserirAresta(grafo, 1, 2);
+    inserirAresta(grafo, 1, 3);
     inserirAresta(grafo, 2, 3);
-    inserirAresta(grafo, 3, 4);
+    inserirAresta(grafo, 2, 4);
+    inserirAresta(grafo, 3, 5); 
     inserirAresta(grafo, 4, 5);
-    inserirAresta(grafo, 5, 2); // ciclo 2-3-4-5-2
-    inserirAresta(grafo, 3, 6);
-    inserirAresta(grafo, 6, 7);
-    inserirAresta(grafo, 7, 3); // ciclo 3-6-7-3 (tamanho 3)
+    inserirAresta(grafo, 5, 3);
 
     exibirGrafo(grafo);
 
     int maior = comprimentoMaiorCiclo(grafo);
-    printf("\nComprimento do maior ciclo: %d\n", maior);  // Esperado: 4
+    printf("\nComprimento do maior ciclo: %d\n", maior);  // Esperado: 5
 
     return 0;
 }
