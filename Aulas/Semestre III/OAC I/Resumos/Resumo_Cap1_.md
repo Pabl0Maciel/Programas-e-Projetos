@@ -135,26 +135,103 @@ Essa estrutura representa a principal evolução da organização de processador
 ![Diagrama da CPU](Imagens/figura_1_7.png)
 
 ---
-### Ciclo de instrução (Figura 1.8)
+### Fluxo de Execução da Máquina IAS  
 
-1. **Busca da instrução**: o PC aponta para o próximo endereço a ser lido.
-2. **Decodificação**: o opcode da instrução vai para o IR, o endereço para o MAR.
-3. **Execução**: ALU e registradores realizam a operação indicada.
-4. **Atualização do PC**: avança para a próxima instrução (ou salta, se for `JUMP`).
+A Figura 1.8 representa o **fluxograma parcial do ciclo de operação da máquina IAS**, abordando as fases de **busca (fetch)**, **decodificação** e **execução** das instruções.
 
-![Ciclo de Instrução](Imagens/figura_1_8.png)
+Essa representação gráfica é essencial para compreender como os componentes da arquitetura IAS — como registradores, memória e unidade de controle — interagem para processar instruções armazenadas na memória principal.
+
+
+
+### 📋 Registradores da Máquina IAS (com base na Figura 1.8)
+
+A seguir, apresentamos os principais registradores utilizados no ciclo de busca e execução da máquina IAS, com base na Figura 1.8. Cada um tem papel específico na manipulação e controle de dados e instruções.
+
+| Registrador | Nome Completo                  | Função no Ciclo de Instrução |
+|-------------|--------------------------------|-------------------------------|
+| **PC**      | Program Counter                | Armazena o endereço da próxima palavra de memória a ser buscada. Após buscar uma palavra, é incrementado (`PC ← PC + 1`). |
+| **MAR**     | Memory Address Register        | Recebe o endereço a ser acessado (leitura ou escrita). Intermedia a comunicação com a memória. |
+| **MBR**     | Memory Buffer Register         | Armazena o conteúdo lido da memória (ou a ser escrito nela). Pode conter dados ou palavras de instrução completas. |
+| **IR**      | Instruction Register           | Armazena o código da instrução (opcode) que está sendo decodificada e executada. |
+| **IBR**     | Instruction Buffer Register    | Armazena temporariamente a **segunda instrução** de uma palavra de 40 bits, quando a primeira já foi processada. |
+| **AC**      | Accumulator                    | Armazena os resultados intermediários das operações aritméticas ou lógicas. |
+| **MQ**      | Multiplier-Quotient Register   | Usado em operações de multiplicação e divisão. Armazena uma parte do resultado. |
+
+> 💡 Esses registradores compõem o "coração" do fluxo de controle da máquina IAS, e sua movimentação determina o caminho entre a memória, a decodificação e a execução da instrução.
 
 ---
-### Conjunto de instruções da IAS (Tabela 1.1)
+### 🧭 Etapas do Fluxo de Execução
 
-| Tipo | Exemplos | Função |
-|------|----------|--------|
-| Transferência de dados | `LOAD`, `STOR` | Movem dados entre AC e memória |
-| Aritmética | `ADD`, `SUB`, `MUL`, `DIV`, `LSH`, `RSH` | Operações sobre dados em AC |
-| Desvios | `JUMP`, `JUMP+` | Alteram o fluxo de execução |
-| Modificação de endereço | `STOR M(X,8:19)` | Auto-modificação de instruções |
+#### 1. Início e Busca da Instrução
 
-![Conjunto de instruções](Imagens/tabela_1_1.png)
+O processo se inicia com a verificação:  
+**“Há uma instrução restante no IBR?”** (Instruction Buffer Register)
+
+- ✅ **Sim**: o conteúdo do IBR é transferido diretamente para o **Instruction Register (IR)** e o **Memory Address Register (MAR)**.  
+  Nenhum acesso adicional à memória é necessário.
+- ❌ **Não**: a próxima palavra de instrução completa é buscada da memória:
+  - `MAR ← PC` (o Program Counter indica a palavra a ser lida)
+  - `MBR ← M(MAR)` (a palavra é lida da memória e armazenada no Memory Buffer Register)
+
+#### 2. Decisão: Qual metade da palavra usar?
+
+Cada palavra de 40 bits pode conter até **duas instruções de 20 bits**: esquerda e direita.
+
+- A unidade de controle verifica se é necessário executar a instrução da esquerda (bit alto).
+- Se sim, ela é extraída dos bits 0:19 e movida para:
+  - `IR ← MBR(0:7)` (opcode)
+  - `MAR ← MBR(8:19)` (endereço)
+- Caso contrário, a instrução da direita é processada:
+  - `IR ← MBR(20:27)`
+  - `MAR ← MBR(28:39)`
+
+Após isso, o **PC é incrementado**: `PC ← PC + 1`
+
+---
+
+### ⚙️ Decodificação e Execução da Instrução
+
+- A instrução carregada no `IR` é decodificada e o controle passa para o **ciclo de execução**.
+- Exemplos de execução com base na instrução:
+
+| Tipo de Instrução | Ação Realizada |
+|-------------------|----------------|
+| `LOAD M(X)` | `AC ← M(X)` (carrega o conteúdo da memória para o acumulador) |
+| `ADD M(X)` | `AC ← AC + M(X)` |
+| `SUB M(X)` | `AC ← AC - M(X)` |
+| `JUMP M(X)` | `PC ← X` (salta para novo endereço) |
+| `JUMP+ M(X)` | Se `AC > 0` então `PC ← X` |
+| `STOR M(X)` | `M(X) ← AC` (salva o acumulador na memória) |
+
+Durante a execução:
+- Se for necessário acessar a memória:
+  - `MBR ← M(MAR)`
+  - O dado lido é movido para o AC: `AC ← MBR`
+- Ou no caso de escrita:
+  - `MBR ← AC`
+  - `M(MAR) ← MBR`
+
+---
+
+### 🌀 Ciclo de Controle
+
+Esse processo de busca → decodificação → execução se repete ciclicamente, conforme o conteúdo do **Program Counter (PC)**. A máquina só altera seu fluxo quando encontra uma instrução de desvio (`JUMP`) ou uma instrução condicional (`JUMP+`).
+
+Esse fluxo de controle é central no projeto de todas as arquiteturas baseadas no modelo de Von Neumann.
+
+![IAS](Imagens/figura_1_8.png)
+
+
+---
+
+### 📌 Observações Importantes
+
+- O **IBR** permite a execução de duas instruções consecutivas sem novo acesso à memória, aumentando a eficiência.
+- A estrutura sequencial é típica de CPUs sem pipeline.
+- O uso explícito de registradores intermediários (MBR, MAR, IR, etc.) demonstra como o controle da IAS é **totalmente microprogramado**.
+
+
+
 
 ---
 
@@ -304,3 +381,14 @@ Essa estrutura explica por que a arquitetura ARM é predominante em sistemas emb
 
 ---
 
+## 🧾 Resumo Final do Capítulo 1
+
+O Capítulo 1 introduz os **fundamentos da organização e arquitetura de computadores**, distinguindo claramente entre **arquitetura** (o que é visível ao programador) e **organização** (como o hardware implementa isso). São apresentadas as **quatro funções principais de um sistema computacional**: processamento, armazenamento, movimentação e controle de dados.
+
+A estrutura básica de um computador moderno é descrita em camadas hierárquicas, passando por **CPU, memória, I/O e interconexões**, culminando na arquitetura **multicore**, onde vários núcleos operam de forma paralela, como mostrado na Figura 1.2.
+
+Na sequência, o capítulo explora a evolução dos computadores por gerações, com destaque para a **máquina IAS** – modelo pioneiro de arquitetura com programa armazenado. Através do estudo detalhado de seus registradores e ciclo de instrução (Figura 1.8), compreendemos os mecanismos básicos que inspiraram as arquiteturas modernas.
+
+Em seguida, são abordados os **sistemas embarcados**, que exemplificam o uso prático da arquitetura ajustada a tarefas específicas, com alta integração e controle direto de hardware. Esse conceito é aprofundado com base nos exemplos do ARM Cortex-M3 (Figuras 1.14 e 1.15), culminando na descrição da **arquitetura ARM genérica** (Figura 1.16), amplamente usada em dispositivos embarcados e IoT.
+
+Com isso, o capítulo estabelece a base teórica e prática para entender como instruções em linguagens de alto nível, como C, se traduzem em ações no nível de hardware, preparando o terreno para os capítulos seguintes sobre desempenho, estrutura da CPU e tipos de instrução.
