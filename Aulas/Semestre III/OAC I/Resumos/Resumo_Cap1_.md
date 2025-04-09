@@ -258,34 +258,64 @@ Estes sistemas estão presentes em áreas como automação residencial, veículo
 
 ---
 
-### Estrutura de um Sistema Embarcado  
+### Organização de um Sistema Embarcado  
 
-A Figura 1.14 mostra um sistema embarcado moderno baseado na arquitetura ARM Cortex-M3, no qual diversos blocos funcionais são integrados:
+A Figura 1.14 ilustra uma **estrutura típica e genérica** de um sistema embarcado, destacando os principais blocos funcionais que se conectam ao processador. A seguir, explicamos o papel de cada componente:
 
-- **ARM Cortex-M3 Core**: núcleo do processador, baseado em arquitetura RISC, com registradores e ALU internos.
-- **SRAM e Flash**: memória interna usada para dados e programa (firmware).
-- **MPU (Memory Protection Unit)**: protege regiões de memória e isola tarefas.
-- **Temporizadores**: controlam eventos temporizados e interrupções periódicas.
-- **Watchdog Timer**: reinicia o sistema automaticamente em caso de falhas.
-- **GPIO**: portas de entrada e saída digital para conexão com LEDs, botões, etc.
-- **Interfaces seriais**: UART, SPI, I2C — usadas para comunicar com sensores e módulos externos.
-- **ADC/DAC**: conversores analógico-digital e digital-analógico, permitindo leitura de sensores físicos.
+
+| Componente             | Descrição |
+|------------------------|-----------|
+| **Processor**          | É o núcleo computacional do sistema embarcado. Executa o firmware responsável por processar dados, tomar decisões e controlar os periféricos. É conectado a todos os demais blocos e gerencia a operação geral do sistema. |
+| **Memory**             | Armazena tanto o código do programa quanto os dados utilizados pelo processador. Pode incluir tipos como ROM (para firmware) e RAM (para dados temporários). |
+| **Custom Logic**       | Lógica personalizada implementada em hardware (como circuitos digitais específicos ou FPGAs) para executar funções que não são facilmente tratadas por software — por exemplo, controle de sinais em tempo real, modulação, protocolos proprietários. |
+| **Diagnostic Port**    | Interface usada para depuração, atualização de firmware, monitoramento de funcionamento ou coleta de logs. Permite o acesso técnico ao sistema embarcado sem interferir no usuário final. |
+| **D/A Conversion**     | Conversor Digital-Analógico. Permite que o processador envie sinais contínuos (analógicos) para o mundo físico — por exemplo, controlar um motor, emitir som ou variar brilho de LEDs. |
+| **Actuators/Indicators** | Dispositivos que **reagem fisicamente** aos comandos do sistema, como motores, relés, LEDs ou displays. São os "efetores" do sistema embarcado. |
+| **A/D Conversion**     | Conversor Analógico-Digital. Permite que o sistema leia sinais do mundo real, como temperatura, luz ou tensão elétrica, convertendo-os em valores digitais que podem ser processados pelo software. |
+| **Sensors**            | Dispositivos físicos que coletam dados do ambiente, como sensores de temperatura, umidade, pressão, movimento etc. Seus sinais normalmente precisam passar por um conversor A/D antes de serem usados pelo processador. |
+| **Human Interface**    | Interface com o usuário, que pode incluir botões, teclados, telas sensíveis ao toque, indicadores visuais ou sonoros. Nem todos os sistemas embarcados possuem interface humana — muitos operam de forma totalmente autônoma. |
+
+
+Essa organização mostra como o processador atua como centro de controle em sistemas embarcados, interagindo com componentes físicos do ambiente por meio de sensores e atuadores, enquanto lida com lógica interna, memória e interfaces de depuração ou usuário.
+
 
 ![Sistema Embarcado](Imagens/figura_1_14.png)
 
 ---
 
-### Arquitetura Interna  
+### Elementos de um Chip de Microcontrolador  
 
-A Figura 1.15 detalha o interior do núcleo Cortex-M3:
+A Figura 1.15 apresenta uma visão funcional típica de um **chip de microcontrolador**, que é uma forma altamente integrada de computador em miniatura, ideal para aplicações embarcadas. O diagrama mostra os principais blocos internos conectados por um **barramento de sistema (System Bus)**.
 
-- **ALU (Arithmetic Logic Unit)**: executa operações matemáticas e lógicas.
-- **Banco de Registradores**: armazenam temporariamente dados e endereços (ex: R0–R15, incluindo SP, LR, PC).
-- **Bus Interface Unit**: faz a ponte entre o núcleo e a memória/periféricos.
-- **NVIC (Nested Vectored Interrupt Controller)**: gerencia múltiplas interrupções com diferentes prioridades.
-- **Decoder**: decodifica as instruções do conjunto Thumb/Thumb-2 (16 e 32 bits).
-- **Pipeline**: permite sobreposição de busca, decodificação e execução, otimizando o desempenho.
-- **System Control Block**: registros de sistema, controle de exceções e modos de operação.
+
+| Componente            | Função Principal |
+|-----------------------|------------------|
+| **Processor**         | Unidade central de processamento. Executa as instruções armazenadas na memória e coordena todas as operações internas do microcontrolador. |
+| **A/D Converter**     | *Analog-to-Digital Converter*. Converte sinais analógicos recebidos de sensores em valores digitais utilizáveis pelo processador. |
+| **D/A Converter**     | *Digital-to-Analog Converter*. Transforma dados digitais gerados pelo processador em sinais analógicos, que podem ser enviados a atuadores. |
+| **Serial I/O Ports**  | Portas seriais para comunicação com dispositivos externos. Suportam protocolos como UART, SPI e I²C, ideais para comunicação com sensores e módulos. |
+| **Parallel I/O Ports**| Portas de entrada/saída com múltiplos pinos manipuláveis simultaneamente, usadas para controle direto de dispositivos como LEDs, botões, displays, relés. |
+| **RAM**               | Memória volátil usada para armazenar dados temporários durante a execução do programa. É apagada quando o microcontrolador é desligado. |
+| **ROM**               | Memória somente leitura usada para armazenar o firmware — o programa principal executado pelo microcontrolador. |
+| **EEPROM**            | Memória permanente regravável, usada para armazenar configurações e dados que devem persistir mesmo sem energia (ex: calibração, IDs, preferências). |
+| **TIMER**             | Módulo de temporização usado para gerar atrasos precisos, contagens de eventos, geração de PWM ou ativação de interrupções periódicas. |
+| **System Bus**        | Canal de comunicação interno que interliga todos os componentes do chip — permite transferência de dados, endereços e sinais de controle entre as unidades. |
+
+---
+### Categorias Funcionais (conforme indicado na figura)
+
+- **Analog data acquisition**: refere-se ao uso do **A/D converter** para obter dados do mundo físico (ex: temperatura, luz, som).
+- **Analog data transmission**: realizada pelo **D/A converter**, que envia sinais contínuos para dispositivos como alto-falantes ou motores.
+- **Send/receive data**: uso das **portas seriais** para comunicação digital com periféricos e outros chips.
+- **Peripheral interfaces**: conexão com o ambiente externo via **portas paralelas**, controlando entradas e saídas digitais.
+- **Temporary data**: manipulado pela **RAM** durante a execução.
+- **Program and data**: armazenados permanentemente na **ROM**.
+- **Permanent data**: configurável e regravável, reside na **EEPROM**.
+- **Timing functions**: funções de contagem e temporização, gerenciadas pelo **TIMER**.
+
+
+Essa organização mostra como o microcontrolador é capaz de realizar operações completas — da aquisição de dados ao controle físico — **sem a necessidade de componentes externos adicionais**, o que o torna ideal para sistemas embarcados compactos e eficientes.
+
 
 ![Núcleo Cortex-M3](Imagens/figura_1_15.png)
 
@@ -344,40 +374,68 @@ O estudo de sistemas embarcados revela:
 | Cortex-R | Sistemas com tempo real rigoroso (ex: freios ABS, industrial) |
 | Cortex-M | Microcontroladores simples e de baixo consumo (IoT, wearables) |
 
-### Estrutura da Arquitetura ARM  
+### Arquitetura de um Microcontrolador Cortex-M3  
 
-A Figura 1.16 apresenta uma visão geral da arquitetura de um processador ARM genérico. A estrutura é modular e composta por blocos funcionais bem definidos, integrados em um chip compacto e eficiente. Essa organização é amplamente adotada em sistemas embarcados modernos.
+A Figura 1.16 mostra a organização funcional de um **microcontrolador baseado na arquitetura ARM Cortex-M3**, dividido em três níveis principais:
 
-#### Componentes principais:
-
-- **Unidade de Processamento ARM**: núcleo central que executa as instruções. Baseado na arquitetura RISC, é otimizado para desempenho com simplicidade:
-  - Executa instruções Thumb (16 bits) ou Thumb-2 (16/32 bits).
-  - Possui pipeline interno (3 estágios ou mais, dependendo do núcleo).
-
-- **Banco de Registradores**: conjunto de registradores de uso geral e especiais (como SP, LR, PC), utilizados para armazenar dados temporários, endereços e controle de fluxo.
-
-- **Controlador de Interrupções**: gerencia eventos externos e internos que requerem atenção imediata do processador. Pode priorizar múltiplas interrupções simultâneas (NVIC em núcleos Cortex-M).
-
-- **Interface de Barramento**: conecta o núcleo ARM à memória e aos periféricos. Pode ser AMBA (Advanced Microcontroller Bus Architecture), dividida em:
-  - AHB (High-performance)
-  - APB (Periféricos de baixa velocidade)
-
-- **Memória**:
-  - **Memória de Programa (Flash/ROM)**: armazena o firmware.
-  - **Memória de Dados (RAM)**: armazena variáveis e buffers temporários.
-
-- **Periféricos de E/S**: incluem interfaces seriais (UART, SPI, I²C), temporizadores, conversores A/D e D/A, controladores de DMA, etc.
-
-- **GPIO (General Purpose Input/Output)**: pinos programáveis usados para comunicação com dispositivos externos (sensores, LEDs, botões).
-
-![Arquitetura ARM](Imagens/figura_1_16.png)
+1. **Chip completo do microcontrolador**
+2. **Processador Cortex-M3**
+3. **Núcleo Cortex-M3 (Core)**
 
 ---
-#### Integração típica em um microcontrolador ARM:
 
-Todos esses componentes são encapsulados em um único chip (SoC – System on Chip), formando uma **plataforma embarcada altamente eficiente**, com tamanho reduzido e grande capacidade de controle em tempo real.
+### 🧠 Principais Componentes – Nível do Chip
 
-Essa estrutura explica por que a arquitetura ARM é predominante em sistemas embarcados: ela oferece **alto desempenho com baixo consumo**, além de escalabilidade para múltiplas aplicações.
+| Componente | Função |
+|------------|--------|
+| **Cortex-M3 Processor** | Cérebro do sistema: executa o código, controla periféricos, toma decisões. |
+| **Flash Memory** | Armazena permanentemente o firmware do sistema. |
+| **SRAM** | Memória volátil para dados temporários durante a execução. |
+| **DMA Controller** | Controlador de acesso direto à memória. Permite transferências sem uso do processador, melhorando o desempenho. |
+| **Debug Interface** | Permite depuração e programação do microcontrolador via JTAG/SWD. |
+| **Memory Protection Unit (MPU)** | Isola regiões de memória, útil em sistemas com multitarefa ou para evitar corrupção de dados. |
+
+---
+
+### 🧩 Interfaces de Entrada/Saída e Temporização
+
+| Componente | Função |
+|------------|--------|
+| **GPIO / Parallel I/O Ports** | Pinos programáveis para interação com LEDs, sensores, relés, botões etc. |
+| **Serial Interfaces (USART, UART, USB)** | Comunicação digital com módulos externos (como Wi-Fi, GPS, Bluetooth). |
+| **Timers e Watchdog** | Temporizadores e contadores, essenciais para tarefas periódicas e segurança (reset automático em caso de falha). |
+| **A/D e D/A Converters** | Convertem sinais analógicos de sensores e para atuadores (ex: controle de motor). |
+
+---
+
+### ⚙️ Núcleo Cortex-M3 (Core)
+
+Dentro do processador, o núcleo **ARM Cortex-M3** traz elementos de hardware otimizados para eficiência:
+
+| Componente | Função |
+|------------|--------|
+| **ARM Core (32 bits)** | Executa instruções da arquitetura Thumb/Thumb-2. |
+| **Thumb Decode** | Decodificador de instruções compactas, aumentando a eficiência da memória. |
+| **NVIC (Nested Vectored Interrupt Controller)** | Controla interrupções com prioridade configurável. Permite resposta rápida a eventos. |
+| **ALU + Multiplicador/Divisor** | Executa operações matemáticas. O hardware de multiplicação/divisão aumenta a velocidade de execução. |
+| **Instruction/Data Interfaces** | Barramentos dedicados para busca de instruções e dados — ajudam a evitar gargalos. |
+| **ETM (Embedded Trace Macrocell)** | Permite rastrear e registrar a execução do código (útil para depuração em tempo real). |
+
+---
+
+### 🔌 Barramentos e Comunicação Interna
+
+- **32-bit bus**: Interliga os blocos de processamento e memória com alta largura de banda.
+- **Peripheral bus**: Conecta os periféricos internos à CPU com velocidade adequada para comunicação e controle.
+- **Bus Matrix**: Gerencia o roteamento de dados entre os diferentes blocos internos.
+  
+![Arquitetura ARM](Imagens/figura_1_16.png)
+
+
+
+### 💡 Conclusão
+
+A organização do microcontrolador Cortex-M3 combina **eficiência, integração e suporte a tempo real**, características essenciais para sistemas embarcados. Com recursos como gerenciamento de interrupções (NVIC), proteção de memória (MPU) e barramentos dedicados, essa arquitetura se torna ideal para aplicações críticas em áreas como automação, IoT e dispositivos portáteis.
 
 ---
 
