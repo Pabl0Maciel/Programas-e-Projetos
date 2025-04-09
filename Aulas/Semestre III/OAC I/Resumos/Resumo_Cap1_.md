@@ -52,7 +52,8 @@
   - Sistema computacional → subsistemas → unidades funcionais → circuitos → lógica → transistores.
  
 ![Diagrama da CPU](Imagens/figura_1_1.png)
-
+ 
+ ---
  
 ### Estrutura de um Chip Multicore  
 
@@ -72,6 +73,8 @@ Esse design é fundamental na computação atual, especialmente para aplicaçõe
 | **Cache L3 (nível 3)** | Cache grande e **compartilhada entre todos os núcleos**. Atua como buffer antes da memória principal. |
 | **Interconexão interna** | Conjunto de barramentos ou rede interna que conecta os núcleos, caches e controladores de memória. |
 | **Controlador de Memória** | Gerencia as requisições dos núcleos à memória principal (RAM). Pode ser integrado ao chip para maior eficiência. |
+
+![Componentes Chip Multicore](Imagens/figura_1_2.png)
 
 ---
 
@@ -120,6 +123,9 @@ Essa estrutura representa a principal evolução da organização de processador
 | IR (Instruction Register) | Código da instrução atual em execução |
 | IBR (Instruction Buffer Register) | Guarda a segunda instrução de uma palavra de memória |
 
+![Componentes IAS](Imagens/figura_1_6.png)
+
+---
 ### Formato da memória (Figura 1.7)
 
 - Cada palavra da memória tem **40 bits**.
@@ -127,6 +133,9 @@ Essa estrutura representa a principal evolução da organização de processador
   - Um número binário de 40 bits (com sinal)
   - Ou duas instruções de 20 bits (8 bits de opcode + 12 bits de endereço)
 
+![Diagrama da CPU](Imagens/figura_1_7.png)
+
+---
 ### Ciclo de instrução (Figura 1.8)
 
 1. **Busca da instrução**: o PC aponta para o próximo endereço a ser lido.
@@ -134,6 +143,9 @@ Essa estrutura representa a principal evolução da organização de processador
 3. **Execução**: ALU e registradores realizam a operação indicada.
 4. **Atualização do PC**: avança para a próxima instrução (ou salta, se for `JUMP`).
 
+![Ciclo de Instrução](Imagens/figura_1_8.png)
+
+---
 ### Conjunto de instruções da IAS (Tabela 1.1)
 
 | Tipo | Exemplos | Função |
@@ -142,6 +154,8 @@ Essa estrutura representa a principal evolução da organização de processador
 | Aritmética | `ADD`, `SUB`, `MUL`, `DIV`, `LSH`, `RSH` | Operações sobre dados em AC |
 | Desvios | `JUMP`, `JUMP+` | Alteram o fluxo de execução |
 | Modificação de endereço | `STOR M(X,8:19)` | Auto-modificação de instruções |
+
+![Conjunto de instruções](Imagens/tabela_1_1.png)
 
 ---
 
@@ -181,6 +195,8 @@ A Figura 1.14 mostra um sistema embarcado moderno baseado na arquitetura ARM Cor
 - **Interfaces seriais**: UART, SPI, I2C — usadas para comunicar com sensores e módulos externos.
 - **ADC/DAC**: conversores analógico-digital e digital-analógico, permitindo leitura de sensores físicos.
 
+![Sistema Embarcado](Imagens/figura_1_14.png)
+
 ---
 
 ### Arquitetura Interna  
@@ -194,6 +210,8 @@ A Figura 1.15 detalha o interior do núcleo Cortex-M3:
 - **Decoder**: decodifica as instruções do conjunto Thumb/Thumb-2 (16 e 32 bits).
 - **Pipeline**: permite sobreposição de busca, decodificação e execução, otimizando o desempenho.
 - **System Control Block**: registros de sistema, controle de exceções e modos de operação.
+
+![Núcleo Cortex-M3](Imagens/figura_1_15.png)
 
 ---
 
@@ -276,6 +294,9 @@ A Figura 1.16 apresenta uma visão geral da arquitetura de um processador ARM ge
 
 - **GPIO (General Purpose Input/Output)**: pinos programáveis usados para comunicação com dispositivos externos (sensores, LEDs, botões).
 
+![Arquitetura ARM](Imagens/figura_1_16.png)
+
+---
 #### Integração típica em um microcontrolador ARM:
 
 Todos esses componentes são encapsulados em um único chip (SoC – System on Chip), formando uma **plataforma embarcada altamente eficiente**, com tamanho reduzido e grande capacidade de controle em tempo real.
