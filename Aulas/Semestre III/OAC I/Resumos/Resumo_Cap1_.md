@@ -61,7 +61,6 @@ A Figura 1.2 mostra a organização interna de um **processador multicore modern
 
 Esse design é fundamental na computação atual, especialmente para aplicações multitarefa, processamento paralelo e sistemas embarcados de alto desempenho.
 
----
 
 ### Componentes do chip multicore
 
