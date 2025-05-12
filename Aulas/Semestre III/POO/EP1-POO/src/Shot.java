@@ -92,6 +92,7 @@ public class Shot implements ISolid {
 	*/
 	public boolean checkCollision(Player player) {
 		if (player == this.owner) return false; // evita colisão com o dono
+		if (player.isDead()) return false;
 
 		double dx = Math.abs(this.cx - player.getCx());
 		double dy = Math.abs(this.cy - player.getCy());
