@@ -2,15 +2,6 @@
 
 Este projeto implementa um script de automação com Selenium para realizar a conciliação de itens no sistema Saipos, a partir de notas de entrada pendentes. O objetivo é agilizar o processo de associação entre os insumos das notas e os ingredientes cadastrados, além de preparar a base para criação automática de novos ingredientes quando necessário.
 
-## 📚 Funcionalidades
-
-- **Navegação automática nas notas com conciliação pendente**
-- **Busca por nomes dos insumos na lateral direita da tela**
-- **Clique duplo: insumo à esquerda e ingrediente correspondente à direita**
-- **Salvamento automático da conciliação**
-- **Tratamento de modais de confirmação ("Atenção")**
-- *(Em breve)* Criação automática de novos ingredientes caso o nome não seja encontrado
-
 ## 🚀 Como Utilizar
 
 ### 1. Abrir o Chrome com depuração remota
