@@ -12,7 +12,7 @@ Bem-vindo à minha coleção de projetos! Aqui você encontrará uma variedade d
 
 - **Automação de Cadastros**: Um script automatizado para preencher e gerenciar cadastros em massa, otimizando o tempo gasto com inserções manuais.
 - **Gerador de Arrays**: Uma ferramenta simples que gera arrays de números aleatórios ou específicos, útil para testar algoritmos de ordenação e outros.
-
+- **Automação – Cadastro de Insumos**: Script em Selenium que realiza a conciliação automática de itens no sistema Saipos. Ele percorre notas de entrada com conciliação pendente, busca os nomes dos insumos e associa aos ingredientes cadastrados. Caso o ingrediente não exista, o sistema criará automaticamente o cadastro com o nome correspondente (funcionalidade em desenvolvimento).
 ## 🔍 Detecção e Simulações
 
 - **Detector de Plágio**: Um projeto que analisa documentos em busca de similaridades, utilizando técnicas de processamento de texto para identificar possíveis plágios.
