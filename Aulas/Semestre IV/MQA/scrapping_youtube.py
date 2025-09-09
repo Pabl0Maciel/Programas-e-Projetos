@@ -5,6 +5,7 @@ import time
 import os
 from tqdm import tqdm
 from yt_dlp.utils import DownloadError
+import signal
 
 ################################################ Funcao auxiliar ####################################################
 
@@ -21,12 +22,21 @@ def safe_str(value):
     if isinstance(value, list):
         return ";".join(map(str, value))
     return value
+################################################ Timeout handler ####################################################
+
+class TimeoutException(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutException
+
+signal.signal(signal.SIGALRM, timeout_handler)
 ################################################ Funcao Principal ####################################################
 
 def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
                    videos_target=20000, videos_per_search=10, batch_size=100,
                    delay_per_video=1.0, delay_per_keyword=2.0,
-                   usar_cookies=False, navegador="chrome", debug=False):
+                   usar_cookies=False, navegador="firefox", debug=False):
     """
     Coleta metadados de vídeos do YouTube de forma incremental usando yt-dlp.
 
@@ -61,6 +71,7 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
     debug : bool
         Se True, imprime logs detalhados (keywords e vídeos coletados).
     """
+    
     # Carregar keywords
     if not os.path.exists(keywords_file):
         raise FileNotFoundError(f"Arquivo {keywords_file} não encontrado.")
@@ -68,18 +79,17 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
     with open(keywords_file, "r", encoding="utf-8") as f:
         keywords = [line.strip().split(";")[0] for line in f if line.strip()]
 
-    print(f"{len(keywords)} palavras-chave carregadas de {keywords_file}")
+    tqdm.write(f"{len(keywords)} palavras-chave carregadas de {keywords_file}")
 
     results = []
 
-    # Retomar progresso
     if os.path.exists(output_file):
         df_existente = pd.read_csv(output_file)
         collected_ids = set(df_existente["id"].tolist())
         used_keywords = set(df_existente["keyword"].dropna().unique())
         total_coletados = len(df_existente)
-        print(f"Retomando coleta: {total_coletados} vídeos já salvos.")
-        print(f"{len(used_keywords)} keywords já foram usadas.")
+        tqdm.write(f"Retomando coleta: {total_coletados} vídeos já salvos.")
+        tqdm.write(f"{len(used_keywords)} keywords já foram usadas.")
     else:
         collected_ids = set()
         used_keywords = set()
@@ -89,18 +99,19 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
         'quiet': True,
         'default_search': f'ytsearch{videos_per_search}'
     }
-
     if usar_cookies:
         ydl_opts["cookiesfrombrowser"] = (navegador,)
-        print(f"Usando cookies do navegador: {navegador}")
+        tqdm.write(f"Usando cookies do navegador: {navegador}")
 
-    # Rotação sem repetição
     keywords_pool = [kw for kw in keywords if kw not in used_keywords]
     if not keywords_pool:
         keywords_pool = keywords[:]
         used_keywords.clear()
     keywords_pool = random.sample(keywords_pool, len(keywords_pool))
     i = 0
+
+    # controle adaptativo
+    last_time = time.time()
 
     with tqdm(total=videos_target, initial=total_coletados, desc="Coletando vídeos") as pbar:
         while total_coletados < videos_target:
@@ -118,15 +129,20 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
 
             try:
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    signal.alarm(30)  # timeout de 30s por busca
                     info = ydl.extract_info(query, download=False)
+                    signal.alarm(0)
                     entries = info.get("entries", [])
+            except TimeoutException:
+                tqdm.write(f"Timeout na keyword '{query}', pulando...")
+                continue
             except Exception as e:
-                print(f"Erro na busca com keyword '{query}': {e}")
+                tqdm.write(f"Erro na busca com keyword '{query}': {e}")
                 time.sleep(delay_per_keyword)
                 continue
 
             if debug:
-                print(f"\nKeyword '{query}' retornou {len(entries)} resultados")
+                tqdm.write(f"\nKeyword '{query}' retornou {len(entries)} resultados")
 
             for video in entries:
                 try:
@@ -156,9 +172,8 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
                     pbar.update(1)
 
                     if debug:
-                        print(f" - Coletado: {vid_id} - {video.get('title')}")
+                        tqdm.write(f" - Coletado: {vid_id} - {video.get('title')}")
 
-                    # Salvar em batch
                     if len(results) >= batch_size:
                         df_new = pd.DataFrame(results)
                         mode = "a" if os.path.exists(output_file) else "w"
@@ -167,22 +182,32 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
                                       mode=mode, header=header)
                         total_coletados += len(results)
                         results = []
+                        tqdm.write(f"Progresso salvo: {total_coletados} vídeos")
 
                 except DownloadError as e:
-                    print(f"Vídeo ignorado (restrição ou indisponível): {e}")
+                    tqdm.write(f"Vídeo ignorado (restrição ou indisponível): {e}")
                     continue
                 except Exception as e:
-                    print(f"Erro inesperado em um vídeo: {e}")
+                    tqdm.write(f"Erro inesperado em um vídeo: {e}")
                     continue
 
-                # Delay entre vídeos
+                # controle adaptativo de delay
+                now = time.time()
+                elapsed = now - last_time
+                last_time = now
+
+                if elapsed > 20:
+                    delay_per_video = min(delay_per_video * 2, 30)  # aumenta delay
+                elif elapsed < 10 and delay_per_video > 1:
+                    delay_per_video = max(delay_per_video / 2, 1)  # reduz delay
+
                 time.sleep(delay_per_video)
                 pbar.refresh()
 
-            # Delay entre keywords
             time.sleep(delay_per_keyword)
 
-    print(f"\nColeta finalizada com {total_coletados} vídeos no {output_file}")
+    tqdm.write(f"\nColeta finalizada com {total_coletados} vídeos no {output_file}")
+
 #################################################################################################################    
 # Teste
 # coletar_videos("keywords.txt", "videos_teste.csv",
@@ -194,7 +219,7 @@ coletar_videos(
     output_file="videos.csv",
     videos_target=20000,
     videos_per_search=5,
-    batch_size=100,
+    batch_size=50,
     usar_cookies=True,        
     navegador="firefox",
     debug=True
