@@ -43,12 +43,14 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.service import Service
 import time
 
 # Configuração do Selenium conectado ao Chrome aberto com depuração remota
+service = Service("/home/pablo/Documents/Drivers/chromedriver")
 options = Options()
 options.debugger_address = "127.0.0.1:9222"
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(service=service, options=options)
 
 # Aguarda a página de notas carregar
 time.sleep(5)
@@ -122,9 +124,52 @@ while True:
             time.sleep(0.5)
     
         except Exception as e:
-            print(f"❌ Erro ao conciliar {nome}: {e}")
-            continue
-
+            print(f"🔍 Ingrediente não encontrado: {nome}. Tentando cadastrar...")
+        
+            try:
+                # Localiza a linha atualmente selecionada à esquerda
+                linha_selecionada = driver.find_element(
+                    By.XPATH,
+                    "//tr[contains(@class, 'selected')]"
+                )
+            
+                # Dentro dessa linha, encontra o botão "+"
+                botao_cadastrar = linha_selecionada.find_element(
+                    By.XPATH,
+                    ".//button[@ng-click='vm.createIngredient(item);']"
+                )
+            
+                botao_cadastrar.click()
+                time.sleep(1.5)
+        
+                # Garante que o modal foi carregado
+                WebDriverWait(driver, 5).until(
+                    EC.presence_of_element_located((By.XPATH, "//form[@name='formCadastro']"))
+                )
+        
+                # Localiza especificamente a div que contém o botão SALVAR do cadastro
+                div_salvar = driver.find_element(
+                    By.XPATH,
+                    "//form[@name='formCadastro']//div[contains(@class, 'm-t-20') and contains(@class, 'pull-right')]"
+                )
+        
+                # Dentro da div correta, busca o botão SALVAR
+                botao_salvar = div_salvar.find_element(
+                    By.XPATH,
+                    ".//button[@type='submit' and contains(@class, 'btn-primary') and normalize-space(text())='Salvar']"
+                )
+        
+                driver.execute_script("arguments[0].scrollIntoView(true);", botao_salvar)
+                time.sleep(0.5)
+                botao_salvar.click()
+        
+                print(f"✅ Ingrediente {nome} cadastrado com sucesso.")
+                time.sleep(5)
+                continue
+        
+            except Exception as cadastro_erro:
+                print(f"❌ Falha ao cadastrar ingrediente {nome}: {cadastro_erro}")
+                continue
 
     # Clica no botão SALVAR
     try:
@@ -141,17 +186,21 @@ while True:
                     "//button[contains(@class, 'confirm') and normalize-space(text())='OK']"
                 ))
             )
-            btn_ok.click()
+            time.sleep(0.5)  # evita clicar antes da animação terminar
+            try:
+                btn_ok.click()
+            except Exception:
+                driver.execute_script("arguments[0].click();", btn_ok)
             print("✅ Modal 'Atenção' detectado e fechado com OK.")
-    
+        
         except TimeoutException:
             print("ℹ️ Nenhum modal de 'Atenção' apareceu. Prosseguindo normalmente.")
     
     except Exception as e:
         print(f"⚠️ Erro ao clicar em SALVAR ou processar modal: {e}")
 
-    time.sleep(12)  # Aguarda retorno para a tela principal
+    time.sleep(25)  # Aguarda retorno para a tela principal
 
 # Finaliza
-print("✅ Processo concluído para todas as notas.")
+print("✅ Processo concluído para todas  as notas.")
 
