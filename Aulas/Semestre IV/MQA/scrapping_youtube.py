@@ -34,8 +34,8 @@ signal.signal(signal.SIGALRM, timeout_handler)
 ################################################ Funcao Principal ####################################################
 
 def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
-                   videos_target=20000, videos_per_search=10, batch_size=100,
-                   delay_per_video=1.0, delay_per_keyword=2.0,
+                   videos_target=20000, videos_per_search=5, batch_size=100,
+                   delay_per_video=1.0, delay_per_keyword=3.0,
                    usar_cookies=False, navegador="firefox", debug=False):
     """
     Coleta metadados de vídeos do YouTube de forma incremental usando yt-dlp.
@@ -129,7 +129,7 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
 
             try:
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    signal.alarm(30)  # timeout de 30s por busca
+                    signal.alarm(10)  # timeout de 30s por busca
                     info = ydl.extract_info(query, download=False)
                     signal.alarm(0)
                     entries = info.get("entries", [])

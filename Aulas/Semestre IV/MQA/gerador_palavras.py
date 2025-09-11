@@ -59,17 +59,17 @@ def gerar_keywords_globais(arquivo_saida="keywords.txt"):
     """
 
     distribuicao = {
-        "en": 500,   # Inglês
-        "pt": 300,   # Português
-        "es": 300,   # Espanhol
-        "fr": 200,   # Francês
-        "de": 200,   # Alemão
-        "it": 150,   # Italiano
-        "ru": 150,   # Russo
-        "ja": 100,   # Japonês
-        "zh": 100,   # Chinês
-        "ar": 100,   # Árabe
-        "hi": 100    # Hindi
+    "en": 2000,   # Inglês
+    "pt": 1000,   # Português
+    "es": 1000,   # Espanhol
+    "fr": 800,    # Francês
+    "de": 800,    # Alemão
+    "it": 600,    # Italiano
+    "ru": 600,    # Russo
+    "ja": 500,    # Japonês
+    "zh": 500,    # Chinês
+    "ar": 500,    # Árabe
+    "hi": 500     # Hindi
     }
 
     keywords = []
