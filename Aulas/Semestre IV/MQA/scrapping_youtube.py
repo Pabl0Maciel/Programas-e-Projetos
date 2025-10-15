@@ -216,7 +216,7 @@ def coletar_videos(keywords_file="keywords.txt", output_file="videos.csv",
 
 coletar_videos(
     keywords_file="keywords.txt",
-    output_file="videos.csv",
+    output_file="videos2.csv",
     videos_target=20000,
     videos_per_search=5,
     batch_size=50,
