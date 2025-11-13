@@ -1,0 +1,18 @@
+Número de threads: 2
+Comprimindo nanica.txt
+Arquivo de entrada (13 bytes):
+ b    a    n    a    n    a    n    a    n    i    c    a    0x0A
+
+Par mais frequente: 'an' frequencia 4
+Substituindo par por 0x80
+Apos substituir:
+ b    0x80 0x80 0x80 0x80 i    c    a    0x0A
+
+Par mais frequente: '<0x80><0x80>' frequencia 2
+Substituindo par por 0x81
+Apos substituir:
+ b    0x81 0x81 i    c    a    0x0A
+
+Par mais frequente: 'a<0xA>' frequencia 1
+Total de pares substituidos: 2
+FIM

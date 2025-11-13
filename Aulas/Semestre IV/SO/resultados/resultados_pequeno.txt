@@ -1,0 +1,58 @@
+=== Testes para pequeno.txt ===
+
+Threads: 1
+real	0m0,096s
+real	0m0,093s
+real	0m0,093s
+real	0m0,092s
+real	0m0,092s
+
+Threads: 1 (descompactacao)
+real	0m0,016s
+real	0m0,016s
+real	0m0,016s
+real	0m0,015s
+real	0m0,015s
+
+Threads: 2
+real	0m0,096s
+real	0m0,091s
+real	0m0,091s
+real	0m0,091s
+real	0m0,089s
+
+Threads: 2 (descompactacao)
+real	0m0,016s
+real	0m0,017s
+real	0m0,017s
+real	0m0,015s
+real	0m0,015s
+
+Threads: 4
+real	0m0,128s
+real	0m0,105s
+real	0m0,106s
+real	0m0,106s
+real	0m0,106s
+
+Threads: 4 (descompactacao)
+real	0m0,017s
+real	0m0,017s
+real	0m0,015s
+real	0m0,015s
+real	0m0,015s
+
+Threads: 8
+real	0m0,162s
+real	0m0,157s
+real	0m0,159s
+real	0m0,160s
+real	0m0,158s
+
+Threads: 8 (descompactacao)
+real	0m0,016s
+real	0m0,018s
+real	0m0,016s
+real	0m0,015s
+real	0m0,015s
+

@@ -1,0 +1,386 @@
+Número de threads: 4
+Comprimindo nonsense.txt
+Par mais frequente: '  ' frequencia 4107
+Substituindo par por 0x80
+
+Par mais frequente: '<0x80><0x80>' frequencia 1769
+Substituindo par por 0x81
+
+Par mais frequente: '<0xD><0xA>' frequencia 1651
+Substituindo par por 0x82
+
+Par mais frequente: 'e ' frequencia 926
+Substituindo par por 0x83
+
+Par mais frequente: '<0x82><0x81>' frequencia 612
+Substituindo par por 0x84
+
+Par mais frequente: 'd ' frequencia 599
+Substituindo par por 0x85
+
+Par mais frequente: '<0x84><0x81>' frequencia 595
+Substituindo par por 0x86
+
+Par mais frequente: 'th' frequencia 571
+Substituindo par por 0x87
+
+Par mais frequente: 'er' frequencia 567
+Substituindo par por 0x88
+
+Par mais frequente: '<0x86><0x81>' frequencia 561
+Substituindo par por 0x89
+
+Par mais frequente: '<0x80> ' frequencia 560
+Substituindo par por 0x8A
+
+Par mais frequente: '<0x89><0x8A>' frequencia 560
+Substituindo par por 0x8B
+
+Par mais frequente: 's ' frequencia 547
+Substituindo par por 0x8C
+
+Par mais frequente: 'n ' frequencia 540
+Substituindo par por 0x8D
+
+Par mais frequente: 't ' frequencia 518
+Substituindo par por 0x8E
+
+Par mais frequente: 'f ' frequencia 323
+Substituindo par por 0x8F
+
+Par mais frequente: 'or' frequencia 318
+Substituindo par por 0x90
+
+Par mais frequente: 'y ' frequencia 311
+Substituindo par por 0x91
+
+Par mais frequente: 'o<0x8F>' frequencia 294
+Substituindo par por 0x92
+
+Par mais frequente: ',<0x8B>' frequencia 291
+Substituindo par por 0x93
+
+Par mais frequente: '<0x82><0x82>' frequencia 290
+Substituindo par por 0x94
+
+Par mais frequente: 'ou' frequencia 265
+Substituindo par por 0x95
+
+Par mais frequente: 'te' frequencia 254
+Substituindo par por 0x96
+
+Par mais frequente: 'o ' frequencia 250
+Substituindo par por 0x97
+
+Par mais frequente: 'in' frequencia 240
+Substituindo par por 0x98
+
+Par mais frequente: '<0x87><0x83>' frequencia 237
+Substituindo par por 0x99
+
+Par mais frequente: 're' frequencia 232
+Substituindo par por 0x9A
+
+Par mais frequente: 'on' frequencia 225
+Substituindo par por 0x9B
+
+Par mais frequente: 'an' frequencia 212
+Substituindo par por 0x9C
+
+Par mais frequente: 'a<0x8D>' frequencia 212
+Substituindo par por 0x9D
+
+Par mais frequente: ', ' frequencia 197
+Substituindo par por 0x9E
+
+Par mais frequente: 'Th' frequencia 193
+Substituindo par por 0x9F
+
+Par mais frequente: 'wa' frequencia 190
+Substituindo par por 0xA0
+
+Par mais frequente: 'ro' frequencia 184
+Substituindo par por 0xA1
+
+Par mais frequente: 'a ' frequencia 180
+Substituindo par por 0xA2
+
+Par mais frequente: 'ar' frequencia 175
+Substituindo par por 0xA3
+
+Par mais frequente: 'e<0x85>' frequencia 171
+Substituindo par por 0xA4
+
+Par mais frequente: 'ec' frequencia 164
+Substituindo par por 0xA5
+
+Par mais frequente: 'o<0x8D>' frequencia 159
+Substituindo par por 0xA6
+
+Par mais frequente: '<0xA0><0x8C>' frequencia 159
+Substituindo par por 0xA7
+
+Par mais frequente: 'l<0x85>' frequencia 158
+Substituindo par por 0xA8
+
+Par mais frequente: 'Wh' frequencia 157
+Substituindo par por 0xA9
+
+Par mais frequente: 'ti' frequencia 152
+Substituindo par por 0xAA
+
+Par mais frequente: 'll' frequencia 151
+Substituindo par por 0xAB
+
+Par mais frequente: 'en' frequencia 143
+Substituindo par por 0xAC
+
+Par mais frequente: 'g ' frequencia 143
+Substituindo par por 0xAD
+
+Par mais frequente: 'a<0x8E>' frequencia 139
+Substituindo par por 0xAE
+
+Par mais frequente: '<0x88><0x83>' frequencia 130
+Substituindo par por 0xAF
+
+Par mais frequente: '.<0x94>' frequencia 129
+Substituindo par por 0xB0
+
+Par mais frequente: 'O<0xA8>' frequencia 128
+Substituindo par por 0xB1
+
+Par mais frequente: '<0x8B><0x9F>' frequencia 128
+Substituindo par por 0xB2
+
+Par mais frequente: 'wi' frequencia 119
+Substituindo par por 0xB3
+
+Par mais frequente: '<0x93><0xA9>' frequencia 119
+Substituindo par por 0xB4
+
+Par mais frequente: 'ic' frequencia 116
+Substituindo par por 0xB5
+
+Par mais frequente: 'st' frequencia 115
+Substituindo par por 0xB6
+
+Par mais frequente: '<0x94><0x82>' frequencia 114
+Substituindo par por 0xB7
+
+Par mais frequente: '.<0x82>' frequencia 113
+Substituindo par por 0xB8
+
+Par mais frequente: '<0xAF><0xA7>' frequencia 113
+Substituindo par por 0xB9
+
+Par mais frequente: '<0xB2><0xB9>' frequencia 112
+Substituindo par por 0xBA
+
+Par mais frequente: '<0xB8><0xBA>' frequencia 112
+Substituindo par por 0xBB
+
+Par mais frequente: 'i<0x8C>' frequencia 107
+Substituindo par por 0xBC
+
+Par mais frequente: 't<0x97>' frequencia 106
+Substituindo par por 0xBD
+
+Par mais frequente: ';<0x8B>' frequencia 102
+Substituindo par por 0xBE
+
+Par mais frequente: 'u<0x96>' frequencia 102
+Substituindo par por 0xBF
+
+Par mais frequente: 'i<0x8D>' frequencia 100
+Substituindo par por 0xC0
+
+Par mais frequente: 'co' frequencia 99
+Substituindo par por 0xC1
+
+Par mais frequente: 'b<0x88>' frequencia 97
+Substituindo par por 0xC2
+
+Par mais frequente: '<0x90> ' frequencia 97
+Substituindo par por 0xC3
+
+Par mais frequente: '<0x9C><0x85>' frequencia 97
+Substituindo par por 0xC4
+
+Par mais frequente: '<0x87> ' frequencia 95
+Substituindo par por 0xC5
+
+Par mais frequente: 'M<0x9D>' frequencia 94
+Substituindo par por 0xC6
+
+Par mais frequente: '<0xB0><0xB7>' frequencia 94
+Substituindo par por 0xC7
+
+Par mais frequente: 'n<0xC2>' frequencia 93
+Substituindo par por 0xC8
+
+Par mais frequente: '<0xBF><0xC8>' frequencia 93
+Substituindo par por 0xC9
+
+Par mais frequente: 'di' frequencia 92
+Substituindo par por 0xCA
+
+Par mais frequente: '. ' frequencia 90
+Substituindo par por 0xCB
+
+Par mais frequente: 'ri' frequencia 90
+Substituindo par por 0xCC
+
+Par mais frequente: 's<0x83>' frequencia 88
+Substituindo par por 0xCD
+
+Par mais frequente: '<0xBB><0x9D>' frequencia 88
+Substituindo par por 0xCE
+
+Par mais frequente: 'P<0xA1>' frequencia 86
+Substituindo par por 0xCF
+
+Par mais frequente: 'ad' frequencia 86
+Substituindo par por 0xD0
+
+Par mais frequente: 'j<0xA5>' frequencia 86
+Substituindo par por 0xD1
+
+Par mais frequente: 'w<0x90>' frequencia 85
+Substituindo par por 0xD2
+
+Par mais frequente: 'G<0xC9>' frequencia 84
+Substituindo par por 0xD3
+
+Par mais frequente: '<0xB1><0xC6>' frequencia 84
+Substituindo par por 0xD4
+
+Par mais frequente: '<0xCF><0xD1>' frequencia 84
+Substituindo par por 0xD5
+
+Par mais frequente: '<0x98><0xAD>' frequencia 83
+Substituindo par por 0xD6
+
+Par mais frequente: '<0xAB> ' frequencia 83
+Substituindo par por 0xD7
+
+Par mais frequente: 'es' frequencia 80
+Substituindo par por 0xD8
+
+Par mais frequente: 'ch' frequencia 79
+Substituindo par por 0xD9
+
+Par mais frequente: 'y<0x95>' frequencia 79
+Substituindo par por 0xDA
+
+Par mais frequente: '<0xB3><0xC5>' frequencia 79
+Substituindo par por 0xDB
+
+Par mais frequente: '<0xD2>k' frequencia 79
+Substituindo par por 0xDC
+
+Par mais frequente: 'al' frequencia 75
+Substituindo par por 0xDD
+
+Par mais frequente: 'h<0x83>' frequencia 75
+Substituindo par por 0xDE
+
+Par mais frequente: 'a<0xAA>' frequencia 74
+Substituindo par por 0xDF
+
+Par mais frequente: 'la' frequencia 71
+Substituindo par por 0xE0
+
+Par mais frequente: 'se' frequencia 70
+Substituindo par por 0xE1
+
+Par mais frequente: '<0x95>n' frequencia 70
+Substituindo par por 0xE2
+
+Par mais frequente: '<0x88> ' frequencia 69
+Substituindo par por 0xE3
+
+Par mais frequente: '<0x8E><0xD3>' frequencia 69
+Substituindo par por 0xE4
+
+Par mais frequente: '<0xD5><0xE4>' frequencia 69
+Substituindo par por 0xE5
+
+Par mais frequente: 'id' frequencia 68
+Substituindo par por 0xE6
+
+Par mais frequente: 'ag' frequencia 64
+Substituindo par por 0xE7
+
+Par mais frequente: 'at' frequencia 64
+Substituindo par por 0xE8
+
+Par mais frequente: '<0x96><0x85>' frequencia 64
+Substituindo par por 0xE9
+
+Par mais frequente: '<0xA6><0x92>' frequencia 64
+Substituindo par por 0xEA
+
+Par mais frequente: '<0xB4><0x97>' frequencia 64
+Substituindo par por 0xEB
+
+Par mais frequente: 'it' frequencia 60
+Substituindo par por 0xEC
+
+Par mais frequente: '<0x87>e' frequencia 60
+Substituindo par por 0xED
+
+Par mais frequente: '<0x88>s' frequencia 59
+Substituindo par por 0xEE
+
+Par mais frequente: '<0xD4><0x92>' frequencia 59
+Substituindo par por 0xEF
+
+Par mais frequente: '<0xDA> ' frequencia 59
+Substituindo par por 0xF0
+
+Par mais frequente: '(T' frequencia 57
+Substituindo par por 0xF1
+
+Par mais frequente: 'M)' frequencia 57
+Substituindo par por 0xF2
+
+Par mais frequente: 'un' frequencia 57
+Substituindo par por 0xF3
+
+Par mais frequente: '<0xF1><0xF2>' frequencia 57
+Substituindo par por 0xF4
+
+Par mais frequente: 'el' frequencia 56
+Substituindo par por 0xF5
+
+Par mais frequente: 'g<0xF4>' frequencia 56
+Substituindo par por 0xF6
+
+Par mais frequente: 'le' frequencia 54
+Substituindo par por 0xF7
+
+Par mais frequente: 'h ' frequencia 53
+Substituindo par por 0xF8
+
+Par mais frequente: 'no' frequencia 53
+Substituindo par por 0xF9
+
+Par mais frequente: 'tr' frequencia 53
+Substituindo par por 0xFA
+
+Par mais frequente: '<0x87><0xAE>' frequencia 53
+Substituindo par por 0xFB
+
+Par mais frequente: 'wh' frequencia 52
+Substituindo par por 0xFC
+
+Par mais frequente: 'ma' frequencia 51
+Substituindo par por 0xFD
+
+Par mais frequente: '<0xEE><0xEA>' frequencia 51
+Substituindo par por 0xFE
+
+Atingido limite maximo de pares substituidos.
+Total de pares substituidos: 127
+FIM

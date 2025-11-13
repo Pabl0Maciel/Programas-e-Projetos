@@ -1,0 +1,16 @@
+
+./eachrink c AAAA.txt AAAA_teste.chrinked 7
+./eachrink d AAAA.chrinked AAAA_teste.txt 7
+./eachrink c love.txt love_teste.chrinked 5
+./eachrink d love.chrinked love_teste.txt 5
+./eachrink c nanica.txt nanica_teste.chrinked 2
+./eachrink d nanica.chrinked nanica_teste.txt 2
+./eachrink c nonsense.txt nonsense_teste.chrinked 4
+./eachrink d nonsense.chrinked nonsense_teste.txt 4
+./eachrink c nada.txt nada_teste.chrinked 1
+./eachrink d nada.chrinked nada_teste.txt 1
+./eachrink c AnnaKarenina.txt AnnaKarenina_teste.chrinked 8
+./eachrink d AnnaKarenina.chrinked AnnaKarenina_teste.txt 8
+
+
+

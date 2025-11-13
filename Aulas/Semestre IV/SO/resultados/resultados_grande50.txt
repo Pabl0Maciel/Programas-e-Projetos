@@ -1,0 +1,58 @@
+=== Testes para grande50.txt ===
+
+Threads: 1
+real	0m1,131s
+real	0m1,136s
+real	0m1,150s
+real	0m1,134s
+real	0m1,143s
+
+Threads: 1 (descompactacao)
+real	0m0,756s
+real	0m0,770s
+real	0m0,768s
+real	0m0,760s
+real	0m0,730s
+
+Threads: 2
+real	0m0,874s
+real	0m0,800s
+real	0m0,835s
+real	0m0,898s
+real	0m0,897s
+
+Threads: 2 (descompactacao)
+real	0m0,763s
+real	0m0,760s
+real	0m0,742s
+real	0m0,680s
+real	0m0,521s
+
+Threads: 4
+real	0m0,452s
+real	0m0,412s
+real	0m0,425s
+real	0m0,473s
+real	0m0,593s
+
+Threads: 4 (descompactacao)
+real	0m0,737s
+real	0m0,738s
+real	0m0,751s
+real	0m0,729s
+real	0m0,580s
+
+Threads: 8
+real	0m0,481s
+real	0m0,421s
+real	0m0,403s
+real	0m0,407s
+real	0m0,407s
+
+Threads: 8 (descompactacao)
+real	0m0,380s
+real	0m0,366s
+real	0m0,373s
+real	0m0,368s
+real	0m0,381s
+

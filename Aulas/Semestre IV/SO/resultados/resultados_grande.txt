@@ -1,0 +1,58 @@
+=== Testes para grande.txt ===
+
+Threads: 1
+real	0m0,160s
+real	0m0,155s
+real	0m0,140s
+real	0m0,141s
+real	0m0,140s
+
+Threads: 1 (descompactacao)
+real	0m0,075s
+real	0m0,075s
+real	0m0,074s
+real	0m0,074s
+real	0m0,073s
+
+Threads: 2
+real	0m0,121s
+real	0m0,117s
+real	0m0,120s
+real	0m0,121s
+real	0m0,126s
+
+Threads: 2 (descompactacao)
+real	0m0,079s
+real	0m0,075s
+real	0m0,076s
+real	0m0,076s
+real	0m0,076s
+
+Threads: 4
+real	0m0,114s
+real	0m0,115s
+real	0m0,108s
+real	0m0,112s
+real	0m0,112s
+
+Threads: 4 (descompactacao)
+real	0m0,078s
+real	0m0,077s
+real	0m0,075s
+real	0m0,077s
+real	0m0,075s
+
+Threads: 8
+real	0m0,133s
+real	0m0,127s
+real	0m0,129s
+real	0m0,127s
+real	0m0,142s
+
+Threads: 8 (descompactacao)
+real	0m0,101s
+real	0m0,080s
+real	0m0,076s
+real	0m0,076s
+real	0m0,075s
+
