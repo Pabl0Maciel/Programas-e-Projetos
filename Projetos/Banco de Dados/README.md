@@ -47,11 +47,11 @@ um banco de dados funcional e coerente.
 
 ## 📁 **Estrutura do Projeto**
 
-    📦 Projeto_Banco_Vendas/
+    📦 Banco de Dados/
     │
     ├── criacao_banco.py          # Criação do banco e das tabelas
     ├── funcoes_populacao.py      # População de todas as tabelas
-    ├── main.py                   # Arquivo principal que executa tudo
+    ├── Criador_e_Populador.py    # Arquivo principal que executa tudo
     ├── README.md                 # Documentação do projeto
 
 ------------------------------------------------------------------------
@@ -90,7 +90,7 @@ qtd_pedidos = 200
 ### 3. Execute o script principal
 
 ``` bash
-python main.py
+python Criador_e_Populador.py
 ```
 
 Ele irá:
