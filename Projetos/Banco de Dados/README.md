@@ -47,11 +47,11 @@ um banco de dados funcional e coerente.
 
 ## 📁 **Estrutura do Projeto**
 
-    📦 Projeto_Banco_Vendas/
+    📦 Banco de Dados/
     │
     ├── criacao_banco.py          # Criação do banco e das tabelas
     ├── funcoes_populacao.py      # População de todas as tabelas
-    ├── main.py                   # Arquivo principal que executa tudo
+    ├── Criador_e_Populador.py    # Arquivo principal que executa tudo
     ├── README.md                 # Documentação do projeto
 
 ------------------------------------------------------------------------
@@ -90,7 +90,7 @@ qtd_pedidos = 200
 ### 3. Execute o script principal
 
 ``` bash
-python main.py
+python Criador_e_Populador.py
 ```
 
 Ele irá:
@@ -169,36 +169,31 @@ SELECT id_pedido, valor_total FROM venda ORDER BY valor_total DESC LIMIT 10;
 
 ------------------------------------------------------------------------
 
-## 💬 **Contato**
+## 💬 Contato
 
-```{=html}
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+
 <p align="left">
-```
-`<a href="mailto:pablocaballero07@gmail.com" title="Gmail">`{=html}
-`<img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>`{=html}
-`</a>`{=html}
-`<a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">`{=html}
-`<img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>`{=html}
-`</a>`{=html}
-`<a href="https://wa.me/11963934212" title="WhatsApp">`{=html}
-`<img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>`{=html}
-`</a>`{=html}
-`<a href="https://www.instagram.com/pabl0maciel" title="Instagram">`{=html}
-`<img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>`{=html}
-`</a>`{=html}
-```{=html}
+  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
+    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
+  </a>
+  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
+    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://wa.me/11963934212" title="WhatsApp">
+    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
+  </a>
+  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
+    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
+  </a>
 </p>
-```
 
-------------------------------------------------------------------------
+## 🤝 Contribuições
 
-## 🤝 **Contribuições**
+Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
 
-Pull requests são bem-vindos! Qualquer melhoria na modelagem, geração de
-dados ou lógica é muito apreciada.
+## 📜 Licença
 
-------------------------------------------------------------------------
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
-## 📜 **Licença**
-
-Este projeto está licenciado sob a MIT License.
+Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
