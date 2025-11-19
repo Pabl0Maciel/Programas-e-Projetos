@@ -78,6 +78,9 @@ porta = '5432'
 banco = 'loja_vendas'
 ```
 
+![Exemplo de uso](Materiais%20Videos/screencast.gif)
+
+
 Defina os tamanhos do dataset a ser gerado:
 
 ``` python
