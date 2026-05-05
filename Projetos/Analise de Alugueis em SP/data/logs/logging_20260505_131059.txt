@@ -1,0 +1,634 @@
+13:10:59 [INFO] ============================================================
+13:10:59 [INFO] QuintoAndar Scraper — Aluguéis em São Paulo
+13:10:59 [INFO] Modo segmentado: True
+13:10:59 [INFO] Arquivo de log: /home/pabl0maciel/Documents/Programas-e-Projetos/Projetos/Analise de Alugueis em SP/data/logs/logging_20260505_131059.txt
+13:10:59 [INFO] ============================================================
+13:10:59 [INFO] 
+[1/14] Iniciando segmento 'studio_0q'
+13:10:59 [INFO] ────────────────────────────────────────────────────────────
+13:10:59 [INFO] Segmento: studio_0q
+13:10:59 [INFO] Detalhes: bedrooms_min=0, bedrooms_max=0, extra_filters={'houseTypes': ['STUDIO']}
+13:10:59 [INFO] ────────────────────────────────────────────────────────────
+13:10:59 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:11:00 [INFO] 📊 Total estimado do segmento 'studio_0q': 269
+13:11:00 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:11:00 [INFO]    ⏳ Aguardando 1.3s...
+13:11:01 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:11:02 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:11:02 [INFO]    ⏳ Aguardando 1.3s...
+13:11:03 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=67
+13:11:04 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:11:04 [INFO]    ⏳ Aguardando 1.4s...
+13:11:05 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=98
+13:11:05 [INFO]    → 27 novos imóveis adicionados | duplicados ignorados=9
+13:11:05 [INFO]    ⏳ Aguardando 1.7s...
+13:11:07 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=125
+13:11:07 [INFO]    → 33 novos imóveis adicionados | duplicados ignorados=3
+13:11:07 [INFO]    ⏳ Aguardando 2.7s...
+13:11:10 [INFO] 📄 Página 6 | offset=180 | acumulado_segmento=158
+13:11:11 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:11:11 [INFO]    ⏳ Aguardando 1.6s...
+13:11:13 [INFO] 📄 Página 7 | offset=216 | acumulado_segmento=189
+13:11:13 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:11:13 [INFO]    ⏳ Aguardando 1.7s...
+13:11:15 [INFO] 📄 Página 8 | offset=252 | acumulado_segmento=213
+13:11:16 [INFO]    → 17 novos imóveis adicionados | duplicados ignorados=0
+13:11:16 [INFO]    ⏳ Aguardando 1.2s...
+13:11:17 [INFO] 📄 Página 9 | offset=288 | acumulado_segmento=230
+13:11:18 [INFO] ✅ Fim da lista de imóveis no segmento 'studio_0q'.
+13:11:18 [INFO] 🏁 Segmento 'studio_0q' finalizado com 230 imóveis únicos.
+13:11:18 [INFO] 📦 Acumulado global até agora: 230 imóveis únicos
+13:11:18 [INFO] 😴 Pausa entre segmentos: 9.0s...
+13:11:27 [INFO] 
+[2/14] Iniciando segmento 'studio_1q'
+13:11:27 [INFO] ────────────────────────────────────────────────────────────
+13:11:27 [INFO] Segmento: studio_1q
+13:11:27 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['STUDIO']}
+13:11:27 [INFO] ────────────────────────────────────────────────────────────
+13:11:27 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:11:27 [INFO] 📊 Total estimado do segmento 'studio_1q': 6729
+13:11:27 [WARNING] ⚠️ Segmento 'studio_1q' parece saturado (total estimado=6729). Considere subdividir por preço futuramente.
+13:11:27 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:11:27 [INFO]    ⏳ Aguardando 2.2s...
+13:11:30 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:11:30 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:11:30 [INFO]    ⏳ Aguardando 1.4s...
+13:11:32 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=72
+13:11:32 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:11:32 [INFO]    ⏳ Aguardando 2.2s...
+13:11:34 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=108
+13:11:35 [INFO]    → 21 novos imóveis adicionados | duplicados ignorados=15
+13:11:35 [INFO]    ⏳ Aguardando 2.4s...
+13:11:37 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=129
+13:11:38 [INFO]    → 17 novos imóveis adicionados | duplicados ignorados=19
+13:11:38 [INFO]    ⏳ Aguardando 1.7s...
+13:11:40 [INFO] 📄 Página 6 | offset=180 | acumulado_segmento=146
+13:11:40 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:11:40 [INFO]    ⏳ Aguardando 2.3s...
+13:11:42 [INFO] 📄 Página 7 | offset=216 | acumulado_segmento=182
+13:11:43 [INFO]    → 23 novos imóveis adicionados | duplicados ignorados=13
+13:11:43 [INFO]    ⏳ Aguardando 2.1s...
+13:11:45 [INFO] 📄 Página 8 | offset=252 | acumulado_segmento=205
+13:11:46 [INFO]    → 15 novos imóveis adicionados | duplicados ignorados=21
+13:11:46 [INFO]    ⏳ Aguardando 1.2s...
+13:11:47 [INFO] 📄 Página 9 | offset=288 | acumulado_segmento=220
+13:11:47 [INFO]    → 29 novos imóveis adicionados | duplicados ignorados=7
+13:11:47 [INFO]    ⏳ Aguardando 1.6s...
+13:11:49 [INFO] 📄 Página 10 | offset=324 | acumulado_segmento=249
+13:11:49 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:11:49 [INFO]    ⏳ Aguardando 2.7s...
+13:11:52 [INFO] 📄 Página 11 | offset=360 | acumulado_segmento=285
+13:11:52 [INFO]    → 30 novos imóveis adicionados | duplicados ignorados=6
+13:11:52 [INFO]    ⏳ Aguardando 2.0s...
+13:11:54 [INFO] 📄 Página 12 | offset=396 | acumulado_segmento=315
+13:11:55 [INFO]    → 23 novos imóveis adicionados | duplicados ignorados=13
+13:11:55 [INFO]    ⏳ Aguardando 1.4s...
+13:11:57 [INFO] 📄 Página 13 | offset=432 | acumulado_segmento=338
+13:11:57 [INFO]    → 26 novos imóveis adicionados | duplicados ignorados=10
+13:11:57 [INFO]    ⏳ Aguardando 2.2s...
+13:11:59 [INFO] 📄 Página 14 | offset=468 | acumulado_segmento=364
+13:12:00 [INFO]    → 16 novos imóveis adicionados | duplicados ignorados=20
+13:12:00 [INFO]    ⏳ Aguardando 1.9s...
+13:12:02 [INFO] 📄 Página 15 | offset=504 | acumulado_segmento=380
+13:12:03 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:12:03 [INFO]    ⏳ Aguardando 1.7s...
+13:12:04 [INFO] 📄 Página 16 | offset=540 | acumulado_segmento=411
+13:12:05 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:12:05 [INFO]    ⏳ Aguardando 1.6s...
+13:12:07 [INFO] 📄 Página 17 | offset=576 | acumulado_segmento=431
+13:12:07 [INFO]    → 23 novos imóveis adicionados | duplicados ignorados=13
+13:12:07 [INFO]    ⏳ Aguardando 2.1s...
+13:12:09 [INFO] 📄 Página 18 | offset=612 | acumulado_segmento=454
+13:12:10 [INFO]    → 29 novos imóveis adicionados | duplicados ignorados=7
+13:12:10 [INFO]    ⏳ Aguardando 2.3s...
+13:12:12 [INFO] 📄 Página 19 | offset=648 | acumulado_segmento=483
+13:12:13 [INFO]    → 26 novos imóveis adicionados | duplicados ignorados=10
+13:12:13 [INFO]    ⏳ Aguardando 2.0s...
+13:12:15 [INFO] 📄 Página 20 | offset=684 | acumulado_segmento=509
+13:12:15 [INFO]    → 12 novos imóveis adicionados | duplicados ignorados=24
+13:12:15 [INFO]    ⏳ Aguardando 2.5s...
+13:12:18 [INFO] 📄 Página 21 | offset=720 | acumulado_segmento=521
+13:12:18 [INFO]    → 19 novos imóveis adicionados | duplicados ignorados=17
+13:12:18 [INFO]    ⏳ Aguardando 2.5s...
+13:12:21 [INFO] 📄 Página 22 | offset=756 | acumulado_segmento=540
+13:12:21 [INFO]    → 18 novos imóveis adicionados | duplicados ignorados=18
+13:12:21 [INFO]    ⏳ Aguardando 2.8s...
+13:12:24 [INFO] 📄 Página 23 | offset=792 | acumulado_segmento=558
+13:12:24 [INFO]    → 3 novos imóveis adicionados | duplicados ignorados=33
+13:12:24 [INFO]    ⏳ Aguardando 2.1s...
+13:12:27 [INFO] 📄 Página 24 | offset=828 | acumulado_segmento=561
+13:12:27 [INFO]    → 30 novos imóveis adicionados | duplicados ignorados=6
+13:12:27 [INFO]    ⏳ Aguardando 2.1s...
+13:12:29 [INFO] 📄 Página 25 | offset=864 | acumulado_segmento=591
+13:12:29 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:12:29 [INFO]    ⏳ Aguardando 1.4s...
+13:12:31 [INFO] 📄 Página 26 | offset=900 | acumulado_segmento=627
+13:12:31 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:12:31 [INFO]    ⏳ Aguardando 1.5s...
+13:12:33 [INFO] 📄 Página 27 | offset=936 | acumulado_segmento=663
+13:12:33 [INFO]    → 23 novos imóveis adicionados | duplicados ignorados=13
+13:12:33 [INFO]    ⏳ Aguardando 2.1s...
+13:12:36 [INFO] 📄 Página 28 | offset=972 | acumulado_segmento=686
+13:12:36 [WARNING] HTTP 400 no offset 972 — provável limite/fim da paginação deste segmento.
+13:12:36 [INFO] Encerrando segmento 'studio_1q' por resposta nula/fim.
+13:12:36 [INFO] 🏁 Segmento 'studio_1q' finalizado com 686 imóveis únicos.
+13:12:36 [INFO] 📦 Acumulado global até agora: 916 imóveis únicos
+13:12:36 [INFO] 😴 Pausa entre segmentos: 7.1s...
+13:12:43 [INFO] 
+[3/14] Iniciando segmento '1q_apto'
+13:12:43 [INFO] ────────────────────────────────────────────────────────────
+13:12:43 [INFO] Segmento: 1q_apto
+13:12:43 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['APARTMENT']}
+13:12:43 [INFO] ────────────────────────────────────────────────────────────
+13:12:43 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:12:44 [INFO] 📊 Total estimado do segmento '1q_apto': 6679
+13:12:44 [WARNING] ⚠️ Segmento '1q_apto' parece saturado (total estimado=6679). Considere subdividir por preço futuramente.
+13:12:44 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:12:44 [INFO]    ⏳ Aguardando 2.3s...
+13:12:46 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:12:47 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:12:47 [INFO]    ⏳ Aguardando 2.7s...
+13:12:50 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=72
+13:12:51 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:12:51 [INFO]    ⏳ Aguardando 2.6s...
+13:12:54 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=108
+13:12:54 [INFO]    → 35 novos imóveis adicionados | duplicados ignorados=1
+13:12:54 [INFO]    ⏳ Aguardando 2.0s...
+13:12:56 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=143
+13:12:56 [INFO]    → 33 novos imóveis adicionados | duplicados ignorados=3
+13:12:56 [INFO]    ⏳ Aguardando 1.5s...
+13:12:58 [INFO] 📄 Página 6 | offset=180 | acumulado_segmento=176
+13:12:58 [INFO]    → 29 novos imóveis adicionados | duplicados ignorados=7
+13:12:58 [INFO]    ⏳ Aguardando 1.3s...
+13:13:00 [INFO] 📄 Página 7 | offset=216 | acumulado_segmento=205
+13:13:00 [INFO]    → 26 novos imóveis adicionados | duplicados ignorados=10
+13:13:00 [INFO]    ⏳ Aguardando 2.3s...
+13:13:03 [INFO] 📄 Página 8 | offset=252 | acumulado_segmento=231
+13:13:03 [INFO]    → 25 novos imóveis adicionados | duplicados ignorados=11
+13:13:03 [INFO]    ⏳ Aguardando 2.7s...
+13:13:06 [INFO] 📄 Página 9 | offset=288 | acumulado_segmento=256
+13:13:06 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:13:06 [INFO]    ⏳ Aguardando 2.3s...
+13:13:09 [INFO] 📄 Página 10 | offset=324 | acumulado_segmento=292
+13:13:09 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:13:09 [INFO]    ⏳ Aguardando 2.0s...
+13:13:11 [INFO] 📄 Página 11 | offset=360 | acumulado_segmento=324
+13:13:11 [INFO]    → 30 novos imóveis adicionados | duplicados ignorados=6
+13:13:11 [INFO]    ⏳ Aguardando 1.6s...
+13:13:13 [INFO] 📄 Página 12 | offset=396 | acumulado_segmento=354
+13:13:13 [INFO]    → 28 novos imóveis adicionados | duplicados ignorados=8
+13:13:13 [INFO]    ⏳ Aguardando 1.6s...
+13:13:15 [INFO] 📄 Página 13 | offset=432 | acumulado_segmento=382
+13:13:15 [INFO]    → 18 novos imóveis adicionados | duplicados ignorados=18
+13:13:15 [INFO]    ⏳ Aguardando 1.3s...
+13:13:17 [INFO] 📄 Página 14 | offset=468 | acumulado_segmento=400
+13:13:17 [INFO]    → 28 novos imóveis adicionados | duplicados ignorados=8
+13:13:17 [INFO]    ⏳ Aguardando 2.6s...
+13:13:20 [INFO] 📄 Página 15 | offset=504 | acumulado_segmento=428
+13:13:21 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:13:21 [INFO]    ⏳ Aguardando 2.8s...
+13:13:23 [INFO] 📄 Página 16 | offset=540 | acumulado_segmento=460
+13:13:24 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:13:24 [INFO]    ⏳ Aguardando 2.2s...
+13:13:26 [INFO] 📄 Página 17 | offset=576 | acumulado_segmento=480
+13:13:26 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:13:26 [INFO]    ⏳ Aguardando 2.6s...
+13:13:29 [INFO] 📄 Página 18 | offset=612 | acumulado_segmento=504
+13:13:30 [INFO]    → 27 novos imóveis adicionados | duplicados ignorados=9
+13:13:30 [INFO]    ⏳ Aguardando 1.6s...
+13:13:31 [INFO] 📄 Página 19 | offset=648 | acumulado_segmento=531
+13:13:32 [INFO]    → 16 novos imóveis adicionados | duplicados ignorados=20
+13:13:32 [INFO]    ⏳ Aguardando 1.5s...
+13:13:34 [INFO] 📄 Página 20 | offset=684 | acumulado_segmento=547
+13:13:34 [INFO]    → 13 novos imóveis adicionados | duplicados ignorados=23
+13:13:34 [INFO]    ⏳ Aguardando 2.8s...
+13:13:37 [INFO] 📄 Página 21 | offset=720 | acumulado_segmento=560
+13:13:37 [INFO]    → 11 novos imóveis adicionados | duplicados ignorados=25
+13:13:37 [INFO]    ⏳ Aguardando 1.6s...
+13:13:39 [INFO] 📄 Página 22 | offset=756 | acumulado_segmento=571
+13:13:39 [INFO]    → 25 novos imóveis adicionados | duplicados ignorados=11
+13:13:39 [INFO]    ⏳ Aguardando 2.2s...
+13:13:41 [INFO] 📄 Página 23 | offset=792 | acumulado_segmento=596
+13:13:42 [INFO]    → 25 novos imóveis adicionados | duplicados ignorados=11
+13:13:42 [INFO]    ⏳ Aguardando 1.4s...
+13:13:43 [INFO] 📄 Página 24 | offset=828 | acumulado_segmento=621
+13:13:44 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:13:44 [INFO]    ⏳ Aguardando 1.5s...
+13:13:45 [INFO] 📄 Página 25 | offset=864 | acumulado_segmento=657
+13:13:46 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:13:46 [INFO]    ⏳ Aguardando 2.1s...
+13:13:48 [INFO] 📄 Página 26 | offset=900 | acumulado_segmento=681
+13:13:49 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:13:49 [INFO]    ⏳ Aguardando 1.8s...
+13:13:50 [INFO] 📄 Página 27 | offset=936 | acumulado_segmento=717
+13:13:51 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:13:51 [INFO]    ⏳ Aguardando 1.4s...
+13:13:52 [INFO] 📄 Página 28 | offset=972 | acumulado_segmento=753
+13:13:52 [WARNING] HTTP 400 no offset 972 — provável limite/fim da paginação deste segmento.
+13:13:52 [INFO] Encerrando segmento '1q_apto' por resposta nula/fim.
+13:13:52 [INFO] 🏁 Segmento '1q_apto' finalizado com 753 imóveis únicos.
+13:13:52 [INFO] 📦 Acumulado global até agora: 1669 imóveis únicos
+13:13:52 [INFO] 😴 Pausa entre segmentos: 7.9s...
+13:14:00 [INFO] 
+[4/14] Iniciando segmento '1q_casa'
+13:14:00 [INFO] ────────────────────────────────────────────────────────────
+13:14:00 [INFO] Segmento: 1q_casa
+13:14:00 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['HOME']}
+13:14:00 [INFO] ────────────────────────────────────────────────────────────
+13:14:00 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:14:01 [WARNING] HTTP 400 no offset 0 — provável limite/fim da paginação deste segmento.
+13:14:01 [INFO] Encerrando segmento '1q_casa' por resposta nula/fim.
+13:14:01 [INFO] 🏁 Segmento '1q_casa' finalizado com 0 imóveis únicos.
+13:14:01 [INFO] 📦 Acumulado global até agora: 1669 imóveis únicos
+13:14:01 [INFO] 😴 Pausa entre segmentos: 6.4s...
+13:14:07 [INFO] 
+[5/14] Iniciando segmento '1q_condo'
+13:14:07 [INFO] ────────────────────────────────────────────────────────────
+13:14:07 [INFO] Segmento: 1q_condo
+13:14:07 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+13:14:07 [INFO] ────────────────────────────────────────────────────────────
+13:14:07 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:14:07 [INFO] 📊 Total estimado do segmento '1q_condo': 94
+13:14:07 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:07 [INFO]    ⏳ Aguardando 2.5s...
+13:14:10 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:14:10 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:10 [INFO]    ⏳ Aguardando 2.4s...
+13:14:13 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=72
+13:14:13 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=2
+13:14:13 [INFO]    ⏳ Aguardando 2.4s...
+13:14:15 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=92
+13:14:16 [INFO] ✅ Fim da lista de imóveis no segmento '1q_condo'.
+13:14:16 [INFO] 🏁 Segmento '1q_condo' finalizado com 92 imóveis únicos.
+13:14:16 [INFO] 📦 Acumulado global até agora: 1761 imóveis únicos
+13:14:16 [INFO] 😴 Pausa entre segmentos: 5.9s...
+13:14:22 [INFO] 
+[6/14] Iniciando segmento '2q_apto'
+13:14:22 [INFO] ────────────────────────────────────────────────────────────
+13:14:22 [INFO] Segmento: 2q_apto
+13:14:22 [INFO] Detalhes: bedrooms_min=2, bedrooms_max=2, extra_filters={'houseTypes': ['APARTMENT']}
+13:14:22 [INFO] ────────────────────────────────────────────────────────────
+13:14:22 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:14:22 [INFO] 📊 Total estimado do segmento '2q_apto': 7517
+13:14:22 [WARNING] ⚠️ Segmento '2q_apto' parece saturado (total estimado=7517). Considere subdividir por preço futuramente.
+13:14:22 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:22 [INFO]    ⏳ Aguardando 1.3s...
+13:14:24 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:14:24 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:24 [INFO]    ⏳ Aguardando 2.9s...
+13:14:27 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=72
+13:14:28 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:28 [INFO]    ⏳ Aguardando 2.2s...
+13:14:30 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=108
+13:14:31 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:14:31 [INFO]    ⏳ Aguardando 1.5s...
+13:14:32 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=140
+13:14:32 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:14:32 [INFO]    ⏳ Aguardando 2.9s...
+13:14:35 [INFO] 📄 Página 6 | offset=180 | acumulado_segmento=171
+13:14:36 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:14:36 [INFO]    ⏳ Aguardando 2.1s...
+13:14:38 [INFO] 📄 Página 7 | offset=216 | acumulado_segmento=191
+13:14:38 [INFO]    → 35 novos imóveis adicionados | duplicados ignorados=1
+13:14:38 [INFO]    ⏳ Aguardando 2.1s...
+13:14:41 [INFO] 📄 Página 8 | offset=252 | acumulado_segmento=226
+13:14:41 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:41 [INFO]    ⏳ Aguardando 2.3s...
+13:14:44 [INFO] 📄 Página 9 | offset=288 | acumulado_segmento=262
+13:14:44 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:44 [INFO]    ⏳ Aguardando 1.4s...
+13:14:46 [INFO] 📄 Página 10 | offset=324 | acumulado_segmento=298
+13:14:47 [INFO]    → 35 novos imóveis adicionados | duplicados ignorados=1
+13:14:47 [INFO]    ⏳ Aguardando 1.6s...
+13:14:48 [INFO] 📄 Página 11 | offset=360 | acumulado_segmento=333
+13:14:49 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:14:49 [INFO]    ⏳ Aguardando 2.8s...
+13:14:52 [INFO] 📄 Página 12 | offset=396 | acumulado_segmento=357
+13:14:52 [INFO]    → 14 novos imóveis adicionados | duplicados ignorados=22
+13:14:52 [INFO]    ⏳ Aguardando 2.0s...
+13:14:54 [INFO] 📄 Página 13 | offset=432 | acumulado_segmento=371
+13:14:55 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:14:55 [INFO]    ⏳ Aguardando 3.0s...
+13:14:58 [INFO] 📄 Página 14 | offset=468 | acumulado_segmento=407
+13:14:59 [INFO]    → 27 novos imóveis adicionados | duplicados ignorados=9
+13:14:59 [INFO]    ⏳ Aguardando 2.8s...
+13:15:02 [INFO] 📄 Página 15 | offset=504 | acumulado_segmento=434
+13:15:02 [INFO]    → 27 novos imóveis adicionados | duplicados ignorados=9
+13:15:02 [INFO]    ⏳ Aguardando 1.6s...
+13:15:04 [INFO] 📄 Página 16 | offset=540 | acumulado_segmento=461
+13:15:05 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:15:05 [INFO]    ⏳ Aguardando 2.0s...
+13:15:07 [INFO] 📄 Página 17 | offset=576 | acumulado_segmento=485
+13:15:08 [INFO]    → 14 novos imóveis adicionados | duplicados ignorados=22
+13:15:08 [INFO]    ⏳ Aguardando 2.1s...
+13:15:10 [INFO] 📄 Página 18 | offset=612 | acumulado_segmento=499
+13:15:11 [INFO]    → 29 novos imóveis adicionados | duplicados ignorados=7
+13:15:11 [INFO]    ⏳ Aguardando 1.9s...
+13:15:12 [INFO] 📄 Página 19 | offset=648 | acumulado_segmento=528
+13:15:13 [INFO]    → 19 novos imóveis adicionados | duplicados ignorados=17
+13:15:13 [INFO]    ⏳ Aguardando 2.3s...
+13:15:15 [INFO] 📄 Página 20 | offset=684 | acumulado_segmento=547
+13:15:16 [INFO]    → 12 novos imóveis adicionados | duplicados ignorados=24
+13:15:16 [INFO]    ⏳ Aguardando 1.7s...
+13:15:17 [INFO] 📄 Página 21 | offset=720 | acumulado_segmento=559
+13:15:18 [INFO]    → 13 novos imóveis adicionados | duplicados ignorados=23
+13:15:18 [INFO]    ⏳ Aguardando 2.6s...
+13:15:20 [INFO] 📄 Página 22 | offset=756 | acumulado_segmento=572
+13:15:21 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:15:21 [INFO]    ⏳ Aguardando 2.2s...
+13:15:23 [INFO] 📄 Página 23 | offset=792 | acumulado_segmento=592
+13:15:24 [INFO]    → 9 novos imóveis adicionados | duplicados ignorados=27
+13:15:24 [INFO]    ⏳ Aguardando 1.7s...
+13:15:26 [INFO] 📄 Página 24 | offset=828 | acumulado_segmento=601
+13:15:26 [INFO]    → 9 novos imóveis adicionados | duplicados ignorados=27
+13:15:26 [INFO]    ⏳ Aguardando 2.8s...
+13:15:29 [INFO] 📄 Página 25 | offset=864 | acumulado_segmento=610
+13:15:29 [INFO]    → 23 novos imóveis adicionados | duplicados ignorados=13
+13:15:29 [INFO]    ⏳ Aguardando 2.7s...
+13:15:32 [INFO] 📄 Página 26 | offset=900 | acumulado_segmento=633
+13:15:33 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:15:33 [INFO]    ⏳ Aguardando 1.4s...
+13:15:34 [INFO] 📄 Página 27 | offset=936 | acumulado_segmento=669
+13:15:34 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:15:34 [INFO]    ⏳ Aguardando 1.4s...
+13:15:36 [INFO] 📄 Página 28 | offset=972 | acumulado_segmento=700
+13:15:36 [WARNING] HTTP 400 no offset 972 — provável limite/fim da paginação deste segmento.
+13:15:36 [INFO] Encerrando segmento '2q_apto' por resposta nula/fim.
+13:15:36 [INFO] 🏁 Segmento '2q_apto' finalizado com 700 imóveis únicos.
+13:15:36 [INFO] 📦 Acumulado global até agora: 2461 imóveis únicos
+13:15:36 [INFO] 😴 Pausa entre segmentos: 6.2s...
+13:15:42 [INFO] 
+[7/14] Iniciando segmento '2q_casa'
+13:15:42 [INFO] ────────────────────────────────────────────────────────────
+13:15:42 [INFO] Segmento: 2q_casa
+13:15:42 [INFO] Detalhes: bedrooms_min=2, bedrooms_max=2, extra_filters={'houseTypes': ['HOME']}
+13:15:42 [INFO] ────────────────────────────────────────────────────────────
+13:15:42 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:15:43 [WARNING] HTTP 400 no offset 0 — provável limite/fim da paginação deste segmento.
+13:15:43 [INFO] Encerrando segmento '2q_casa' por resposta nula/fim.
+13:15:43 [INFO] 🏁 Segmento '2q_casa' finalizado com 0 imóveis únicos.
+13:15:43 [INFO] 📦 Acumulado global até agora: 2461 imóveis únicos
+13:15:43 [INFO] 😴 Pausa entre segmentos: 6.2s...
+13:15:49 [INFO] 
+[8/14] Iniciando segmento '2q_condo'
+13:15:49 [INFO] ────────────────────────────────────────────────────────────
+13:15:49 [INFO] Segmento: 2q_condo
+13:15:49 [INFO] Detalhes: bedrooms_min=2, bedrooms_max=2, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+13:15:49 [INFO] ────────────────────────────────────────────────────────────
+13:15:49 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:15:49 [INFO] 📊 Total estimado do segmento '2q_condo': 124
+13:15:49 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:15:49 [INFO]    ⏳ Aguardando 2.4s...
+13:15:52 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:15:52 [INFO]    → 33 novos imóveis adicionados | duplicados ignorados=3
+13:15:52 [INFO]    ⏳ Aguardando 2.6s...
+13:15:55 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=69
+13:15:55 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:15:55 [INFO]    ⏳ Aguardando 1.5s...
+13:15:57 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=105
+13:15:57 [INFO]    → 13 novos imóveis adicionados | duplicados ignorados=3
+13:15:57 [INFO]    ⏳ Aguardando 2.1s...
+13:15:59 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=118
+13:16:00 [INFO] ✅ Fim da lista de imóveis no segmento '2q_condo'.
+13:16:00 [INFO] 🏁 Segmento '2q_condo' finalizado com 118 imóveis únicos.
+13:16:00 [INFO] 📦 Acumulado global até agora: 2579 imóveis únicos
+13:16:00 [INFO] 😴 Pausa entre segmentos: 8.0s...
+13:16:08 [INFO] 
+[9/14] Iniciando segmento '3q_apto'
+13:16:08 [INFO] ────────────────────────────────────────────────────────────
+13:16:08 [INFO] Segmento: 3q_apto
+13:16:08 [INFO] Detalhes: bedrooms_min=3, bedrooms_max=3, extra_filters={'houseTypes': ['APARTMENT']}
+13:16:08 [INFO] ────────────────────────────────────────────────────────────
+13:16:08 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:16:08 [INFO] 📊 Total estimado do segmento '3q_apto': 3015
+13:16:08 [WARNING] ⚠️ Segmento '3q_apto' parece saturado (total estimado=3015). Considere subdividir por preço futuramente.
+13:16:08 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:16:08 [INFO]    ⏳ Aguardando 1.8s...
+13:16:10 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:16:10 [INFO]    → 31 novos imóveis adicionados | duplicados ignorados=5
+13:16:10 [INFO]    ⏳ Aguardando 1.6s...
+13:16:12 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=67
+13:16:12 [INFO]    → 35 novos imóveis adicionados | duplicados ignorados=1
+13:16:12 [INFO]    ⏳ Aguardando 2.6s...
+13:16:15 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=102
+13:16:16 [INFO]    → 28 novos imóveis adicionados | duplicados ignorados=8
+13:16:16 [INFO]    ⏳ Aguardando 2.6s...
+13:16:18 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=130
+13:16:19 [INFO]    → 28 novos imóveis adicionados | duplicados ignorados=8
+13:16:19 [INFO]    ⏳ Aguardando 1.4s...
+13:16:20 [INFO] 📄 Página 6 | offset=180 | acumulado_segmento=158
+13:16:21 [INFO]    → 16 novos imóveis adicionados | duplicados ignorados=20
+13:16:21 [INFO]    ⏳ Aguardando 1.3s...
+13:16:22 [INFO] 📄 Página 7 | offset=216 | acumulado_segmento=174
+13:16:22 [INFO]    → 27 novos imóveis adicionados | duplicados ignorados=9
+13:16:22 [INFO]    ⏳ Aguardando 1.8s...
+13:16:24 [INFO] 📄 Página 8 | offset=252 | acumulado_segmento=201
+13:16:24 [INFO]    → 19 novos imóveis adicionados | duplicados ignorados=17
+13:16:24 [INFO]    ⏳ Aguardando 2.8s...
+13:16:27 [INFO] 📄 Página 9 | offset=288 | acumulado_segmento=220
+13:16:28 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:16:28 [INFO]    ⏳ Aguardando 2.2s...
+13:16:30 [INFO] 📄 Página 10 | offset=324 | acumulado_segmento=240
+13:16:32 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:16:32 [INFO]    ⏳ Aguardando 2.9s...
+13:16:35 [INFO] 📄 Página 11 | offset=360 | acumulado_segmento=276
+13:16:35 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:16:35 [INFO]    ⏳ Aguardando 2.3s...
+13:16:38 [INFO] 📄 Página 12 | offset=396 | acumulado_segmento=312
+13:16:38 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:16:38 [INFO]    ⏳ Aguardando 1.3s...
+13:16:39 [INFO] 📄 Página 13 | offset=432 | acumulado_segmento=348
+13:16:40 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:16:40 [INFO]    ⏳ Aguardando 2.1s...
+13:16:42 [INFO] 📄 Página 14 | offset=468 | acumulado_segmento=372
+13:16:42 [INFO]    → 30 novos imóveis adicionados | duplicados ignorados=6
+13:16:42 [INFO]    ⏳ Aguardando 2.4s...
+13:16:45 [INFO] 📄 Página 15 | offset=504 | acumulado_segmento=402
+13:16:45 [INFO]    → 30 novos imóveis adicionados | duplicados ignorados=6
+13:16:45 [INFO]    ⏳ Aguardando 1.5s...
+13:16:47 [INFO] 📄 Página 16 | offset=540 | acumulado_segmento=432
+13:16:48 [INFO]    → 24 novos imóveis adicionados | duplicados ignorados=12
+13:16:48 [INFO]    ⏳ Aguardando 2.7s...
+13:16:50 [INFO] 📄 Página 17 | offset=576 | acumulado_segmento=456
+13:16:52 [INFO]    → 19 novos imóveis adicionados | duplicados ignorados=17
+13:16:52 [INFO]    ⏳ Aguardando 1.6s...
+13:16:53 [INFO] 📄 Página 18 | offset=612 | acumulado_segmento=475
+13:16:54 [INFO]    → 9 novos imóveis adicionados | duplicados ignorados=27
+13:16:54 [INFO]    ⏳ Aguardando 2.1s...
+13:16:56 [INFO] 📄 Página 19 | offset=648 | acumulado_segmento=484
+13:16:56 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:16:56 [INFO]    ⏳ Aguardando 2.5s...
+13:16:59 [INFO] 📄 Página 20 | offset=684 | acumulado_segmento=516
+13:17:00 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:17:00 [INFO]    ⏳ Aguardando 1.3s...
+13:17:01 [INFO] 📄 Página 21 | offset=720 | acumulado_segmento=552
+13:17:02 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:17:02 [INFO]    ⏳ Aguardando 1.9s...
+13:17:04 [INFO] 📄 Página 22 | offset=756 | acumulado_segmento=588
+13:17:04 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:17:04 [INFO]    ⏳ Aguardando 2.5s...
+13:17:07 [INFO] 📄 Página 23 | offset=792 | acumulado_segmento=624
+13:17:07 [INFO]    → 30 novos imóveis adicionados | duplicados ignorados=6
+13:17:07 [INFO]    ⏳ Aguardando 1.9s...
+13:17:09 [INFO] 📄 Página 24 | offset=828 | acumulado_segmento=654
+13:17:10 [INFO]    → 8 novos imóveis adicionados | duplicados ignorados=28
+13:17:10 [INFO]    ⏳ Aguardando 2.5s...
+13:17:12 [INFO] 📄 Página 25 | offset=864 | acumulado_segmento=662
+13:17:13 [INFO]    → 15 novos imóveis adicionados | duplicados ignorados=21
+13:17:13 [INFO]    ⏳ Aguardando 1.2s...
+13:17:14 [INFO] 📄 Página 26 | offset=900 | acumulado_segmento=677
+13:17:15 [INFO]    → 17 novos imóveis adicionados | duplicados ignorados=19
+13:17:15 [INFO]    ⏳ Aguardando 1.6s...
+13:17:16 [INFO] 📄 Página 27 | offset=936 | acumulado_segmento=694
+13:17:17 [INFO]    → 29 novos imóveis adicionados | duplicados ignorados=7
+13:17:17 [INFO]    ⏳ Aguardando 1.3s...
+13:17:18 [INFO] 📄 Página 28 | offset=972 | acumulado_segmento=723
+13:17:18 [WARNING] HTTP 400 no offset 972 — provável limite/fim da paginação deste segmento.
+13:17:18 [INFO] Encerrando segmento '3q_apto' por resposta nula/fim.
+13:17:18 [INFO] 🏁 Segmento '3q_apto' finalizado com 723 imóveis únicos.
+13:17:18 [INFO] 📦 Acumulado global até agora: 3302 imóveis únicos
+13:17:18 [INFO] 😴 Pausa entre segmentos: 6.2s...
+13:17:24 [INFO] 
+[10/14] Iniciando segmento '3q_casa'
+13:17:24 [INFO] ────────────────────────────────────────────────────────────
+13:17:24 [INFO] Segmento: 3q_casa
+13:17:24 [INFO] Detalhes: bedrooms_min=3, bedrooms_max=3, extra_filters={'houseTypes': ['HOME']}
+13:17:24 [INFO] ────────────────────────────────────────────────────────────
+13:17:24 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:17:25 [WARNING] HTTP 400 no offset 0 — provável limite/fim da paginação deste segmento.
+13:17:25 [INFO] Encerrando segmento '3q_casa' por resposta nula/fim.
+13:17:25 [INFO] 🏁 Segmento '3q_casa' finalizado com 0 imóveis únicos.
+13:17:25 [INFO] 📦 Acumulado global até agora: 3302 imóveis únicos
+13:17:25 [INFO] 😴 Pausa entre segmentos: 5.1s...
+13:17:30 [INFO] 
+[11/14] Iniciando segmento '3q_condo'
+13:17:30 [INFO] ────────────────────────────────────────────────────────────
+13:17:30 [INFO] Segmento: 3q_condo
+13:17:30 [INFO] Detalhes: bedrooms_min=3, bedrooms_max=3, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+13:17:30 [INFO] ────────────────────────────────────────────────────────────
+13:17:30 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:17:31 [INFO] 📊 Total estimado do segmento '3q_condo': 92
+13:17:31 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:17:31 [INFO]    ⏳ Aguardando 1.4s...
+13:17:32 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:17:33 [INFO]    → 35 novos imóveis adicionados | duplicados ignorados=1
+13:17:33 [INFO]    ⏳ Aguardando 1.3s...
+13:17:34 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=71
+13:17:35 [INFO]    → 18 novos imóveis adicionados | duplicados ignorados=2
+13:17:35 [INFO]    ⏳ Aguardando 1.8s...
+13:17:37 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=89
+13:17:37 [INFO] ✅ Fim da lista de imóveis no segmento '3q_condo'.
+13:17:37 [INFO] 🏁 Segmento '3q_condo' finalizado com 89 imóveis únicos.
+13:17:37 [INFO] 📦 Acumulado global até agora: 3391 imóveis únicos
+13:17:37 [INFO] 😴 Pausa entre segmentos: 7.0s...
+13:17:44 [INFO] 
+[12/14] Iniciando segmento '4qplus_apto'
+13:17:44 [INFO] ────────────────────────────────────────────────────────────
+13:17:44 [INFO] Segmento: 4qplus_apto
+13:17:44 [INFO] Detalhes: bedrooms_min=4, bedrooms_max=None, extra_filters={'houseTypes': ['APARTMENT']}
+13:17:44 [INFO] ────────────────────────────────────────────────────────────
+13:17:44 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:17:44 [INFO] 📊 Total estimado do segmento '4qplus_apto': 760
+13:17:44 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:17:44 [INFO]    ⏳ Aguardando 1.3s...
+13:17:46 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=36
+13:17:46 [INFO]    → 21 novos imóveis adicionados | duplicados ignorados=15
+13:17:46 [INFO]    ⏳ Aguardando 1.9s...
+13:17:48 [INFO] 📄 Página 3 | offset=72 | acumulado_segmento=57
+13:17:48 [INFO]    → 28 novos imóveis adicionados | duplicados ignorados=8
+13:17:48 [INFO]    ⏳ Aguardando 1.9s...
+13:17:50 [INFO] 📄 Página 4 | offset=108 | acumulado_segmento=85
+13:17:51 [INFO]    → 34 novos imóveis adicionados | duplicados ignorados=2
+13:17:51 [INFO]    ⏳ Aguardando 1.9s...
+13:17:53 [INFO] 📄 Página 5 | offset=144 | acumulado_segmento=119
+13:17:53 [INFO]    → 19 novos imóveis adicionados | duplicados ignorados=17
+13:17:53 [INFO]    ⏳ Aguardando 1.3s...
+13:17:55 [INFO] 📄 Página 6 | offset=180 | acumulado_segmento=138
+13:17:55 [INFO]    → 34 novos imóveis adicionados | duplicados ignorados=2
+13:17:55 [INFO]    ⏳ Aguardando 2.4s...
+13:17:57 [INFO] 📄 Página 7 | offset=216 | acumulado_segmento=172
+13:17:58 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:17:58 [INFO]    ⏳ Aguardando 2.2s...
+13:18:00 [INFO] 📄 Página 8 | offset=252 | acumulado_segmento=192
+13:18:01 [INFO]    → 35 novos imóveis adicionados | duplicados ignorados=1
+13:18:01 [INFO]    ⏳ Aguardando 2.5s...
+13:18:04 [INFO] 📄 Página 9 | offset=288 | acumulado_segmento=227
+13:18:04 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:18:04 [INFO]    ⏳ Aguardando 2.2s...
+13:18:06 [INFO] 📄 Página 10 | offset=324 | acumulado_segmento=247
+13:18:07 [INFO]    → 20 novos imóveis adicionados | duplicados ignorados=16
+13:18:07 [INFO]    ⏳ Aguardando 1.3s...
+13:18:08 [INFO] 📄 Página 11 | offset=360 | acumulado_segmento=267
+13:18:09 [INFO]    → 27 novos imóveis adicionados | duplicados ignorados=9
+13:18:09 [INFO]    ⏳ Aguardando 1.7s...
+13:18:11 [INFO] 📄 Página 12 | offset=396 | acumulado_segmento=294
+13:18:11 [INFO]    → 23 novos imóveis adicionados | duplicados ignorados=13
+13:18:11 [INFO]    ⏳ Aguardando 1.6s...
+13:18:13 [INFO] 📄 Página 13 | offset=432 | acumulado_segmento=317
+13:18:13 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:18:13 [INFO]    ⏳ Aguardando 1.8s...
+13:18:15 [INFO] 📄 Página 14 | offset=468 | acumulado_segmento=349
+13:18:15 [INFO]    → 29 novos imóveis adicionados | duplicados ignorados=7
+13:18:15 [INFO]    ⏳ Aguardando 2.5s...
+13:18:18 [INFO] 📄 Página 15 | offset=504 | acumulado_segmento=378
+13:18:18 [INFO]    → 19 novos imóveis adicionados | duplicados ignorados=17
+13:18:18 [INFO]    ⏳ Aguardando 2.7s...
+13:18:21 [INFO] 📄 Página 16 | offset=540 | acumulado_segmento=397
+13:18:22 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:18:22 [INFO]    ⏳ Aguardando 1.7s...
+13:18:23 [INFO] 📄 Página 17 | offset=576 | acumulado_segmento=429
+13:18:24 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:18:24 [INFO]    ⏳ Aguardando 1.6s...
+13:18:26 [INFO] 📄 Página 18 | offset=612 | acumulado_segmento=465
+13:18:26 [INFO]    → 36 novos imóveis adicionados | duplicados ignorados=0
+13:18:26 [INFO]    ⏳ Aguardando 2.6s...
+13:18:29 [INFO] 📄 Página 19 | offset=648 | acumulado_segmento=501
+13:18:29 [INFO]    → 32 novos imóveis adicionados | duplicados ignorados=4
+13:18:29 [INFO]    ⏳ Aguardando 1.5s...
+13:18:31 [INFO] 📄 Página 20 | offset=684 | acumulado_segmento=533
+13:18:31 [INFO]    → 28 novos imóveis adicionados | duplicados ignorados=8
+13:18:31 [INFO]    ⏳ Aguardando 2.5s...
+13:18:34 [INFO] 📄 Página 21 | offset=720 | acumulado_segmento=561
+13:18:34 [INFO]    → 33 novos imóveis adicionados | duplicados ignorados=3
+13:18:34 [INFO]    ⏳ Aguardando 2.8s...
+13:18:37 [INFO] 📄 Página 22 | offset=756 | acumulado_segmento=594
+13:18:38 [INFO]    → 3 novos imóveis adicionados | duplicados ignorados=1
+13:18:38 [INFO]    ⏳ Aguardando 2.8s...
+13:18:40 [INFO] 📄 Página 23 | offset=792 | acumulado_segmento=597
+13:18:41 [INFO] ✅ Fim da lista de imóveis no segmento '4qplus_apto'.
+13:18:41 [INFO] 🏁 Segmento '4qplus_apto' finalizado com 597 imóveis únicos.
+13:18:41 [INFO] 📦 Acumulado global até agora: 3988 imóveis únicos
+13:18:41 [INFO] 😴 Pausa entre segmentos: 9.3s...
+13:18:50 [INFO] 
+[13/14] Iniciando segmento '4qplus_casa'
+13:18:50 [INFO] ────────────────────────────────────────────────────────────
+13:18:50 [INFO] Segmento: 4qplus_casa
+13:18:50 [INFO] Detalhes: bedrooms_min=4, bedrooms_max=None, extra_filters={'houseTypes': ['HOME']}
+13:18:50 [INFO] ────────────────────────────────────────────────────────────
+13:18:50 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:18:50 [WARNING] HTTP 400 no offset 0 — provável limite/fim da paginação deste segmento.
+13:18:50 [INFO] Encerrando segmento '4qplus_casa' por resposta nula/fim.
+13:18:50 [INFO] 🏁 Segmento '4qplus_casa' finalizado com 0 imóveis únicos.
+13:18:50 [INFO] 📦 Acumulado global até agora: 3988 imóveis únicos
+13:18:50 [INFO] 😴 Pausa entre segmentos: 6.3s...
+13:18:57 [INFO] 
+[14/14] Iniciando segmento '4qplus_condo'
+13:18:57 [INFO] ────────────────────────────────────────────────────────────
+13:18:57 [INFO] Segmento: 4qplus_condo
+13:18:57 [INFO] Detalhes: bedrooms_min=4, bedrooms_max=None, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+13:18:57 [INFO] ────────────────────────────────────────────────────────────
+13:18:57 [INFO] 📄 Página 1 | offset=0 | acumulado_segmento=0
+13:18:57 [INFO] 📊 Total estimado do segmento '4qplus_condo': 34
+13:18:57 [INFO]    → 34 novos imóveis adicionados | duplicados ignorados=0
+13:18:57 [INFO]    ⏳ Aguardando 1.7s...
+13:18:59 [INFO] 📄 Página 2 | offset=36 | acumulado_segmento=34
+13:18:59 [INFO] ✅ Fim da lista de imóveis no segmento '4qplus_condo'.
+13:18:59 [INFO] 🏁 Segmento '4qplus_condo' finalizado com 34 imóveis únicos.
+13:18:59 [INFO] 📦 Acumulado global até agora: 4022 imóveis únicos
+13:18:59 [INFO] 
+13:18:59 [INFO] ============================================================
+13:18:59 [INFO] ✅ Coleta concluída com sucesso!
+13:18:59 [INFO] Total de imóveis : 4,022
+13:18:59 [INFO] Arquivo CSV      : /home/pabl0maciel/Documents/Programas-e-Projetos/Projetos/Analise de Alugueis em SP/data/raw/quintoandar_sp_20260505_131059_v3.csv
+13:18:59 [INFO] Arquivo de log   : /home/pabl0maciel/Documents/Programas-e-Projetos/Projetos/Analise de Alugueis em SP/data/logs/logging_20260505_131059.txt
+13:18:59 [INFO] ============================================================
