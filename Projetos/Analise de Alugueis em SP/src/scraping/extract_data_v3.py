@@ -1,22 +1,6 @@
-#!/usr/bin/env python3
-"""
-extract_data.py
-===============
-Scraper completo para QuintoAndar — Análise de Aluguéis em SP
-
-Estratégia:
-- segmentação por número de quartos + tipo de imóvel
-- deduplicação global por ID
-- logging em console + arquivo
-- captura de total estimado por segmento para detectar saturação
-
-Uso:
-    python src/scraping/extract_data.py
-    python src/scraping/extract_data.py --pages 50
-    python src/scraping/extract_data.py --output custom.csv
-    python src/scraping/extract_data.py --no-segment
-"""
-
+#################################################################################################################
+###                                                BIBLIOTECAS                                                ###
+#################################################################################################################
 import requests
 import pandas as pd
 import time
@@ -29,34 +13,36 @@ from datetime import datetime
 from dataclasses import dataclass, field
 from typing import Optional
 
-# ─────────────────────────────────────────────
-#  CONFIGURAÇÕES
-# ─────────────────────────────────────────────
-BASE_URL = "https://apigw.prod.quintoandar.com.br/house-listing-search/v2/search/list"
+#################################################################################################################
+###                                                CONFIGURAÇÕES                                              ###
+#################################################################################################################
+BASE_URL = "https://apigw.prod.quintoandar.com.br/house-listing-search/v2/search/list" # endpoint de busca
 
-PAGE_SIZE     = 36
-MAX_PAGES     = 100
-DELAY_MIN     = 1.2
-DELAY_MAX     = 3.0
-MAX_RETRIES   = 3
-RETRY_WAIT    = 10
-SEGMENT_BREAK_WARNING = 900  # alerta para subdividir segmento
+PAGE_SIZE     = 36 # número de resultados por página (36 é o máximo conhecido, pode variar)
+MAX_PAGES     = 100 # limite de páginas por segmento, mas costuma parar antes por limitacao da API
+DELAY_MIN     = 1.2 # delay mínimo entre requests
+DELAY_MAX     = 3.0 # delay máximo entre requests
+MAX_RETRIES   = 3 # número máximo de tentativas para cada request em caso de falha 
+RETRY_WAIT    = 10 # tempo de espera base para retry (multiplicado pelo número da tentativa)
+SEGMENT_BREAK_WARNING = 900  # alerta para subdividir segmento (perto de 1000 imóveis)
 
-# Salva na pasta data/raw/ na raiz do projeto
+# Caminhos de saída para dados e logs
 BASE_DIR   = Path(__file__).resolve().parents[2]
 OUTPUT_DIR = BASE_DIR / "data" / "raw"
 LOG_DIR    = BASE_DIR / "data" / "logs"
 
+# Cria os diretórios de saída e logs, se não existirem
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
+# Timestamp para nomear arquivos de saída
 RUN_TS = datetime.now().strftime("%Y%m%d_%H%M%S")
 LOG_FILE = LOG_DIR / f"logging_{RUN_TS}.txt"
 
-# ─────────────────────────────────────────────
-#  SEGMENTOS
-#  Estratégia 1: combinar quartos + tipo de imóvel
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                SEGMENTOS                                                  ###
+#################################################################################################################
+# Criação de segmentos para tentar evitar o limite de 1000 imóveis por busca.
 @dataclass
 class Segment:
     label: str
@@ -67,7 +53,7 @@ class Segment:
     extra_filters: dict = field(default_factory=dict)
 
 
-# Mapeamento provável dos tipos internos aceitos pela API
+# Dicionario para mapear tipos de imóvel conforme a API do QuintoAndar
 HOUSE_TYPES = {
     "apartamento": "APARTMENT",
     "casa": "HOME",
@@ -75,8 +61,9 @@ HOUSE_TYPES = {
     "kitnet_studio": "STUDIO",
 }
 
+# Lista de segmentos definidos para a coleta, combinando número de quartos e tipo de imóvel
 SEGMENTS: list[Segment] = [
-    # Kitnet/Studio costuma ser mais coerente com 0q ou 1q
+    # Studio/Kitnet (0 quartos)
     Segment(label="studio_0q", bedrooms_min=0, bedrooms_max=0,
             extra_filters={"houseTypes": [HOUSE_TYPES["kitnet_studio"]]}),
 
@@ -116,9 +103,10 @@ SEGMENTS: list[Segment] = [
             extra_filters={"houseTypes": [HOUSE_TYPES["casa_condominio"]]}),
 ]
 
-# ─────────────────────────────────────────────
-#  LOGGING
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                LOGGING                                                   ###
+#################################################################################################################
+# Configuração de logging para registrar o progresso e eventuais erros durante a coleta.
 def setup_logger() -> logging.Logger:
     logger = logging.getLogger("quintoandar_scraper")
     logger.setLevel(logging.INFO)
@@ -129,16 +117,17 @@ def setup_logger() -> logging.Logger:
         datefmt="%H:%M:%S"
     )
 
-    # console
+    # Configuração do handler de console
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter)
 
-    # arquivo
+    # Configuração do handler de arquivo
     file_handler = logging.FileHandler(LOG_FILE, encoding="utf-8")
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
 
+    # Adiciona os handlers ao logger
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
     logger.propagate = False
@@ -147,9 +136,10 @@ def setup_logger() -> logging.Logger:
 
 log = setup_logger()
 
-# ─────────────────────────────────────────────
-#  HEADERS
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                HEADERS                                                    ###
+#################################################################################################################
+# Cabeçalhos HTTP para simular um navegador real e evitar bloqueios básicos da API.
 HEADERS = {
     "Accept":           "application/json",
     "Accept-Language":  "en-US,en;q=0.9",
@@ -171,9 +161,10 @@ HEADERS = {
     ),
 }
 
-# ─────────────────────────────────────────────
-#  CAMPOS SOLICITADOS À API
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                FIELDS                                                     ###
+#################################################################################################################
+# Lista de campos solicitados na API para cada imóvel. Pode ser ajustada conforme necessidade.
 FIELDS = [
     "id", "coverImage", "rent", "totalCost", "salePrice",
     "iptuPlusCondominium", "area", "imageList", "imageCaptionList",
@@ -185,9 +176,10 @@ FIELDS = [
     "amenities", "shortRentDescription", "shortSaleDescription",
 ]
 
-# ─────────────────────────────────────────────
-#  PAYLOAD BASE
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                PAYLOAD                                                    ###
+#################################################################################################################
+# Função para construir o payload da requisição POST, adaptando os filtros conforme o segmento definido.
 def build_payload(offset: int, page_size: int, segment: Optional[Segment] = None) -> dict:
     payload = {
         "slug": "sao-paulo-sp-brasil",
@@ -241,7 +233,7 @@ def build_payload(offset: int, page_size: int, segment: Optional[Segment] = None
     if segment is None:
         return payload
 
-    # quartos
+    # Quantidade de quartos
     bedroom_range = {}
     if segment.bedrooms_min is not None:
         bedroom_range["min"] = segment.bedrooms_min
@@ -250,7 +242,7 @@ def build_payload(offset: int, page_size: int, segment: Optional[Segment] = None
     if bedroom_range:
         payload["filters"]["houseSpecs"]["bedrooms"]["range"] = bedroom_range
 
-    # preço
+    # Faixa de preço
     if segment.price_min is not None or segment.price_max is not None:
         price_range = {}
         if segment.price_min is not None:
@@ -259,7 +251,7 @@ def build_payload(offset: int, page_size: int, segment: Optional[Segment] = None
             price_range["max"] = segment.price_max
         payload["filters"]["priceRange"] = [price_range]
 
-    # filtros extras
+    # Filtros extras (ex.: tipo de imóvel)
     for key, value in segment.extra_filters.items():
         if key == "houseTypes":
             payload["filters"]["houseSpecs"]["houseTypes"] = value
@@ -268,9 +260,10 @@ def build_payload(offset: int, page_size: int, segment: Optional[Segment] = None
 
     return payload
 
-# ─────────────────────────────────────────────
-#  FLATTEN DE UM IMÓVEL
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                PAYLOAD                                                    ###
+#################################################################################################################
+# Função para "achatar" a estrutura de um imóvel, extraindo apenas os campos principais e convertendo listas em JSON strings.
 def flatten_listing(item: dict) -> dict:
     return {
         "id": item.get("id"),
@@ -306,9 +299,10 @@ def flatten_listing(item: dict) -> dict:
         "coverImage": item.get("coverImage"),
     }
 
-# ─────────────────────────────────────────────
-#  EXTRAÇÃO FLEXÍVEL DE LISTINGS
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                EXTRAÇÃO DE LISTAGENS                                      ###
+#################################################################################################################
+# Função para extrair a lista de imóveis da resposta da API, tentando lidar com diferentes estruturas possíveis.
 def extract_listings_from_response(data: dict) -> list:
     listings_raw = []
 
@@ -336,14 +330,11 @@ def extract_listings_from_response(data: dict) -> list:
 
     return listings_raw if isinstance(listings_raw, list) else []
 
-# ─────────────────────────────────────────────
-#  EXTRAÇÃO DO TOTAL ESTIMADO
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                           EXTRAÇÃO DO TOTAL ESTIMADO                                      ###
+#################################################################################################################
+# Função para tentar extrair o total estimado de imóveis da resposta, procurando em vários campos comuns e estruturas aninhadas.
 def extract_total_from_response(data: dict) -> Optional[int]:
-    """
-    Tenta descobrir o total de resultados do segmento.
-    A API pode retornar isso em formatos variados.
-    """
     candidates = [
         data.get("total"),
         data.get("count"),
@@ -371,9 +362,10 @@ def extract_total_from_response(data: dict) -> Optional[int]:
 
     return None
 
-# ─────────────────────────────────────────────
-#  FUNÇÃO DE REQUEST COM RETRY
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                     REQUEST                                               ###
+#################################################################################################################
+# Função para realizar a requisição POST à API, com tratamento de erros, retries e logging detalhado.
 def fetch_page(
     session: requests.Session,
     offset: int,
@@ -416,9 +408,10 @@ def fetch_page(
     log.error(f"Falhou após {MAX_RETRIES} tentativas no offset {offset}")
     return None
 
-# ─────────────────────────────────────────────
-#  SCRAPE DE UM SEGMENTO
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                 SCRAPE DE SEGMENTO                                        ###
+#################################################################################################################
+# Função para realizar a coleta de um segmento específico, iterando pelas páginas e acumulando os imóveis únicos encontrados.
 def scrape_segment(
     session: requests.Session,
     segment: Optional[Segment],
@@ -508,9 +501,10 @@ def scrape_segment(
     log.info(f"🏁 Segmento '{label}' finalizado com {len(segment_listings)} imóveis únicos.")
     return segment_listings
 
-# ─────────────────────────────────────────────
-#  SCRAPER PRINCIPAL
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                 SCRAPER PRINCIPAL                                         ###
+#################################################################################################################
+# Função principal para orquestrar a coleta, iterando pelos segmentos definidos, acumulando os imóveis únicos e salvando o resultado final em CSV.
 def scrape(max_pages: int = MAX_PAGES, output_file: str | None = None, use_segments: bool = True) -> pd.DataFrame:
     session = requests.Session()
     session.headers.update(HEADERS)
@@ -585,9 +579,9 @@ def scrape(max_pages: int = MAX_PAGES, output_file: str | None = None, use_segme
 
     return df
 
-# ─────────────────────────────────────────────
-#  ENTRY POINT
-# ─────────────────────────────────────────────
+#################################################################################################################
+###                                                        MAIN                                               ###
+#################################################################################################################
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Scraper QuintoAndar — Aluguéis SP")
     parser.add_argument("--pages", type=int, default=MAX_PAGES,
