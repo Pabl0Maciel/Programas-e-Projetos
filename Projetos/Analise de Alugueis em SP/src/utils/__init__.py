@@ -1,0 +1,1 @@
+# Arquivo de inicialização do módulo utils. Pode ser deixado vazio ou usado para importar funções/classes comuns.
