@@ -170,3 +170,5 @@ Aulas/Algoritmos e Estruturas de Dados I/Lista Ligada Circular  com Nó Cabeça/
 SQL - Hashtag Programacao/Apostila/Apostilas e Materiais de Apoio - SQL Impressionador.zip
 Hashtag Programacao/SQL/Apostila/Apostilas e Materiais de Apoio - SQL Impressionador.zip
 .venv/
+__pycache__/
+.vscode/
