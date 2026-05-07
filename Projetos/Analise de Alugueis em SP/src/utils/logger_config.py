@@ -54,3 +54,4 @@ def setup_logger(log_file: Path, name: str = "app_logger") -> logging.Logger:
     logger.addHandler(file_handler)
     logger.propagate = False
     return logger
+#################################################################################################################
