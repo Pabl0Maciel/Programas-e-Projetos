@@ -155,7 +155,6 @@ if __name__ == "__main__":
         fields=FIELDS,
         segments=SEGMENTS,
         log=log,
-        log_file=LOG_FILE,
         output_file=OUTPUT_FILE,
         max_pages=MAX_PAGES,
         page_size=PAGE_SIZE,
