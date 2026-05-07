@@ -1,22 +1,42 @@
+"""
+Scraper de imóveis do QuintoAndar com suporte a segmentação.
+
+Este módulo implementa toda a lógica de coleta de dados via API, incluindo:
+- Construção de payloads dinâmicos com filtros
+- Requisições HTTP com retry e controle de rate limit
+- Paginação e deduplicação de resultados
+- Segmentação por critérios (ex: preço, quartos, etc.)
+- Parsing e normalização dos dados retornados
+- Exportação final para DataFrame e CSV
+
+O fluxo principal é orquestrado pela função `scrape`, que coordena a coleta
+por segmentos e consolida os dados em um único dataset.
+"""
+
 #################################################################################################################
 ###                                                BIBLIOTECAS                                                ###
 #################################################################################################################
-import json
 import requests
 import logging
 import time
 import pandas as pd
 import random
-from datetime import datetime
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Optional, List
 
 #################################################################################################################
-###                                            CLASSES E ESTRUTURAS                                           ###
+###                                            CLASSE DE SEGMENTO                                             ###
 #################################################################################################################
 @dataclass
 class Segment:
+    """
+    Define um segmento de busca com filtros específicos para a coleta.
+
+    Permite segmentar a extração de dados por critérios como faixa de preço,
+    número de quartos e filtros adicionais customizados.
+    """
+
     label: str
     bedrooms_min: Optional[int] = None
     bedrooms_max: Optional[int] = None
@@ -33,6 +53,18 @@ def build_payload(
         page_size: int, 
         segment: Optional[Segment] = None
 ) -> dict:
+    """
+    Constrói o payload da requisição para a API do QuintoAndar.
+
+    Args:
+        fields (List[str]): Lista de campos a serem retornados pela API.
+        offset (int): Offset da paginação.
+        page_size (int): Quantidade de registros por página.
+        segment (Optional[Segment]): Segmento com filtros aplicáveis.
+
+    Returns:
+        dict: Payload completo formatado para envio na requisição POST.
+    """
 
     payload = {
         "slug": "sao-paulo-sp-brasil",
@@ -94,7 +126,7 @@ def build_payload(
 def fetch_page(
     base_url: str,
     session: requests.Session,
-    fields: List[str],        # ← Adicionado para fluir até o payload
+    fields: List[str],
     offset: int,
     page_size: int,
     max_retries: int,
@@ -102,8 +134,27 @@ def fetch_page(
     log: logging.Logger,
     segment: Optional[Segment] = None
 ) -> Optional[dict]:
+    """
+    Realiza uma requisição HTTP para obter uma página de resultados.
+
+    Implementa tratamento de erros, retry automático e controle de rate limit.
+
+    Args:
+        base_url (str): URL da API.
+        session (requests.Session): Sessão HTTP reutilizável.
+        fields (List[str]): Campos a serem solicitados.
+        offset (int): Offset da paginação.
+        page_size (int): Tamanho da página.
+        max_retries (int): Número máximo de tentativas.
+        retry_wait (int): Tempo de espera entre tentativas.
+        log (logging.Logger): Logger para registro de eventos.
+        segment (Optional[Segment]): Segmento de filtros aplicado.
+
+    Returns:
+        Optional[dict]: JSON da resposta ou None em caso de falha.
+    """
     
-    # Repassando os parâmetros corretamente para a montagem
+    
     payload = build_payload(fields, offset, page_size, segment)
 
     for attempt in range(1, max_retries + 1):
@@ -138,9 +189,9 @@ def fetch_page(
 ###                                                 SCRAPE DE SEGMENTO                                        ###
 #################################################################################################################
 def scrape_segment(
-    base_url: str,            # ← Recebe URL da configuração superior
+    base_url: str,
     session: requests.Session,
-    fields: List[str],        # ← Recebe a lista de colunas para puxar
+    fields: List[str],
     segment: Optional[Segment],
     max_pages: int,
     page_size: int,
@@ -152,6 +203,30 @@ def scrape_segment(
     seen_ids: set,
     log: logging.Logger
 ) -> list[dict]:
+    """
+    Executa a coleta de dados para um segmento específico.
+
+    Controla paginação, deduplicação de registros, delays entre requisições
+    e logging detalhado do progresso.
+
+    Args:
+        base_url (str): URL da API.
+        session (requests.Session): Sessão HTTP ativa.
+        fields (List[str]): Campos a serem coletados.
+        segment (Optional[Segment]): Segmento de busca.
+        max_pages (int): Número máximo de páginas a coletar.
+        page_size (int): Tamanho de cada página.
+        delay_min (float): Delay mínimo entre requisições.
+        delay_max (float): Delay máximo entre requisições.
+        max_retries (int): Número máximo de tentativas por request.
+        retry_wait (int): Tempo de espera entre retries.
+        segment_break_warning (int): Parâmetro de controle (uso futuro/log).
+        seen_ids (set): Conjunto de IDs já coletados (deduplicação).
+        log (logging.Logger): Logger da aplicação.
+
+    Returns:
+        list[dict]: Lista de registros coletados e normalizados.
+    """
     
     label = segment.label if segment else "sem_segmento"
     segment_listings = []
@@ -161,6 +236,12 @@ def scrape_segment(
 
     log.info("─" * 60)
     log.info(f"Segmento: {label}")
+    if segment:
+        log.info(
+            f"Detalhes: bedrooms_min={segment.bedrooms_min}, "
+            f"bedrooms_max={segment.bedrooms_max}, "
+            f"extra_filters={segment.extra_filters}"
+        )
     log.info("─" * 60)
 
     while page_num < max_pages:
@@ -169,15 +250,23 @@ def scrape_segment(
         # Repassa com precisão os parâmetros exigidos pelo base_url e payload
         data = fetch_page(base_url, session, fields, offset, page_size, max_retries, retry_wait, log, segment)
         if data is None:
+            log.info(f"Encerrando segmento '{label}' por resposta nula/fim.")
             break
 
         if not total_estimated_logged:
             total_estimated = extract_total_from_response(data)
             log.info(f"📊 Total estimado do segmento '{label}': {total_estimated or 'Desconhecido'}")
+
+            if total_estimated is not None and total_estimated >= 1000:
+                log.warning(
+                    f"⚠️ Segmento '{label}' parece saturado (estimativa={total_estimated}). "
+                    f"Considere subdividir os filtros."
+                )
             total_estimated_logged = True
 
         listings_raw = extract_listings_from_response(data)
         if not listings_raw:
+            log.info(f"✅ Fim da lista de imóveis no segmento '{label}'.")
             break
 
         new_count, duplicate_count = 0, 0
@@ -196,14 +285,24 @@ def scrape_segment(
 
         log.info(f"   → {new_count} novos | {duplicate_count} duplicados")
 
-        if new_count == 0: break
+        if new_count == 0: 
+            log.info(f"✅ Resposta repetida/sem novidades no segmento '{label}' — fim da paginação.")
+            break
+
+        if len(segment_listings) >= segment_break_warning:
+            log.warning(
+                f"⚠️ Segmento '{label}' já acumulou {len(segment_listings)} imóveis. "
+                "Está perto do limite de paginação da API (offset alto)."
+            )
 
         offset += page_size
         page_num += 1
 
         delay = random.uniform(delay_min, delay_max)
+        log.info(f"   ⏳ Aguardando {delay:.1f}s...")
         time.sleep(delay)
 
+    log.info(f"🏁 Segmento '{label}' finalizado com {len(segment_listings)} imóveis únicos.")
     return segment_listings
 
 #################################################################################################################
@@ -215,7 +314,6 @@ def scrape(
     fields: list,
     segments: List[Segment],
     log: logging.Logger,
-    log_file: Path,
     output_file: Path,
     max_pages: int,
     page_size: int,
@@ -226,6 +324,32 @@ def scrape(
     segment_break_warning: int,
     use_segments: bool = True
 ) -> pd.DataFrame:
+    """
+    Orquestra o processo completo de scraping.
+
+    Executa a coleta por segmentos (ou de forma única), consolida os dados,
+    realiza pós-processamento e salva o resultado em CSV.
+
+    Args:
+        url (str): Endpoint da API.
+        headers (dict): Headers HTTP da requisição.
+        fields (list): Campos a serem coletados.
+        segments (List[Segment]): Lista de segmentos de busca.
+        log (logging.Logger): Logger da aplicação.
+        log_file (Path): Caminho do arquivo de log.
+        output_file (Path): Caminho do CSV de saída.
+        max_pages (int): Limite de páginas por segmento.
+        page_size (int): Tamanho de cada página.
+        delay_min (float): Delay mínimo entre requests.
+        delay_max (float): Delay máximo entre requests.
+        max_retries (int): Número máximo de tentativas.
+        retry_wait (int): Tempo entre retries.
+        segment_break_warning (int): Parâmetro de controle (uso futuro/log).
+        use_segments (bool): Define se usa segmentação ou não.
+
+    Returns:
+        pd.DataFrame: DataFrame final com os dados coletados.
+    """
     
     session = requests.Session()
     session.headers.update(headers)
@@ -233,13 +357,17 @@ def scrape(
     seen_ids = set()
 
     log.info("=" * 60)
-    log.info("QuintoAndar Scraper — Iniciando...")
+    log.info("QuintoAndar Scraper — Coleta iniciada")
+    log.info(f"Modo segmentado: {use_segments}")
+    log.info(f"Total de segmentos: {len(segments) if use_segments else 1}")
     log.info("=" * 60)
 
     target_segments = segments if use_segments else [None]
 
     for idx, segment in enumerate(target_segments, start=1):
-        # Chama passando todos os argumentos herdados do bloco de configuração
+        label = segment.label if segment else "sem_segmento"
+        log.info(f"\n[{idx}/{len(target_segments)}] Iniciando segmento '{label}'")
+
         segment_rows = scrape_segment(
             base_url=url,
             session=session,
@@ -255,10 +383,14 @@ def scrape(
             seen_ids=seen_ids,
             log=log
         )
-        
+
         all_listings.extend(segment_rows)
+        log.info(f"📦 Acumulado global: {len(all_listings)} imóveis únicos")
+
         if idx < len(target_segments):
-            time.sleep(random.uniform(5, 10))
+            delay = random.uniform(5, 10)
+            log.info(f"😴 Pausa entre segmentos: {delay:.1f}s...")
+            time.sleep(delay)
 
     df = pd.DataFrame(all_listings)
 
@@ -273,17 +405,43 @@ def scrape(
                 lambda row: round(row["rent"] / row["area"], 2) if row.get("rent") and row.get("area") else None,
                 axis=1
             )
-        
-        df = df.drop_duplicates(subset=["id"], keep="first").reset_index(drop=True)
-        df.to_csv(output_file, index=False, encoding="utf-8-sig")
+    else:
+        log.warning("⚠️ Nenhum dado coletado.")
+        return df 
 
-    log.info(f"✅ Coleta concluída! Salvo em: {output_file}")
+    before = len(df)
+    df = df.drop_duplicates(subset=["id"], keep="first").reset_index(drop=True)
+    removed = before - len(df)
+
+    if removed > 0:
+        log.info(f"🧹 Duplicatas removidas no final: {removed}")
+    
+    df.to_csv(output_file, index=False, encoding="utf-8-sig")
+
+    log.info("")
+    log.info("=" * 60)
+    log.info("✅ Coleta concluída com sucesso!")
+    log.info(f"Total de imóveis : {len(df):,}")
+    log.info(f"Arquivo CSV      : {output_file}")
+    log.info("=" * 60)
+
     return df
 
 #################################################################################################################
 ###                                            FUNÇÕES DE PARSING PURO                                        ###
 #################################################################################################################
+########################################### Achatamento de Lista Simples ########################################
 def flatten_listing(item: dict) -> dict:
+    """
+    Normaliza um item bruto da API em um dicionário plano.
+
+    Args:
+        item (dict): Registro original retornado pela API.
+
+    Returns:
+        dict: Dicionário com campos simplificados e padronizados.
+    """
+
     return {
         "id": item.get("id"), "type": item.get("type"), "address": item.get("address"),
         "neighbourhood": item.get("neighbourhood"), "rent": item.get("rent"),
@@ -292,13 +450,37 @@ def flatten_listing(item: dict) -> dict:
         "parkingSpaces": item.get("parkingSpaces"), "isFurnished": item.get("isFurnished")
         # Mantive a versão resumida do flatten, adicione o resto dos campos base se precisar
     }
-
+########################################### Extração de Dados da Resposta ########################################
 def extract_listings_from_response(data: dict) -> list:
+    """
+    Extrai a lista de imóveis da resposta da API.
+
+    Suporta diferentes estruturas de resposta possíveis.
+
+    Args:
+        data (dict): JSON retornado pela API.
+
+    Returns:
+        list: Lista de registros de imóveis.
+    """
+
     if isinstance(data.get("hits"), dict) and isinstance(data["hits"].get("hits"), list):
         return [h["_source"] if "_source" in h else h for h in data["hits"]["hits"]]
     return data.get("hits", data.get("listings", data.get("results", [])))
 
+########################################### Extração de Total de Resultados ########################################
 def extract_total_from_response(data: dict) -> Optional[int]:
+    """
+    Extrai o total estimado de resultados da resposta da API.
+
+    Args:
+        data (dict): JSON retornado pela API.
+
+    Returns:
+        Optional[int]: Total de registros ou None se não disponível.
+    """
+
     if isinstance(data.get("total"), int): return data["total"]
     if isinstance(data.get("hits", {}).get("total"), int): return data["hits"]["total"]
     return None
+#################################################################################################################
