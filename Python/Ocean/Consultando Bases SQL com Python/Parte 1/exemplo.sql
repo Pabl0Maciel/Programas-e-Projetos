@@ -57,7 +57,37 @@ INSERT INTO PROFESSOR(id_professor, nome_professor, matricula, email)
     VALUES (1, "Danilo", "987654321", "danilo@gmail.com");
 
 -- Insere valores na tabela de alunos
-INSERT INTO ALUNOS(id_aluno, nome_aluno, nro_usp, altura, id_professor) 
-    VALUES (1, "Joao", "123456789", 1.71, 1);
+INSERT INTO ALUNOS(id_aluno, nome_aluno, nro_usp, altura, id_professor) VALUES 
+    (1, "Joao", "123456789", 1.71, 1),
+    (2, "Paulo", "777222999", 1.62, 1),
+    (3, "Cleber", "135798643", 1.89, 2),
+    (4, "Jorge", "981748563", 1.76, 2),
+    (5, "Oliver", "111111111", 1.91, 2);
     
 SELECT * FROM ALUNOS;                       -- Seleciona tudo da tabela de alunos
+
+-- Atualiza a tabela de alunos, mudando o nome do aluno com id_aluno 1 para Pedro
+UPDATE ALUNOS SET nome_aluno = 'Pedro' 
+    WHERE id_aluno = 1;
+    
+-- Deleta o aluno com id_aluno 5    
+DELETE FROM ALUNOS
+    WHERE id_aluno = 5;
+    
+SELECT * FROM ALUNOS;
+
+SELECT nome_aluno, altura FROM ALUNOS;      -- Seleciona nome e altura da tabela de alunos
+
+-- Seleciona o nome do aluno e o nro usp, dando um apelido para as colunas, alem de ordenar o resultado
+SELECT
+    nome_aluno      AS "Aluno",             -- Cria um apelido (Aluno) para a coluna nome_aluno
+    nro_usp         AS "Numero USP"         -- Cria um apelido (Numero USP) para a coluna nro_usp
+FROM ALUNOS
+ORDER BY nome_aluno;                        -- Ordena por nome_aluno em ordem crescente (ASC) ou decrescente (DESC)
+
+-- Seleciona o id_professor e conta quantos professores existem, no final agrupa por id_professor
+SELECT
+    id_professor,
+    COUNT(*)       AS "Qntd Professores"
+FROM PROFESSOR
+GROUP BY id_professor;
