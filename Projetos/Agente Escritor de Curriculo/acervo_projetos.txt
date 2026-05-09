@@ -1,0 +1,64 @@
+ACERVO ESTRUTURADO DE PROJETOS GITHUB PARA USO POR AGENTE DE IA
+
+PROJETO 1
+Nome do projeto: Análise Exploratória de Dados
+Objetivo principal: Realiza análise de dados de vendas a partir de um arquivo CSV, respondendo perguntas de negócio sobre desempenho de vendas com diferentes categorias e segmentações e gerando visualizações para demonstrar os resultados.
+Tecnologias e bibliotecas utilizadas: Python; Pandas; Numpy; Matplotlib; Seaborn; DateTime
+Tipo do projeto: EDA
+Nível de complexidade percebido: Intermediário — o README descreve múltiplas análises sobre vendas, segmentações por categoria, estado, cidade, segmento, ano e mês, além de simulação de desconto e geração de diferentes tipos de gráficos.
+Palavras-chave ATS relevantes: Python; Pandas; Numpy; Matplotlib; Seaborn; DateTime; análise exploratória de dados; CSV; visualização de dados; gráfico de barras; gráfico de pizza; gráfico de linha; segmentação de vendas; análise de vendas
+Descrição adaptável: Realizei uma análise exploratória de dados de vendas em Python, utilizando Pandas, Numpy, Matplotlib e Seaborn para responder perguntas de negócio e gerar visualizações por data, estado, cidade, segmento, categoria e subcategoria.
+
+PROJETO 2
+Nome do projeto: Automação de Cadastro de Produtos
+Objetivo principal: Automatiza o processo de cadastro de produtos em um sistema web fictício, preenchendo formulários automaticamente com dados de um arquivo CSV e simulando interações de mouse e teclado no navegador.
+Tecnologias e bibliotecas utilizadas: Python; pyautogui; pandas
+Tipo do projeto: Automação
+Nível de complexidade percebido: Intermediário — envolve automação de interface gráfica com pyautogui, leitura de dados via CSV e integração entre entrada de dados e ações no navegador, além de dependência de coordenadas de tela.
+Palavras-chave ATS relevantes: Python; pyautogui; pandas; automação de processos; automação de tarefas; leitura de CSV; preenchimento automático de formulários; automação de navegador; simulação de teclado e mouse
+Descrição adaptável: Desenvolvi uma automação em Python utilizando pyautogui e pandas para cadastro de produtos em sistema web, integrando leitura de dados via CSV com preenchimento automático de formulários por meio de simulação de ações de teclado e mouse.
+
+PROJETO 3
+Nome do projeto: Geração e População de Banco de Dados — Loja de Vendas
+Objetivo principal: Cria automaticamente um banco de dados PostgreSQL completo para uma loja fictícia, incluindo criação de tabelas, tipos e população de dados realistas para simular um ambiente transacional.
+Tecnologias e bibliotecas utilizadas: Python 3.x; PostgreSQL; SQLAlchemy; psycopg2; Faker; random; datetime; decimal
+Tipo do projeto: Banco de Dados / ETL
+Nível de complexidade percebido: Avançado — envolve modelagem de banco relacional, criação automatizada de estruturas, geração de dados consistentes com regras de negócio e organização modular do código.
+Palavras-chave ATS relevantes: Python; PostgreSQL; SQLAlchemy; psycopg2; Faker; modelagem de dados; banco de dados relacional; ETL; geração de dados; dados sintéticos; automação de banco de dados; transações; SQL
+Descrição adaptável: Desenvolvi um sistema em Python para criação e população automatizada de banco de dados PostgreSQL, utilizando SQLAlchemy e Faker para gerar dados sintéticos realistas e estruturar entidades como clientes, produtos, pedidos, vendas e pagamentos com regras de negócio aplicadas.
+
+PROJETO 4
+Nome do projeto: Análise de Dados do Censo Escolar Brasileiro
+Objetivo principal: Realiza limpeza, tratamento e exploração de dados do Censo Escolar Brasileiro para gerar insights, com criação de gráficos e dashboards interativos no Power BI.
+Tecnologias e bibliotecas utilizadas: Python; Pandas; NumPy; Matplotlib; Seaborn; Power BI; Google Colab
+Tipo do projeto: EDA / Dashboard
+Nível de complexidade percebido: Intermediário — cobre tratamento de dados, análise estatística, análise geográfica e temporal e geração de dashboards interativos.
+Palavras-chave ATS relevantes: Python; Pandas; NumPy; Matplotlib; Seaborn; Power BI; análise descritiva; limpeza de dados; tratamento de dados; exploração estatística; análise geográfica; análise temporal; dashboards; visualização de dados
+Descrição adaptável: Realizei a limpeza, tratamento e exploração estatística de dados do Censo Escolar Brasileiro com Python, além de desenvolver dashboards interativos no Power BI para visualização de padrões regionais, temporais e impactos da pandemia.
+
+PROJETO 5
+Nome do projeto: Estimativa de Pi usando o Método de Monte Carlo
+Objetivo principal: Implementa a estimativa do valor de Pi utilizando o método de Monte Carlo, gerando pontos aleatórios e verificando quantos caem dentro de um círculo inscrito, com visualização gráfica dos resultados.
+Tecnologias e bibliotecas utilizadas: Python 3.x; matplotlib
+Tipo do projeto: Simulação / Matemática Computacional
+Nível de complexidade percebido: Básico — projeto focado em um único algoritmo matemático com escopo reduzido e uma biblioteca principal para visualização.
+Palavras-chave ATS relevantes: Python; matplotlib; método de Monte Carlo; simulação; geração de pontos aleatórios; visualização de dados; matemática computacional; probabilidade; estatística
+Descrição adaptável: Implementei o método de Monte Carlo em Python para estimar o valor de Pi, com geração de pontos aleatórios e visualização gráfica dos resultados utilizando matplotlib.
+
+PROJETO 6
+Nome do projeto: Score de Crédito de Cliente
+Objetivo principal: Prevê o score de crédito de clientes nas categorias Ruim, Ok e Bom, utilizando modelos de machine learning treinados a partir de dados históricos.
+Tecnologias e bibliotecas utilizadas: Python; Pandas; Scikit-learn; RandomForestClassifier; KNeighborsClassifier
+Tipo do projeto: Machine Learning (Classificação)
+Nível de complexidade percebido: Intermediário — envolve pré-processamento, divisão entre treino e teste, treinamento de múltiplos modelos, avaliação de desempenho e previsão em novos dados.
+Palavras-chave ATS relevantes: Python; Pandas; Scikit-learn; Machine Learning; classificação; RandomForestClassifier; KNeighborsClassifier; LabelEncoder; pré-processamento de dados; modelagem preditiva; análise de dados; avaliação de modelo; treino e teste
+Descrição adaptável: Desenvolvi um modelo de machine learning em Python utilizando Scikit-learn para classificação de score de crédito, aplicando pré-processamento com LabelEncoder, treinamento e avaliação de modelos como RandomForest e KNN e previsão de novos clientes a partir de dados históricos.
+
+PROJETO 7
+Nome do projeto: Segmentação de Clientes
+Objetivo principal: Agrupa clientes com base em características de similaridade utilizando o algoritmo K-Means, gerando 3 grupos distintos a partir de dados históricos.
+Tecnologias e bibliotecas utilizadas: Python; Pandas; Scikit-learn; KMeans; StandardScaler
+Tipo do projeto: Machine Learning (Clustering)
+Nível de complexidade percebido: Intermediário — envolve análise exploratória, padronização de dados, treinamento de modelo de clustering e exportação do dataset segmentado.
+Palavras-chave ATS relevantes: Python; Pandas; Scikit-learn; Machine Learning; clustering; KMeans; StandardScaler; segmentação de clientes; análise de dados; data preprocessing; padronização de dados; clusterização
+Descrição adaptável: Desenvolvi um modelo de segmentação de clientes em Python utilizando K-Means com Scikit-learn, aplicando padronização de dados com StandardScaler e gerando clusters com base em variáveis como idade, renda anual e pontuação de gastos.
