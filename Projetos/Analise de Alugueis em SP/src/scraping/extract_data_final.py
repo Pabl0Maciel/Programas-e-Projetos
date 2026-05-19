@@ -34,7 +34,7 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 # Timestamp para nomear arquivos de saída
 RUN_TS = datetime.now().strftime("%Y%m%d_%H%M%S")
 LOG_FILE = LOG_DIR / f"logging_{RUN_TS}.txt"
-OUTPUT_FILE = OUTPUT_DIR / f"quintoandar_sp_{RUN_TS}_teste.csv"
+OUTPUT_FILE = OUTPUT_DIR / f"quintoandar_sp_{RUN_TS}.csv"
 
 #################################################################################################################
 ###                                                LOGGING                                                   ###
