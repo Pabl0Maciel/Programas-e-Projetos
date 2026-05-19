@@ -1,47 +1,85 @@
 # 💼 Meus Projetos
 
-Bem-vindo à minha coleção de projetos! Aqui você encontrará uma variedade de programas e experimentos que desenvolvi ao longo do tempo, abrangendo temas como Análise de Dados, Automação, Algoritmos, e Jogos. Cada projeto tem um objetivo específico e visa demonstrar diferentes habilidades de programação.
+Bem-vindo ao meu repositório de projetos!  
+Aqui você encontrará aplicações, estudos e experimentos que desenvolvi ao longo do tempo, com foco em **Análise de Dados, Banco de Dados, Automação, Algoritmos e Python**.
 
-## 📊 Análise de Dados
+Cada projeto foi construído com um objetivo específico, buscando não apenas praticar programação, mas também desenvolver soluções aplicáveis a cenários reais de negócio, análise e produtividade.
 
-- **Análise Exploratória de Dados**: Uma investigação aprofundada de um dataset com foco na extração de insights, visualizações e padrões relevantes. Utiliza bibliotecas como `pandas` e `matplotlib`.
-- **Segmentação de Clientes**: Projeto de clustering que agrupa clientes com base em características semelhantes, usando técnicas como K-means. Aplicado para criar perfis de clientes.
-- **Case Integral Trust**: Manipulação de dataset de vendas e criação de um dashboard interativo revelando os insights obtidos. Feito durante uma vaga para estágio.
+---
 
-## 🤖 Automação e Algoritmos
+## 📊 Análise de Dados e Machine Learning
 
-- **Automação de Cadastros**: Um script automatizado para preencher e gerenciar cadastros em massa, otimizando o tempo gasto com inserções manuais.
-- **Gerador de Arrays**: Uma ferramenta simples que gera arrays de números aleatórios ou específicos, útil para testar algoritmos de ordenação e outros.
-- **Automação – Cadastro de Insumos**: Script em Selenium que realiza a conciliação automática de itens no sistema Saipos. Ele percorre notas de entrada com conciliação pendente, busca os nomes dos insumos e associa aos ingredientes cadastrados. Caso o ingrediente não exista, o sistema criará automaticamente o cadastro com o nome correspondente (funcionalidade em desenvolvimento).
-## 🔍 Detecção e Simulações
+- **Análise Exploratória de Dados**: Investigação aprofundada de um dataset com foco na extração de insights, identificação de padrões e criação de visualizações utilizando bibliotecas como `pandas` e `matplotlib`.
 
-- **Detector de Plágio**: Um projeto que analisa documentos em busca de similaridades, utilizando técnicas de processamento de texto para identificar possíveis plágios.
-- **PI Monte Carlo**: Um método de Monte Carlo implementado para calcular a aproximação de pi, com visualização dos pontos e comparação de resultados.
+- **Segmentação de Clientes**: Projeto de clusterização com **K-means** para agrupar clientes com características semelhantes, permitindo a criação de perfis e análises estratégicas.
 
-## 🎮 Jogos e Entretenimento
+- **Case Integral Trust**: Manipulação de um dataset de vendas e construção de um dashboard interativo com os principais insights obtidos. Projeto desenvolvido durante um processo seletivo para estágio.
 
-- **Jogo NIM**: Um clássico jogo de estratégia em que os jogadores removem objetos de pilhas, com o objetivo de evitar ser o último a pegar.
-- **Jogo da Forca**: Uma implementação do tradicional jogo da forca, onde o jogador tenta adivinhar a palavra antes de perder todas as chances.
-- **Questionário**: Um programa interativo que apresenta perguntas e verifica as respostas do usuário, com feedback imediato.
+- **Score de Crédito de Cliente**: Modelo preditivo para estimar o score de crédito de clientes com base em dados históricos e características financeiras, aplicando técnicas de **machine learning**.
 
-## 🏦 Aplicações para Negócios
+---
 
-- **Score de Crédito de Cliente**: Um modelo preditivo que estima o score de crédito de clientes com base em dados históricos e características financeiras. Utiliza técnicas de machine learning.
-  
+## 🗄️ Banco de Dados e SQL
+
+- **Geração e População de Banco de Dados -- Loja de Vendas**: Projeto de criação automática de um banco de dados **PostgreSQL** completo para uma loja fictícia. Inclui modelagem relacional, criação de tabelas e tipos `ENUM`, além da população automatizada com dados realistas de clientes, produtos, pedidos, vendas, pagamentos, descontos e fidelidade. Ideal para estudos de **SQL**, **modelagem de dados**, **ETL**, **análise de dados** e construção de cenários para **BI**.
+
+---
+
+## 🤖 Automação
+
+- **Automação de Cadastros**: Script desenvolvido para preencher e gerenciar cadastros em massa, reduzindo o tempo gasto com inserções manuais e aumentando a produtividade.
+
+- **Automação – Cadastro de Insumos**: Automação em **Selenium** que realiza a conciliação de itens no sistema Saipos. O script percorre notas de entrada com conciliação pendente, identifica os nomes dos insumos e associa aos ingredientes já cadastrados. Caso o ingrediente não exista, há a proposta de criação automática do cadastro (funcionalidade em desenvolvimento).
+
+---
+
+## 🧠 Algoritmos, Simulações e Processamento
+
+- **Gerador de Arrays**: Ferramenta para geração de arrays aleatórios ou personalizados, útil para testes de algoritmos de ordenação e outras estruturas lógicas.
+
+- **Detector de Plágio**: Projeto que analisa documentos em busca de similaridades, utilizando técnicas de processamento de texto para identificar possíveis ocorrências de plágio.
+
+- **PI Monte Carlo**: Implementação do método de Monte Carlo para aproximação do valor de π, com visualização gráfica dos pontos gerados e comparação de resultados.
+
+---
+
+## 🎮 Jogos e Projetos Interativos
+
+- **Jogo NIM**: Implementação do clássico jogo de estratégia em que os jogadores removem objetos de pilhas, buscando evitar a última jogada.
+
+- **Jogo da Forca**: Versão programada do tradicional jogo da forca, com interação direta e controle de tentativas.
+
+- **Questionário**: Aplicação interativa de perguntas e respostas com validação e feedback imediato ao usuário.
+
+---
+
 ## 🛠️ Tecnologias e Ferramentas
 
-- Python
-- Pandas, NumPy, Matplotlib
-- Machine Learning (para segmentação de clientes e score de crédito)
-- Algoritmos e Estruturas de Dados
+- **Linguagens e Bancos de Dados:** Python, PostgreSQL
+- **Análise de Dados:** Pandas, NumPy, Matplotlib
+- **Machine Learning:** Clusterização, Modelos Preditivos
+- **Automação:** Selenium
+- **Back-end / Dados:** SQLAlchemy, psycopg2, Faker
+- **Conceitos aplicados:** ETL, Modelagem de Dados, Visualização de Dados, Algoritmos e Estruturas de Dados
+
+---
 
 ## ⚙️ Como Executar
 
-Cada projeto possui seu próprio diretório com instruções específicas no arquivo `README.md`. Para executar os projetos, basta seguir os passos descritos em cada um deles. A maioria dos projetos foi desenvolvida em Python, então certifique-se de ter o Python instalado em seu sistema.
+Cada projeto possui seu próprio diretório com instruções específicas no arquivo `README.md`.
+
+De forma geral:
+
+1. Certifique-se de ter o **Python** instalado.
+2. Instale as dependências de cada projeto.
+3. Acesse a pasta desejada.
+4. Siga as instruções do respectivo `README.md`.
+
+---
 
 ## 💬 Contato
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+Se você tiver alguma dúvida, sugestão ou quiser trocar uma ideia sobre projetos e tecnologia, fique à vontade para entrar em contato!
 
 <p align="left">
   <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
@@ -58,13 +96,17 @@ Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em c
   </a>
 </p>
 
+---
+
 ## 🤝 Contribuições
 
-Se você deseja contribuir com este repositório, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+Se você deseja contribuir com este repositório, sinta-se à vontade para enviar pull requests.  
+Toda contribuição é bem-vinda!
+
+---
 
 ## 📜 Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
-Obrigado por visitar o meu repositório e espero que os conteúdos aqui sejam úteis para o seu aprendizado!
-
+Obrigado por visitar meu repositório! Espero que os conteúdos aqui sejam úteis para o seu aprendizado e desenvolvimento.
