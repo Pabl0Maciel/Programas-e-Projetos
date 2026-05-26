@@ -1,0 +1,13 @@
+No primeiro dia de curso, aprendi os conceitos iniciais de Aprendizado Não Supervisionado aplicado à Ciência de Dados. Entendi que esse tipo de aprendizado é usado quando os dados não possuem uma variável resposta já definida, ou seja, o objetivo não é prever um resultado conhecido, mas sim encontrar padrões, grupos, relações e estruturas escondidas nos dados.
+
+Também percebi a importância da análise exploratória de dados antes de aplicar qualquer técnica. Aprendi que essa etapa ajuda a conhecer melhor a base, identificar o tipo das variáveis, observar a distribuição dos dados e encontrar possíveis problemas, como valores ausentes, dados inconsistentes e diferenças de escala entre variáveis. Isso é essencial para tomar decisões mais corretas durante a análise.
+
+Outro ponto importante foi o uso de visualizações gráficas para entender os dados. Pelos materiais e anotações, ficou claro que gráficos ajudam muito na interpretação das informações e na comunicação dos resultados. Dependendo do objetivo, diferentes tipos de gráficos podem ser usados para mostrar distribuições, comparações e relações entre variáveis.
+
+Além da parte conceitual, também aprendi que a preparação dos dados tem um papel fundamental. Antes de aplicar métodos de aprendizado não supervisionado, muitas vezes é necessário organizar a base, selecionar variáveis relevantes e padronizar os dados. Isso melhora a qualidade da análise e evita que os resultados sejam influenciados de forma errada por diferenças de escala ou ruídos na base.
+
+Pelo conteúdo da aula, entendi ainda que o aprendizado não supervisionado é muito útil para segmentação, descoberta de perfis e reconhecimento de padrões. Na prática, isso pode ser aplicado em vários contextos, como agrupar clientes com características parecidas, identificar comportamentos semelhantes ou explorar grandes volumes de dados sem depender de rótulos prontos.
+
+De forma geral, meu principal aprendizado no primeiro dia foi entender que o aprendizado não supervisionado é uma ferramenta importante para explorar dados e gerar conhecimento a partir deles. Também compreendi que, para obter bons resultados, não basta aplicar técnicas automaticamente: é preciso primeiro conhecer os dados, analisá-los com cuidado e usar visualizações e preparação adequada para apoiar a interpretação.
+
+Em resumo, a aula me ajudou a construir uma base inicial sobre o tema, mostrando tanto a ideia geral do aprendizado não supervisionado quanto a importância da análise exploratória e do preparo dos dados para uma análise mais confiável e útil.
