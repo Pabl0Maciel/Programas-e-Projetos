@@ -11,7 +11,7 @@ Este repositório contém informações dos cursos que concluí nas plataformas 
   - Contém os cursos que realizei na Data Science Academy. Para mais informações sobre os conteúdos abordados, consulte o arquivo [Data Science Academy/README.md](Data%20Science%20Academy/README.md).
 
 - **Hashtag Programação** 💻
-  - Contém os cursos que realizei na plataforma Hashtag Programação. Veja o conteúdo dos cursos no arquivo [Hashtag Programação/README.md](Hashtag%20Programacao/README.md).
+  - Contém os cursos que realizei na plataforma Hashtag Programação. Para detalhes sobre os cursos, navegue pela pasta até o README respectivo.
     
 - **Ocean** 📘
   - Contém os cursos que realizei na plataforma Ocean. Para detalhes sobre os cursos, navegue pela pasta até o README respectivo.
