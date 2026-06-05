@@ -1,0 +1,632 @@
+18:07:04 [INFO] ============================================================
+18:07:04 [INFO] QuintoAndar Scraper — Coleta iniciada
+18:07:04 [INFO] Modo segmentado: True
+18:07:04 [INFO] Total de segmentos: 14
+18:07:04 [INFO] ============================================================
+18:07:04 [INFO] 
+[1/14] Iniciando segmento 'studio_0q'
+18:07:04 [INFO] ────────────────────────────────────────────────────────────
+18:07:04 [INFO] Segmento: studio_0q
+18:07:04 [INFO] Detalhes: bedrooms_min=0, bedrooms_max=0, extra_filters={'houseTypes': ['STUDIO']}
+18:07:04 [INFO] ────────────────────────────────────────────────────────────
+18:07:04 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:07:04 [INFO] 📊 Total estimado do segmento 'studio_0q': Desconhecido
+18:07:04 [INFO]    → 36 novos | 0 duplicados
+18:07:04 [INFO]    ⏳ Aguardando 2.5s...
+18:07:07 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:07:08 [INFO]    → 29 novos | 7 duplicados
+18:07:08 [INFO]    ⏳ Aguardando 1.4s...
+18:07:09 [INFO] 📄 Página 3 | offset=72 | acumulado=65
+18:07:10 [INFO]    → 28 novos | 8 duplicados
+18:07:10 [INFO]    ⏳ Aguardando 1.9s...
+18:07:12 [INFO] 📄 Página 4 | offset=108 | acumulado=93
+18:07:12 [INFO]    → 32 novos | 4 duplicados
+18:07:12 [INFO]    ⏳ Aguardando 2.2s...
+18:07:14 [INFO] 📄 Página 5 | offset=144 | acumulado=125
+18:07:15 [INFO]    → 28 novos | 8 duplicados
+18:07:15 [INFO]    ⏳ Aguardando 1.8s...
+18:07:16 [INFO] 📄 Página 6 | offset=180 | acumulado=153
+18:07:17 [INFO]    → 24 novos | 12 duplicados
+18:07:17 [INFO]    ⏳ Aguardando 2.4s...
+18:07:19 [INFO] 📄 Página 7 | offset=216 | acumulado=177
+18:07:20 [INFO]    → 30 novos | 6 duplicados
+18:07:20 [INFO]    ⏳ Aguardando 1.6s...
+18:07:22 [INFO] 📄 Página 8 | offset=252 | acumulado=207
+18:07:22 [INFO]    → 12 novos | 7 duplicados
+18:07:22 [INFO]    ⏳ Aguardando 1.8s...
+18:07:24 [INFO] 📄 Página 9 | offset=288 | acumulado=219
+18:07:25 [INFO] ✅ Fim da lista de imóveis no segmento 'studio_0q'.
+18:07:25 [INFO] 🏁 Segmento 'studio_0q' finalizado com 219 imóveis únicos.
+18:07:25 [INFO] 📦 Acumulado global: 219 imóveis únicos
+18:07:25 [INFO] 😴 Pausa entre segmentos: 9.7s...
+18:07:34 [INFO] 
+[2/14] Iniciando segmento 'studio_1q'
+18:07:34 [INFO] ────────────────────────────────────────────────────────────
+18:07:34 [INFO] Segmento: studio_1q
+18:07:34 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['STUDIO']}
+18:07:34 [INFO] ────────────────────────────────────────────────────────────
+18:07:34 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:07:35 [INFO] 📊 Total estimado do segmento 'studio_1q': Desconhecido
+18:07:35 [INFO]    → 36 novos | 0 duplicados
+18:07:35 [INFO]    ⏳ Aguardando 1.9s...
+18:07:37 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:07:37 [INFO]    → 21 novos | 15 duplicados
+18:07:37 [INFO]    ⏳ Aguardando 2.8s...
+18:07:40 [INFO] 📄 Página 3 | offset=72 | acumulado=57
+18:07:41 [INFO]    → 29 novos | 7 duplicados
+18:07:41 [INFO]    ⏳ Aguardando 1.8s...
+18:07:43 [INFO] 📄 Página 4 | offset=108 | acumulado=86
+18:07:43 [INFO]    → 36 novos | 0 duplicados
+18:07:43 [INFO]    ⏳ Aguardando 2.6s...
+18:07:46 [INFO] 📄 Página 5 | offset=144 | acumulado=122
+18:07:47 [INFO]    → 36 novos | 0 duplicados
+18:07:47 [INFO]    ⏳ Aguardando 2.1s...
+18:07:49 [INFO] 📄 Página 6 | offset=180 | acumulado=158
+18:07:49 [INFO]    → 36 novos | 0 duplicados
+18:07:49 [INFO]    ⏳ Aguardando 2.0s...
+18:07:51 [INFO] 📄 Página 7 | offset=216 | acumulado=194
+18:07:52 [INFO]    → 35 novos | 1 duplicados
+18:07:52 [INFO]    ⏳ Aguardando 2.8s...
+18:07:55 [INFO] 📄 Página 8 | offset=252 | acumulado=229
+18:07:56 [INFO]    → 30 novos | 6 duplicados
+18:07:56 [INFO]    ⏳ Aguardando 2.3s...
+18:07:58 [INFO] 📄 Página 9 | offset=288 | acumulado=259
+18:07:58 [INFO]    → 35 novos | 1 duplicados
+18:07:58 [INFO]    ⏳ Aguardando 1.5s...
+18:08:00 [INFO] 📄 Página 10 | offset=324 | acumulado=294
+18:08:00 [INFO]    → 14 novos | 22 duplicados
+18:08:00 [INFO]    ⏳ Aguardando 2.2s...
+18:08:02 [INFO] 📄 Página 11 | offset=360 | acumulado=308
+18:08:03 [INFO]    → 25 novos | 11 duplicados
+18:08:03 [INFO]    ⏳ Aguardando 2.0s...
+18:08:05 [INFO] 📄 Página 12 | offset=396 | acumulado=333
+18:08:06 [INFO]    → 10 novos | 26 duplicados
+18:08:06 [INFO]    ⏳ Aguardando 2.5s...
+18:08:08 [INFO] 📄 Página 13 | offset=432 | acumulado=343
+18:08:09 [INFO]    → 23 novos | 13 duplicados
+18:08:09 [INFO]    ⏳ Aguardando 1.9s...
+18:08:11 [INFO] 📄 Página 14 | offset=468 | acumulado=366
+18:08:11 [INFO]    → 12 novos | 24 duplicados
+18:08:11 [INFO]    ⏳ Aguardando 1.8s...
+18:08:13 [INFO] 📄 Página 15 | offset=504 | acumulado=378
+18:08:14 [INFO]    → 17 novos | 19 duplicados
+18:08:14 [INFO]    ⏳ Aguardando 1.5s...
+18:08:15 [INFO] 📄 Página 16 | offset=540 | acumulado=395
+18:08:16 [INFO]    → 15 novos | 21 duplicados
+18:08:16 [INFO]    ⏳ Aguardando 3.0s...
+18:08:19 [INFO] 📄 Página 17 | offset=576 | acumulado=410
+18:08:19 [INFO]    → 27 novos | 9 duplicados
+18:08:19 [INFO]    ⏳ Aguardando 2.6s...
+18:08:22 [INFO] 📄 Página 18 | offset=612 | acumulado=437
+18:08:22 [INFO]    → 31 novos | 5 duplicados
+18:08:22 [INFO]    ⏳ Aguardando 2.0s...
+18:08:24 [INFO] 📄 Página 19 | offset=648 | acumulado=468
+18:08:25 [INFO]    → 33 novos | 3 duplicados
+18:08:25 [INFO]    ⏳ Aguardando 2.9s...
+18:08:28 [INFO] 📄 Página 20 | offset=684 | acumulado=501
+18:08:28 [INFO]    → 22 novos | 14 duplicados
+18:08:28 [INFO]    ⏳ Aguardando 1.4s...
+18:08:29 [INFO] 📄 Página 21 | offset=720 | acumulado=523
+18:08:30 [INFO]    → 24 novos | 12 duplicados
+18:08:30 [INFO]    ⏳ Aguardando 2.0s...
+18:08:32 [INFO] 📄 Página 22 | offset=756 | acumulado=547
+18:08:33 [INFO]    → 25 novos | 11 duplicados
+18:08:33 [INFO]    ⏳ Aguardando 2.7s...
+18:08:35 [INFO] 📄 Página 23 | offset=792 | acumulado=572
+18:08:36 [INFO]    → 20 novos | 16 duplicados
+18:08:36 [INFO]    ⏳ Aguardando 2.9s...
+18:08:39 [INFO] 📄 Página 24 | offset=828 | acumulado=592
+18:08:39 [INFO]    → 30 novos | 6 duplicados
+18:08:39 [INFO]    ⏳ Aguardando 1.3s...
+18:08:41 [INFO] 📄 Página 25 | offset=864 | acumulado=622
+18:08:41 [INFO]    → 36 novos | 0 duplicados
+18:08:41 [INFO]    ⏳ Aguardando 2.9s...
+18:08:44 [INFO] 📄 Página 26 | offset=900 | acumulado=658
+18:08:45 [INFO]    → 36 novos | 0 duplicados
+18:08:45 [INFO]    ⏳ Aguardando 2.2s...
+18:08:47 [INFO] 📄 Página 27 | offset=936 | acumulado=694
+18:08:47 [INFO]    → 28 novos | 8 duplicados
+18:08:47 [INFO]    ⏳ Aguardando 1.4s...
+18:08:49 [INFO] 📄 Página 28 | offset=972 | acumulado=722
+18:08:49 [WARNING] HTTP 400 no offset 972 — limite/fim da paginação.
+18:08:49 [INFO] Encerrando segmento 'studio_1q' por resposta nula/fim.
+18:08:49 [INFO] 🏁 Segmento 'studio_1q' finalizado com 722 imóveis únicos.
+18:08:49 [INFO] 📦 Acumulado global: 941 imóveis únicos
+18:08:49 [INFO] 😴 Pausa entre segmentos: 9.6s...
+18:08:59 [INFO] 
+[3/14] Iniciando segmento '1q_apto'
+18:08:59 [INFO] ────────────────────────────────────────────────────────────
+18:08:59 [INFO] Segmento: 1q_apto
+18:08:59 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['APARTMENT']}
+18:08:59 [INFO] ────────────────────────────────────────────────────────────
+18:08:59 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:08:59 [INFO] 📊 Total estimado do segmento '1q_apto': Desconhecido
+18:08:59 [INFO]    → 36 novos | 0 duplicados
+18:08:59 [INFO]    ⏳ Aguardando 2.3s...
+18:09:02 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:09:02 [INFO]    → 36 novos | 0 duplicados
+18:09:02 [INFO]    ⏳ Aguardando 2.8s...
+18:09:05 [INFO] 📄 Página 3 | offset=72 | acumulado=72
+18:09:06 [INFO]    → 35 novos | 1 duplicados
+18:09:06 [INFO]    ⏳ Aguardando 2.0s...
+18:09:08 [INFO] 📄 Página 4 | offset=108 | acumulado=107
+18:09:08 [INFO]    → 25 novos | 11 duplicados
+18:09:08 [INFO]    ⏳ Aguardando 1.5s...
+18:09:10 [INFO] 📄 Página 5 | offset=144 | acumulado=132
+18:09:11 [INFO]    → 36 novos | 0 duplicados
+18:09:11 [INFO]    ⏳ Aguardando 2.5s...
+18:09:13 [INFO] 📄 Página 6 | offset=180 | acumulado=168
+18:09:14 [INFO]    → 17 novos | 19 duplicados
+18:09:14 [INFO]    ⏳ Aguardando 1.4s...
+18:09:15 [INFO] 📄 Página 7 | offset=216 | acumulado=185
+18:09:16 [INFO]    → 35 novos | 1 duplicados
+18:09:16 [INFO]    ⏳ Aguardando 2.0s...
+18:09:18 [INFO] 📄 Página 8 | offset=252 | acumulado=220
+18:09:18 [INFO]    → 36 novos | 0 duplicados
+18:09:18 [INFO]    ⏳ Aguardando 1.8s...
+18:09:20 [INFO] 📄 Página 9 | offset=288 | acumulado=256
+18:09:21 [INFO]    → 36 novos | 0 duplicados
+18:09:21 [INFO]    ⏳ Aguardando 1.2s...
+18:09:22 [INFO] 📄 Página 10 | offset=324 | acumulado=292
+18:09:22 [INFO]    → 22 novos | 14 duplicados
+18:09:22 [INFO]    ⏳ Aguardando 2.0s...
+18:09:24 [INFO] 📄 Página 11 | offset=360 | acumulado=314
+18:09:25 [INFO]    → 22 novos | 14 duplicados
+18:09:25 [INFO]    ⏳ Aguardando 2.9s...
+18:09:28 [INFO] 📄 Página 12 | offset=396 | acumulado=336
+18:09:28 [INFO]    → 20 novos | 16 duplicados
+18:09:28 [INFO]    ⏳ Aguardando 2.3s...
+18:09:31 [INFO] 📄 Página 13 | offset=432 | acumulado=356
+18:09:31 [INFO]    → 31 novos | 5 duplicados
+18:09:31 [INFO]    ⏳ Aguardando 1.4s...
+18:09:32 [INFO] 📄 Página 14 | offset=468 | acumulado=387
+18:09:33 [INFO]    → 36 novos | 0 duplicados
+18:09:33 [INFO]    ⏳ Aguardando 2.7s...
+18:09:36 [INFO] 📄 Página 15 | offset=504 | acumulado=423
+18:09:36 [INFO]    → 25 novos | 11 duplicados
+18:09:36 [INFO]    ⏳ Aguardando 1.7s...
+18:09:38 [INFO] 📄 Página 16 | offset=540 | acumulado=448
+18:09:39 [INFO]    → 22 novos | 14 duplicados
+18:09:39 [INFO]    ⏳ Aguardando 2.5s...
+18:09:41 [INFO] 📄 Página 17 | offset=576 | acumulado=470
+18:09:42 [INFO]    → 28 novos | 8 duplicados
+18:09:42 [INFO]    ⏳ Aguardando 1.9s...
+18:09:44 [INFO] 📄 Página 18 | offset=612 | acumulado=498
+18:09:45 [INFO]    → 19 novos | 17 duplicados
+18:09:45 [INFO]    ⏳ Aguardando 2.1s...
+18:09:47 [INFO] 📄 Página 19 | offset=648 | acumulado=517
+18:09:47 [INFO]    → 13 novos | 23 duplicados
+18:09:47 [INFO]    ⏳ Aguardando 1.4s...
+18:09:49 [INFO] 📄 Página 20 | offset=684 | acumulado=530
+18:09:49 [INFO]    → 16 novos | 20 duplicados
+18:09:49 [INFO]    ⏳ Aguardando 2.4s...
+18:09:52 [INFO] 📄 Página 21 | offset=720 | acumulado=546
+18:09:52 [INFO]    → 24 novos | 12 duplicados
+18:09:52 [INFO]    ⏳ Aguardando 2.2s...
+18:09:54 [INFO] 📄 Página 22 | offset=756 | acumulado=570
+18:09:55 [INFO]    → 13 novos | 23 duplicados
+18:09:55 [INFO]    ⏳ Aguardando 3.0s...
+18:09:58 [INFO] 📄 Página 23 | offset=792 | acumulado=583
+18:09:58 [INFO]    → 16 novos | 20 duplicados
+18:09:58 [INFO]    ⏳ Aguardando 1.6s...
+18:10:00 [INFO] 📄 Página 24 | offset=828 | acumulado=599
+18:10:00 [INFO]    → 34 novos | 2 duplicados
+18:10:00 [INFO]    ⏳ Aguardando 2.0s...
+18:10:02 [INFO] 📄 Página 25 | offset=864 | acumulado=633
+18:10:03 [INFO]    → 36 novos | 0 duplicados
+18:10:03 [INFO]    ⏳ Aguardando 1.4s...
+18:10:04 [INFO] 📄 Página 26 | offset=900 | acumulado=669
+18:10:05 [INFO]    → 36 novos | 0 duplicados
+18:10:05 [INFO]    ⏳ Aguardando 1.6s...
+18:10:06 [INFO] 📄 Página 27 | offset=936 | acumulado=705
+18:10:07 [INFO]    → 36 novos | 0 duplicados
+18:10:07 [INFO]    ⏳ Aguardando 2.9s...
+18:10:09 [INFO] 📄 Página 28 | offset=972 | acumulado=741
+18:10:10 [WARNING] HTTP 400 no offset 972 — limite/fim da paginação.
+18:10:10 [INFO] Encerrando segmento '1q_apto' por resposta nula/fim.
+18:10:10 [INFO] 🏁 Segmento '1q_apto' finalizado com 741 imóveis únicos.
+18:10:10 [INFO] 📦 Acumulado global: 1682 imóveis únicos
+18:10:10 [INFO] 😴 Pausa entre segmentos: 5.5s...
+18:10:16 [INFO] 
+[4/14] Iniciando segmento '1q_casa'
+18:10:16 [INFO] ────────────────────────────────────────────────────────────
+18:10:16 [INFO] Segmento: 1q_casa
+18:10:16 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['HOME']}
+18:10:16 [INFO] ────────────────────────────────────────────────────────────
+18:10:16 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:10:16 [WARNING] HTTP 400 no offset 0 — limite/fim da paginação.
+18:10:16 [INFO] Encerrando segmento '1q_casa' por resposta nula/fim.
+18:10:16 [INFO] 🏁 Segmento '1q_casa' finalizado com 0 imóveis únicos.
+18:10:16 [INFO] 📦 Acumulado global: 1682 imóveis únicos
+18:10:16 [INFO] 😴 Pausa entre segmentos: 5.3s...
+18:10:21 [INFO] 
+[5/14] Iniciando segmento '1q_condo'
+18:10:21 [INFO] ────────────────────────────────────────────────────────────
+18:10:21 [INFO] Segmento: 1q_condo
+18:10:21 [INFO] Detalhes: bedrooms_min=1, bedrooms_max=1, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+18:10:21 [INFO] ────────────────────────────────────────────────────────────
+18:10:21 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:10:22 [INFO] 📊 Total estimado do segmento '1q_condo': Desconhecido
+18:10:22 [INFO]    → 36 novos | 0 duplicados
+18:10:22 [INFO]    ⏳ Aguardando 1.5s...
+18:10:23 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:10:24 [INFO]    → 33 novos | 3 duplicados
+18:10:24 [INFO]    ⏳ Aguardando 1.4s...
+18:10:25 [INFO] 📄 Página 3 | offset=72 | acumulado=69
+18:10:25 [INFO]    → 21 novos | 1 duplicados
+18:10:25 [INFO]    ⏳ Aguardando 2.4s...
+18:10:28 [INFO] 📄 Página 4 | offset=108 | acumulado=90
+18:10:28 [INFO] ✅ Fim da lista de imóveis no segmento '1q_condo'.
+18:10:28 [INFO] 🏁 Segmento '1q_condo' finalizado com 90 imóveis únicos.
+18:10:28 [INFO] 📦 Acumulado global: 1772 imóveis únicos
+18:10:28 [INFO] 😴 Pausa entre segmentos: 7.4s...
+18:10:35 [INFO] 
+[6/14] Iniciando segmento '2q_apto'
+18:10:35 [INFO] ────────────────────────────────────────────────────────────
+18:10:35 [INFO] Segmento: 2q_apto
+18:10:35 [INFO] Detalhes: bedrooms_min=2, bedrooms_max=2, extra_filters={'houseTypes': ['APARTMENT']}
+18:10:35 [INFO] ────────────────────────────────────────────────────────────
+18:10:35 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:10:36 [INFO] 📊 Total estimado do segmento '2q_apto': Desconhecido
+18:10:36 [INFO]    → 36 novos | 0 duplicados
+18:10:36 [INFO]    ⏳ Aguardando 1.8s...
+18:10:38 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:10:38 [INFO]    → 36 novos | 0 duplicados
+18:10:38 [INFO]    ⏳ Aguardando 1.2s...
+18:10:39 [INFO] 📄 Página 3 | offset=72 | acumulado=72
+18:10:40 [INFO]    → 36 novos | 0 duplicados
+18:10:40 [INFO]    ⏳ Aguardando 2.2s...
+18:10:42 [INFO] 📄 Página 4 | offset=108 | acumulado=108
+18:10:42 [INFO]    → 36 novos | 0 duplicados
+18:10:42 [INFO]    ⏳ Aguardando 2.2s...
+18:10:44 [INFO] 📄 Página 5 | offset=144 | acumulado=144
+18:10:45 [INFO]    → 36 novos | 0 duplicados
+18:10:45 [INFO]    ⏳ Aguardando 1.5s...
+18:10:46 [INFO] 📄 Página 6 | offset=180 | acumulado=180
+18:10:47 [INFO]    → 15 novos | 21 duplicados
+18:10:47 [INFO]    ⏳ Aguardando 2.0s...
+18:10:49 [INFO] 📄 Página 7 | offset=216 | acumulado=195
+18:10:49 [INFO]    → 19 novos | 17 duplicados
+18:10:49 [INFO]    ⏳ Aguardando 2.1s...
+18:10:51 [INFO] 📄 Página 8 | offset=252 | acumulado=214
+18:10:52 [INFO]    → 34 novos | 2 duplicados
+18:10:52 [INFO]    ⏳ Aguardando 2.1s...
+18:10:54 [INFO] 📄 Página 9 | offset=288 | acumulado=248
+18:10:55 [INFO]    → 25 novos | 11 duplicados
+18:10:55 [INFO]    ⏳ Aguardando 2.6s...
+18:10:57 [INFO] 📄 Página 10 | offset=324 | acumulado=273
+18:10:58 [INFO]    → 36 novos | 0 duplicados
+18:10:58 [INFO]    ⏳ Aguardando 2.4s...
+18:11:00 [INFO] 📄 Página 11 | offset=360 | acumulado=309
+18:11:01 [INFO]    → 29 novos | 7 duplicados
+18:11:01 [INFO]    ⏳ Aguardando 2.9s...
+18:11:04 [INFO] 📄 Página 12 | offset=396 | acumulado=338
+18:11:04 [INFO]    → 12 novos | 24 duplicados
+18:11:04 [INFO]    ⏳ Aguardando 2.8s...
+18:11:07 [INFO] 📄 Página 13 | offset=432 | acumulado=350
+18:11:08 [INFO]    → 27 novos | 9 duplicados
+18:11:08 [INFO]    ⏳ Aguardando 2.1s...
+18:11:10 [INFO] 📄 Página 14 | offset=468 | acumulado=377
+18:11:10 [INFO]    → 23 novos | 13 duplicados
+18:11:10 [INFO]    ⏳ Aguardando 1.3s...
+18:11:12 [INFO] 📄 Página 15 | offset=504 | acumulado=400
+18:11:12 [INFO]    → 31 novos | 5 duplicados
+18:11:12 [INFO]    ⏳ Aguardando 2.1s...
+18:11:14 [INFO] 📄 Página 16 | offset=540 | acumulado=431
+18:11:15 [INFO]    → 28 novos | 8 duplicados
+18:11:15 [INFO]    ⏳ Aguardando 1.7s...
+18:11:17 [INFO] 📄 Página 17 | offset=576 | acumulado=459
+18:11:17 [INFO]    → 21 novos | 15 duplicados
+18:11:17 [INFO]    ⏳ Aguardando 1.6s...
+18:11:19 [INFO] 📄 Página 18 | offset=612 | acumulado=480
+18:11:19 [INFO]    → 8 novos | 28 duplicados
+18:11:19 [INFO]    ⏳ Aguardando 1.3s...
+18:11:21 [INFO] 📄 Página 19 | offset=648 | acumulado=488
+18:11:21 [INFO]    → 1 novos | 35 duplicados
+18:11:21 [INFO]    ⏳ Aguardando 2.2s...
+18:11:23 [INFO] 📄 Página 20 | offset=684 | acumulado=489
+18:11:24 [INFO]    → 21 novos | 15 duplicados
+18:11:24 [INFO]    ⏳ Aguardando 1.5s...
+18:11:25 [INFO] 📄 Página 21 | offset=720 | acumulado=510
+18:11:26 [INFO]    → 15 novos | 21 duplicados
+18:11:26 [INFO]    ⏳ Aguardando 1.4s...
+18:11:27 [INFO] 📄 Página 22 | offset=756 | acumulado=525
+18:11:28 [INFO]    → 26 novos | 10 duplicados
+18:11:28 [INFO]    ⏳ Aguardando 2.0s...
+18:11:30 [INFO] 📄 Página 23 | offset=792 | acumulado=551
+18:11:31 [INFO]    → 25 novos | 11 duplicados
+18:11:31 [INFO]    ⏳ Aguardando 2.6s...
+18:11:33 [INFO] 📄 Página 24 | offset=828 | acumulado=576
+18:11:34 [INFO]    → 23 novos | 13 duplicados
+18:11:34 [INFO]    ⏳ Aguardando 2.1s...
+18:11:36 [INFO] 📄 Página 25 | offset=864 | acumulado=599
+18:11:37 [INFO]    → 25 novos | 11 duplicados
+18:11:37 [INFO]    ⏳ Aguardando 2.8s...
+18:11:39 [INFO] 📄 Página 26 | offset=900 | acumulado=624
+18:11:40 [INFO]    → 34 novos | 2 duplicados
+18:11:40 [INFO]    ⏳ Aguardando 1.8s...
+18:11:42 [INFO] 📄 Página 27 | offset=936 | acumulado=658
+18:11:42 [INFO]    → 36 novos | 0 duplicados
+18:11:42 [INFO]    ⏳ Aguardando 2.2s...
+18:11:44 [INFO] 📄 Página 28 | offset=972 | acumulado=694
+18:11:45 [WARNING] HTTP 400 no offset 972 — limite/fim da paginação.
+18:11:45 [INFO] Encerrando segmento '2q_apto' por resposta nula/fim.
+18:11:45 [INFO] 🏁 Segmento '2q_apto' finalizado com 694 imóveis únicos.
+18:11:45 [INFO] 📦 Acumulado global: 2466 imóveis únicos
+18:11:45 [INFO] 😴 Pausa entre segmentos: 8.2s...
+18:11:53 [INFO] 
+[7/14] Iniciando segmento '2q_casa'
+18:11:53 [INFO] ────────────────────────────────────────────────────────────
+18:11:53 [INFO] Segmento: 2q_casa
+18:11:53 [INFO] Detalhes: bedrooms_min=2, bedrooms_max=2, extra_filters={'houseTypes': ['HOME']}
+18:11:53 [INFO] ────────────────────────────────────────────────────────────
+18:11:53 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:11:53 [WARNING] HTTP 400 no offset 0 — limite/fim da paginação.
+18:11:53 [INFO] Encerrando segmento '2q_casa' por resposta nula/fim.
+18:11:53 [INFO] 🏁 Segmento '2q_casa' finalizado com 0 imóveis únicos.
+18:11:53 [INFO] 📦 Acumulado global: 2466 imóveis únicos
+18:11:53 [INFO] 😴 Pausa entre segmentos: 7.7s...
+18:12:01 [INFO] 
+[8/14] Iniciando segmento '2q_condo'
+18:12:01 [INFO] ────────────────────────────────────────────────────────────
+18:12:01 [INFO] Segmento: 2q_condo
+18:12:01 [INFO] Detalhes: bedrooms_min=2, bedrooms_max=2, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+18:12:01 [INFO] ────────────────────────────────────────────────────────────
+18:12:01 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:12:01 [INFO] 📊 Total estimado do segmento '2q_condo': Desconhecido
+18:12:01 [INFO]    → 36 novos | 0 duplicados
+18:12:01 [INFO]    ⏳ Aguardando 1.3s...
+18:12:03 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:12:03 [INFO]    → 31 novos | 5 duplicados
+18:12:03 [INFO]    ⏳ Aguardando 2.4s...
+18:12:06 [INFO] 📄 Página 3 | offset=72 | acumulado=67
+18:12:06 [INFO]    → 36 novos | 0 duplicados
+18:12:06 [INFO]    ⏳ Aguardando 1.9s...
+18:12:08 [INFO] 📄 Página 4 | offset=108 | acumulado=103
+18:12:09 [INFO]    → 11 novos | 3 duplicados
+18:12:09 [INFO]    ⏳ Aguardando 2.0s...
+18:12:11 [INFO] 📄 Página 5 | offset=144 | acumulado=114
+18:12:11 [INFO] ✅ Fim da lista de imóveis no segmento '2q_condo'.
+18:12:11 [INFO] 🏁 Segmento '2q_condo' finalizado com 114 imóveis únicos.
+18:12:11 [INFO] 📦 Acumulado global: 2580 imóveis únicos
+18:12:11 [INFO] 😴 Pausa entre segmentos: 7.8s...
+18:12:19 [INFO] 
+[9/14] Iniciando segmento '3q_apto'
+18:12:19 [INFO] ────────────────────────────────────────────────────────────
+18:12:19 [INFO] Segmento: 3q_apto
+18:12:19 [INFO] Detalhes: bedrooms_min=3, bedrooms_max=3, extra_filters={'houseTypes': ['APARTMENT']}
+18:12:19 [INFO] ────────────────────────────────────────────────────────────
+18:12:19 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:12:20 [INFO] 📊 Total estimado do segmento '3q_apto': Desconhecido
+18:12:20 [INFO]    → 36 novos | 0 duplicados
+18:12:20 [INFO]    ⏳ Aguardando 2.8s...
+18:12:22 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:12:23 [INFO]    → 36 novos | 0 duplicados
+18:12:23 [INFO]    ⏳ Aguardando 1.7s...
+18:12:25 [INFO] 📄 Página 3 | offset=72 | acumulado=72
+18:12:25 [INFO]    → 36 novos | 0 duplicados
+18:12:25 [INFO]    ⏳ Aguardando 2.9s...
+18:12:28 [INFO] 📄 Página 4 | offset=108 | acumulado=108
+18:12:29 [INFO]    → 32 novos | 4 duplicados
+18:12:29 [INFO]    ⏳ Aguardando 1.4s...
+18:12:30 [INFO] 📄 Página 5 | offset=144 | acumulado=140
+18:12:30 [INFO]    → 23 novos | 13 duplicados
+18:12:30 [INFO]    ⏳ Aguardando 1.8s...
+18:12:32 [INFO] 📄 Página 6 | offset=180 | acumulado=163
+18:12:33 [INFO]    → 18 novos | 18 duplicados
+18:12:33 [INFO]    ⏳ Aguardando 2.5s...
+18:12:35 [INFO] 📄 Página 7 | offset=216 | acumulado=181
+18:12:36 [INFO]    → 10 novos | 26 duplicados
+18:12:36 [INFO]    ⏳ Aguardando 2.7s...
+18:12:38 [INFO] 📄 Página 8 | offset=252 | acumulado=191
+18:12:39 [INFO]    → 10 novos | 26 duplicados
+18:12:39 [INFO]    ⏳ Aguardando 1.4s...
+18:12:41 [INFO] 📄 Página 9 | offset=288 | acumulado=201
+18:12:41 [INFO]    → 28 novos | 8 duplicados
+18:12:41 [INFO]    ⏳ Aguardando 2.1s...
+18:12:43 [INFO] 📄 Página 10 | offset=324 | acumulado=229
+18:12:44 [INFO]    → 34 novos | 2 duplicados
+18:12:44 [INFO]    ⏳ Aguardando 2.2s...
+18:12:46 [INFO] 📄 Página 11 | offset=360 | acumulado=263
+18:12:46 [INFO]    → 36 novos | 0 duplicados
+18:12:46 [INFO]    ⏳ Aguardando 1.4s...
+18:12:48 [INFO] 📄 Página 12 | offset=396 | acumulado=299
+18:12:49 [INFO]    → 36 novos | 0 duplicados
+18:12:49 [INFO]    ⏳ Aguardando 1.2s...
+18:12:50 [INFO] 📄 Página 13 | offset=432 | acumulado=335
+18:12:50 [INFO]    → 23 novos | 13 duplicados
+18:12:50 [INFO]    ⏳ Aguardando 1.7s...
+18:12:52 [INFO] 📄 Página 14 | offset=468 | acumulado=358
+18:12:52 [INFO]    → 36 novos | 0 duplicados
+18:12:52 [INFO]    ⏳ Aguardando 2.1s...
+18:12:54 [INFO] 📄 Página 15 | offset=504 | acumulado=394
+18:12:55 [INFO]    → 24 novos | 12 duplicados
+18:12:55 [INFO]    ⏳ Aguardando 1.4s...
+18:12:56 [INFO] 📄 Página 16 | offset=540 | acumulado=418
+18:12:57 [INFO]    → 10 novos | 26 duplicados
+18:12:57 [INFO]    ⏳ Aguardando 1.9s...
+18:12:59 [INFO] 📄 Página 17 | offset=576 | acumulado=428
+18:13:00 [INFO]    → 21 novos | 15 duplicados
+18:13:00 [INFO]    ⏳ Aguardando 2.5s...
+18:13:02 [INFO] 📄 Página 18 | offset=612 | acumulado=449
+18:13:03 [INFO]    → 14 novos | 22 duplicados
+18:13:03 [INFO]    ⏳ Aguardando 1.9s...
+18:13:05 [INFO] 📄 Página 19 | offset=648 | acumulado=463
+18:13:06 [INFO]    → 10 novos | 26 duplicados
+18:13:06 [INFO]    ⏳ Aguardando 1.5s...
+18:13:07 [INFO] 📄 Página 20 | offset=684 | acumulado=473
+18:13:08 [INFO]    → 34 novos | 2 duplicados
+18:13:08 [INFO]    ⏳ Aguardando 2.4s...
+18:13:10 [INFO] 📄 Página 21 | offset=720 | acumulado=507
+18:13:11 [INFO]    → 36 novos | 0 duplicados
+18:13:11 [INFO]    ⏳ Aguardando 2.6s...
+18:13:13 [INFO] 📄 Página 22 | offset=756 | acumulado=543
+18:13:14 [INFO]    → 31 novos | 5 duplicados
+18:13:14 [INFO]    ⏳ Aguardando 1.7s...
+18:13:15 [INFO] 📄 Página 23 | offset=792 | acumulado=574
+18:13:16 [INFO]    → 29 novos | 7 duplicados
+18:13:16 [INFO]    ⏳ Aguardando 2.7s...
+18:13:18 [INFO] 📄 Página 24 | offset=828 | acumulado=603
+18:13:19 [INFO]    → 21 novos | 15 duplicados
+18:13:19 [INFO]    ⏳ Aguardando 2.9s...
+18:13:22 [INFO] 📄 Página 25 | offset=864 | acumulado=624
+18:13:22 [INFO]    → 18 novos | 18 duplicados
+18:13:22 [INFO]    ⏳ Aguardando 1.3s...
+18:13:23 [INFO] 📄 Página 26 | offset=900 | acumulado=642
+18:13:24 [INFO]    → 11 novos | 25 duplicados
+18:13:24 [INFO]    ⏳ Aguardando 1.3s...
+18:13:25 [INFO] 📄 Página 27 | offset=936 | acumulado=653
+18:13:26 [INFO]    → 14 novos | 22 duplicados
+18:13:26 [INFO]    ⏳ Aguardando 1.3s...
+18:13:27 [INFO] 📄 Página 28 | offset=972 | acumulado=667
+18:13:27 [WARNING] HTTP 400 no offset 972 — limite/fim da paginação.
+18:13:27 [INFO] Encerrando segmento '3q_apto' por resposta nula/fim.
+18:13:27 [INFO] 🏁 Segmento '3q_apto' finalizado com 667 imóveis únicos.
+18:13:27 [INFO] 📦 Acumulado global: 3247 imóveis únicos
+18:13:27 [INFO] 😴 Pausa entre segmentos: 9.9s...
+18:13:37 [INFO] 
+[10/14] Iniciando segmento '3q_casa'
+18:13:37 [INFO] ────────────────────────────────────────────────────────────
+18:13:37 [INFO] Segmento: 3q_casa
+18:13:37 [INFO] Detalhes: bedrooms_min=3, bedrooms_max=3, extra_filters={'houseTypes': ['HOME']}
+18:13:37 [INFO] ────────────────────────────────────────────────────────────
+18:13:37 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:13:38 [WARNING] HTTP 400 no offset 0 — limite/fim da paginação.
+18:13:38 [INFO] Encerrando segmento '3q_casa' por resposta nula/fim.
+18:13:38 [INFO] 🏁 Segmento '3q_casa' finalizado com 0 imóveis únicos.
+18:13:38 [INFO] 📦 Acumulado global: 3247 imóveis únicos
+18:13:38 [INFO] 😴 Pausa entre segmentos: 8.9s...
+18:13:47 [INFO] 
+[11/14] Iniciando segmento '3q_condo'
+18:13:47 [INFO] ────────────────────────────────────────────────────────────
+18:13:47 [INFO] Segmento: 3q_condo
+18:13:47 [INFO] Detalhes: bedrooms_min=3, bedrooms_max=3, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+18:13:47 [INFO] ────────────────────────────────────────────────────────────
+18:13:47 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:13:47 [INFO] 📊 Total estimado do segmento '3q_condo': Desconhecido
+18:13:47 [INFO]    → 36 novos | 0 duplicados
+18:13:47 [INFO]    ⏳ Aguardando 2.2s...
+18:13:49 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:13:50 [INFO]    → 36 novos | 0 duplicados
+18:13:50 [INFO]    ⏳ Aguardando 2.6s...
+18:13:52 [INFO] 📄 Página 3 | offset=72 | acumulado=72
+18:13:52 [INFO]    → 10 novos | 1 duplicados
+18:13:52 [INFO]    ⏳ Aguardando 2.4s...
+18:13:55 [INFO] 📄 Página 4 | offset=108 | acumulado=82
+18:13:55 [INFO] ✅ Fim da lista de imóveis no segmento '3q_condo'.
+18:13:55 [INFO] 🏁 Segmento '3q_condo' finalizado com 82 imóveis únicos.
+18:13:55 [INFO] 📦 Acumulado global: 3329 imóveis únicos
+18:13:55 [INFO] 😴 Pausa entre segmentos: 8.4s...
+18:14:03 [INFO] 
+[12/14] Iniciando segmento '4qplus_apto'
+18:14:03 [INFO] ────────────────────────────────────────────────────────────
+18:14:03 [INFO] Segmento: 4qplus_apto
+18:14:03 [INFO] Detalhes: bedrooms_min=4, bedrooms_max=None, extra_filters={'houseTypes': ['APARTMENT']}
+18:14:03 [INFO] ────────────────────────────────────────────────────────────
+18:14:03 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:14:04 [INFO] 📊 Total estimado do segmento '4qplus_apto': Desconhecido
+18:14:04 [INFO]    → 36 novos | 0 duplicados
+18:14:04 [INFO]    ⏳ Aguardando 1.2s...
+18:14:05 [INFO] 📄 Página 2 | offset=36 | acumulado=36
+18:14:06 [INFO]    → 33 novos | 3 duplicados
+18:14:06 [INFO]    ⏳ Aguardando 1.5s...
+18:14:07 [INFO] 📄 Página 3 | offset=72 | acumulado=69
+18:14:08 [INFO]    → 25 novos | 11 duplicados
+18:14:08 [INFO]    ⏳ Aguardando 1.7s...
+18:14:09 [INFO] 📄 Página 4 | offset=108 | acumulado=94
+18:14:10 [INFO]    → 33 novos | 3 duplicados
+18:14:10 [INFO]    ⏳ Aguardando 1.5s...
+18:14:12 [INFO] 📄 Página 5 | offset=144 | acumulado=127
+18:14:12 [INFO]    → 23 novos | 13 duplicados
+18:14:12 [INFO]    ⏳ Aguardando 2.7s...
+18:14:15 [INFO] 📄 Página 6 | offset=180 | acumulado=150
+18:14:15 [INFO]    → 35 novos | 1 duplicados
+18:14:15 [INFO]    ⏳ Aguardando 2.8s...
+18:14:18 [INFO] 📄 Página 7 | offset=216 | acumulado=185
+18:14:19 [INFO]    → 24 novos | 12 duplicados
+18:14:19 [INFO]    ⏳ Aguardando 1.7s...
+18:14:20 [INFO] 📄 Página 8 | offset=252 | acumulado=209
+18:14:21 [INFO]    → 31 novos | 5 duplicados
+18:14:21 [INFO]    ⏳ Aguardando 2.1s...
+18:14:23 [INFO] 📄 Página 9 | offset=288 | acumulado=240
+18:14:24 [INFO]    → 32 novos | 4 duplicados
+18:14:24 [INFO]    ⏳ Aguardando 2.9s...
+18:14:26 [INFO] 📄 Página 10 | offset=324 | acumulado=272
+18:14:27 [INFO]    → 31 novos | 5 duplicados
+18:14:27 [INFO]    ⏳ Aguardando 2.1s...
+18:14:29 [INFO] 📄 Página 11 | offset=360 | acumulado=303
+18:14:30 [INFO]    → 24 novos | 12 duplicados
+18:14:30 [INFO]    ⏳ Aguardando 2.3s...
+18:14:32 [INFO] 📄 Página 12 | offset=396 | acumulado=327
+18:14:33 [INFO]    → 35 novos | 1 duplicados
+18:14:33 [INFO]    ⏳ Aguardando 1.7s...
+18:14:34 [INFO] 📄 Página 13 | offset=432 | acumulado=362
+18:14:35 [INFO]    → 36 novos | 0 duplicados
+18:14:35 [INFO]    ⏳ Aguardando 1.4s...
+18:14:36 [INFO] 📄 Página 14 | offset=468 | acumulado=398
+18:14:37 [INFO]    → 36 novos | 0 duplicados
+18:14:37 [INFO]    ⏳ Aguardando 2.7s...
+18:14:40 [INFO] 📄 Página 15 | offset=504 | acumulado=434
+18:14:40 [INFO]    → 30 novos | 6 duplicados
+18:14:40 [INFO]    ⏳ Aguardando 2.5s...
+18:14:43 [INFO] 📄 Página 16 | offset=540 | acumulado=464
+18:14:43 [INFO]    → 19 novos | 17 duplicados
+18:14:43 [INFO]    ⏳ Aguardando 1.9s...
+18:14:45 [INFO] 📄 Página 17 | offset=576 | acumulado=483
+18:14:46 [INFO]    → 36 novos | 0 duplicados
+18:14:46 [INFO]    ⏳ Aguardando 2.7s...
+18:14:49 [INFO] 📄 Página 18 | offset=612 | acumulado=519
+18:14:49 [INFO]    → 36 novos | 0 duplicados
+18:14:49 [INFO]    ⏳ Aguardando 2.2s...
+18:14:51 [INFO] 📄 Página 19 | offset=648 | acumulado=555
+18:14:52 [INFO]    → 14 novos | 22 duplicados
+18:14:52 [INFO]    ⏳ Aguardando 2.6s...
+18:14:54 [INFO] 📄 Página 20 | offset=684 | acumulado=569
+18:14:55 [INFO]    → 36 novos | 0 duplicados
+18:14:55 [INFO]    ⏳ Aguardando 3.0s...
+18:14:58 [INFO] 📄 Página 21 | offset=720 | acumulado=605
+18:14:59 [INFO]    → 36 novos | 0 duplicados
+18:14:59 [INFO]    ⏳ Aguardando 2.9s...
+18:15:02 [INFO] 📄 Página 22 | offset=756 | acumulado=641
+18:15:02 [INFO]    → 36 novos | 0 duplicados
+18:15:02 [INFO]    ⏳ Aguardando 1.6s...
+18:15:04 [INFO] 📄 Página 23 | offset=792 | acumulado=677
+18:15:05 [INFO]    → 24 novos | 0 duplicados
+18:15:05 [INFO]    ⏳ Aguardando 1.4s...
+18:15:06 [INFO] 📄 Página 24 | offset=828 | acumulado=701
+18:15:07 [INFO] ✅ Fim da lista de imóveis no segmento '4qplus_apto'.
+18:15:07 [INFO] 🏁 Segmento '4qplus_apto' finalizado com 701 imóveis únicos.
+18:15:07 [INFO] 📦 Acumulado global: 4030 imóveis únicos
+18:15:07 [INFO] 😴 Pausa entre segmentos: 7.5s...
+18:15:14 [INFO] 
+[13/14] Iniciando segmento '4qplus_casa'
+18:15:14 [INFO] ────────────────────────────────────────────────────────────
+18:15:14 [INFO] Segmento: 4qplus_casa
+18:15:14 [INFO] Detalhes: bedrooms_min=4, bedrooms_max=None, extra_filters={'houseTypes': ['HOME']}
+18:15:14 [INFO] ────────────────────────────────────────────────────────────
+18:15:14 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:15:14 [WARNING] HTTP 400 no offset 0 — limite/fim da paginação.
+18:15:14 [INFO] Encerrando segmento '4qplus_casa' por resposta nula/fim.
+18:15:14 [INFO] 🏁 Segmento '4qplus_casa' finalizado com 0 imóveis únicos.
+18:15:14 [INFO] 📦 Acumulado global: 4030 imóveis únicos
+18:15:14 [INFO] 😴 Pausa entre segmentos: 6.6s...
+18:15:21 [INFO] 
+[14/14] Iniciando segmento '4qplus_condo'
+18:15:21 [INFO] ────────────────────────────────────────────────────────────
+18:15:21 [INFO] Segmento: 4qplus_condo
+18:15:21 [INFO] Detalhes: bedrooms_min=4, bedrooms_max=None, extra_filters={'houseTypes': ['HOUSE_CONDO']}
+18:15:21 [INFO] ────────────────────────────────────────────────────────────
+18:15:21 [INFO] 📄 Página 1 | offset=0 | acumulado=0
+18:15:22 [INFO] 📊 Total estimado do segmento '4qplus_condo': Desconhecido
+18:15:22 [INFO]    → 33 novos | 0 duplicados
+18:15:22 [INFO]    ⏳ Aguardando 2.7s...
+18:15:25 [INFO] 📄 Página 2 | offset=36 | acumulado=33
+18:15:25 [INFO] ✅ Fim da lista de imóveis no segmento '4qplus_condo'.
+18:15:25 [INFO] 🏁 Segmento '4qplus_condo' finalizado com 33 imóveis únicos.
+18:15:25 [INFO] 📦 Acumulado global: 4063 imóveis únicos
+18:15:25 [INFO] 
+18:15:25 [INFO] ============================================================
+18:15:25 [INFO] ✅ Coleta concluída com sucesso!
+18:15:25 [INFO] Total de imóveis : 4,063
+18:15:25 [INFO] Arquivo CSV      : /home/pabl0maciel/Documents/Programas-e-Projetos/Projetos/Analise de Alugueis em SP/data/raw/quintoandar_sp_20260605_180704.csv
+18:15:25 [INFO] ============================================================
