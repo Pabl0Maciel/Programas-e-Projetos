@@ -1,47 +1,124 @@
-# 🎓 Repositório de Conteúdos de Cursos Envolvendo Python
+<div align="center">
 
-Este repositório contém informações dos cursos que concluí nas plataformas **Coursera**, **Data Science Academy** e **Hashtag Programação**. Em cada uma das pastas abaixo, há um arquivo `README.md` que fornece detalhes sobre os conteúdos abordados em cada curso.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=140&section=header&text=Python&fontSize=42&fontColor=4F8EF7&fontAlignY=45&desc=Coursera%20·%20Data%20Science%20Academy%20·%20Hashtag%20·%20Ocean&descColor=00D4FF&descSize=15&descAlignY=65&animation=fadeIn" width="100%"/>
 
-## 🗂️ Estrutura do Repositório
+</div>
 
-- **Coursera** 📘
-  - Contém os cursos que realizei na plataforma Coursera. Para detalhes sobre os cursos, navegue pela pasta até o README respectivo.
-  
-- **Data Science Academy** 📊
-  - Contém os cursos que realizei na Data Science Academy. Para mais informações sobre os conteúdos abordados, consulte o arquivo [Data Science Academy/README.md](Data%20Science%20Academy/README.md).
+Scripts e exercícios de Python organizados por plataforma, cobrindo desde fundamentos da linguagem até machine learning, séries temporais e aprendizado não supervisionado.
 
-- **Hashtag Programação** 💻
-  - Contém os cursos que realizei na plataforma Hashtag Programação. Para detalhes sobre os cursos, navegue pela pasta até o README respectivo.
-    
-- **Ocean** 📘
-  - Contém os cursos que realizei na plataforma Ocean. Para detalhes sobre os cursos, navegue pela pasta até o README respectivo.
- ## 💬 Contato
+---
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+## 🗂️ Plataformas
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+| Plataforma | Foco | Pasta |
+|-----------|------|-------|
+| 📘 Coursera / USP | Fundamentos e algoritmos | [`Cousera/`](./Cousera) |
+| 📊 Data Science Academy | Python para dados e ML | [`Data Science Academy/`](./Data%20Science%20Academy) |
+| 💻 Hashtag Programação | Automação e análise aplicada | [`Hashtag Programacao/`](./Hashtag%20Programacao) |
+| 🌊 Ocean / USP | SQL com Python e ML não supervisionado | [`Ocean/`](./Ocean) |
 
-## 🤝 Contribuições
+---
 
-Se você deseja contribuir com este repositório, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+## 📘 Coursera — Introdução à Ciência da Programação com Python
 
-## 📜 Licença
+Dois módulos com teoria e exercícios resolvidos, baseados no curso da USP no Coursera.
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+<details>
+<summary><strong>Módulo 1 — Fundamentos</strong></summary>
 
-Obrigado por visitar o meu repositório e espero que os conteúdos aqui sejam úteis para o seu aprendizado!
+| Tópico | O que cobre |
+|--------|-------------|
+| [`Entrada de Dados e Operações Matemáticas`](./Cousera/Modulo%201/EntradaDados_and_OperacoesMatematicas) | `input()`, operadores aritméticos, conversão de tipos |
+| [`If e Else`](./Cousera/Modulo%201/If%20e%20Else) | Condicionais, operadores relacionais e lógicos |
+| [`While, Fatorial e Primos`](./Cousera/Modulo%201/While%2C%20Fatorial%20ePrimos) | Laços `while`, cálculo de fatorial, números primos |
+| [`For e Listas`](./Cousera/Modulo%201/For%20e%20Listas) | Laços `for`, manipulação de listas |
+| [`Funções`](./Cousera/Modulo%201/Funcoes) | Definição, parâmetros, retorno, recursão |
+| [`Decomposição em Primos`](./Cousera/Modulo%201/Decomposicao%20em%20Primos) | Fatoração prima, exercícios avançados |
+| [`Temperatura`](./Cousera/Modulo%201/Temperatura) | Projeto integrador do módulo |
 
+</details>
 
+<details>
+<summary><strong>Módulo 2 — Algoritmos e Estruturas</strong></summary>
+
+| Tópico | O que cobre |
+|--------|-------------|
+| [`Strings`](./Cousera/Modulo%202/Strings) | Slicing, métodos, manipulação textual |
+| [`Matrizes`](./Cousera/Modulo%202/Matrizes) | Listas de listas, soma e multiplicação de matrizes |
+| [`Recursão`](./Cousera/Modulo%202/Recursao) | MergeSort recursivo, Fibonacci, exercícios |
+| [`Busca Sequencial e SelectionSort`](./Cousera/Modulo%202/Busca%20Sequencial%20e%20SelectionSort) | Busca linear, selection sort, medição de tempo |
+| [`Bubble, Insertion e Busca Binária`](./Cousera/Modulo%202/Bubble%2C%20Insertion%20e%20BuscaBinaria) | Bubble sort melhorado, insertion sort, busca binária |
+| [`POO`](./Cousera/Modulo%202/POO) | Classes, objetos, herança |
+
+</details>
+
+---
+
+## 📊 Data Science Academy — Python para Ciência e Análise de Dados
+
+Cobertura ampla de bibliotecas e técnicas para dados, do básico ao avançado.
+
+<details>
+<summary><strong>Ver todos os módulos</strong></summary>
+
+| Tópico | O que cobre |
+|--------|-------------|
+| [`Manipulação de Listas`](./Data%20Science%20Academy/Manipulacao%20de%20listas) | Listas, métodos, comprehensions |
+| [`Tuplas`](./Data%20Science%20Academy/Tuplas) | Imutabilidade, desempacotamento |
+| [`Dicionários`](./Data%20Science%20Academy/Dicionarios) | Criação, acesso, métodos |
+| [`Lambda`](./Data%20Science%20Academy/Lambda) | Funções anônimas |
+| [`Funções Built-in`](./Data%20Science%20Academy/Funcoes%20Built-in) | `map`, `filter`, `reduce`, `zip`, `enumerate` |
+| [`List e Dict Comprehension`](./Data%20Science%20Academy/List%20e%20Dict%20Comprehension) | Sintaxe compacta para listas e dicionários |
+| [`Expressões Regulares`](./Data%20Science%20Academy/Expressoes%20Regulares) | Regex com Python, padrões e substituições |
+| [`Pacotes e Módulos`](./Data%20Science%20Academy/Pacotes%20e%20Modulos) | Importações, criação de módulos |
+| [`Tratamento de Erros`](./Data%20Science%20Academy/Tratamento%20de%20erros) | `try/except`, exceções customizadas |
+| [`Manipulação de Arquivos`](./Data%20Science%20Academy/Manipulacao%20de%20Arquivos) | CSV, JSON, `open/read/write`, Pandas |
+| [`POO`](./Data%20Science%20Academy/POO) | Classes, herança, polimorfismo, atributos estáticos |
+| [`NumPy`](./Data%20Science%20Academy/NumPy) | Arrays, operações matemáticas, slicing, estatística |
+| [`Pandas`](./Data%20Science%20Academy/Pandas) | DataFrames, GroupBy, slicing, valores ausentes, gráficos |
+| [`Gráficos`](./Data%20Science%20Academy/Graficos) | Matplotlib e Seaborn — gráficos estatísticos e 3D |
+| [`Statsmodels`](./Data%20Science%20Academy/Statsmodels) | OLS, análise de regressão |
+| [`Séries Temporais`](./Data%20Science%20Academy/Series%20Temporais) | Suavização exponencial, modelagem temporal |
+| [`Scikit-Learn e Machine Learning`](./Data%20Science%20Academy/Scikit-Learn%20e%20Machine%20Learning) | Modelagem preditiva, pipelines de ML |
+| [`SQL e Python`](./Data%20Science%20Academy/SQL%20e%20Python) | Integração SQLite + Pandas |
+| [`Deep Learning`](./Data%20Science%20Academy/Deep%20Learning) | Redes neurais com Python |
+| [`Reinforcement Learning`](./Data%20Science%20Academy/Reinforcement%20Learning) | Robô de trading com RL |
+
+</details>
+
+---
+
+## 💻 Hashtag Programação
+
+<details>
+<summary><strong>Ver módulos</strong></summary>
+
+| Tópico | O que cobre |
+|--------|-------------|
+| [`Python - Análise de Dados`](./Hashtag%20Programacao/Python%20-%20Analise%20de%20Dados) | Strings, listas, dicionários, funções — bases para análise |
+| [`Automação Python`](./Hashtag%20Programacao/Automacao%20Python) | PyAutoGUI, automação de tarefas repetitivas |
+| [`IA e Previsões`](./Hashtag%20Programacao/IA%20e%20Previsoes) | Scikit-learn aplicado a previsão de churn de clientes |
+
+</details>
+
+---
+
+## 🌊 Ocean — USP
+
+<details>
+<summary><strong>Ver módulos</strong></summary>
+
+| Tópico | O que cobre |
+|--------|-------------|
+| [`Consultando Bases SQL com Python`](./Ocean/Consultando%20Bases%20SQL%20com%20Python) | SQLAlchemy, SQLite, queries com Python |
+| [`Aprendizado Não Supervisionado`](./Ocean/Aprendizado%20Não%20Supervisionado%20para%20Ciência%20de%20Dados) | Clustering, PCA, análise estatística — Partes 1 e 2 |
+
+</details>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
+
+</div>
