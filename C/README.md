@@ -1,80 +1,55 @@
-# Conteúdos de Programação em C
+<div align="center">
 
-Nesta pasta, você encontrará uma variedade de conteúdos e exemplos relacionados à programação em C. Os arquivos aqui presentes cobrem uma ampla gama de conceitos fundamentais e intermediários da linguagem C.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=140&section=header&text=Programação%20em%20C&fontSize=36&fontColor=4F8EF7&fontAlignY=45&desc=Fundamentos%20e%20algoritmos%20clássicos&descColor=00D4FF&descSize=15&descAlignY=65&animation=fadeIn" width="100%"/>
 
-## 📚 O que você encontrará aqui
+</div>
 
-- **`argc` e `argv`:** Exemplos e explicações sobre o uso dos parâmetros de linha de comando em programas C.
-- **Arrays:** Manipulação de arrays, acesso e operações.
-- **Bit a Bit, Hexadecimal e Operações Matemáticas:** Operações bit a bit, representações hexadecimais e cálculos matemáticos em C.
-- **Busca:** Algoritmos de busca, como busca linear e binária.
-- **Funções:** Definição e uso de funções, incluindo funções recursivas e passagem de parâmetros.
-- **If e Else:** Estruturas de controle de fluxo usando `if` e `else`.
-- **Matriz:** Trabalhando com matrizes, acesso e manipulação de elementos bidimensionais.
-- **Ordenação:** Algoritmos de ordenação, como bolha, seleção e inserção.
-- **Ponteiros:** Usos de ponteiros em arrays, structs e em funções.
-- **Relacionais:** Operadores relacionais e como usá-los para comparar valores.
-- **Scanf:** Uso da função `scanf` para leitura de dados do usuário.
-- **Strings:** Manipulação e operações com strings, funções de string.
-- **Structs:** Definição e uso de estruturas para armazenar dados relacionados.
-- **Switch Case e Loops:** Estruturas de controle de fluxo usando `switch` e loops (`for`, `while`, `do-while`).
-- **Main:** Função principal `main`, ponto de entrada dos programas em C.
+Coleção de exemplos e exercícios cobrindo os principais conceitos da linguagem C — da sintaxe básica a algoritmos de ordenação e estruturas de dados.
 
-## 🛠️ Estrutura da Pasta
+---
 
-A pasta está organizada da seguinte forma:
+## 📂 Conteúdo
 
-- **`Argc e Argv/`**: Exemplos de uso dos parâmetros de linha de comando.
-- **`Arrays/`**: Exemplos e exercícios sobre arrays.
-- **`Bit a bit, hexadecimal e operacoes matematicas/`**: Operações bit a bit, hexadecimal e cálculos matemáticos.
-- **`Busca/`**: Implementações de algoritmos de busca.
-- **`Funcoes/`**: Exemplos de funções e como utilizá-las.
-- **`If e Else/`**: Exemplos de estruturas condicionais `if` e `else`.
-- **`Matriz/`**: Trabalhando com matrizes.
-- **`Ordenacao/`**: Algoritmos de ordenação.
-- **`Ponteiros/`**: Usos de ponteiros
-- **`Relacionais/`**: Operadores relacionais e suas aplicações.
-- **`Scanf/`**: Exemplos de uso da função `scanf`.
-- **`Strings/`**: Manipulação e operações com strings.
-- **`Structs/`**: Exemplos de definição e uso de structs.
-- **`Switch case e loops/`**: Uso de `switch`, `for`, `while` e `do-while`.
-- **`main/`**: Exemplos e explicações sobre a função `main`.
+| Tópico | Arquivos | O que cobre |
+|--------|----------|-------------|
+| [`Argc e Argv`](./Argc%20e%20Argv) | `argc_argv.c` | Parâmetros de linha de comando |
+| [`Arrays`](./Arrays) | `arrays.c` · `arrays2.c` · `arrays3.c` | Declaração, acesso e manipulação |
+| [`Bit a bit, Hex e Matemática`](./Bit%20a%20bit%2C%20hexadecimal%20e%20operacoes%20matematicas) | `bit1.c` · `hexadecimal.c` · `calculo.c` | Operadores bitwise, base hex, aritmética |
+| [`Busca`](./Busca) | `busca_sequencial.c` · `busca_binaria.c` | Busca linear e binária |
+| [`Funções`](./Funcoes) | `funcoes.c` · `funcoes2.c` · `funcoes3.c` · `funcoes4.c` | Definição, recursão, passagem por referência |
+| [`If e Else`](./If%20e%20Else) | `ifelse.c` | Controle de fluxo condicional |
+| [`Matriz`](./Matriz) | `matrizes.c` | Matrizes bidimensionais |
+| [`Ordenação`](./Ordenacao) | `bubbleSort.c` · `insertionSort.c` · `selectionSort.c` · `quickSort.c` · `mergeSort.c` · `heapSort.c` · `qsort.c` · `ordenacao_struct.c` | 7 algoritmos de ordenação + ordenação de structs |
+| [`Ponteiros`](./Ponteiros) | `ponteiros.c` | Aritmética de ponteiros, arrays e funções |
+| [`Relacionais`](./Relacionais) | `relacional1.c` · `relacional2.c` | Operadores relacionais e lógicos |
+| [`Scanf`](./Scanf) | `scanf.c` | Leitura de dados do usuário |
+| [`Strings`](./Strings) | `strings1.c` · `strings2.c` | Manipulação e funções de string |
+| [`Structs`](./Structs) | `structs.c` · `structs2.c` | Definição, acesso e uso de structs |
+| [`Switch e Loops`](./Switch%20case%20e%20loops) | `switchcase.c` · `do-while-for.c` | Switch case, for, while, do-while |
+| [`Main`](./main) | `areas.c` · `poligonos.c` · `main2.c` | Função main, modularização com `.h` |
 
-## 🚀 Como Utilizar
+---
 
-1. **Explore os Exemplos:**
-   - Navegue pelas pastas para encontrar exemplos e códigos sobre cada tópico.
-   - Consulte os arquivos de código e comentários para entender os conceitos.
+## ⚙️ Como compilar e rodar
 
-2. **Teste e Pratique:**
-   - Compile e execute os exemplos em seu ambiente de desenvolvimento para ver os conceitos em ação.
-   - Experimente modificar e expandir os exemplos para aprimorar sua compreensão.
+```bash
+# Compilar
+gcc nome_do_arquivo.c -o saida
 
-## 💬 Contato
+# Executar
+./saida
+```
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+Para arquivos com múltiplos `.c` (ex: `main` + `poligonos`):
+```bash
+gcc main2.c poligonos.c -o saida
+./saida
+```
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+---
 
-## 🤝 Contribuições
+<div align="center">
 
-Se você deseja contribuir com este projeto, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
 
-## 📜 Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
-Obrigado por visitar o meu repositório e espero que o conteúdo aqui presente ajude no seu aprendizado e desenvolvimento em C!
+</div>
