@@ -1,76 +1,125 @@
-# 🛠️ Automação de Cadastro de Produtos
+<div align="center">
 
-Este projeto implementa um processo automatizado de cadastro de produtos em um sistema fictício utilizando a biblioteca `pyautogui` para simular ações no navegador e preencher formulários com dados provenientes de um arquivo CSV.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=180&section=header&text=Automação%20de%20Cadastros&fontSize=36&fontColor=4F8EF7&fontAlignY=38&desc=Preenchimento%20automático%20de%20formulários%20a%20partir%20de%20CSV&descColor=00D4FF&descSize=15&descAlignY=58&animation=fadeIn" width="100%"/>
 
-## 📽️ Demonstração
+</div>
 
-Veja abaixo uma demonstração do código em funcionamento:
+<div align="center">
 
-![Demonstração da Automação](exemplo_uso.gif)
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![PyAutoGUI](https://img.shields.io/badge/PyAutoGUI-Automação-4F8EF7?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
-## 📚 Funcionalidades
+</div>
 
-- **Abertura Automática do Navegador**: O script abre automaticamente o navegador e acessa o site fictício de cadastro de produtos.
-- **Preenchimento de Formulários**: Os dados dos produtos, como código, marca, tipo, categoria, preço, custo, e observações, são preenchidos automaticamente no formulário do site.
-- **Leitura de Arquivo CSV**: O script lê um arquivo CSV com os dados dos produtos que devem ser cadastrados.
-- **Automação com PyAutoGUI**: A navegação no site e o preenchimento dos campos são feitos através de comandos simulados de teclado e mouse.
+---
 
-## 🚀 Como Utilizar
+## 🎯 Objetivo
 
-Para utilizar este programa, siga os passos abaixo:
+Automatizar o preenchimento de cadastros de produtos em um sistema web, eliminando inserções manuais. O script lê um arquivo CSV com os dados dos produtos e preenche o formulário campo a campo, simulando ações de teclado e mouse com PyAutoGUI.
 
-1. **Instale as Dependências**  
-   Certifique-se de ter o Python 3.x e as bibliotecas `pyautogui` e `pandas` instaladas. Caso não tenha, você pode instalá-las com os seguintes comandos:
-   ```bash
-   pip install pyautogui pandas
-   ```
-2. **Ajuste as Coordenadas**  
-  O script utiliza coordenadas específicas para clicar em campos do formulário. Você pode precisar ajustar as coordenadas `x` e `y` dos cliques de acordo com a resolução e a disposição da sua tela.
+---
 
-3. **Prepare o Arquivo CSV**  
- O arquivo CSV contendo os dados dos produtos já foi fornecido. Certifique-se de ajustar o caminho no código para o local onde o arquivo está armazenado no seu sistema.
+## 🎬 Demonstração
 
- 4. **Execute o Script**  
-    ```bash
-    python automacao_cadastro.py
-    ```
-5. **Acompanhe o processo**  
-  O script abrirá o navegador (firefox, no caso do código), navegará até o site e preencherá automaticamente os campos do formulário com os dados do arquivo CSV. Certifique-se de que o navegador esteja na tela e visível durante a execução do script.
- 
- ## 🛠️ Estrutura da Pasta
+![Demonstração](./exemplo_uso.gif)
 
-Esta Pasta é organizado da seguinte forma:
+---
 
-- **`automacao.py`**: O script principal contendo a lógica de automação do cadastro de produtos.
-- **`exemplo_uso.gif`**: GIF mostrando o funcionamento do código
-- **`produtos.csv`**: Arquivo com os dados a serem cadastrados
-- **`README.md`**: Este arquivo que você está lendo.
+## ⚙️ Como funciona
 
-## 💬 Contato
+```
+produtos.csv
+     │
+     ▼
+pandas.read_csv()
+     │
+     ▼
+loop por linha
+     │
+     ├── abre o navegador (Firefox)
+     ├── acessa o sistema e faz login
+     └── para cada produto:
+             ├── clica no campo código    → digita → Tab
+             ├── digita marca             → Tab
+             ├── digita tipo              → Tab
+             ├── digita categoria         → Tab
+             ├── digita preço unitário    → Tab
+             ├── digita custo             → Tab
+             ├── digita obs (se houver)   → Tab
+             ├── Enter (envia o cadastro)
+             └── scroll para o topo
+```
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+---
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+## 📊 Estrutura do CSV
 
-## 🤝 Contribuições
+O arquivo `produtos.csv` deve seguir o formato abaixo:
 
-Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+| Campo | Descrição | Exemplo |
+|-------|-----------|---------|
+| `codigo` | Código único do produto | `MOLO000251` |
+| `marca` | Marca do produto | `Logitech` |
+| `tipo` | Tipo do produto | `Mouse` |
+| `categoria` | Categoria numérica | `1` |
+| `preco_unitario` | Preço de venda | `25.95` |
+| `custo` | Custo do produto | `6.50` |
+| `obs` | Observações (opcional) | `Conferir estoque` |
 
-## 📜 Licença
+> O campo `obs` é opcional — o script verifica se está vazio antes de tentar preencher.
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+---
 
-Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
+## 🚀 Como executar
+
+**1. Instale as dependências**
+
+```bash
+pip install pyautogui pandas
+```
+
+**2. Ajuste as coordenadas de clique**
+
+As coordenadas `x` e `y` dos cliques são específicas para a resolução da sua tela. Para descobrir as coordenadas corretas, descomente o trecho no início do script:
+
+```python
+time.sleep(5)
+print(pag.position())  # posicione o cursor no campo desejado
+```
+
+**3. Ajuste o caminho do CSV**
+
+```python
+# Altere para o caminho correto no seu ambiente
+dados = pd.read_csv('Projetos/Automacao de Cadastros/produtos.csv')
+```
+
+**4. Execute**
+
+```bash
+python automacao.py
+```
+
+> ⚠️ Mantenha o navegador visível e em foco durante toda a execução — o PyAutoGUI controla o mouse e teclado em tempo real.
+
+---
+
+## 📂 Estrutura
+
+```
+📦 Automacao de Cadastros/
+│
+├── automacao.py       # Script principal
+├── produtos.csv       # Dados dos produtos a cadastrar
+├── exemplo_uso.gif    # Demonstração em vídeo
+└── README.md
+```
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
+
+</div>
