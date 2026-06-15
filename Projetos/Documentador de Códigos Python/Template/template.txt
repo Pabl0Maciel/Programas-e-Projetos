@@ -1,0 +1,218 @@
+# :page_facing_up: Documentação do Projeto `[NOME_DO_PROJETO]`
+
+>[Gerar uma frase direta descrevendo o que o projeto faz e para quê serve.]
+
+---
+
+# :dart: Parte 1 – Visão Geral do Projeto
+
+## :pushpin: 1.1 Objetivo
+[Descrever o propósito do conjunto de scripts como um todo, com base exclusivamente no conteúdo dos arquivos recebidos. Não inferir objetivos não evidenciados pelo código.]
+
+---
+
+## :briefcase: 1.2 Valor de Negócio
+[Descrever qual problema o projeto resolve e qual impacto gera. Basear-se apenas em elementos explícitos no código, como nomes de funções, variáveis, outputs e comentários. Não inventar contexto de negócio.]
+
+---
+
+## :arrows_counterclockwise: 1.3 Fluxo Geral
+[Descrever como os scripts se conectam e em que ordem executam. Basear-se nas relações de importação, chamadas entre arquivos e lógica de execução identificada no código.]
+
+Representação simplificada do fluxo:
+
+`[Script A]` :arrow_right: `[Script B]` :arrow_right: `[Script C]`
+
+---
+
+## :jigsaw: 1.4 Mapa dos Arquivos
+[Se o usuário informar explicitamente qual é o script principal, usar essa informação como verdade. Se o usuário não informar, inferir a classificação com base nas relações entre arquivos. Classificar cada script como Principal ou Auxiliar. Considerar como Principal o script que atua como ponto de entrada do fluxo ou que orquestra os demais. Considerar como Auxiliar o script utilizado por outros scripts sem atuar como ponto principal de execução. Não deixar instruções visíveis no resultado final.]
+
+### Scripts Principais
+- `[nome_arquivo]` — [função dentro do projeto]
+
+### Scripts Auxiliares
+- `[nome_arquivo]` — [função dentro do projeto]
+
+---
+
+## :gear: 1.5 Ambiente e Dependências
+
+### Linguagens Utilizadas
+- [Identificar a linguagem de cada arquivo recebido.]
+
+### Bibliotecas Usadas no Código
+[Mapear bibliotecas encontradas nos imports ou referências equivalentes dos scripts recebidos.]
+
+| Biblioteca | Identificada em | Uso inferido |
+| :--- | :--- | :--- |
+| `[nome]` | `[nome_arquivo]` | [para que é usada no contexto do script] |
+
+### Bibliotecas e Versões do Ambiente
+[Preencher com o conteúdo técnico fornecido pelo usuário. Se essa informação não for fornecida, registrar: "Não informado pelo usuário. Versões não puderam ser verificadas — apenas bibliotecas identificadas no código." Não exibir instruções operacionais no resultado final.]
+
+```
+[output técnico fornecido pelo usuário]
+```
+
+---
+
+## :arrow_forward: 1.6 Execução do Projeto
+
+### Pré-requisitos
+[Listar o que precisa existir antes da execução: arquivos de entrada, estrutura de pastas, variáveis de ambiente, credenciais. Inferir a partir do código. Se não identificável com segurança, usar "não identificado".]
+
+### Como Executar
+[Descrever o passo a passo para rodar o projeto com base no script principal e no fluxo identificado. Se não houver forma de execução explicitamente identificável, declarar isso objetivamente.]
+
+### Ordem de Execução
+[Descrever a sequência entre scripts quando houver dependência de execução identificada no código. Se não aplicável, usar "não aplicável".]
+
+---
+
+## :inbox_tray: 1.7 Entradas Globais
+[Listar todas as entradas consumidas pelo projeto como um todo.]
+
+| Nome | Origem | Formato | Observações |
+| :--- | :--- | :--- | :--- |
+| `[nome]` | [origem] | [formato] | [observações relevantes] |
+
+---
+
+## :outbox_tray: 1.8 Saídas Globais
+[Listar todas as saídas geradas pelo projeto como um todo.]
+
+| Nome | Destino | Formato | Descrição |
+| :--- | :--- | :--- | :--- |
+| `[nome]` | [destino] | [formato] | [descrição] |
+
+---
+
+## :repeat: 1.9 Transformações Principais
+[Descrever as principais transformações realizadas no pipeline, do input ao output. Basear-se exclusivamente no que o código executa. Não inferir transformações não evidenciadas.]
+
+---
+
+## :warning: 1.10 Premissas Operacionais
+[Listar as premissas implícitas identificadas no código que, se violadas, causarão falha ou resultado incorreto.]
+
+- [ex: nomes de colunas obrigatórios fixos no código]
+- [ex: formato de datas esperado]
+- [ex: encoding dos arquivos de entrada]
+- [ex: separador decimal ou de campos]
+- [ex: estrutura de pastas esperada]
+
+---
+
+## :no_entry: 1.11 Limitações Conhecidas
+[Listar limitações identificadas no código, como ausência de validações, dependências frágeis ou comportamentos não tratados.]
+
+- [limitação identificada]
+- [dependência frágil identificada]
+- [ausência de validação relevante identificada]
+
+---
+
+## :grey_question: 1.12 Informações Não Identificadas com Segurança
+[Listar apenas quando houver incerteza real sobre alguma informação. Não inventar dados para preencher esta seção.]
+
+- [ex: versão do Python não informada pelo usuário]
+- [ex: script principal inferido por heurística, não por indicação explícita do usuário]
+- [ex: origem do arquivo de entrada não identificável no código]
+
+---
+
+# :gear: Parte 2 – Documentação Técnica por Script
+[Gerar uma seção para cada script identificado, seguindo exatamente a estrutura abaixo. Não duplicar explicações entre scripts. Se uma função auxiliar já foi explicada no script que a define, referenciar sem repetir integralmente. Priorizar regras de negócio, transformações críticas, integrações externas e algoritmos relevantes. Ignorar boilerplate como imports padrão, configurações genéricas, logs simples e métodos triviais. Não deixar instruções visíveis no resultado final.]
+
+---
+
+## :page_facing_up: Script: `[NOME_DO_SCRIPT]`
+
+### :pushpin: Tipo
+[Principal / Auxiliar]
+
+---
+
+### :dart: Responsabilidade
+[Descrever o que este script resolve e qual seu papel dentro do projeto. Basear-se exclusivamente no conteúdo do arquivo.]
+
+---
+
+### :inbox_tray: Entradas Específicas
+[Documentar entradas diretamente consumidas pelo script. Se não houver entrada identificável, usar "não identificado" ou "não aplicável", conforme o caso.]
+
+| Nome | Tipo / Formato | Descrição |
+| :--- | :--- | :--- |
+| `[nome]` | [tipo] | [descrição] |
+
+---
+
+### :outbox_tray: Saídas Específicas
+[Documentar saídas diretamente produzidas pelo script. Se não houver saída identificável, usar "não identificado" ou "não aplicável", conforme o caso.]
+
+| Nome | Tipo / Formato | Descrição |
+| :--- | :--- | :--- |
+| `[nome]` | [tipo] | [descrição] |
+
+---
+
+### :link: Dependências Diretas
+[Listar dependências diretas do script, incluindo bibliotecas e scripts auxiliares efetivamente utilizados.]
+
+- **Bibliotecas:** [listar]
+- **Outros scripts utilizados:** [listar, ou "nenhum" se não aplicável]
+
+---
+
+### :repeat: Fluxo Interno
+[Descrever a lógica de execução do script do início ao fim, com base no código. Explicar como a entrada é processada até gerar a saída.]
+
+---
+
+## :mag: Trechos de Código Relevantes
+[Selecionar todos os trechos necessários para cobrir adequadamente a lógica relevante do script. Não limitar artificialmente a quantidade de trechos. Priorizar regras de negócio, transformações de dados, integrações externas, algoritmos relevantes e controles importantes de fluxo. Ignorar apenas conteúdo claramente boilerplate. Preservar o código original sem simplificação ou alteração semântica. Classificar cada trecho em uma das categorias: Regra de negócio / Transformação de dados / Integração externa / Controle de fluxo / Utilitário técnico. Repetir a estrutura de trecho abaixo quantas vezes forem necessárias para documentar corretamente o script. Não deixar instruções visíveis no resultado final.]
+
+---
+
+### :wrench: Trecho [NÚMERO] – `[Nome descritivo do bloco]`
+
+**Objetivo:**
+[Descrever o que esse trecho faz em 1 a 2 frases, com base no código.]
+
+**Classificação:**
+[Regra de negócio / Transformação de dados / Integração externa / Controle de fluxo / Utilitário técnico]
+
+**Explicação:**
+[Descrição objetiva do que acontece no trecho e por que é relevante para o funcionamento do script.]
+
+<details>
+<summary>Ver código</summary>
+
+```[linguagem]
+[código original do trecho, preservado sem alterações]
+```
+
+</details>
+
+---
+
+## :warning: Pontos de Atenção
+[Listar partes sensíveis, acoplamentos fortes e riscos operacionais identificados no código.]
+
+- [parte sensível a mudanças]
+- [possível falha ou comportamento inesperado]
+- [dependência crítica com outro script ou arquivo externo]
+
+---
+
+## :bulb: Possíveis Melhorias
+[Listar sugestões técnicas baseadas exclusivamente no código analisado. Não sugerir melhorias genéricas não fundamentadas no código.]
+
+- [refatoração identificada]
+- [ganho de performance identificado]
+- [melhoria de legibilidade ou manutenibilidade identificada]
+
+---
+
+[Repetir toda a estrutura da Parte 2 para cada script identificado.]
