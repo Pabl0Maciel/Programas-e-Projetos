@@ -1,0 +1,425 @@
+TEMPLATE E INSTRUÇÕES – DOCUMENTAÇÃO DE DASHBOARDS
+Versão: 1.5
+Formato: Markdown com títulos usando # e emojis no padrão :emoji:
+
+========================================
+INSTRUÇÕES PARA GERAR A DOCUMENTAÇÃO
+========================================
+
+0) Matriz de obrigatoriedade das entradas
+   OBRIGATÓRIAS (por página):
+   - Print da página do dashboard (legível).
+   - Caminho na rede (fonte/armazenamento dos dados).
+   OPCIONAIS (no 1º prompt ou em interação posterior):
+   - Equipe destinada.
+   - Link do local publicado.
+   - Frequência de atualização.
+   - Desenvolvido por.
+   - Tabelas usadas (prints/listas). Observação: Só criar a seção se o usuário enviar; caso contrário, NÃO criar.
+
+1) Entradas esperadas por página
+   - Screenshot/print da página (alta resolução).
+   - Caminho na rede (ex.: \\servidor\pasta\arquivo.ext ou URL).
+   - Metadados de contexto (se disponíveis): <Período>, <Filtros aplicados>, <Objetivo da página>.
+   - Opcionais: Equipe destinada, link do local publicado, frequência de atualização, desenvolvido por.
+   - (Somente quando enviado) Prints/lista de tabelas e colunas.
+
+2) Regras de escrita e formatação
+   - Idioma: português. Texto objetivo, frases curtas, listas com “-”.
+   - Estrutura: usar exatamente os títulos do template, com divisões por #.
+   - Emojis no formato :emoji: (ex.: :house:, :gear:, :card_index_dividers:, :receipt:, :dart:, :mag:, :world_map:, :memo:, :file_cabinet:, :hourglass_flowing_sand:, :technologist:, :link:, :office:).
+   - Dados ilegíveis/indisponíveis: usar “N/D” ou “<informar>” (não inventar).
+   - Setas: usar apenas “->” ou “:arrow_right:” (padrão :emoji:). Não usar o caractere “→”.
+   - “:memo: Observações”: opcional. Incluir só se impactante (regras que alteram a leitura). Não usar para ideias de melhoria.
+
+3) Protocolo de validação
+   Passo 1 — Validação das obrigatórias (antes da 1ª versão):
+   - Print da página recebido? (Sim/Não)
+   - Caminho na rede recebido? (Sim/Não)
+   -> Se “Não” em qualquer item, NÃO gerar a documentação. Envie: “Não foi possível gerar a documentação. Faltam itens obrigatórios: <[Print da página] e/ou [Caminho na rede]>. Envie-os para continuar.”
+
+   Passo 2 — Validação dos opcionais:
+   - Equipe destinada, link, frequência, desenvolvido por (preencher ou marcar N/D).
+   - Tabelas enviadas? (Sim/Não → se “Sim”, criar “:card_index_dividers: Tabelas usadas” logo após “:gear: Informações técnicas”.)
+
+   Passo 3 — Qualidade:
+   - A print permite ler títulos/filtros? (Sim/Não)
+   - O caminho da rede tem formato válido (UNC/URL)? (Sim/Não)
+   -> Se “Não”, enviar: “A imagem/caminho enviado não está legível/válido. Reenvie em maior resolução ou confirme o caminho.”
+
+   Passo 4 — Atualização posterior (segunda interação para Tabelas):
+   - Não exigir reenvio de prints/caminho se nada mudou.
+   - Validar legibilidade das informações de tabelas.
+   - Criar/atualizar “:card_index_dividers: Tabelas usadas” com a estrutura padronizada (ver seção 4).
+   - Confirmar: “Recebi as informações de tabelas. A seção ‘Tabelas usadas’ foi criada/atualizada logo abaixo de ‘Informações técnicas’.”
+
+4) Política para “Tabelas usadas” (seção dinâmica)
+   - Inclusão: não incluir por padrão. Criar apenas quando o usuário enviar dados (no 1º prompt ou depois).
+   - Local: imediatamente abaixo de “## :gear: Informações técnicas”.
+   - Cabeçalhos por tabela: usar “### <Nome da Tabela/Entidade>” (nível 3).
+   - Campos (com emojis padronizados):
+     - :file_cabinet: Fonte: <Banco/Sistema> -> <Instância/Schema.Tabela | \\servidor\...\arquivo | URL> | <N/D>
+     - :receipt: Usada para: Página(s) <nome(s) exatamente como em “## :receipt:”> – Visual(is) <títulos/descrições> | <N/D>
+     - :card_index_dividers: Colunas (breve descrição):
+       - <Coluna 1> – <descrição curta>
+       - <Coluna 2> – <descrição curta>
+     - :memo: Observações: <granularidade, chaves, filtros, janelas de tempo, relacionamentos> | <N/D>
+   - Setas na “Fonte”: usar “->” ou “:arrow_right:”; nunca “→”.
+   - Nomes: usar os nomes das páginas/visuais exatamente como aparecem no dashboard; se o visual não tiver título, descrever brevemente.
+   - Consolidação (quando múltiplas origens/listas):
+     - Mesclar por nome de tabela (case-insensitive).
+     - Unir “Fonte” (múltiplas -> separar por “;”).
+     - Agregar “Usada para” listando todas as páginas/visuais, sem duplicar.
+     - Colunas: preferir a ordem fornecida pelo usuário; em mesclas, remover duplicadas e ordenar alfabeticamente.
+     - Manter/mesclar Observações relevantes (sem redundâncias).
+   - Tabelas derivadas/calculadas:
+     - Indicar claramente a origem (ex.: “Derivada de <Tabela X>” em Observações) e o propósito.
+   - Ilegibilidade/incompletude:
+     - Se prints/listas estiverem ilegíveis/incompletas, solicitar reenvio. Campos não informados devem constar como N/D.
+
+5) Mensagens-padrão
+   - Confirmação (1ª versão): “Entradas obrigatórias validadas. Iniciarei a documentação no padrão do template.”
+   - Pendências: “Não foi possível gerar a documentação. Faltam itens obrigatórios: <listar entre [Print da página] e/ou [Caminho na rede]>. Envie-os para continuar.”
+   - Tabelas recebidas: “Recebi as informações de tabelas. A seção ‘Tabelas usadas’ foi criada/atualizada logo abaixo de ‘Informações técnicas’.”
+   - Qualidade insuficiente: “A imagem/caminho enviado não está legível/válido. Reenvie em maior resolução ou confirme o caminho.”
+   - Atualização concluída: “Documentação atualizada com a seção ‘Tabelas usadas’ (Fonte, Usada para, Colunas e Observações consolidadas).”
+
+6) Passo a passo de análise da página (a partir da print)
+   - Identificar o propósito (metas, evolução temporal, composição por segmentos etc.).
+   - Descrever o que se pode descobrir (metas vs. realizado, contribuintes, tendências, comparações).
+   - Mapear filtros visíveis (período, equipe, fornecedor, região etc.).
+   - Anotar apenas observações IMPACTANTES (funcionalidades/regras que alteram interpretação).
+   - Checar consistência de termos e formatação dos títulos/emojis.
+
+7) Entrega final e atualização contínua
+   - Gerar um único bloco Markdown começando por “# :house: Apresentação Geral do Dashboard”.
+   - Para múltiplas páginas: repetir “## :receipt: <Nome da Página>” para cada print.
+   - A cada nova página: atualizar “:gear: Informações técnicas”.
+   - Criar/atualizar “:card_index_dividers: Tabelas usadas” apenas quando houver dados enviados.
+   - Em atualização posterior, inserir/ajustar somente a seção dinâmica de Tabelas, mantendo o restante intacto.
+
+8) Fluxo recomendado (duas etapas possíveis)
+   - Etapa 1 (Sem tabelas): validar obrigatórios e gerar a documentação SEM “Tabelas usadas”.
+   - Etapa 2 (Com tabelas): ao receber as informações, validar e inserir a seção com cabeçalhos “###” por tabela e campos com emojis (:file_cabinet:, :receipt:, :card_index_dividers:, :memo:), usando “->” nas fontes.
+
+=====================
+TEMPLATE – DASHBOARD
+=====================
+
+# :house: Apresentação Geral do Dashboard
+<Descrição geral do dashboard em 1–3 frases. Ex.: Este dashboard oferece uma visão integrada de <tema>, com foco em <objetivos principais>. Permite filtrar por <segmentos> e acompanhar <metas/volumes/tendências>.>
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: <\\servidor\pasta\arquivo.ext> | <URL/SharePoint/OneDrive> | <N/D>
+- :hourglass_flowing_sand: Frequência de atualização: <Diária/Semanal/Mensal/Outra> | <N/D>
+- :technologist: Desenvolvido por: <Pessoa/Equipe> | <N/D>
+- :office: Equipe destinada: <nome da equipe> | <N/D>
+- :link: Link do local publicado: <URL> | <N/D>
+
+<!-- SOMENTE criar a seção abaixo se o usuário enviar informações de tabelas -->
+<!--
+## :card_index_dividers: Tabelas usadas (consolidado de todas as páginas)
+
+### <Tabela/Entidade 1>
+- :file_cabinet: Fonte: <Banco/Sistema> -> <Instância/Schema.Tabela | \\servidor\...\arquivo | URL> | <N/D>
+- :receipt: Usada para: Página(s) <P1, P2> – Visual(is) <V1, V2> | <N/D>
+- :card_index_dividers: Colunas (breve descrição):
+  - <Coluna A> – <descrição curta>
+  - <Coluna B> – <descrição curta>
+- :memo: Observações: <granularidade/chaves/relacionamentos/filtros> | <N/D>
+
+### <Tabela/Entidade 2>
+- :file_cabinet: Fonte: <...> -> <...> | <N/D>
+- :receipt: Usada para: Página(s) <...> – Visual(is) <...> | <N/D>
+- :card_index_dividers: Colunas (breve descrição):
+  - <...> – <...>
+- :memo: Observações: <...> | <N/D>
+-->
+
+-----------------------------------------
+<!-- REPITA A SEÇÃO ABAIXO PARA CADA PÁGINA -->
+-----------------------------------------
+
+## :receipt: <Nome da Página>
+<Descrição em 1–2 frases do foco da página. Ex.: Página focada em <metas/realização/evolução diária/composição por grupos>.>
+
+### :dart: Objetivo
+- <Objetivo 1 da página>
+- <Objetivo 2 da página>
+- <Objetivo 3 da página (opcional)>
+
+### :mag: O que esta página permite descobrir
+- Status de metas: <progresso vs. meta mensal/anual, quando aplicável>.
+- Desempenho agregado: <principais KPIs/cartões exibidos, sem citar números se ilegíveis>.
+- Estrutura/contribuição: <ex.: total de entidades e distribuição por grupos/segmentos>.
+- Composição por segmento: <ex.: participação de Grupo A vs. Grupo B em <métrica>>.
+- Tendência no período: <ex.: picos/quedas/sazonalidade por dia/semana/mês>.
+- Análises por recorte: <ex.: efeito de Equipe/Fornecedor/Região/Canal, quando disponíveis>.
+- Contexto temporal: <janela do filtro de Período, se visível>.
+
+### :world_map: Filtros disponíveis
+- <Filtro 1> (ex.: :busts_in_silhouette: Equipe)
+- <Filtro 2> (ex.: :factory: Fornecedor)
+- <Filtro 3> (ex.: :calendar: Período)
+- <Outros se aplicável>
+
+### :memo: Observações (opcional — somente se impactante)
+- <Descrever apenas funcionalidades/regras que alteram a leitura/interpretação, por exemplo:>
+  - <Aplica RLS por Equipe; usuários veem apenas seus próprios dados.>
+  - <Metas e gráficos consideram apenas dias úteis (feriados excluídos).>
+  - <Segmentação inicial fixa em “Período atual” ao abrir a página.>
+  - <Cálculo de “Meta do Mês” redistribuído proporcionalmente por dia útil.>
+(Fim da seção da página)
+
+-----------------------------------------
+==========================
+EXEMPLO DE PREENCHIMENTO
+==========================
+
+# :house: Apresentação Geral do Dashboard
+Este dashboard oferece uma visão integrada de Antecipações, Receita RD/Receita Integral e gestão de Cadastros de Fornecedores. Permite filtrar por Equipe, Fornecedor e Período, acompanhando metas (mensal/anual), evolução diária/semanal e qualidade/tempo dos cadastros.
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: \\integraltrust.net\Dados\Dados\Business Intelligence\Dashboards\RD\Novo Dash\RD - BI_VersaoTeste2_2025.pbix
+- :hourglass_flowing_sand: Frequência de atualização: Diária
+- :technologist: Desenvolvido por: Pablo Maciel - Dados
+- :office: Equipe destinada: Operações Estruturadas
+- :link: Link do local publicado: https://app.powerbi.com/links/KzpdDTuyOq?ctid=5961f5ed-ef69-4330-8e48-ee13bc43df5f&pbi_source=linkShare
+
+## :card_index_dividers: Tabelas usadas (consolidado de todas as páginas)
+
+### Acompanhamento Aceite
+- :file_cabinet: Fonte: Servidor SQL (sqlprd) -> FIDC.RD.Supplier_PRD.[Sistema].[VwAcompanhamentoDeAceites]
+- :receipt: Usada para: Página(s) Cadastros – Visual(is) calendário de cadastros (datas-base), “Últimas 3 taxas por fornecedor”
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do fornecedor/cedente
+  - DataDiaria – Data de referência diária
+  - Equipe – Equipe associada ao cedente
+  - NomeRazaoSocial – Razão social do cedente
+  - TaxaEfetivaCedente – Taxa efetiva aplicada ao cedente
+  - ValorDisponivel – Valor disponível/considerado no aceite
+- :memo: Observações: Granularidade diária por CdCedente; base para CalendarioCadastros e Ultimas3TaxasDistintas; relaciona-se com Dim_Cedente_Equipe por CdCedente.
+
+### Calendario
+- :file_cabinet: Fonte: Calculada (derivada do Relatório Títulos)
+- :receipt: Usada para: Páginas Antecipação e Receita; Acompanhamento Diário e Semanal – Segmentação/Filtro de Período
+- :card_index_dividers: Colunas (breve descrição):
+  - Ano – Ano calendário
+  - Date – Data completa
+  - Date Hierarquia.Dia – Dia
+  - Date Hierarquia.Mês – Mês
+  - Date Hierarquia.Mês Número – Número do mês (1–12)
+  - Semana Útil do Mês – Índice de semana útil no mês
+  - Trimestre – Trimestre calendário
+- :memo: Observações: Calendário contínuo para fatos de títulos/receita; relaciona-se a datas de Relatório Títulos e Metas Diárias.
+
+### CalendarioCadastros
+- :file_cabinet: Fonte: Calculada (derivada de Acompanhamento Aceite)
+- :receipt: Usada para: Página Cadastros – Segmentação/Filtro de Período
+- :card_index_dividers: Colunas (breve descrição):
+  - Ano – Ano calendário
+  - Date – Data completa
+  - Dia – Dia do mês
+  - Mes – Nome/descrição do mês
+  - Semana do Mês – Índice da semana dentro do mês
+- :memo: Observações: Calendário específico para métricas de cadastro/status.
+
+### Dim_Cedente_Equipe
+- :file_cabinet: Fonte: Calculada (derivada de Acompanhamento Aceite)
+- :receipt: Usada para: Todas as páginas – Suporte a filtros por Equipe e relacionamento com fatos
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do cedente (chave)
+  - Equipe – Nome da equipe
+- :memo: Observações: Dimensão de relacionamento CdCedente->Equipe; cardinalidade 1:N com fatos por CdCedente.
+
+### DimCedente
+- :file_cabinet: Fonte: Calculada (derivada de Historico Cadastro)
+- :receipt: Usada para: Todas as páginas – Exibição do nome/razão social e relacionamentos por cedente
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do cedente (chave)
+  - NomeRazaoSocial – Nome/Razão social do cedente
+- :memo: Observações: Dimensão de fornecedores; usada para padronizar nomes entre fatos.
+
+### DimStatus
+- :file_cabinet: Fonte: Calculada (derivada de Quantidade por Status)
+- :receipt: Usada para: Página Cadastros – Distribuição/tempo por status e evolução por status
+- :card_index_dividers: Colunas (breve descrição):
+  - CdStatus – Código do status (chave)
+  - NomeStatus – Descrição do status
+- :memo: Observações: Dicionário de status para junção com fatos de cadastro.
+
+### Historico Cadastro
+- :file_cabinet: Fonte: Servidor SQL (sqlprd) -> FIDC.RD.Supplier_PRD (query que sintetiza várias tabelas)
+- :receipt: Usada para: Página Cadastros – Base de derivação da “StatusTimeline”
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do cedente
+  - DataAtualizacao – Data/hora da mudança de status
+  - NomeRazaoSocial – Razão social
+  - StatusAntigo – Status anterior
+  - StatusNovo – Novo status assumido
+- :memo: Observações: Granularidade por evento de mudança de status.
+
+### Metas Diárias
+- :file_cabinet: Fonte: CSV gerado por script Python (metas_diarias.py)
+- :receipt: Usada para: Página Acompanhamento Diário e Semanal – Cartões de metas, gauge “Progresso na Meta do Período”, gráfico “Alcance da Meta Diária na Semana” e tabela por semana
+- :card_index_dividers: Colunas (breve descrição):
+  - Ano – Ano da meta
+  - Data – Data calendário
+  - Dia – Dia do mês
+  - Mes – Mês
+  - Meta_Diaria – Meta planejada por dia
+  - Meta_Semanal – Meta agregada por semana
+  - SemanaMes – Número da semana no mês
+- :memo: Observações: Relaciona-se ao Calendario pela coluna Data.
+
+### Quantidade por Status
+- :file_cabinet: Fonte: Servidor SQL (sqlprd) -> FIDC.RD.Supplier_PRD (query consolidada)
+- :receipt: Usada para: Página Cadastros – Visual “Evolução da quantidade de fornecedores por status”
+- :card_index_dividers: Colunas (breve descrição):
+  - CdStatus – Código do status
+  - Dia – Data de referência
+  - NomeStatus – Nome do status
+  - Quantidade – Quantidade de cadastros no status
+- :memo: Observações: Fato diário; relaciona-se com DimStatus e CalendarioCadastros.
+
+### Relatório Títulos
+- :file_cabinet: Fonte: Servidor SQL (sqlprd) -> FIDC.RD.Supplier_PRD.[Sistema].[VwRelatorioTitulo]
+- :receipt: Usada para: Página Antecipação e Receita – KPIs (Total Antecipado, Receita RD, Receita Integral), séries “Receita Total por Dia e por Mês” e “Total Antecipado por Dia e por Mês”, composições por Grupo
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificação do cedente
+  - CNPJ – CNPJ do cedente
+  - Data Cessão – Data de cessão do título
+  - Desconto – Percentual/valor de desconto do título
+  - Grupo – Agrupador de fornecedor
+  - Razão Social – Nome/Razão social
+  - Valor Antecipação – Valor antecipado
+  - Valor Operacionalização – Receita/valor de operacionalização
+- :memo: Observações: Fato financeiro por título/cessão; relaciona-se com DimCedente e Calendario (Data Cessão).
+
+### StatusAtualClientes
+- :file_cabinet: Fonte: Calculada (derivada de StatusTimeline)
+- :receipt: Usada para: Página Cadastros – Visual “Tempo no status” (faixas de dias)
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do cedente
+  - DataDe – Início da vigência do status atual
+  - DataAte – Fim da vigência (quando aplicável)
+  - DataAte_Date – Campo auxiliar de data
+  - RazaoSocial – Nome do cedente
+  - Status – Status em avaliação
+  - StatusAtual – Flag/descrição do status corrente
+  - TempoNoStatus – Dias no status atual
+- :memo: Observações: Derivada que reflete apenas o status corrente por cedente.
+
+### StatusTimeline
+- :file_cabinet: Fonte: Calculada (derivada de Historico Cadastro)
+- :receipt: Usada para: Página Cadastros – Visuais de histórico de status por cliente
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do cedente
+  - DataDe – Início da vigência do status
+  - DataAte – Fim da vigência do status
+  - DataAte_Date – Campo auxiliar de data
+  - RazaoSocial – Nome do cedente
+  - Status – Status na janela
+  - StatusAtual – Indica se é o status vigente no momento
+  - TempoNoStatus – Duração em dias no status
+- :memo: Observações: Série temporal de status por cedente; base para apuração do status atual e tempos.
+
+### Ultimas3TaxasDistintas
+- :file_cabinet: Fonte: Calculada (derivada de Acompanhamento Aceite)
+- :receipt: Usada para: Página Cadastros – Visual “Últimas 3 taxas por fornecedor”
+- :card_index_dividers: Colunas (breve descrição):
+  - CdCedente – Identificador do cedente
+  - NomeRazaoSocial – Razão social
+  - RankTaxa – Ordem da taxa (1 = mais recente)
+  - TaxaEfetivaCedente – Taxa efetiva registrada
+  - UltimaDataDaTaxa – Data da última ocorrência da taxa
+- :memo: Observações: Conjunto limitado às três taxas distintas mais recentes por cedente.
+
+-----------------------------------------
+
+## :receipt: Antecipação e Receita
+Página focada em indicadores de Receita (RD e Integral) e Total Antecipado, com comparação a metas do mês e do ano, além da composição por grupos e fornecedores.
+
+### :dart: Objetivo
+- Acompanhar KPIs de Receita RD, Receita Integral e Total Antecipado no período.
+- Avaliar progresso em relação à Meta do Mês e à Meta Anual.
+- Entender a composição por grupos e a evolução diária/mensal.
+
+### :mag: O que esta página permite descobrir
+- Status de metas: progresso do mês e do ano por meio de indicadores de gauge.
+- Desempenho agregado: cartões de KPIs de receita, total antecipado e contagem de fornecedores/grupos.
+- Estrutura/contribuição: participação de cada grupo em Antecipações e em Receita Total (gráficos de rosca).
+- Composição por segmento: distribuição por Grupo (ex.: Grupo 1 vs. Grupo 2).
+- Tendência no período: séries por dia e por mês para Receita RD vs. Receita Integral e para Total Antecipado.
+- Análises por recorte: efeitos de Equipe e Fornecedor.
+- Contexto temporal: conforme o filtro de Período.
+
+### :world_map: Filtros disponíveis
+- :busts_in_silhouette: Equipe
+- :factory: Fornecedor
+- :calendar: Período
+
+-----------------------------------------
+
+## :receipt: Acompanhamento Diário e Semanal
+Página focada no atingimento da Meta Diária/Semanal e no progresso do período, com navegação por semanas do mês.
+
+### :dart: Objetivo
+- Monitorar a meta diária e a meta do período selecionado.
+- Avaliar, por semana, a diferença em relação à meta e o acumulado.
+- Visualizar o alcance da meta diária por dia dentro da semana.
+
+### :mag: O que esta página permite descobrir
+- Status de metas: gauge de “Progresso na Meta do Período” com indicação de atingimento.
+- Desempenho agregado: cartões de Meta Diária, Meta do Período e % da Meta Atingida.
+- Tendência no período: gráfico de barras por dia na semana comparando Receita RD vs. Meta Diária (linha de referência).
+- Estrutura/contribuição: tabela por Semana do Mês com Meta, Receita da Semana, Diferença da Meta e Diferença Acumulativa.
+- Análises por recorte: seleção de Semana (1–4) para detalhamento.
+- Contexto temporal: conforme o filtro de Período.
+
+### :world_map: Filtros disponíveis
+- :busts_in_silhouette: Equipe
+- :factory: Fornecedor
+- :calendar: Período
+- :calendar: Semana (segmentação 1–4)
+
+-----------------------------------------
+
+## :receipt: Cadastros
+Página dedicada ao acompanhamento da base de fornecedores, seus status e tempos de permanência, além da evolução histórica e métricas de taxa média.
+
+### :dart: Objetivo
+- Monitorar a quantidade de fornecedores por status e sua evolução no tempo.
+- Acompanhar tempos/dias em cada status e identificar gargalos.
+- Consultar detalhes de fornecedores (razão social, status, janelas de datas) e métricas de taxas.
+
+### :mag: O que esta página permite descobrir
+- Desempenho agregado: total de fornecedores selecionados e status atual.
+- Estrutura/contribuição: quantidade de fornecedores em cada status (ex.: Habilitado, Bloqueado, Sem interesse, etc.).
+- Tendência no período: evolução histórica da quantidade por status (área/linha ao longo dos meses).
+- Análises por recorte: tabelas com fornecedores e faixas de tempo em status (0–5, 5–10, 10–20, 20+ dias).
+- Eficiência de cadastro: média de dias em cada status e distribuição por status.
+- Indicadores de taxa: lista de fornecedores com score/taxa e série “Média de Taxa por Mês”.
+- Contexto temporal: conforme o filtro de Período.
+
+### :world_map: Filtros disponíveis
+- :busts_in_silhouette: Equipe
+- :label: Status
+- :factory: Fornecedor
+- :calendar: Período
+
+==========================
+CHECKLIST RÁPIDO (QA)
+==========================
+- Entradas obrigatórias recebidas e legíveis: [Print da página] e [Caminho na rede].
+- “:gear: Informações técnicas” atualizado (caminho, equipe, frequência, desenvolvido por, link — marcar N/D quando faltarem).
+- Se o usuário enviou informações de tabelas:
+  - A seção “## :card_index_dividers: Tabelas usadas” foi criada logo abaixo de “Informações técnicas”.
+  - Cada tabela está em “### <Nome da Tabela>”.
+  - Campos usam os rótulos com emojis (:file_cabinet: Fonte, :receipt: Usada para, :card_index_dividers: Colunas, :memo: Observações).
+  - Setas padronizadas como “->” ou “:arrow_right:” (sem “→”).
+  - Páginas/visuais referenciados pelos nomes/títulos exatos do dashboard.
+- “:memo: Observações” presente somente quando houver ponto realmente impactante.
+- Placeholders substituídos ou marcados como N/D.
+- Filtros listados correspondem aos visíveis na página.
+- Títulos e emojis no padrão do template; texto conciso.

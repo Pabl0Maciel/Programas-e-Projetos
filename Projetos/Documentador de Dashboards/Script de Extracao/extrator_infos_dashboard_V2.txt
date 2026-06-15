@@ -1,0 +1,118 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+string outputFolder = @"pasta-para-salvar";
+string fileName = "nome-do-arquivo.json";
+bool includeHidden = false;
+
+string fullPath = Path.Combine(outputFolder, fileName);
+
+// Criar pasta se não existir
+if (!Directory.Exists(outputFolder))
+{
+    Directory.CreateDirectory(outputFolder);
+}
+
+// ====================
+// ESTRUTURA DO MODELO
+// ====================
+
+var modelObj = new
+{
+    modelName = Model.Name,
+    tables = Model.Tables
+        .Where(t => includeHidden || !t.IsHidden)
+        .Select(t =>
+        {
+            string sourceQuery = "";
+
+            try
+            {
+                if (t.Partitions.Count > 0)
+                {
+                    var part = t.Partitions[0];
+                    if (part.Query != null)
+                        sourceQuery = part.Query;
+                }
+            }
+            catch
+            {
+                sourceQuery = "";
+            }
+
+            return new
+            {
+                name = t.Name,
+                isHidden = t.IsHidden,
+                source = sourceQuery,
+
+                columns = t.Columns
+                    .Where(c => includeHidden || !c.IsHidden)
+                    .Select(c => new
+                    {
+                        name = c.Name,
+                        dataType = c.DataType.ToString(),
+                        isHidden = c.IsHidden
+                    })
+                    .ToList(),
+
+                measures = t.Measures
+                    .Where(m => includeHidden || !m.IsHidden)
+                    .Select(m => new
+                    {
+                        name = m.Name,
+                        expression = m.Expression ?? "",
+                        isHidden = m.IsHidden
+                    })
+                    .ToList()
+            };
+        })
+        .ToList(),
+
+    relationships = Model.Relationships
+        .Select(rel =>
+        {
+            string direction = "não identificado";
+
+            try
+            {
+                direction = rel.CrossFilteringBehavior.ToString();
+            }
+            catch { }
+
+            return new
+            {
+                fromTable = rel.FromTable.Name,
+                fromColumn = rel.FromColumn.Name,
+                toTable = rel.ToTable.Name,
+                toColumn = rel.ToColumn.Name,
+                direction = direction
+            };
+        })
+        .ToList()
+};
+
+// ====================
+// SERIALIZAÇÃO JSON
+// ====================
+
+string json = JsonConvert.SerializeObject(
+    modelObj,
+    Formatting.Indented
+);
+
+// ====================
+// SALVAR ARQUIVO
+// ====================
+
+File.WriteAllText(fullPath, json);
+
+// ====================
+// OUTPUT
+// ====================
+
+Output("Arquivo exportado:");
+Output(fullPath);

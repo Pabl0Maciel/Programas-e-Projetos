@@ -1,0 +1,158 @@
+TEMPLATE E INSTRUÇÕES – DOCUMENTAÇÃO DE DASHBOARDS
+Versão: 1.0
+Formato: Markdown com títulos usando # e emojis no padrão :emoji:
+
+========================================
+INSTRUÇÕES PARA GERAR A DOCUMENTAÇÃO
+========================================
+1) Entradas esperadas por página
+   - Screenshot/print legível da página (alta resolução).
+   - Metadados do contexto: <Período>, <Filtros aplicados>, <Data/Hora de atualização>, <Público-alvo>, <Objetivo da página> (se houver).
+   - Nomes dos campos/KPIs quando não forem legíveis na imagem.
+
+2) Regras de escrita e formatação
+   - Idioma: português.
+   - Estrutura: usar os títulos exatamente como no template, com divisões por #.
+   - Emojis no formato :emoji: (ex.: :house:, :receipt:, :dart:, :mag:, :world_map:, :memo:).
+   - Texto objetivo, sem jargões desnecessários. Frases curtas. Usar listas com “-”.
+   - Não incluir seções que não constam no template (ex.: sem “Como ler os visuais” ou “Decisões”).
+   - Se um dado estiver ilegível/indisponível, escrever “N/D” ou “<informar>” sem inventar valores.
+
+3) Passo a passo para analisar a página (a partir da print)
+   - Identificar o propósito da página (ex.: acompanhamento de metas, evolução diária, composição por segmentos).
+   - Listar o que é possível descobrir: metas vs. realizado, contribuintes (grupos/segmentos), tendências (picos/quedas), comparações relevantes.
+   - Mapear filtros visíveis (ex.: período, equipe, fornecedor, região).
+   - Anotar observações relevantes: premissas, limites, granularidade, notas sobre leitura/atualização.
+   - Checar consistência dos termos (mesma nomenclatura para KPIs e segmentos).
+   - Revisar e garantir que os títulos e emojis estão corretos.
+
+4) Convenções e boas práticas
+   - Granularidade: se for inferida pela visualização (ex.: diária no mês), mencionar como observação.
+   - Metas: quando houver gauge/cartão de meta, citar “progresso vs. meta” sem expor números se não estiverem legíveis.
+   - Segmentos/painéis: quando aparecerem “Grupo 1/Grupo 2” ou equivalentes, apontar a composição e que a página permite comparar contribuições.
+   - Filtros: listar apenas os que estiverem claros (ex.: Equipe, Fornecedor, Período). Se suspeitar de outros, não incluir.
+   - Privacidade: não descrever PII ou detalhes sensíveis eventualmente visíveis na print.
+
+5) Como preencher placeholders
+   - Tudo entre <...> é um placeholder. Substitua pelo conteúdo real quando disponível.
+   - Se não houver informação, mantenha “N/D” ou “<informar>”.
+   - Personalize o nome da página e referências a segmentos para refletir a tela (ex.: “Grupo 1/Grupo 2”, “RD/Integral”, etc.).
+
+6) Entrega final
+   - Gerar um único bloco Markdown começando com “# :house: Apresentação Geral do Dashboard”.
+   - Para múltiplas páginas: repetir a seção de página (## :receipt: …) para cada uma, mantendo o mesmo padrão.
+
+
+=====================
+TEMPLATE – DASHBOARD
+=====================
+# :house: Apresentação Geral do Dashboard
+<Descrição geral do dashboard em 1–3 frases. Ex.: Este dashboard oferece uma visão integrada de <tema>, com foco em <objetivos principais>. Permite filtrar por <segmentos> e acompanhar <metas/volumes/tendências>.>
+
+## :bookmark_tabs: Metadados
+- :label: Nome do dashboard: <Nome do Dashboard>
+- :busts_in_silhouette: Público-alvo: <Público-alvo>
+- :dart: Objetivo geral: <Objetivo geral>
+- :calendar: Frequência de atualização: <Diária/Semanal/Mensal/Outra>
+- :hourglass_flowing_sand: Última atualização: <Data/Hora ou N/D>
+- :triangular_ruler: Granularidade principal: <Diária/Semanal/Mensal/N/D>
+- :file_folder: Escopo: <Inclui… / Exclui…>
+- :telephone_receiver: Contatos: <Owner/Área> | <Canal de Suporte>
+
+## :map: Índice de páginas
+- <Página 1 – Nome/Propósito>
+- <Página 2 – Nome/Propósito>
+- <Página 3 – Nome/Propósito>
+(Atualize a lista conforme as páginas existentes)
+
+-----------------------------------------
+REPITA A SEÇÃO ABAIXO PARA CADA PÁGINA
+-----------------------------------------
+## :receipt: <Nome da Página>
+<Descrição em 1–2 frases do foco da página. Ex.: Página focada em <metas/realização/evolução diária/composição por grupos>.>
+
+### :dart: Objetivo
+- <Objetivo 1 da página>
+- <Objetivo 2 da página>
+- <Objetivo 3 da página (opcional)>
+
+### :mag: O que esta página permite descobrir
+- Status de metas: <progresso vs. meta mensal/anual, quando aplicável>.
+- Desempenho agregado: <principais KPIs/cartões exibidos, sem citar números se ilegíveis>.
+- Estrutura/contribuição: <ex.: total de entidades e distribuição por grupos/segmentos>.
+- Composição por segmento: <ex.: participação de Grupo A vs. Grupo B em <métrica>>.
+- Tendência no período: <ex.: picos/quedas/sazonalidade por dia/semana/mês>.
+- Análises por recorte: <ex.: efeito de Equipe/Fornecedor/Região/Canal, quando disponíveis>.
+- Contexto temporal: <janela do filtro de Período, se visível>.
+
+### :world_map: Filtros disponíveis
+- <Filtro 1> (ex.: :busts_in_silhouette: Equipe)
+- <Filtro 2> (ex.: :factory: Fornecedor)
+- <Filtro 3> (ex.: :calendar: Período)
+- <Outros se aplicável>
+
+### :memo: Observações
+- <Premissas/limites> (ex.: granularidade, escopo, defasagem de dados).
+- <Notas de padronização> (ex.: uso de “Mi”, nomes de grupos, convenções).
+- <Pontos de atenção> (ex.: ausência de alguns segmentos, dados incompletos, etc.)
+
+(Fim da seção da página)
+-----------------------------------------
+
+
+==========================
+EXEMPLO DE PREENCHIMENTO
+==========================
+# :house: Apresentação Geral do Dashboard
+Este dashboard oferece uma visão integrada de <vendas/receita/antecipação>, com foco em <metas mensais e anuais, evolução temporal e composição por segmentos>. Permite filtrar por <Equipe, Fornecedor, Período> e acompanhar <progresso vs. meta e tendências por dia>.
+
+## :bookmark_tabs: Metadados
+- :label: Nome do dashboard: <Desempenho Comercial>
+- :busts_in_silhouette: Público-alvo: <Time Comercial / Gestão>
+- :dart: Objetivo geral: <Monitorar metas e resultados por período e segmento>
+- :calendar: Frequência de atualização: <Diária>
+- :hourglass_flowing_sand: Última atualização: <N/D>
+- :triangular_ruler: Granularidade principal: <Diária>
+- :file_folder: Escopo: <Inclui resultados de RD e Integral; exclui testes internos>
+- :telephone_receiver: Contatos: <Owner BI> | <canal-de-suporte@empresa.com>
+
+## :map: Índice de páginas
+- Página 1 – Desempenho e Metas
+- Página 2 – Análise por Segmento
+- Página 3 – Evolução Temporal
+
+## :receipt: Desempenho e Metas
+Página focada em metas e realização: mostra volumes agregados, progresso contra meta e evolução diária, além da divisão por grupos.
+
+### :dart: Objetivo
+- Acompanhar o desempenho no período selecionado.
+- Avaliar a aderência às metas (mês e ano) e principais contribuintes.
+
+### :mag: O que esta página permite descobrir
+- Status de metas: progresso na meta do mês e do ano.
+- Desempenho agregado: principais KPIs em cartões.
+- Estrutura/contribuição: total de entidades e distribuição por grupos.
+- Composição por segmento: participação de grupos em métricas-chave.
+- Tendência no período: picos/quedas intra-mês.
+- Análises por recorte: efeitos de Equipe e Fornecedor.
+- Contexto temporal: conforme filtro de Período.
+
+### :world_map: Filtros disponíveis
+- :busts_in_silhouette: Equipe
+- :factory: Fornecedor
+- :calendar: Período
+
+### :memo: Observações
+- Granularidade diária; útil para sazonalidade intra-mês.
+- Padronizar sufixos (ex.: “Mi”) e tooltips para leitura consistente.
+- Considerar linhas de referência de meta diária, se aplicável.
+
+
+==========================
+CHECKLIST RÁPIDO (QA)
+==========================
+- Títulos e emojis no padrão do template.
+- Placeholders substituídos ou marcados como N/D.
+- Filtros listados batem com o que aparece na tela.
+- Não há números inventados quando ilegíveis.
+- Texto conciso, apenas seções previstas no template.

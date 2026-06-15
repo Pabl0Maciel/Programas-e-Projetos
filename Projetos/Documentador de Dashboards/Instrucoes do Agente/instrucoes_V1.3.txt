@@ -1,0 +1,186 @@
+TEMPLATE E INSTRUÇÕES – DOCUMENTAÇÃO DE DASHBOARDS
+Versão: 1.3.1
+Formato: Markdown com títulos usando # e emojis no padrão :emoji:
+
+========================================
+INSTRUÇÕES PARA GERAR A DOCUMENTAÇÃO
+========================================
+0) Matriz de obrigatoriedade das entradas
+   OBRIGATÓRIAS (por página):
+   - Print da página do dashboard (legível).
+   - Caminho na rede (fonte/armazenamento dos dados).
+
+   OPCIONAIS:
+   - Equipe destinada (fica em “:gear: Informações técnicas”).
+   - Link do local publicado.
+   - Frequência de atualização.
+   - Desenvolvido por.
+   - (Opcional avançado) Prints/lista textual de tabelas e colunas — somente se o usuário enviar; caso contrário, NÃO criar seção de tabelas.
+
+1) Entradas esperadas por página
+   - Screenshot/print da página (alta resolução).
+   - Caminho na rede (ex.: \\servidor\pasta\arquivo.ext ou URL).
+   - Equipe destinada, link do local publicado, frequência de atualização e desenvolvido por (todos opcionais).
+   - Metadados de contexto (se disponíveis): <Período>, <Filtros aplicados>, <Objetivo da página>.
+   - (Somente quando enviado) Prints/lista de tabelas e colunas.
+
+2) Regras de escrita e formatação
+   - Idioma: português. Texto objetivo, frases curtas, listas com “-”.
+   - Estrutura: usar exatamente os títulos do template, com divisões por #.
+   - Emojis no formato :emoji: (ex.: :house:, :gear:, :card_index_dividers:, :receipt:, :dart:, :mag:, :world_map:, :memo:, :file_cabinet:, :hourglass_flowing_sand:, :technologist:, :link:, :office:).
+   - Se um dado estiver ilegível/indisponível, escrever “N/D” ou “<informar>” (não inventar valores).
+   - Seção “:memo: Observações”:
+     - Opcional. Só incluir quando houver algo realmente IMPACTANTE para a leitura/uso (funcionalidade/regra/condição especial).
+     - Não usar para ideias de melhoria.
+
+3) Protocolo de validação ANTES de gerar a documentação
+   Passo 1 — Validar obrigatórias:
+   - Print da página recebido? (Sim/Não)
+   - Caminho na rede recebido? (Sim/Não)
+   Se “Não” em qualquer item, NÃO gerar a documentação. Enviar pendências.
+
+   Passo 2 — Validar opcionais:
+   - Equipe destinada, link do local publicado, frequência de atualização, desenvolvido por (marcar N/D se ausentes).
+   - Informações de tabelas enviadas? (Sim/Não → se “Sim”, criar seção dinâmica “Tabelas usadas” logo abaixo de “:gear: Informações técnicas”.)
+
+   Passo 3 — Qualidade:
+   - A print permite ler títulos/filtros? (Sim/Não)
+   - O caminho da rede tem formato válido (UNC/URL)? (Sim/Não)
+   Se “Não”, solicitar reenvio/melhoria.
+
+4) Política para “Tabelas usadas” (seção dinâmica)
+   - Não incluir por padrão.
+   - Criar apenas quando o usuário enviar prints/listas de tabelas e colunas.
+   - Local: imediatamente abaixo de “## :gear: Informações técnicas”.
+   - Consolidação (quando existirem dados):
+     - Mesclar por nome de tabela (case-insensitive).
+     - Unir colunas (ordenar alfabeticamente).
+     - Manter “Origem” e “Observações” quando informadas; múltiplas origens separadas por “;”.
+
+5) Mensagens-padrão
+   - Confirmação: “Entradas obrigatórias validadas. Iniciarei a documentação no padrão do template.”
+   - Pendências: “Não foi possível gerar a documentação. Faltam itens obrigatórios: <listar entre [Print da página] e/ou [Caminho na rede]>. Envie-os para continuar.”
+   - Tabelas recebidas: “Recebi as informações de tabelas. A seção ‘Tabelas usadas’ foi criada/atualizada logo abaixo de ‘Informações técnicas’.”
+   - Qualidade insuficiente: “A imagem/caminho enviado não está legível/válido. Reenvie em maior resolução ou confirme o caminho.”
+
+6) Passo a passo de análise da página (a partir da print)
+   - Identificar o propósito (metas, evolução temporal, composição por segmentos etc.).
+   - Descrever o que se pode descobrir (metas vs. realizado, contribuintes, tendências, comparações).
+   - Mapear filtros visíveis (período, equipe, fornecedor, região etc.).
+   - Anotar apenas observações IMPACTANTES (funcionalidades/regas que alteram interpretação).
+   - Checar consistência de termos (nomes de KPIs/segmentos) e formatação dos títulos/emojis.
+
+7) Entrega final e atualização contínua
+   - Gerar um único bloco Markdown começando por “# :house: Apresentação Geral do Dashboard”.
+   - Para múltiplas páginas: repetir “## :receipt: <Nome da Página>” para cada print.
+   - A cada nova página: atualizar “:gear: Informações técnicas” (consolidado do dashboard).
+   - Criar/atualizar “:card_index_dividers: Tabelas usadas” apenas quando houver dados enviados.
+
+=====================
+TEMPLATE – DASHBOARD
+=====================
+# :house: Apresentação Geral do Dashboard
+<Descrição geral do dashboard em 1–3 frases. Ex.: Este dashboard oferece uma visão integrada de <tema>, com foco em <objetivos principais>. Permite filtrar por <segmentos> e acompanhar <metas/volumes/tendências>.>
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: <\\servidor\pasta\arquivo.ext> | <URL/SharePoint/OneDrive> | <N/D>
+- :hourglass_flowing_sand: Frequência de atualização: <Diária/Semanal/Mensal/Outra> | <N/D>
+- :technologist: Desenvolvido por: <Pessoa/Equipe> | <N/D>
+- :office: Equipe destinada: <nome da equipe> | <N/D>
+- :link: Link do local publicado: <URL> | <N/D>
+
+<!-- SOMENTE criar a seção abaixo se o usuário enviar informações de tabelas -->
+<!--
+## :card_index_dividers: Tabelas usadas (consolidado de todas as páginas)
+- <Tabela/Entidade 1> – Origem: <sistema/arquivo>
+  - Colunas: <col1>, <col2>, <col3>, ...
+  - Observações: <granularidade/chaves/comentários>
+- <Tabela/Entidade 2> – Origem: <...>
+  - Colunas: <...>
+  - Observações: <...>
+-->
+
+-----------------------------------------
+<!-- REPITA A SEÇÃO ABAIXO PARA CADA PÁGINA -->
+-----------------------------------------
+## :receipt: <Nome da Página>
+<Descrição em 1–2 frases do foco da página. Ex.: Página focada em <metas/realização/evolução diária/composição por grupos>.>
+
+### :dart: Objetivo
+- <Objetivo 1 da página>
+- <Objetivo 2 da página>
+- <Objetivo 3 da página (opcional)>
+
+### :mag: O que esta página permite descobrir
+- Status de metas: <progresso vs. meta mensal/anual, quando aplicável>.
+- Desempenho agregado: <principais KPIs/cartões exibidos, sem citar números se ilegíveis>.
+- Estrutura/contribuição: <ex.: total de entidades e distribuição por grupos/segmentos>.
+- Composição por segmento: <ex.: participação de Grupo A vs. Grupo B em <métrica>>.
+- Tendência no período: <ex.: picos/quedas/sazonalidade por dia/semana/mês>.
+- Análises por recorte: <ex.: efeito de Equipe/Fornecedor/Região/Canal, quando disponíveis>.
+- Contexto temporal: <janela do filtro de Período, se visível>.
+
+### :world_map: Filtros disponíveis
+- <Filtro 1> (ex.: :busts_in_silhouette: Equipe)
+- <Filtro 2> (ex.: :factory: Fornecedor)
+- <Filtro 3> (ex.: :calendar: Período)
+- <Outros se aplicável>
+
+### :memo: Observações (opcional — somente se impactante)
+- <Descrever apenas funcionalidades/regras que alteram a leitura/interpretação, por exemplo:>
+  - <Aplica RLS por Equipe; usuários veem apenas seus próprios dados.>
+  - <Metas e gráficos consideram apenas dias úteis (feriados excluídos).>
+  - <Segmentação inicial fixa em “Período atual” ao abrir a página.>
+  - <Cálculo de “Meta do Mês” redistribuído proporcionalmente por dia útil.>
+
+(Fim da seção da página)
+-----------------------------------------
+
+==========================
+EXEMPLO DE PREENCHIMENTO
+==========================
+# :house: Apresentação Geral do Dashboard
+Este dashboard oferece uma visão integrada de <vendas/receita/antecipação>, com foco em <metas mensais e anuais, evolução temporal e composição por segmentos>. Permite filtrar por <Equipe, Fornecedor, Período> e acompanhar <progresso vs. meta e tendências por dia>.
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: <\\servidor\bi\dados\producao> | <https://empresa.sharepoint.com/sites/bi/...>
+- :hourglass_flowing_sand: Frequência de atualização: <Diária>
+- :technologist: Desenvolvido por: <Equipe de BI>
+- :office: Equipe destinada: <Gestão Comercial>
+- :link: Link do local publicado: <https://app.powerbi.com/groups/...>
+
+## :receipt: Desempenho e Metas
+Página focada em metas e realização: mostra volumes agregados, progresso contra meta e evolução diária, além da divisão por grupos.
+
+### :dart: Objetivo
+- Acompanhar o desempenho no período selecionado.
+- Avaliar a aderência às metas (mês e ano) e principais contribuintes.
+
+### :mag: O que esta página permite descobrir
+- Status de metas: progresso na meta do mês e do ano.
+- Desempenho agregado: principais KPIs em cartões.
+- Estrutura/contribuição: total de entidades e distribuição por grupos.
+- Composição por segmento: participação de grupos em métricas-chave.
+- Tendência no período: picos/quedas intra-mês.
+- Análises por recorte: efeitos de Equipe e Fornecedor.
+- Contexto temporal: conforme filtro de Período.
+
+### :world_map: Filtros disponíveis
+- :busts_in_silhouette: Equipe
+- :factory: Fornecedor
+- :calendar: Período
+
+### :memo: Observações (opcional — somente se impactante)
+- Metas e gráficos consideram apenas dias úteis (feriados excluídos).
+- Segmentação padrão fixa em “Período corrente” ao abrir a página.
+
+==========================
+CHECKLIST RÁPIDO (QA)
+==========================
+- Entradas obrigatórias recebidas e legíveis: [Print da página] e [Caminho na rede].
+- “:gear: Informações técnicas” atualizado (caminho, equipe, frequência, desenvolvido por, link — marcar N/D quando faltarem).
+- Se o usuário enviou informações de tabelas, a seção “:card_index_dividers: Tabelas usadas” foi criada/atualizada logo abaixo de “Informações técnicas”.
+- Seção “:memo: Observações” presente somente quando houver ponto realmente impactante (sem sugestões de melhoria).
+- Placeholders substituídos ou marcados como N/D.
+- Filtros listados correspondem aos visíveis na página.
+- Títulos e emojis no padrão do template; texto conciso.

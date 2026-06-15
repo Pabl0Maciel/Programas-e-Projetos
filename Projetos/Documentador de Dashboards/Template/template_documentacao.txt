@@ -1,0 +1,147 @@
+# :bar_chart: [Nome do Dashboard]
+
+---
+
+## :house: Apresentação Geral do Dashboard
+Descrever o propósito do dashboard, principais áreas cobertas e tipo de análise que permite.
+
+---
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: [caminho]
+- :hourglass_flowing_sand: Frequência de atualização: [frequência]
+- :bust_in_silhouette: Desenvolvido por: [nome]
+- :office: Equipe destinada: [equipe]
+- :link: Link do local publicado: [url]
+
+---
+
+## :bookmark_tabs: Páginas do Dashboard
+
+### :page_facing_up: [Nome da Página]
+
+Breve descrição da página com base nos elementos visuais identificados.
+
+#### :dart: Objetivo
+- [Objetivo principal da página]
+- [Outro objetivo, se aplicável]
+
+#### :pushpin: Indicadores principais
+- :small_blue_diamond: [Nome do KPI]
+- :small_blue_diamond: [Nome do KPI]
+
+#### :mag: O que esta página permite descobrir
+- [Insight possível a partir da análise]
+- [Outro insight relevante]
+
+#### :bar_chart: Principais visuais
+- :credit_card: [Nome do visual] — Tipo: Card  
+  Descrição: Apresenta [métrica] considerando [dimensão/recorte]. Permite interpretar [insight].
+
+- :chart_with_upwards_trend: [Nome do visual] — Tipo: Linha  
+  Descrição: Mostra a evolução de [métrica] ao longo de [tempo]. Permite analisar [tendência/comportamento].
+
+- :bar_chart: [Nome do visual] — Tipo: Barra  
+  Descrição: Compara [métrica] entre [categorias]. Permite identificar [diferenças/destaques].
+
+- :clipboard: [Nome do visual] — Tipo: Tabela  
+  Descrição: Detalha [informações exibidas]. Permite análise granular dos dados.
+
+- :abacus: [Nome do visual] — Tipo: Matriz  
+  Descrição: Apresenta cruzamento entre [dimensões]. Permite análise comparativa.
+
+- :large_blue_circle: [Nome do visual] — Tipo: Pizza/Rosca  
+  Descrição: Mostra a proporção de [métrica] por [categoria]. Permite visualizar participação relativa.
+
+#### :world_map: Filtros disponíveis
+(Extrair da interface do dashboard; usar exatamente os nomes exibidos)
+- :label: [Filtro identificado]
+- :label: [Filtro identificado]
+- :label: [Filtro identificado]
+
+---
+
+### :page_facing_up: [Nome da Página 2]
+
+[Repete estrutura acima]
+
+---
+
+## :card_index_dividers: Modelo dos Dados
+
+### :card_index_dividers: [Nome da Tabela]
+
+Breve descrição do que a tabela armazena (baseado no nome, colunas e contexto do modelo).
+
+- :file_cabinet: Fonte: [origem dos dados ou query]
+
+<details>
+<summary>Ver query SQL</summary>
+
+```sql
+[QUERY SQL COMPLETA FORMATADA]
+```
+
+</details>
+
+#### :card_index_dividers: Colunas
+- :small_blue_diamond: [Coluna] ([Tipo]) – [descrição clara e objetiva]
+- :small_blue_diamond: [Coluna] ([Tipo]) – [descrição clara e objetiva]
+
+#### :twisted_rightwards_arrows: Relacionamentos
+- :arrow_right: ([Esta tabela].[Coluna]) :arrow_right: ([Outra tabela].[Coluna])  
+  Cardinalidade: [1:N / N:1 / 1:1 / não identificado]  
+  Direção: [Single / Both / não identificado]  
+  Descrição: [impacto na análise ou "não identificado"]
+
+---
+
+### :card_index_dividers: [Nome da Tabela 2]
+
+[Repete estrutura acima]
+
+---
+
+## :brain: Medidas
+
+#### :pushpin: [Nome da Medida]
+
+- Descrição: Explicar o que a medida calcula, com base na regra de negócio e nas tabelas envolvidas.
+
+<details>
+<summary>Ver fórmula DAX</summary>
+
+```DAX
+[DAX COMPLETO]
+```
+
+</details>
+
+---
+
+#### :pushpin: [Nome da Medida 2]
+
+- Descrição: [explicação]
+
+<details>
+<summary>Ver fórmula DAX</summary>
+
+```DAX
+[DAX COMPLETO]
+```
+
+</details>
+
+---
+
+## :twisted_rightwards_arrows: Relacionamentos do Modelo
+
+- :link: ([Tabela A].[Coluna]) → ([Tabela B].[Coluna])  
+  Cardinalidade: [1:N / N:1 / 1:1 / não identificado]  
+  Direção: [Single / Both / não identificado]  
+  Descrição: [impacto na análise ou "não identificado"]
+
+- :link: ([Tabela A].[Coluna]) → ([Tabela B].[Coluna])  
+  Cardinalidade: [não identificado]  
+  Direção: [não identificado]  
+  Descrição: [não identificado]

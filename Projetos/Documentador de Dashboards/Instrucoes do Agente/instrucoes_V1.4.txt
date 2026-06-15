@@ -1,0 +1,242 @@
+TEMPLATE E INSTRUÇÕES – DOCUMENTAÇÃO DE DASHBOARDS
+Versão: 1.4
+Formato: Markdown com títulos usando # e emojis no padrão :emoji:
+
+========================================
+INSTRUÇÕES PARA GERAR A DOCUMENTAÇÃO
+========================================
+
+0) Matriz de obrigatoriedade das entradas
+   OBRIGATÓRIAS (por página):
+   - Print da página do dashboard (legível).
+   - Caminho na rede (fonte/armazenamento dos dados).
+   OPCIONAIS (no 1º prompt ou em interação posterior):
+   - Equipe destinada.
+   - Link do local publicado.
+   - Frequência de atualização.
+   - Desenvolvido por.
+   - Tabelas usadas (prints/listas). Observação: Só criar a seção se o usuário enviar; caso contrário, NÃO criar.
+
+1) Entradas esperadas por página
+   - Screenshot/print da página (alta resolução).
+   - Caminho na rede (ex.: \\servidor\pasta\arquivo.ext ou URL).
+   - Metadados de contexto (se disponíveis): <Período>, <Filtros aplicados>, <Objetivo da página>.
+   - Opcionais: Equipe destinada, link do local publicado, frequência de atualização, desenvolvido por.
+   - (Somente quando enviado) Prints/lista de tabelas e colunas.
+
+2) Regras de escrita e formatação
+   - Idioma: português. Texto objetivo, frases curtas, listas com “-”.
+   - Estrutura: usar exatamente os títulos do template, com divisões por #.
+   - Emojis no formato :emoji: (ex.: :house:, :gear:, :card_index_dividers:, :receipt:, :dart:, :mag:, :world_map:, :memo:, :file_cabinet:, :hourglass_flowing_sand:, :technologist:, :link:, :office:).
+   - Dados ilegíveis/indisponíveis: usar “N/D” ou “<informar>” (não inventar).
+   - “:memo: Observações”: opcional. Incluir só se impactante (regras que alteram a leitura). Não usar para ideias de melhoria.
+
+3) Protocolo de validação
+   Passo 1 — Validação das obrigatórias (antes da 1ª versão):
+   - Print da página recebido? (Sim/Não)
+   - Caminho na rede recebido? (Sim/Não)
+   -> Se “Não” em qualquer item, NÃO gerar a documentação. Envie: “Não foi possível gerar a documentação. Faltam itens obrigatórios: <[Print da página] e/ou [Caminho na rede]>. Envie-os para continuar.”
+
+   Passo 2 — Validação dos opcionais:
+   - Equipe destinada, link, frequência, desenvolvido por (preencher ou marcar N/D).
+   - Tabelas enviadas? (Sim/Não → se “Sim”, criar “:card_index_dividers: Tabelas usadas” logo após “:gear: Informações técnicas”.)
+
+   Passo 3 — Qualidade:
+   - A print permite ler títulos/filtros? (Sim/Não)
+   - O caminho da rede tem formato válido (UNC/URL)? (Sim/Não)
+   -> Se “Não”, enviar: “A imagem/caminho enviado não está legível/válido. Reenvie em maior resolução ou confirme o caminho.”
+
+   Passo 4 — Atualização posterior (segunda interação para Tabelas):
+   - Não exigir reenvio de prints/caminho se nada mudou.
+   - Validar legibilidade das informações de tabelas.
+   - Criar/atualizar “:card_index_dividers: Tabelas usadas” com os campos: Fonte, Usada para, Colunas (breve descrição), Observações.
+   - Confirmar: “Recebi as informações de tabelas. A seção ‘Tabelas usadas’ foi criada/atualizada logo abaixo de ‘Informações técnicas’.”
+
+4) Política para “Tabelas usadas” (seção dinâmica)
+   - Não incluir por padrão. Criar só quando houver dados enviados (no 1º prompt ou depois).
+   - Local: imediatamente abaixo de “## :gear: Informações técnicas”.
+   - Estrutura por tabela:
+     - <Nome da Tabela/Entidade>
+       - Fonte: <Banco/Sistema> → <Schema.Tabela | \\servidor\...\arquivo | URL> | <N/D>
+       - Usada para: Página(s) <nome(s)> – Visual(is) <nome(s)/descrição(ões)> | <N/D>
+       - Colunas (breve descrição):
+         - <Coluna 1> – <descrição curta>
+         - <Coluna 2> – <descrição curta>
+       - Observações: <granularidade, chaves, filtros, janelas de tempo, notas> | <N/D>
+   - Consolidação (quando múltiplas fontes/listas):
+     - Mesclar por nome de tabela (case-insensitive).
+     - Unir “Fonte” (múltiplas → separar por “;”).
+     - Agregar “Usada para” listando todas as páginas/visuais sem duplicar.
+     - Unir colunas por nome, remover duplicadas e ordenar alfabeticamente; manter/desduplicar descrições.
+     - Manter/mesclar Observações relevantes.
+   - Ilegibilidade/incompletude:
+     - Se prints/listas estiverem ilegíveis/incompletas, solicitar reenvio. Campos não informados devem constar como N/D.
+
+5) Mensagens-padrão
+   - Confirmação (1ª versão): “Entradas obrigatórias validadas. Iniciarei a documentação no padrão do template.”
+   - Pendências: “Não foi possível gerar a documentação. Faltam itens obrigatórios: <listar entre [Print da página] e/ou [Caminho na rede]>. Envie-os para continuar.”
+   - Tabelas recebidas: “Recebi as informações de tabelas. A seção ‘Tabelas usadas’ foi criada/atualizada logo abaixo de ‘Informações técnicas’.”
+   - Qualidade insuficiente: “A imagem/caminho enviado não está legível/válido. Reenvie em maior resolução ou confirme o caminho.”
+   - Atualização concluída: “Documentação atualizada com a seção ‘Tabelas usadas’ (Fonte, Usada para, Colunas e Observações consolidadas).”
+
+6) Passo a passo de análise da página (a partir da print)
+   - Identificar o propósito (metas, evolução temporal, composição por segmentos etc.).
+   - Descrever o que se pode descobrir (metas vs. realizado, contribuintes, tendências, comparações).
+   - Mapear filtros visíveis (período, equipe, fornecedor, região etc.).
+   - Anotar apenas observações IMPACTANTES (funcionalidades/regras que alteram interpretação).
+   - Checar consistência de termos e formatação dos títulos/emojis.
+
+7) Entrega final e atualização contínua
+   - Gerar um único bloco Markdown começando por “# :house: Apresentação Geral do Dashboard”.
+   - Para múltiplas páginas: repetir “## :receipt: <Nome da Página>” para cada print.
+   - A cada nova página: atualizar “:gear: Informações técnicas”.
+   - Criar/atualizar “:card_index_dividers: Tabelas usadas” apenas quando houver dados enviados.
+   - Em atualização posterior, inserir/ajustar somente a seção dinâmica de Tabelas, mantendo o restante intacto.
+
+8) Fluxo recomendado (duas etapas possíveis)
+   - Etapa 1 (Sem tabelas): validar obrigatórios e gerar a documentação SEM “Tabelas usadas”.
+   - Etapa 2 (Com tabelas): ao receber as informações, validar e inserir a seção com Fonte, Usada para e Colunas (breve descrição), consolidando quando necessário.
+
+=====================
+TEMPLATE – DASHBOARD
+=====================
+
+# :house: Apresentação Geral do Dashboard
+<Descrição geral do dashboard em 1–3 frases. Ex.: Este dashboard oferece uma visão integrada de <tema>, com foco em <objetivos principais>. Permite filtrar por <segmentos> e acompanhar <metas/volumes/tendências>.>
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: <\\servidor\pasta\arquivo.ext> | <URL/SharePoint/OneDrive> | <N/D>
+- :hourglass_flowing_sand: Frequência de atualização: <Diária/Semanal/Mensal/Outra> | <N/D>
+- :technologist: Desenvolvido por: <Pessoa/Equipe> | <N/D>
+- :office: Equipe destinada: <nome da equipe> | <N/D>
+- :link: Link do local publicado: <URL> | <N/D>
+
+<!-- SOMENTE criar a seção abaixo se o usuário enviar informações de tabelas -->
+<!--
+## :card_index_dividers: Tabelas usadas (consolidado de todas as páginas)
+- <Tabela/Entidade 1>
+  - Fonte: <Banco/Sistema> → <Schema.Tabela | \\servidor\...\arquivo | URL> | <N/D>
+  - Usada para: Página(s) <P1, P2> – Visual(is) <V1, V2> | <N/D>
+  - Colunas (breve descrição):
+    - <Coluna A> – <descrição curta>
+    - <Coluna B> – <descrição curta>
+  - Observações: <granularidade/chaves/comentários> | <N/D>
+
+- <Tabela/Entidade 2>
+  - Fonte: <...> → <...> | <N/D>
+  - Usada para: Página(s) <...> – Visual(is) <...> | <N/D>
+  - Colunas (breve descrição):
+    - <...> – <...>
+  - Observações: <...> | <N/D>
+-->
+
+-----------------------------------------
+<!-- REPITA A SEÇÃO ABAIXO PARA CADA PÁGINA -->
+-----------------------------------------
+
+## :receipt: <Nome da Página>
+<Descrição em 1–2 frases do foco da página. Ex.: Página focada em <metas/realização/evolução diária/composição por grupos>.>
+
+### :dart: Objetivo
+- <Objetivo 1 da página>
+- <Objetivo 2 da página>
+- <Objetivo 3 da página (opcional)>
+
+### :mag: O que esta página permite descobrir
+- Status de metas: <progresso vs. meta mensal/anual, quando aplicável>.
+- Desempenho agregado: <principais KPIs/cartões exibidos, sem citar números se ilegíveis>.
+- Estrutura/contribuição: <ex.: total de entidades e distribuição por grupos/segmentos>.
+- Composição por segmento: <ex.: participação de Grupo A vs. Grupo B em <métrica>>.
+- Tendência no período: <ex.: picos/quedas/sazonalidade por dia/semana/mês>.
+- Análises por recorte: <ex.: efeito de Equipe/Fornecedor/Região/Canal, quando disponíveis>.
+- Contexto temporal: <janela do filtro de Período, se visível>.
+
+### :world_map: Filtros disponíveis
+- <Filtro 1> (ex.: :busts_in_silhouette: Equipe)
+- <Filtro 2> (ex.: :factory: Fornecedor)
+- <Filtro 3> (ex.: :calendar: Período)
+- <Outros se aplicável>
+
+### :memo: Observações (opcional — somente se impactante)
+- <Descrever apenas funcionalidades/regras que alteram a leitura/interpretação, por exemplo:>
+  - <Aplica RLS por Equipe; usuários veem apenas seus próprios dados.>
+  - <Metas e gráficos consideram apenas dias úteis (feriados excluídos).>
+  - <Segmentação inicial fixa em “Período atual” ao abrir a página.>
+  - <Cálculo de “Meta do Mês” redistribuído proporcionalmente por dia útil.>
+(Fim da seção da página)
+
+-----------------------------------------
+==========================
+EXEMPLO DE PREENCHIMENTO
+==========================
+
+# :house: Apresentação Geral do Dashboard
+Este dashboard oferece uma visão integrada de vendas e metas, com foco em desempenho mensal, evolução temporal e composição por segmentos. Permite filtrar por Equipe, Fornecedor e Período e acompanhar progresso vs. meta e tendências diárias.
+
+## :gear: Informações técnicas
+- :file_cabinet: Caminho na rede: \\srv-bi\dw\financeiro\ (camadas: stage, dw, marts) | https://empresa.sharepoint.com/sites/bi/...
+- :hourglass_flowing_sand: Frequência de atualização: Diária
+- :technologist: Desenvolvido por: Equipe de BI
+- :office: Equipe destinada: Gestão Comercial
+- :link: Link do local publicado: https://app.powerbi.com/groups/...
+
+## :receipt: Desempenho e Metas
+Página focada em metas e realização: mostra KPIs, progresso contra meta e evolução diária, além da divisão por grupos.
+
+### :dart: Objetivo
+- Acompanhar o desempenho no período selecionado.
+- Avaliar a aderência às metas e principais contribuintes.
+
+### :mag: O que esta página permite descobrir
+- Status de metas: progresso do mês e do ano.
+- Desempenho agregado: principais KPIs em cartões.
+- Estrutura/contribuição: total de clientes e distribuição por grupos.
+- Composição por segmento: participação por canal.
+- Tendência no período: picos/quedas intra-mês.
+- Análises por recorte: efeitos de Equipe e Fornecedor.
+- Contexto temporal: conforme filtro de Período.
+
+### :world_map: Filtros disponíveis
+- :busts_in_silhouette: Equipe
+- :factory: Fornecedor
+- :calendar: Período
+
+<!-- Exemplo de seção de Tabelas (somente se enviadas) -->
+<!--
+## :card_index_dividers: Tabelas usadas (consolidado de todas as páginas)
+- Vendas
+  - Fonte: ERP (Oracle) → DW.SALES_FACT
+  - Usada para: Página(s) Desempenho e Metas – Visual(is) Cartões de KPIs, Série temporal (linhas)
+  - Colunas (breve descrição):
+    - Data – Data da venda (UTC-3)
+    - ID – Identificador único da venda (chave surrogate)
+    - ID Cliente – Chave do cliente (inteiro)
+    - Produto – Código do produto
+    - Quantidade – Unidades vendidas
+    - Receita – Valor líquido da venda (R$)
+  - Observações: Granularidade por item de pedido; filtro de cancelados excluído.
+
+- Metas
+  - Fonte: SharePoint → /sites/bi/metas/MetasMensais.xlsx
+  - Usada para: Página(s) Desempenho e Metas – Visual(is) Gauge de meta mensal, Tabela de metas por equipe
+  - Colunas (breve descrição):
+    - Ano – Ano-calendário da meta
+    - Mês – Mês (1–12)
+    - Equipe – Nome da equipe
+    - Meta Mensal – Valor orçado (R$)
+  - Observações: Atualizações até M-1; metas do mês corrente projetadas.
+-->
+
+==========================
+CHECKLIST RÁPIDO (QA)
+==========================
+- Entradas obrigatórias recebidas e legíveis: [Print da página] e [Caminho na rede].
+- “:gear: Informações técnicas” atualizado (caminho, equipe, frequência, desenvolvido por, link — marcar N/D quando faltarem).
+- Se o usuário enviou informações de tabelas, a seção “:card_index_dividers: Tabelas usadas” foi criada/atualizada logo abaixo de “Informações técnicas”, com:
+  - Fonte no formato <Banco/Sistema> → <Schema/Caminho/URL>;
+  - “Usada para” indicando Página(s) e Visual(is);
+  - Colunas com breve descrição.
+- Seção “:memo: Observações” presente somente quando houver ponto realmente impactante.
+- Placeholders substituídos ou marcados como N/D.
+- Filtros listados correspondem aos visíveis na página.
+- Títulos e emojis no padrão do template; texto conciso.

@@ -1,0 +1,194 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Linq;
+
+// ====================
+// CONFIGURAÇÕES
+// ====================
+
+string outputFolder = @"pasta-para-salvar";
+string fileName     = "nome-do-arquivo.yaml";
+bool includeHidden  = false;
+
+string fullPath = Path.Combine(outputFolder, fileName);
+
+if (!Directory.Exists(outputFolder))
+    Directory.CreateDirectory(outputFolder);
+
+// ====================
+// HELPERS
+// ====================
+
+// Indent: gera N * 2 espaços
+Func<int, string> I = (n) => new string(' ', n * 2);
+
+// Scalar: trata string simples pra YAML (sem bloco literal)
+// Envolve em aspas duplas se necessário
+Func<string, string> Scalar = (value) =>
+{
+    if (string.IsNullOrEmpty(value))
+        return """";
+
+    // Se contém dois pontos, aspas, #, ou começa com caractere especial
+    bool needsQuotes =
+        value.Contains(":") ||
+        value.Contains("#") ||
+        value.Contains(""") ||
+        value.Contains("'") ||
+        value.StartsWith(" ") ||
+        value.StartsWith("-") ||
+        value.StartsWith("*") ||
+        value.StartsWith("{") ||
+        value.StartsWith("[") ||
+        value.StartsWith("|") ||
+        value.StartsWith(">") ||
+        value.StartsWith("!") ||
+        value.StartsWith("&") ||
+        value.StartsWith("%");
+
+    if (needsQuotes)
+    {
+        // Escapa apenas aspas duplas internas
+        string escaped = value.Replace("\", "\\").Replace(""", "\"");
+        return """ + escaped + """;
+    }
+
+    return value;
+};
+
+// Block: bloco literal YAML com |
+// Ideal para DAX, SQL, M (Power Query)
+Func<string, int, string> Block = (text, indent) =>
+{
+    if (string.IsNullOrWhiteSpace(text))
+        return """";
+
+    string pad      = I(indent);
+    string[] lines  = text.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
+    var sb          = new StringBuilder();
+
+    sb.AppendLine("|");
+
+    foreach (var line in lines)
+        sb.AppendLine(pad + line);
+
+    return sb.ToString().TrimEnd();
+};
+
+// ====================
+// GERAÇÃO DO YAML
+// ====================
+
+var yaml = new StringBuilder();
+
+yaml.AppendLine("modelName: " + Scalar(Model.Name));
+yaml.AppendLine();
+yaml.AppendLine("tables:");
+
+foreach (var t in Model.Tables)
+{
+    if (!includeHidden && t.IsHidden) continue;
+
+    yaml.AppendLine(I(1) + "- name: "     + Scalar(t.Name));
+    yaml.AppendLine(I(2)   + "isHidden: " + t.IsHidden.ToString().ToLower());
+
+    // -------- SOURCE --------
+    string source = "";
+
+    try
+    {
+        if (t.Partitions.Count > 0 && t.Partitions[0].Query != null)
+            source = t.Partitions[0].Query;
+    }
+    catch { source = ""; }
+
+    yaml.Append(I(2) + "source: ");
+
+    if (string.IsNullOrWhiteSpace(source))
+        yaml.AppendLine("""");
+    else
+        yaml.AppendLine(Block(source, 3));
+
+    // -------- COLUMNS --------
+    var cols = t.Columns.Where(c => includeHidden || !c.IsHidden).ToList();
+
+    yaml.AppendLine(I(2) + "columns:");
+
+    if (cols.Count == 0)
+    {
+        yaml.AppendLine(I(3) + "[]");
+    }
+    else
+    {
+        foreach (var c in cols)
+        {
+            yaml.AppendLine(I(3) + "- name: "     + Scalar(c.Name));
+            yaml.AppendLine(I(4)   + "dataType: " + Scalar(c.DataType.ToString()));
+            yaml.AppendLine(I(4)   + "isHidden: " + c.IsHidden.ToString().ToLower());
+        }
+    }
+
+    // -------- MEASURES --------
+    var measures = t.Measures.Where(m => includeHidden || !m.IsHidden).ToList();
+
+    yaml.AppendLine(I(2) + "measures:");
+
+    if (measures.Count == 0)
+    {
+        yaml.AppendLine(I(3) + "[]");
+    }
+    else
+    {
+        foreach (var m in measures)
+        {
+            string expr = m.Expression ?? "";
+
+            yaml.AppendLine(I(3) + "- name: "       + Scalar(m.Name));
+            yaml.AppendLine(I(4)   + "isHidden: "   + m.IsHidden.ToString().ToLower());
+            yaml.Append    (I(4)   + "expression: " + Block(expr, 5));
+            yaml.AppendLine();
+        }
+    }
+
+    yaml.AppendLine();
+}
+
+// -------- RELATIONSHIPS --------
+yaml.AppendLine("relationships:");
+
+var rels = Model.Relationships.ToList();
+
+if (rels.Count == 0)
+{
+    yaml.AppendLine(I(1) + "[]");
+}
+else
+{
+    foreach (var rel in rels)
+    {
+        string direction = "nao-identificado";
+
+        try { direction = rel.CrossFilteringBehavior.ToString(); }
+        catch { }
+
+        yaml.AppendLine(I(1) + "- fromTable:  " + Scalar(rel.FromTable.Name));
+        yaml.AppendLine(I(2)   + "fromColumn: " + Scalar(rel.FromColumn.Name));
+        yaml.AppendLine(I(2)   + "toTable:    " + Scalar(rel.ToTable.Name));
+        yaml.AppendLine(I(2)   + "toColumn:   " + Scalar(rel.ToColumn.Name));
+        yaml.AppendLine(I(2)   + "direction:  " + Scalar(direction));
+    }
+}
+
+// ====================
+// SALVAR
+// ====================
+
+File.WriteAllText(fullPath, yaml.ToString(), Encoding.UTF8);
+
+// ====================
+// OUTPUT
+// ====================
+
+Output("Arquivo exportado:");
+Output(fullPath);

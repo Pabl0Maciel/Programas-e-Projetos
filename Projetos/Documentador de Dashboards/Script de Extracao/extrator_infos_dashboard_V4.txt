@@ -1,0 +1,348 @@
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+
+string outputFolder = @"caminho-da-pasta";
+string fileName = "nome-do-arquivo.yaml";
+bool includeHidden = false;
+
+string fullPath = Path.Combine(outputFolder, fileName);
+
+if (!Directory.Exists(outputFolder))
+    Directory.CreateDirectory(outputFolder);
+
+Func<int, string> I = n => new string(' ', n * 2);
+
+Func<string, string> Safe = s => s ?? "";
+
+Func<string, string> Scalar = value =>
+{
+    value = Safe(value);
+
+    if (string.IsNullOrEmpty(value))
+        return "\"\"";
+
+    bool needsQuotes =
+        value.Contains(":") ||
+        value.Contains("#") ||
+        value.Contains("\"") ||
+        value.Contains("'") ||
+        value.StartsWith(" ") ||
+        value.StartsWith("-") ||
+        value.StartsWith("*") ||
+        value.StartsWith("{") ||
+        value.StartsWith("[") ||
+        value.StartsWith("|") ||
+        value.StartsWith(">") ||
+        value.StartsWith("!") ||
+        value.StartsWith("&") ||
+        value.StartsWith("%") ||
+        value.Contains("\\") ||
+        value.Contains("[") ||
+        value.Contains("]");
+
+    if (needsQuotes)
+    {
+        string escaped = value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+        return "\"" + escaped + "\"";
+    }
+
+    return value;
+};
+
+Func<string, int, string> Block = (text, indent) =>
+{
+    text = Safe(text);
+
+    if (string.IsNullOrWhiteSpace(text))
+        return "\"\"";
+
+    string pad = I(indent);
+    string[] lines = text.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
+    var sb = new StringBuilder();
+
+    sb.AppendLine("|");
+    foreach (var line in lines)
+        sb.AppendLine(pad + line);
+
+    return sb.ToString().TrimEnd();
+};
+
+Func<string, string> NormalizeLineBreaks = text =>
+{
+    return Safe(text).Replace("\r\n", "\n").Replace("\r", "\n");
+};
+
+Func<string, string> DetectTableType = source =>
+{
+    source = NormalizeLineBreaks(source).Trim();
+
+    if (string.IsNullOrWhiteSpace(source))
+        return "Unknown";
+
+    if (source.StartsWith("let", StringComparison.OrdinalIgnoreCase))
+        return "Imported";
+
+    return "Calculated";
+};
+
+Func<string, string> DetectSourceType = source =>
+{
+    source = NormalizeLineBreaks(source);
+
+    if (string.IsNullOrWhiteSpace(source))
+        return "Unknown";
+
+    if (!source.TrimStart().StartsWith("let", StringComparison.OrdinalIgnoreCase))
+        return "DAX";
+
+    if (source.IndexOf("Sql.Database", StringComparison.OrdinalIgnoreCase) >= 0)
+        return "PowerQuerySql";
+
+    if (source.IndexOf("Csv.Document", StringComparison.OrdinalIgnoreCase) >= 0 &&
+        source.IndexOf("File.Contents", StringComparison.OrdinalIgnoreCase) >= 0)
+        return "PowerQueryCsv";
+
+    if (source.IndexOf("Excel.Workbook", StringComparison.OrdinalIgnoreCase) >= 0 &&
+        source.IndexOf("File.Contents", StringComparison.OrdinalIgnoreCase) >= 0)
+        return "PowerQueryExcel";
+
+    if (source.IndexOf("SharePoint.Files", StringComparison.OrdinalIgnoreCase) >= 0)
+        return "PowerQuerySharePoint";
+
+    return "PowerQuery";
+};
+
+Func<string, string> ExtractSourceSummary = source =>
+{
+    source = NormalizeLineBreaks(source);
+
+    if (string.IsNullOrWhiteSpace(source))
+        return "não identificado";
+
+    string trimmed = source.TrimStart();
+
+    if (!trimmed.StartsWith("let", StringComparison.OrdinalIgnoreCase))
+        return "Tabela calculada (DAX)";
+
+    try
+    {
+        Match fileMatch = Regex.Match(
+            source,
+            "File\\.Contents\\(\"(?<path>[^\"]+)\"\\)",
+            RegexOptions.IgnoreCase
+        );
+
+        if (fileMatch.Success)
+        {
+            string path = fileMatch.Groups["path"].Value;
+            string normalizedPath = path.Replace("/", "\\");
+            string[] parts = normalizedPath.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
+            string host = "arquivo";
+            string file = parts.Length > 0 ? parts[parts.Length - 1] : "não identificado";
+
+            if (normalizedPath.StartsWith("\\\\") && parts.Length > 0)
+                host = parts[0];
+            else if (parts.Length > 1)
+                host = parts[parts.Length - 2];
+
+            return host + " - " + file;
+        }
+    }
+    catch { }
+
+    try
+    {
+        Match sqlDbMatch = Regex.Match(
+            source,
+            "Sql\\.Database\\(\\s*\"(?<server>[^\"]+)\"\\s*,\\s*\"(?<database>[^\"]+)\"",
+            RegexOptions.IgnoreCase
+        );
+
+        string server = "";
+        if (sqlDbMatch.Success)
+            server = sqlDbMatch.Groups["server"].Value;
+
+        Match fromMatch = Regex.Match(
+            source,
+            "FROM\\s+\\[(?<schema>[^\\]]+)\\]\\.\\[(?<object>[^\\]]+)\\]",
+            RegexOptions.IgnoreCase
+        );
+
+        if (fromMatch.Success)
+        {
+            string schemaName = fromMatch.Groups["schema"].Value;
+            string objectName = fromMatch.Groups["object"].Value;
+
+            if (!string.IsNullOrWhiteSpace(server))
+                return server + " - " + schemaName + "." + objectName;
+
+            return schemaName + "." + objectName;
+        }
+
+        Match simpleFromMatch = Regex.Match(
+            source,
+            "FROM\\s+(?<schema>[A-Za-z0-9_]+)\\.(?<object>[A-Za-z0-9_]+)",
+            RegexOptions.IgnoreCase
+        );
+
+        if (simpleFromMatch.Success)
+        {
+            string schemaName = simpleFromMatch.Groups["schema"].Value;
+            string objectName = simpleFromMatch.Groups["object"].Value;
+
+            if (!string.IsNullOrWhiteSpace(server))
+                return server + " - " + schemaName + "." + objectName;
+
+            return schemaName + "." + objectName;
+        }
+
+        if (!string.IsNullOrWhiteSpace(server))
+            return server + " - origem SQL";
+    }
+    catch { }
+
+    return "Consulta Power Query (origem não identificada)";
+};
+
+Func<object, string> DetectCardinality = relObj =>
+{
+    try
+    {
+        var rel = relObj as TabularEditor.TOMWrapper.SingleColumnRelationship;
+        if (rel != null)
+        {
+            string fromMult = rel.FromCardinality.ToString();
+            string toMult = rel.ToCardinality.ToString();
+
+            if (fromMult == "One" && toMult == "Many") return "1:N";
+            if (fromMult == "Many" && toMult == "One") return "N:1";
+            if (fromMult == "One" && toMult == "One") return "1:1";
+            if (fromMult == "Many" && toMult == "Many") return "N:N";
+
+            return fromMult + ":" + toMult;
+        }
+    }
+    catch { }
+
+    return "nao-identificado";
+};
+
+
+var yaml = new StringBuilder();
+
+yaml.AppendLine("modelName: " + Scalar(Model.Name));
+yaml.AppendLine("exportInfo:");
+yaml.AppendLine(I(1) + "generatedAt: " + Scalar(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")));
+yaml.AppendLine(I(1) + "exporter: " + Scalar("Tabular Editor 2"));
+yaml.AppendLine(I(1) + "includeHidden: " + includeHidden.ToString().ToLower());
+yaml.AppendLine();
+yaml.AppendLine("tables:");
+
+foreach (var t in Model.Tables)
+{
+    if (!includeHidden && t.IsHidden) continue;
+
+    string source = "";
+    try
+    {
+        if (t.Partitions.Count > 0 && t.Partitions[0].Query != null)
+            source = t.Partitions[0].Query;
+    }
+    catch
+    {
+        source = "";
+    }
+
+    string tableType = DetectTableType(source);
+    string sourceType = DetectSourceType(source);
+    string sourceSummary = ExtractSourceSummary(source);
+
+    yaml.AppendLine(I(1) + "- name: " + Scalar(t.Name));
+    yaml.AppendLine(I(2) + "isHidden: " + t.IsHidden.ToString().ToLower());
+    yaml.AppendLine(I(2) + "tableType: " + Scalar(tableType));
+    yaml.AppendLine(I(2) + "sourceType: " + Scalar(sourceType));
+    yaml.AppendLine(I(2) + "sourceSummary: " + Scalar(sourceSummary));
+
+    yaml.Append(I(2) + "source: ");
+    if (string.IsNullOrWhiteSpace(source))
+        yaml.AppendLine("\"\"");
+    else
+        yaml.AppendLine(Block(source, 3));
+
+    var cols = t.Columns.Where(c => includeHidden || !c.IsHidden).ToList();
+
+    yaml.AppendLine(I(2) + "columns:");
+    if (cols.Count == 0)
+    {
+        yaml.AppendLine(I(3) + "[]");
+    }
+    else
+    {
+        foreach (var c in cols)
+        {
+            yaml.AppendLine(I(3) + "- name: " + Scalar(c.Name));
+            yaml.AppendLine(I(4) + "dataType: " + Scalar(c.DataType.ToString()));
+            yaml.AppendLine(I(4) + "isHidden: " + c.IsHidden.ToString().ToLower());
+        }
+    }
+
+    var measures = t.Measures.Where(m => includeHidden || !m.IsHidden).ToList();
+
+    yaml.AppendLine(I(2) + "measures:");
+    if (measures.Count == 0)
+    {
+        yaml.AppendLine(I(3) + "[]");
+    }
+    else
+    {
+        foreach (var m in measures)
+        {
+            string expr = m.Expression ?? "";
+
+            yaml.AppendLine(I(3) + "- name: " + Scalar(m.Name));
+            yaml.AppendLine(I(4) + "isHidden: " + m.IsHidden.ToString().ToLower());
+            yaml.Append(I(4) + "expression: ");
+            yaml.AppendLine(Block(expr, 5));
+        }
+    }
+
+    yaml.AppendLine();
+}
+
+yaml.AppendLine("relationships:");
+
+var rels = Model.Relationships.ToList();
+
+if (rels.Count == 0)
+{
+    yaml.AppendLine(I(1) + "[]");
+}
+else
+{
+    foreach (var rel in rels)
+    {
+        string direction = "nao-identificado";
+        string cardinality = "nao-identificado";
+        string isActive = "nao-identificado";
+
+        try { direction = rel.CrossFilteringBehavior.ToString(); } catch { }
+        try { cardinality = DetectCardinality(rel); } catch { }
+        try { isActive = rel.IsActive.ToString().ToLower(); } catch { }
+
+        yaml.AppendLine(I(1) + "- fromTable: " + Scalar(rel.FromTable.Name));
+        yaml.AppendLine(I(2) + "fromColumn: " + Scalar(rel.FromColumn.Name));
+        yaml.AppendLine(I(2) + "toTable: " + Scalar(rel.ToTable.Name));
+        yaml.AppendLine(I(2) + "toColumn: " + Scalar(rel.ToColumn.Name));
+        yaml.AppendLine(I(2) + "direction: " + Scalar(direction));
+        yaml.AppendLine(I(2) + "cardinality: " + Scalar(cardinality));
+        yaml.AppendLine(I(2) + "isActive: " + Scalar(isActive));
+    }
+}
+
+var utf8Bom = new UTF8Encoding(true);
+File.WriteAllText(fullPath, yaml.ToString(), utf8Bom);
+
+Output("Arquivo exportado:");
+Output(fullPath);

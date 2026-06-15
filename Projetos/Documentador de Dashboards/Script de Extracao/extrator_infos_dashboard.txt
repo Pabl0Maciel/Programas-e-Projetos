@@ -1,0 +1,153 @@
+using System;
+using System.IO;
+using System.Text;
+
+string outputFolder = @"pasta-para-salvar";
+string fileName = "nome-do-arquivo.json";
+bool includeHidden = false;
+
+string dbName = Model.Name;
+string fullPath = outputFolder + "\\" + fileName;
+
+if (!Directory.Exists(outputFolder))
+{
+    Directory.CreateDirectory(outputFolder);
+}
+
+StringBuilder sb = new StringBuilder();
+
+sb.AppendLine("{");
+sb.AppendLine("  \"modelName\": \"" + dbName.Replace("\"","'") + "\",");
+sb.AppendLine("  \"tables\": [");
+
+bool firstTable = true;
+
+for (int i = 0; i < Model.Tables.Count; i++)
+{
+    var t = Model.Tables[i];
+
+    if (!includeHidden && t.IsHidden) continue;
+
+    if (!firstTable) sb.AppendLine(",");
+    firstTable = false;
+
+    sb.AppendLine("    {");
+    sb.AppendLine("      \"name\": \"" + t.Name.Replace("\"","'") + "\",");
+
+    // ====================
+    // FONTE DA TABELA
+    // ====================
+
+    string sourceQuery = "";
+
+    try
+    {
+        if (t.Partitions.Count > 0)
+        {
+            var part = t.Partitions[0];
+
+            if (part.Query != null)
+                sourceQuery = part.Query.Replace("\"","'").Replace("\r"," ").Replace("\n"," ");
+        }
+    }
+    catch
+    {
+        sourceQuery = "";
+    }
+
+    sb.AppendLine("      \"source\": \"" + sourceQuery + "\",");
+
+    // ====================
+    // COLUNAS
+    // ====================
+
+    sb.AppendLine("      \"columns\": [");
+
+    bool firstColumn = true;
+
+    for (int j = 0; j < t.Columns.Count; j++)
+    {
+        var c = t.Columns[j];
+
+        if (!includeHidden && c.IsHidden) continue;
+
+        if (!firstColumn) sb.AppendLine(",");
+        firstColumn = false;
+
+        sb.Append("        {");
+        sb.Append("\"name\": \"" + c.Name.Replace("\"","'") + "\", ");
+        sb.Append("\"dataType\": \"" + c.DataType.ToString() + "\"");
+        sb.Append("}");
+    }
+
+    sb.AppendLine();
+    sb.AppendLine("      ],");
+
+    // ====================
+    // MEDIDAS
+    // ====================
+
+    sb.AppendLine("      \"measures\": [");
+
+    bool firstMeasure = true;
+
+    for (int k = 0; k < t.Measures.Count; k++)
+    {
+        var m = t.Measures[k];
+
+        if (!includeHidden && m.IsHidden) continue;
+
+        if (!firstMeasure) sb.AppendLine(",");
+        firstMeasure = false;
+
+        string expr = "";
+
+        if (m.Expression != null)
+            expr = m.Expression.Replace("\"","'").Replace("\r"," ").Replace("\n"," ");
+
+        sb.Append("        {");
+        sb.Append("\"name\": \"" + m.Name.Replace("\"","'") + "\", ");
+        sb.Append("\"expression\": \"" + expr + "\"");
+        sb.Append("}");
+    }
+
+    sb.AppendLine();
+    sb.AppendLine("      ]");
+
+    sb.Append("    }");
+}
+
+sb.AppendLine();
+sb.AppendLine("  ],");
+
+sb.AppendLine("  \"relationships\": [");
+
+bool firstRel = true;
+
+for (int r = 0; r < Model.Relationships.Count; r++)
+{
+    var rel = Model.Relationships[r];
+
+    if (!firstRel) sb.AppendLine(",");
+    firstRel = false;
+
+    string direction = "";
+    try { direction = rel.CrossFilteringBehavior.ToString(); } catch {}
+
+    sb.Append("    {");
+    sb.Append("\"fromTable\": \"" + rel.FromTable.Name + "\", ");
+    sb.Append("\"fromColumn\": \"" + rel.FromColumn.Name + "\", ");
+    sb.Append("\"toTable\": \"" + rel.ToTable.Name + "\", ");
+    sb.Append("\"toColumn\": \"" + rel.ToColumn.Name + "\", ");
+    sb.Append("\"direction\": \"" + direction + "\"");
+    sb.Append("}");
+}
+
+sb.AppendLine();
+sb.AppendLine("  ]");
+sb.AppendLine("}");
+
+File.WriteAllText(fullPath, sb.ToString());
+
+Output("Arquivo exportado:");
+Output(fullPath);
