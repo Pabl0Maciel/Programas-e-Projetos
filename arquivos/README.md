@@ -1,44 +1,36 @@
-# 📂 Arquivos Necessários para Execução 
+<div align="center">
 
-Esta pasta contém arquivos essenciais para a execução de determinados programas. Esses arquivos são utilizados para garantir que os programas funcionem corretamente e desempenhem suas funções conforme esperado.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=140&section=header&text=Arquivos&fontSize=40&fontColor=4F8EF7&fontAlignY=45&desc=Datasets%20e%20recursos%20de%20suporte&descColor=00D4FF&descSize=15&descAlignY=65&animation=fadeIn" width="100%"/>
 
-## 📦 Conteúdo 
+</div>
 
-- **Bibliotecas e Dependências:** Códigos fonte ou bibliotecas necessárias para o funcionamento dos programas. 
-- **Recursos de Dados:** Arquivos de dados (como CSV, JSON, etc.) que são utilizados por diferentes programas para processar informações. 
-- **Configurações e Scripts:** Arquivos de configuração e scripts que são indispensáveis para a execução e configuração dos programas. 
+Pasta de suporte com datasets, arquivos de texto e bancos de dados utilizados como entrada por scripts e exemplos espalhados pelo repositório.
 
-## 🛠️ Como Usar 
+---
 
-1. **Identifique o Programa:** Determine qual programa necessita dos arquivos nesta pasta.
-2. **Inclua os Arquivos:** Certifique-se de que todos os arquivos necessários estão presentes na pasta especificada ou no diretório apropriado.
-3. **Consulte a Documentação:** Verifique a documentação do programa para saber como integrar e utilizar esses arquivos corretamente. 
+## 📂 Conteúdo
 
-## 🤝 Contribuindo 
+| Arquivo | Tipo | Usado em |
+|---------|------|----------|
+| `dataset.csv` … `dataset7.csv` | CSV | Scripts de Pandas e manipulação de dados (DSA) |
+| `salarios.csv` | CSV | Exercícios de análise e agregação |
+| `numeros.csv` | CSV | Exercícios numéricos e operações com Pandas |
+| `dados.json` | JSON | Exemplos de leitura e escrita de JSON |
+| `dados.txt` | TXT | Manipulação de arquivos de texto |
+| `arquivo1.txt` · `arquivo2.txt` | TXT | Exemplos de `open/read/write` |
+| `cientista.txt` | TXT | Exercício de leitura e processamento de texto |
+| `testandoerros.txt` | TXT | Tratamento de erros em leitura de arquivos |
+| `cap12_dsa.db` | SQLite | Integração SQL + Python (DSA Cap. 12) |
+| `nova_imagem.jpg` · `reduce.png` | Imagem | Exemplos de manipulação de arquivos binários |
 
-Se você precisar adicionar novos arquivos necessários para a execução de outros programas, siga as diretrizes de contribuição do projeto principal e assegure-se de que os novos arquivos são bem documentados e relevantes para a execução dos programas existentes.
+---
 
-## 💬 Contato
+> ⚠️ Esses arquivos não são projetos independentes — são **dependências** de scripts em [`Python/`](../Python) e outros módulos. Consulte o README do script correspondente para entender como cada arquivo é utilizado.
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+---
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+<div align="center">
 
-## 📜 Licença
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
-Obrigado por visitar o meu repositório e espero que os conteúdos aqui sejam úteis para o seu aprendizado!
+</div>
