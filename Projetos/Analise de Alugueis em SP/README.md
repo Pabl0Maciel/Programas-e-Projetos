@@ -1,148 +1,168 @@
-# 🏙️ Análise de Aluguéis em São Paulo
+<div align="center">
 
-Este projeto tem como objetivo coletar e analisar dados de imóveis para aluguel na cidade de São Paulo, utilizando dados obtidos diretamente da plataforma **QuintoAndar**.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=180&section=header&text=Análise%20de%20Aluguéis%20em%20SP&fontSize=34&fontColor=4F8EF7&fontAlignY=38&desc=Web%20scraping%20do%20QuintoAndar%20·%20Pipeline%20completo%20de%20dados&descColor=00D4FF&descSize=15&descAlignY=58&animation=fadeIn" width="100%"/>
 
-Ao invés de utilizar datasets prontos, foi desenvolvido um **web scraper próprio**, permitindo controle total sobre a coleta, estrutura e qualidade dos dados.
+</div>
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Requests](https://img.shields.io/badge/Requests-2CA5E0?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Coleta%20concluída-00D4FF?style=for-the-badge)
+
+</div>
 
 ---
 
 ## 🎯 Objetivo
 
-Construir um pipeline completo de dados, desde a **extração** até a futura **análise exploratória**, permitindo investigar padrões como:
+Construir um pipeline completo de dados do mercado imobiliário de SP — do zero. Em vez de usar datasets prontos, foi desenvolvido um **web scraper próprio** que consome a API do QuintoAndar, com controle total sobre coleta, estrutura e qualidade dos dados.
 
-- Preço médio por região
-- Relação entre preço e metragem
-- Impacto de características (quartos, banheiros, vagas, etc.)
-- Distribuição de imóveis pela cidade
+**+4.000 imóveis coletados** em São Paulo, com variáveis como valor do aluguel, área, quartos, banheiros, vagas, bairro e tipo de imóvel.
 
 ---
 
-## 📊 Dados Coletados
-
-- Mais de **4.000 imóveis** coletados
-- Cobertura: **São Paulo (capital)**
-- Tipos: studios até apartamentos de múltiplos quartos
-
-### Exemplos de variáveis:
-- Valor do aluguel
-- Valor total (com taxas)
-- Área (m²)
-- Número de quartos e banheiros
-- Localização (bairro)
-- Outras características do imóvel
-
----
-
-## 🏗️ Estrutura do Projeto
+## 🏗️ Arquitetura
 
 ```
 📦 Analise de Alugueis em SP/
 │
-├── data/
-│   ├── logs/              # Logs de execução do scraper
-│   ├── raw/               # Dados brutos coletados (CSV)
-│
 ├── src/
 │   ├── scraping/
-│   │   ├── extract_data.py
-│   │   ├── extract_data_v2.py
-│   │   ├── extract_data_v3.py
-│   │   └── extract_data_final.py   # Versão consolidada do scraper
+│   │   ├── extract_data.py          # v1 — versão inicial
+│   │   ├── extract_data_v2.py       # v2 — iteração intermediária
+│   │   ├── extract_data_v3.py       # v3 — iteração intermediária
+│   │   └── extract_data_final.py    # ✅ versão consolidada (use esta)
 │   │
-│   ├── utils/
-│   │   ├── lib_scraper.py         # Lógica principal de scraping
-│   │   └── logger_config.py       # Configuração de logs
+│   └── utils/
+│       ├── lib_scraper.py           # Toda a lógica de coleta (core do projeto)
+│       └── logger_config.py         # Configuração do sistema de logs
+│
+└── data/
+    ├── raw/                         # CSVs coletados (nomeados com timestamp)
+    └── logs/                        # Logs de execução por coleta
 ```
 
 ---
 
-## ⚙️ Como Funciona o Scraper
+## ⚙️ Como funciona
 
-O scraper foi desenvolvido para consumir dados diretamente da API, com foco em robustez e controle do processo.
+### Pipeline de coleta
 
-### Principais características:
+```
+SEGMENTS (14 segmentos por tipo + quartos)
+          │
+          ▼
+   scrape()  ←  orquestra tudo
+          │
+          ├── scrape_segment()       ← coleta por segmento com paginação
+          │       │
+          │       ├── fetch_page()   ← requisição HTTP com retry automático
+          │       │       │
+          │       │       └── build_payload()  ← constrói filtros dinâmicos
+          │       │
+          │       └── flatten_listing()  ← normaliza cada imóvel
+          │
+          ├── deduplicação global por ID
+          ├── cálculo de rentPerSqm (aluguel/m²)
+          └── exportação para CSV (data/raw/)
+```
 
-- **Coleta segmentada** para ampliar cobertura de dados
-- **Paginação automática** com controle de limite
-- **Deduplicação de imóveis**
-- **Retry automático em falhas**
-- **Delay aleatório entre requisições** (evita bloqueios)
-- **Logging detalhado de execução**
+### Segmentação
 
-A função principal (`scrape`) é responsável por:
+Para maximizar cobertura (a API limita resultados por busca), a coleta é dividida em **14 segmentos** combinando tipo de imóvel e número de quartos:
 
-- Orquestrar a coleta por segmentos  
-- Consolidar os dados em um único dataset  
-- Aplicar pós-processamento  
-- Exportar os dados finais em CSV  
+| Quartos | Apartamento | Casa | Condomínio | Studio |
+|---------|-------------|------|------------|--------|
+| 0 | — | — | — | ✅ |
+| 1 | ✅ | ✅ | ✅ | ✅ |
+| 2 | ✅ | ✅ | ✅ | — |
+| 3 | ✅ | ✅ | ✅ | — |
+| 4+ | ✅ | ✅ | ✅ | — |
 
 ---
 
-## 🚀 Como Executar
+## 🛡️ Robustez do scraper
 
-### 1. Clone o repositório
+| Recurso | Implementação |
+|---------|---------------|
+| **Retry automático** | Até 3 tentativas por request com backoff progressivo |
+| **Rate limit (429)** | Detectado e aguardado automaticamente |
+| **Delay aleatório** | Entre 1.2s e 3.0s entre requisições para evitar bloqueios |
+| **Pausa entre segmentos** | 5–10s de espera entre cada segmento |
+| **Deduplicação** | Por ID, em tempo real durante coleta e novamente no final |
+| **Logging detalhado** | Progresso, contagens, alertas e erros salvos em arquivo `.txt` |
+| **Alerta de saturação** | Aviso automático quando segmento acumula 900+ imóveis |
+
+---
+
+## 📊 Dados coletados
+
+Cada imóvel retorna os seguintes campos:
+
+| Campo | Descrição |
+|-------|-----------|
+| `id` | Identificador único |
+| `type` | Tipo (APARTMENT, HOME, STUDIO, HOUSE_CONDO) |
+| `address` / `neighbourhood` | Endereço e bairro |
+| `rent` | Valor do aluguel |
+| `totalCost` | Custo total (aluguel + taxas) |
+| `area` | Área em m² |
+| `bedrooms` / `bathrooms` | Quartos e banheiros |
+| `parkingSpaces` | Vagas de garagem |
+| `isFurnished` | Mobiliado ou não |
+| `rentPerSqm` | **Calculado** — aluguel por m² |
+| `segment` | Segmento de coleta (ex: `2q_apto`) |
+
+---
+
+## 🚀 Como executar
+
+**1. Instale as dependências**
+
 ```bash
-git clone <seu-repo>
-cd Analise-de-Alugueis-SP
+pip install requests pandas
 ```
 
-### 2. Instale as dependências
-```bash
-pip install -r requirements.txt
-```
+**2. Execute o scraper**
 
-*(Caso ainda não exista, você pode adicionar depois)*
-
-### 3. Execute o scraper
 ```bash
+# Execução padrão (todos os segmentos)
 python src/scraping/extract_data_final.py
+
+# Limitar páginas por segmento
+python src/scraping/extract_data_final.py --pages 10
+
+# Desativar segmentação (busca única)
+python src/scraping/extract_data_final.py --no-segment
+```
+
+**3. Outputs gerados automaticamente**
+
+```
+data/raw/quintoandar_sp_<timestamp>.csv   ← dataset coletado
+data/logs/logging_<timestamp>.txt         ← log completo da execução
 ```
 
 ---
 
-## 📁 Outputs
+## 📌 Próximos passos
 
-- **Dados brutos** → `data/raw/`
-- **Logs de execução** → `data/logs/`
-
----
-
-## 📌 Próximos Passos
-
-- Limpeza e tratamento dos dados
-- Feature engineering (ex: preço por m²)
-- Análise exploratória (EDA)
-- Visualizações e dashboards
-- Possível modelagem preditiva
+- [ ] Limpeza e tratamento dos dados coletados
+- [ ] Feature engineering — ex: faixa de preço, preço por m² por bairro
+- [ ] Análise exploratória (EDA) — distribuições, outliers, correlações
+- [ ] Visualizações geográficas por bairro
+- [ ] Modelagem preditiva de preço de aluguel
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-
-- Python 3.x
-- Requests
-- Pandas
-- Logging
-- API scraping
+> ⚠️ Dados coletados para fins educacionais e analíticos. Este projeto não tem vínculo com o QuintoAndar.
 
 ---
 
-## ⚠️ Observações
+<div align="center">
 
-- Os dados foram coletados para fins educacionais e analíticos.
-- O projeto não tem vínculo com o QuintoAndar.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
 
----
-
-## 💬 Contato
-
-Caso queira trocar ideias sobre o projeto ou análises de dados:
-
-- 📧 Email: pablocaballero07@gmail.com  
-- 💼 LinkedIn: https://www.linkedin.com/in/pabl0maciel  
-
----
-
-## 📜 Licença
-
-Este projeto está sob a licença MIT.
+</div>
