@@ -1,66 +1,80 @@
-# Quiz de Estresse
+<div align="center">
 
-Bem-vindo ao projeto do Quiz de Estresse. Este projeto tem como objetivo testar seus conhecimentos sobre estresse por meio de um questionário com 15 perguntas de múltipla escolha.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=140&section=header&text=Questionário&fontSize=38&fontColor=4F8EF7&fontAlignY=45&desc=Quiz%20interativo%20sobre%20estresse%20em%20C&descColor=00D4FF&descSize=15&descAlignY=65&animation=fadeIn" width="100%"/>
 
-## 📚 O que você encontrará aqui
+</div>
 
-Esta pasta contém um programa em C que realiza as seguintes funções:
+<div align="center">
 
-- **Exibição de Perguntas:** Mostra uma série de perguntas relacionadas ao estresse com opções de resposta.
-- **Coleta de Respostas:** Recebe e valida as respostas dos usuários.
-- **Pontuação:** Calcula a pontuação com base nas respostas corretas.
-- **Reinício:** Permite que o usuário jogue novamente se desejar.
+![C](https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
-## 🚀 Como Utilizar
+</div>
 
-1. **Compile o Programa:**
+---
 
-   Para compilar o programa, use o comando abaixo em seu terminal ou prompt de comando:
+## 🎯 Objetivo
 
-   ```bash
-   gcc quiz_estresse.c
-   ```
-2. **Execute o Programa:**
-   ```bash
-   ./a.out
-   ```
- 3. **Interaja com o Quiz:**
-  - Responda às perguntas conforme solicitado.
-  - As respostas devem ser fornecidas como letras minúsculas (a, b, ou c).
-  - Ao final do quiz, a pontuação será exibida e você poderá optar por jogar novamente.
+Quiz interativo de 15 perguntas sobre **gestão do estresse** — desenvolvido em C com validação de entrada, controle de pontuação e opção de jogar novamente.
 
-    ## 🛠️ Estrutura da Pasta
+---
 
-Esta pasta é organizado da seguinte forma:
+## 🎮 Como funciona
 
-- **`quest.c`**: O script principal contendo todas as funções e lógica do questionário.
-- **`README.md`**: Este arquivo que você está lendo.
+```
+"Iniciar Quiz? (s/n)"
+        │
+        ▼
+Loop de 15 perguntas
+        │
+        ├── Exibe a pergunta com alternativas (a/b/c)
+        ├── Valida a entrada (rejeita caracteres inválidos)
+        ├── Compara com gabarito → "Correto!" ou "Incorreto!"
+        └── Acumula pontuação
+        │
+        ▼
+Exibe pontuação final
+"Jogar Novamente? (s/n)"
+```
 
-## 💬 Contato
+---
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+## 📋 Conteúdo do quiz
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+15 perguntas sobre:
 
-## 🤝 Contribuições
+- Definição e causas do estresse
+- Hormônios e respostas fisiológicas
+- Técnicas de relaxamento (respiração diafragmatica, relaxamento muscular)
+- Distorções cognitivas e inteligência emocional
+- Procrastinação e resolução de problemas
 
-Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+---
 
-## 📜 Licença
+## 🚀 Como compilar e executar
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+```bash
+# Compilar
+gcc quest.c -o questionario
 
-Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
+# Executar
+./questionario
+```
+
+---
+
+## 📂 Estrutura
+
+```
+📦 Questionario/
+│
+├── quest.c      # Código fonte
+└── README.md
+```
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
+
+</div>
