@@ -1,202 +1,219 @@
-# 📦 **Geração e População de Banco de Dados -- Loja de Vendas**
+<div align="center">
 
-Este projeto cria automaticamente um **banco de dados PostgreSQL
-completo** representando uma loja fictícia de vendas. Ele inclui a
-criação das tabelas, tipos ENUM e toda a população de dados necessários
-para simular um ambiente transacional realista --- incluindo clientes,
-produtos, pedidos, itens, vendas, pagamentos, descontos e fidelidade.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=180&section=header&text=Banco%20de%20Dados%20—%20Loja%20de%20Vendas&fontSize=32&fontColor=4F8EF7&fontAlignY=38&desc=PostgreSQL%20·%20Flask%20API%20·%20Frontend%20Web%20·%20Dados%20gerados%20com%20Faker&descColor=00D4FF&descSize=15&descAlignY=58&animation=fadeIn" width="100%"/>
 
-O objetivo é servir como base para estudos de **SQL**, **modelagem de
-dados**, **ETL**, **análise de dados** e construir narrativas de BI com
-um banco de dados funcional e coerente.
+</div>
 
-------------------------------------------------------------------------
+<div align="center">
 
-## 📂 **Resumo do Projeto**
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
--   **Criação Automática do Banco**: O banco de dados é criado caso não
-    exista.
--   **Criação de Tabelas e ENUMs**: Todas as entidades necessárias são
-    criadas via script SQL estruturado.
--   **População Realista**:
-    -   Produtos, dispositivos, hardware e periféricos
-    -   Clientes simulados com dados do Faker
-    -   Pedidos e itens de pedido com lógicas de sazonalidade e
-        descontos
-    -   Vendas com cálculos de impostos, custos e frete
-    -   Pagamentos com regras realistas de parcelamento
-    -   Descontos aplicados seguindo porcentagens derivadas dos itens
-    -   Pontos de fidelidade acumulados dinamicamente
--   **Modularização**: Cada parte do processo está organizada em um
-    arquivo próprio.
--   **Executável com um único comando**.
+</div>
 
-------------------------------------------------------------------------
+---
 
-## ⚙️ **Tecnologias e Bibliotecas Utilizadas**
+## 🎯 Objetivo
 
--   **Python 3.x**
--   **PostgreSQL**
--   **Bibliotecas Python:**
-    -   `SQLAlchemy`
-    -   `psycopg2`
-    -   `Faker`
-    -   `random`, `datetime`, `decimal`
+Banco de dados PostgreSQL completo para uma loja fictícia de eletrônicos — criado e populado automaticamente via Python. Serve como base sólida para estudos de **SQL**, **modelagem de dados**, **ETL** e **BI**, com um frontend web e API REST para explorar os dados de forma interativa.
 
-------------------------------------------------------------------------
+---
 
-## 📁 **Estrutura do Projeto**
+## 🏗️ Arquitetura
 
-    📦 Banco de Dados/
-    │
-    ├── criacao_banco.py          # Criação do banco e das tabelas
-    ├── funcoes_populacao.py      # População de todas as tabelas
-    ├── Criador_e_Populador.py    # Arquivo principal que executa tudo
-    ├── README.md                 # Documentação do projeto
-
-------------------------------------------------------------------------
-
-## 🚀 **Como Executar o Projeto**
-
-### 1. Instale as dependências
-
-``` bash
-pip install sqlalchemy psycopg2 faker
+```
+📦 Banco de Dados/
+│
+├── Scripts/
+│   ├── criacao_banco.py          # Cria banco, ENUMs e todas as tabelas
+│   ├── funcoes_populacao.py      # Funções de população de cada tabela
+│   └── Criador_e_Populador.py    # ✅ Script principal — executa tudo
+│
+├── backend/
+│   ├── app.py                    # API REST (Flask)
+│   └── backend.py                # Configurações e helpers
+│
+├── frontend/
+│   ├── index.html                # Página principal (catálogo)
+│   ├── home.html                 # Home
+│   ├── relatorio.html            # Dashboard de relatórios
+│   ├── css/                      # Estilos
+│   └── js/
+│       ├── components/           # Navbar, Modal, ProductList, AdminDashboard
+│       ├── api.js                # Chamadas à API
+│       ├── app.js                # Inicialização
+│       ├── state.js              # Gerenciamento de estado
+│       └── utils.js              # Utilitários
+│
+└── Materiais Videos/
+    └── screencast.gif            # Demonstração em vídeo
 ```
 
-------------------------------------------------------------------------
+---
 
-### 2. Configure o arquivo `main.py`
+## 🗄️ Modelo de Dados
 
-Insira as credenciais do seu PostgreSQL:
+### Tabelas e ENUMs
 
-``` python
+```sql
+-- ENUMs definidos
+status_pedido_t    →  iniciado | pendente | enviando | concluido | cancelado
+prioridade_pedido_t →  baixa | media | alta
+modo_envio_t       →  entrega | retirada
+forma_pagamento_t  →  cartao_credito | cartao_debito | boleto | pix | transferencia | dinheiro
+tipo_desconto_t    →  promocional | cupom | fidelidade | parceria | outros
+```
+
+### Diagrama de entidades
+
+```
+Cliente ──────────────────────────┐
+                                  │
+Produto (pai)                   Pedido ──── Item_Pedido ──── Produto
+  ├── Dispositivo   (cor, dim.)    │
+  ├── Hardware      (specs, W)     ├── Venda (impostos, frete, total)
+  └── Periferico    (cor, conex.)  ├── Pagamento (método, parcelas)
+                                  ├── Desconto_Aplicado
+                                  └── Fidelidade_Cliente (pontos %)
+```
+
+### Lógicas de negócio implementadas
+
+| Entidade | Lógica |
+|----------|--------|
+| **Pedido** | Datas coerentes, status e prazos realistas, sazonalidade |
+| **Venda** | Subtotal, descontos, impostos variados, frete condicional |
+| **Pagamento** | Parcelamento inteligente por valor, datas próximas ao pedido |
+| **Fidelidade** | ≤ R$500 → 1% · R$500–2000 → 2% · >R$2000 → 3% |
+| **Desconto** | Porcentagem calculada automaticamente dos itens |
+
+---
+
+## 🌐 API REST (Flask)
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| `GET` | `/api/produtos` | Lista todos os produtos com tipo e atributos específicos |
+| `GET` | `/api/clientes` | Lista clientes |
+| `GET` | `/api/descontos` | Descontos disponíveis |
+| `GET` | `/api/clientes/fidelidade` | Clientes do programa de fidelidade |
+| `GET` | `/api/clientes/promocional` | Clientes elegíveis para promoções |
+| `GET` | `/api/clientes/primeira-compra` | Clientes de primeira compra |
+| `GET` | `/api/produtos/<id>/recomendacoes` | Recomendações por produto |
+| `POST` | `/api/checkout` | Registra um novo pedido |
+
+---
+
+## 🎬 Demonstração
+
+![Demonstração](./Materiais%20Videos/screencast.gif)
+
+---
+
+## 🚀 Como executar
+
+### 1. Pré-requisitos
+
+- PostgreSQL instalado e rodando
+- Python 3.x
+
+```bash
+pip install sqlalchemy psycopg2-binary faker flask flask-cors
+```
+
+### 2. Configure as credenciais
+
+Em `Scripts/Criador_e_Populador.py`, ajuste:
+
+```python
 usuario = 'postgres'
-senha = '123'
+senha = 'sua_senha'
 host = 'localhost'
 porta = '5432'
 banco = 'loja_vendas'
 ```
 
-![Exemplo de uso](Materiais%20Videos/screencast.gif)
+E defina o tamanho do dataset:
 
-
-Defina os tamanhos do dataset a ser gerado:
-
-``` python
-qtd_clientes = 50
-qtd_pedidos = 200
+```python
+qtd_clientes = 50    # número de clientes gerados
+qtd_pedidos  = 200   # número de pedidos gerados
 ```
 
-------------------------------------------------------------------------
+### 3. Crie e popule o banco
 
-### 3. Execute o script principal
-
-``` bash
-python Criador_e_Populador.py
+```bash
+python Scripts/Criador_e_Populador.py
 ```
 
-Ele irá:
+O script executa em sequência:
+1. Cria o banco (se não existir)
+2. Cria todas as tabelas e ENUMs
+3. Popula todas as entidades na ordem correta de dependência
 
-1.  Criar o banco de dados\
-2.  Criar todas as tabelas\
-3.  Popular todas as tabelas na ordem correta
+### 4. Suba a API
 
-No final, o banco estará totalmente pronto para consultas e análises.
+Em `backend/app.py`, ajuste as credenciais do banco:
 
-------------------------------------------------------------------------
+```python
+DB_CONFIG = {
+    'dbname': 'loja_vendas',
+    'user': 'postgres',
+    'password': 'sua_senha',
+    'host': 'localhost',
+    'port': '5432'
+}
+```
 
-## 🛠️ **Funcionalidades em Detalhe**
+```bash
+python backend/app.py
+```
 
-### ✔️ Produto
+A API estará disponível em `http://localhost:5000`.
 
-Criação de catálogo fixo com dispositivos, hardware e periféricos.
+### 5. Abra o frontend
 
-### ✔️ Tabelas Específicas
+Abra `frontend/index.html` diretamente no navegador ou sirva com:
 
--   Dispositivo: cor, dimensão, tipo\
--   Hardware: consumo, especificação, tipo\
--   Periférico: cor, conexão, tipo
+```bash
+cd frontend
+python -m http.server 8080
+```
 
-### ✔️ Cliente
+---
 
-Gerado com Faker (nome, cidade, estado, data de cadastro).
+## 📊 Exemplos de consultas SQL
 
-### ✔️ Pedido
+```sql
+-- Clientes por estado
+SELECT estado, COUNT(*) as total FROM cliente GROUP BY estado ORDER BY total DESC;
 
--   Datas coerentes\
--   Status e prazos realistas\
--   Clientes aleatórios
-
-### ✔️ Item_Pedido
-
--   Quantidade de itens por pedido\
--   Descontos com limites\
--   Cálculo automático de valor total
-
-### ✔️ Venda
-
--   Subtotal e descontos\
--   Impostos variados\
--   Frete quando aplicável\
--   Valor total final
-
-### ✔️ Pagamento
-
--   Métodos reais\
--   Parcelamento inteligente\
--   Datas próximas ao pedido
-
-### ✔️ Desconto_Aplicado
-
--   Relacionado aos descontos reais dos itens\
--   Porcentagem calculada automaticamente
-
-### ✔️ Fidelidade_Cliente
-
-Cálculo escalonado:\
-- ≤ 500 → 1%\
-- 500--2000 → 2%\
-- \> 2000 → 3%
-
-------------------------------------------------------------------------
-
-## 📊 **Exemplos de Consultas**
-
-``` sql
-SELECT * FROM cliente LIMIT 10;
-SELECT * FROM pedido WHERE status_pedido = 'concluido';
-SELECT categoria, COUNT(*) FROM produto GROUP BY categoria;
+-- Top 10 vendas
 SELECT id_pedido, valor_total FROM venda ORDER BY valor_total DESC LIMIT 10;
+
+-- Pedidos por status
+SELECT status_pedido, COUNT(*) FROM pedido GROUP BY status_pedido;
+
+-- Produtos com estoque abaixo do mínimo
+SELECT nome_produto, estoque_atual, estoque_minimo
+FROM produto WHERE estoque_atual < estoque_minimo;
+
+-- Receita por categoria de produto
+SELECT p.categoria, SUM(v.valor_total) as receita_total
+FROM venda v
+JOIN pedido pe ON v.id_pedido = pe.id_pedido
+JOIN item_pedido ip ON pe.id_pedido = ip.id_pedido
+JOIN produto p ON ip.id_produto = p.id_produto
+GROUP BY p.categoria ORDER BY receita_total DESC;
 ```
 
-------------------------------------------------------------------------
+---
 
-## 💬 Contato
+<div align="center">
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
-
-## 🤝 Contribuições
-
-Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
-
-## 📜 Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
-Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
+</div>
