@@ -1,61 +1,103 @@
-# Estimativa de Pi usando o Método de Monte Carlo
+<div align="center">
 
-Este projeto implementa uma estimativa do valor de Pi utilizando o método de Monte Carlo, gerando pontos aleatórios dentro de um quadrado unitário e verificando quantos desses pontos caem dentro de um círculo unitário inscrito no quadrado.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=140&section=header&text=PI%20pelo%20Método%20de%20Monte%20Carlo&fontSize=30&fontColor=4F8EF7&fontAlignY=45&desc=Aproximação%20probabilística%20de%20π%20com%20visualização&descColor=00D4FF&descSize=15&descAlignY=65&animation=fadeIn" width="100%"/>
 
-## 📚 Funcionalidades
+</div>
 
-- **Geração de Pontos Aleatórios**: O programa gera pontos com coordenadas `(x, y)` aleatórias no intervalo `[0, 1]`.
-- **Verificação de Inclusão**: Os pontos são verificados para determinar se estão dentro ou fora de um círculo unitário.
-- **Estimativa de Pi**: A estimativa de Pi é calculada com base na razão entre os pontos dentro do círculo e o total de pontos gerados.
-- **Visualização Gráfica**: O programa plota os pontos dentro e fora do círculo, proporcionando uma visualização clara da estimativa de Pi.
+<div align="center">
 
-## 🚀 Como Utilizar
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=matplotlib&logoColor=black)
 
-Para executar o programa, siga os seguintes passos:
+</div>
 
-1. **Instalar as Dependências**
-   Certifique-se de ter o Python 3.x e a biblioteca `matplotlib` instalados. Caso não tenha, instale com o seguinte comando:
-   ```bash
-   pip install matplotlib
-   ```
-2. **Executar o Script**
-   Para executar o programa, basta rodar o script Python:
-   ```bash
-   python3 estimativa_pi.py
-   ```
- ## 🛠️ Estrutura da Pasta
+---
 
-Esta Pasta é organizado da seguinte forma:
+## 🎯 Objetivo
 
-- **`estimativa_pi.py`**: O script principal contendo a lógica para geração de pontos, cálculo da estimativa de Pi e plotagem do gráfico.
-- **`Graficos.md`**: Graficos mostrando os resultados do método. 
-- **`README.md`**: Este arquivo que você está lendo.
+Aproximar o valor de π usando simulação probabilística — sem nenhuma fórmula geométrica explícita. Quanto mais pontos gerados, mais precisa é a estimativa.
 
-## 💬 Contato
+---
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+## 🧠 Como funciona
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+Um quadrado de lado 1 contém um quarto de círculo de raio 1. A razão entre a área do quarto de círculo e a área do quadrado é exatamente π/4:
 
-## 🤝 Contribuições
+```
+Área do quarto de círculo   π × 1²   π
+─────────────────────────── = ────── = ─
+    Área do quadrado            4      4
+```
 
-Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+O algoritmo gera N pontos aleatórios dentro do quadrado e verifica quantos caem dentro do círculo (`x² + y² ≤ 1`):
 
-## 📜 Licença
+```
+π ≈ 4 × (pontos dentro do círculo / total de pontos)
+```
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+**Pipeline do código:**
 
-Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
+```
+random.uniform(0,1) × N pontos
+          │
+          ├── x² + y² ≤ 1 → dentro  (azul)
+          └── x² + y² > 1 → fora    (laranja)
+                    │
+                    ▼
+          π = 4 × dentro / (dentro + fora)
+                    │
+                    ▼
+          scatter plot com valor estimado no título
+```
+
+---
+
+## 📊 Resultados
+
+Os gráficos gerados estão disponíveis na pasta [`Graficos/`](./Graficos):
+
+| Gráfico | Descrição |
+|---------|-----------|
+| `Grafico.png` | Simulação com distribuição dos pontos |
+| `Grafico_2.png` | Segunda execução com semente diferente |
+
+Notas sobre precisão: com **1.000 pontos**, o valor estimado converge tipicamente entre `3.10` e `3.18`. Para maior precisão, aumente N no código.
+
+---
+
+## 🚀 Como executar
+
+```bash
+pip install matplotlib
+python pi_MonteCarlo.py
+```
+
+Para alterar o número de pontos, modifique a chamada no final do script:
+
+```python
+grafico(1000)   # padrão: 1.000 pontos
+grafico(100000) # maior precisão: 100.000 pontos
+```
+
+---
+
+## 📂 Estrutura
+
+```
+📦 PI Monte Carlo/
+│
+├── pi_MonteCarlo.py     # Script principal
+├── Graficos.md          # Notas sobre os gráficos
+├── Graficos/
+│   ├── Grafico.png      # Resultado da simulação 1
+│   └── Grafico_2.png    # Resultado da simulação 2
+└── README.md
+```
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
+
+</div>
