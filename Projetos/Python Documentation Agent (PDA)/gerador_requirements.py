@@ -148,7 +148,7 @@ def get_installed_versions(folder_path, save_requirements=True):
 #######################################################################################################################
 
 # Altere para o Caminho na rede onde estão os scripts
-caminho = r"\\integraltrust.net\Dados\Dados\Automações\CLEBER\Disparo de Alertas\Scripts"
+caminho = r"/home/pabl0maciel/Documents/Programas-e-Projetos/Projetos/Analise de Alugueis em SP/src"
 
 # Executa o gerador
 get_installed_versions(caminho, save_requirements=True)
