@@ -23,6 +23,12 @@ Construir um pipeline completo de dados do mercado imobiliário de SP — do zer
 
 ---
 
+## 🎬 Demonstração
+
+![Demonstração](./exemplo_scraping.gif)
+
+---
+
 ## 🏗️ Arquitetura
 
 ```
