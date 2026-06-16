@@ -1,58 +1,102 @@
-# Ordenação e Medição de Tempo
+<div align="center">
 
-Este projeto contém um programa em C que gera um array de inteiros com valores aleatórios, o ordena usando o algoritmo de Insertion Sort e mede o tempo de execução dessa ordenação. O programa oferece a opção de gerar novos arrays e medir o tempo de execução de cada ordenação.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=140&section=header&text=Gerador%20de%20Arrays&fontSize=36&fontColor=4F8EF7&fontAlignY=45&desc=Benchmark%20de%20algoritmos%20de%20ordenação%20em%20C&descColor=00D4FF&descSize=15&descAlignY=65&animation=fadeIn" width="100%"/>
 
-## 📚 Funcionalidades
+</div>
 
-- **Geração de Array Aleatório**: O programa gera um array de inteiros aleatórios usando uma semente aleatória para garantir resultados diferentes.
-- **Ordenação**: O array é ordenado usando o algoritmo de Insertion Sort, mas é possível optar pela função qsort.
-- **Medição de Tempo**: O tempo de execução da ordenação é medido em nanosegundos, sendo possível a conversão para segundos, minutos e horas.
-- **Repetição**: O usuário pode escolher gerar novos arrays e medir o tempo de ordenação repetidamente.
+<div align="center">
 
-## 🚀 Como Utilizar
+![C](https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
-Para compilar e executar o programa, siga os seguintes passos:
+</div>
 
-1. **Compilar o Código**
-   ```bash
-   gcc ordenacao.c
-2. **Executar o Programa**
-   ```bash
-   ./a.out
-   ```
- ## 🛠️ Estrutura da Pasta
+---
 
-Esta Pasta é organizado da seguinte forma:
+## 🎯 Objetivo
 
-- **`gerador.c`**: Os scripts principais contendo todas as funções e lógica do gerador.
-- **`README.md`**: Este arquivo que você está lendo.
-- **`output/`**: Contém a sáida do arquivo.
+Ferramenta em C para geração de arrays aleatórios com tamanho configurável, com medição precisa do tempo de execução do algoritmo de ordenação em nanossegundos. Útil para benchmarking e comparação de algoritmos de ordenação.
 
-## 💬 Contato
+---
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+## ⚙️ Como funciona
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+```
+Usuário informa o tamanho N
+        │
+        ▼
+malloc(N × sizeof(int))      ← alocação dinâmica
+        │
+        ▼
+srand(time(NULL))            ← semente baseada no tempo
+rand() × N                   ← preenchimento aleatório
+        │
+        ▼
+clock_gettime(CLOCK_MONOTONIC)  ← marca início
+insertionSort(array, N)
+clock_gettime(CLOCK_MONOTONIC)  ← marca fim
+        │
+        ▼
+elapsed = (fim - início) em nanosegundos
+free(array)
+        │
+        ▼
+"Deseja gerar outro array?"  ← loop até 'nao'
+```
 
-## 🤝 Contribuições
+---
 
-Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+## 🔧 Detalhes técnicos
 
-## 📜 Licença
+| Recurso | Implementação |
+|---------|---------------|
+| Alocação | `malloc` com verificação de falha |
+| Semente | `time(NULL)` — imprime o valor usado para reprodutibilidade |
+| Ordenação ativa | `insertionSort` |
+| Ordenação alternativa | `qsort` com `comparaCrescente` (comentado no código) |
+| Medição de tempo | `clock_gettime(CLOCK_MONOTONIC)` — precisão em nanosegundos |
+| Liberação | `free` após cada execução |
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+---
 
-Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
+## 🚀 Como compilar e executar
+
+```bash
+# Compilar
+gcc gerador.c -o gerador
+
+# Executar
+./gerador
+```
+
+**Exemplo de saída:**
+
+```
+Insira o tamanho do array de inteiros: 10000
+alocado com sucesso!
+semente usada: 1721834592
+Ultimo elemento nao ordenado: 847291034
+Tempo de execucao: 48203712 nanosegundos
+Deseja gerar outro array? Responda 'sim' ou 'nao':
+```
+
+> Para testar com `qsort`, basta descomentar a linha `qsort(...)` e comentar a linha `insertionSort(...)` no `main`.
+
+---
+
+## 📂 Estrutura
+
+```
+📦 Gerador de arrays/
+│
+├── gerador.c        # Código fonte
+├── output/gerador   # Binário compilado
+└── README.md
+```
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
+
+</div>
