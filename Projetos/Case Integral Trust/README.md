@@ -1,91 +1,151 @@
-# 📊 **Análise de Dados de Vendas - Case Integral Trust**
+<div align="center">
 
-Este projeto consiste em uma análise de um dataset de vendas, com foco em correção de dados, exploração estatística e geração de insights visuais. Durante o processo, foram realizadas transformações no dataset, análise de correlações e criação de visualizações como um **heatmap** e um **dashboard interativo**.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1a1a2e,100:16213e&height=180&section=header&text=Case%20Integral%20Trust&fontSize=36&fontColor=4F8EF7&fontAlignY=38&desc=Análise%20de%20Vendas%20·%20Correção%20de%20Dados%20·%20Heatmap%20·%20Dashboard%20Power%20BI&descColor=00D4FF&descSize=15&descAlignY=58&animation=fadeIn" width="100%"/>
 
-## 📂 **Resumo do Projeto**
+</div>
 
-- **Correção de Categorias**: Ajuste das categorias incorretas associadas aos produtos.
-- **Exploração Estatística**: Verificação de valores ausentes, tipos de variáveis e estatísticas descritivas para entendimento dos dados.
-- **Análise Temporal e Regional**: Identificação das datas e regiões com maior volume de vendas.
-- **Matriz de Correlação**: Cálculo e visualização das correlações entre as variáveis através de um **heatmap**.
-- **Dashboard**: Dashboard interativo revelando insights obtidos.
+<div align="center">
 
-## 📈 **Ferramentas e Bibliotecas Utilizadas**
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Pandas](https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=black)
 
-- **Python**: Linguagem principal utilizada no projeto.
-- **Bibliotecas**:
-  - `Pandas`: Manipulação e limpeza de dados.
-  - `NumPy`: Operações numéricas.
-  - `Matplotlib` e `Seaborn`: Criação de gráficos e visualizações.
-- **Power BI**: Utilizado para criar o dashboard interativo com base no dataset corrigido.
+</div>
 
-## 🚀 **Como Reproduzir**
+---
 
-1. **Google Colab**
-   
-    Acesse o arquivo pelo Colab [aqui](https://colab.research.google.com/drive/1YpDq3V3stKTvJhrzXcFsplATNXW6Pfy2?usp=sharing)
+## 🎯 Contexto
 
-**OU**
+Case técnico desenvolvido como **teste prático para processo seletivo de estágio de dados**. O desafio consistia em analisar um dataset de vendas de e-commerce em três partes — exploração estatística, dashboard interativo e relatório de insights — em um único entregável.
 
-1. **Instale as Dependências**
-     
-     Certifique-se de ter o Python 3.x instalado e as bibliotecas mencionadas. Instale-as com o comando:
-    
-     ```bash
-     pip install pandas numpy matplotlib seaborn
-     ```
-   
-2. **Obtenha o Dataset**
-   
-   Faça o download do arquivo `dataset_vendas.csv` e insira-o no caminho especificado no código ou altere o caminho escrito no código.
+🔗 [Abrir no Google Colab](https://colab.research.google.com/drive/1YpDq3V3stKTvJhrzXcFsplATNXW6Pfy2?usp=sharing)
 
-3. **Execute o Código**
-   
-   Rode o script para realizar as análises e salvar o arquivo corrigido:
-   
-   ```bash
-   python analise_vendas.py
-   ```
+---
 
-## 🎯 **Principais Insights**
-   
-   - **Categorias Corrigidas**: Produtos foram corretamente associados às suas categorias, garantindo a consistência dos dados.
-   - **Volume de Vendas por Data**: Foi identificado um pico em determinadas datas, possivelmente devido a promoções ou sazonalidade.
-   - **Heatmap de Correlação**: As correlações entre variáveis foram analisadas, revelando uma baixa relação entre preço e quantidade vendida.
+## 📂 Estrutura
 
-## 🛠️ **Estrutura do Projeto**
-  - `analise_vendas.py`: Script principal contendo as análises realizadas.
-  - `dataset_vendas.csv`: Arquivo bruto utilizado como base para as análises.
-  - `dataset_vendas_corrigido.csv`: Arquivo corrigido gerado após o tratamento de dados.
-  - `Case_IntegralTrust.pbix`: Arquivo contendo o dashboard criado.
+```
+📦 Case Integral Trust/
+│
+├── case_integral_trust.py          # Script principal (exportado do Colab)
+├── dataset_vendas.csv              # Dataset bruto (1.000 registros)
+├── dataset_vendas_corrigido.csv    # Dataset após correção de categorias
+├── Case_IntegralTrust.pbix         # Dashboard Power BI
+└── README.md
+```
 
-## 💬 Contato
+---
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+## 📊 Dataset
 
-<p align="left">
-  <a href="mailto:pablocaballero07@gmail.com" title="Gmail">
-    <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail"/>
-  </a>
-  <a href="https://www.linkedin.com/in/pabl0maciel" title="LinkedIn">
-    <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://wa.me/11963934212" title="WhatsApp">
-    <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
-  <a href="https://www.instagram.com/pabl0maciel" title="Instagram">
-    <img src="https://img.shields.io/badge/-Instagram-DF0174?style=flat-square&labelColor=DF0174&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
-</p>
+**1.000 registros** de vendas com as seguintes variáveis:
 
-## 🤝 Contribuições
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
+| `data_venda` | `datetime` | Data da transação |
+| `categoria` | `str` | Categoria do produto *(com erros no bruto)* |
+| `produto` | `str` | Nome do produto |
+| `preco` | `float` | Preço unitário |
+| `quantidade_vendida` | `int` | Quantidade vendida na transação |
+| `regiao` | `str` | Região da venda (Norte, Sul, Leste, Oeste, Centro-Oeste) |
 
-Se você deseja contribuir com este arquivo, sinta-se à vontade para enviar pull requests! Suas contribuições são sempre bem-vindas.
+---
 
-## 📜 Licença
+## 🗂️ Estrutura do Case
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+### Parte 1 — Análise Estatística e Exploratória (40%)
 
-Obrigado por visitar o meu projeto e espero que o conteúdo aqui seja útil para o seu aprendizado e desenvolvimento!
+**Correção de categorias**
 
-   
+O primeiro problema identificado foi que produtos estavam associados às categorias erradas (ex: `Celular` na categoria `Beleza`). A correção foi feita via mapeamento explícito com dicionário:
+
+```python
+categorias_produtos = {
+    'Celular': 'Eletrônicos', 'Calça': 'Roupas', 'Câmera': 'Eletrônicos',
+    'Vestido': 'Roupas', 'Laptop': 'Eletrônicos', 'Casaco': 'Roupas',
+    'Perfume': 'Beleza', 'Maquiagem': 'Beleza', 'Shampoo': 'Beleza',
+    'Creme': 'Beleza', 'Fone de Ouvido': 'Eletrônicos',
+    'Bola de Futebol': 'Esportes', 'Raquete': 'Esportes',
+    'Capacete': 'Esportes', 'Corda': 'Esportes', 'Camisa': 'Roupas',
+    'Biografia': 'Livros', 'Técnico': 'Livros',
+    'Ficção Científica': 'Livros', 'Romance': 'Livros'
+}
+df['categoria'] = df['produto'].map(categorias_produtos)
+```
+
+**Estatísticas descritivas**
+
+- Alto desvio padrão no preço — confirma faixa ampla de produtos (livros a eletrônicos)
+- Preço mínimo de R$12,54 investigado — identificado como livro, sem outlier real
+
+**Análise temporal e regional**
+
+- Agrupamento por data para identificar picos de quantidade vendida
+- Ranking de regiões por volume total de vendas
+
+**Matriz de correlação com heatmap**
+
+One Hot Encoding aplicado nas variáveis categóricas para calcular a correlação. Filtro de `|correlação| ≥ 0.3` para facilitar leitura:
+
+```python
+df_corr = pd.get_dummies(df, columns=['categoria', 'produto', 'regiao'])
+matriz_corr = df_corr.corr()
+
+mask = np.abs(matriz_corr) < 0.3  # filtra correlações fracas
+sns.heatmap(matriz_corr, mask=mask, annot=True, cmap='coolwarm', fmt='.2f')
+```
+
+> Resultado: correlação entre **preço e quantidade vendida abaixo de 0.1** — praticamente sem relação linear.
+
+---
+
+### Parte 2 — Dashboard Power BI (40%)
+
+Dashboard interativo com:
+- Visão geral de vendas por categoria
+- Gráfico de vendas ao longo do tempo com picos e quedas identificados
+- Filtros por data, categoria e região
+
+📁 Arquivo: [`Case_IntegralTrust.pbix`](./Case_IntegralTrust.pbix)
+
+---
+
+### Parte 3 — Interpretação e Insights (20%)
+
+| Tema | Insight |
+|------|---------|
+| **Beleza** | Categoria com menor volume de vendas — distante das demais tanto em total quanto em média |
+| **Roupas** | Produtos como `Creme` e `Casaco` entre os menos vendidos — merecem atenção |
+| **Sazonalidade** | Março, Agosto e Setembro com vendas abaixo da média — oportunidade para promoções |
+| **Regional** | Centro-Oeste: eletrônicos; Leste/Oeste: livros; Norte: roupas; Sul: esportes |
+| **Sul** | Região com menor volume geral — necessita investigação do perfil do consumidor |
+
+**Conclusão:** O setor de beleza e alguns meses específicos demandam ações proativas. A variação de preferência por categoria entre regiões sugere potencial para estratégias de investimento direcional.
+
+---
+
+## 🚀 Como reproduzir
+
+**Opção 1 — Google Colab** *(recomendado)*
+
+Acesse diretamente: [Abrir no Colab](https://colab.research.google.com/drive/1YpDq3V3stKTvJhrzXcFsplATNXW6Pfy2?usp=sharing)
+
+**Opção 2 — Local**
+
+```bash
+pip install pandas numpy matplotlib seaborn
+
+python case_integral_trust.py
+```
+
+> Ajuste o caminho do `dataset_vendas.csv` no script antes de executar.
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D0D0D&height=80&section=footer" width="100%"/>
+
+</div>
