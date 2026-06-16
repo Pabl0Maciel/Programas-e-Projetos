@@ -23,13 +23,6 @@ A partir de três insumos (YAML do modelo semântico, PDF/prints do dashboard e 
 
 > Desenvolvido e adotado como **padrão de documentação interna** na Integral Trust.
 
----
-
-## 🎬 Demonstração
-
-![Demonstração](./exemplo_extracao.gif)
-
----
 
 ## 📂 Estrutura
 
