@@ -20,7 +20,7 @@ trabalho_mudancas/
 │   ├── db.py               # conexão única com o MySQL (SQLAlchemy)
 │   ├── crud.py             # cadastrar/listar/editar/excluir das 6 entidades
 │   ├── queries.py          # as 6 consultas de resultado
-│   └── main.py             # interface Streamlit (menu lateral)
+│   └── main.py             # interface Streamlit (navegação agrupada)
 ├── requirements.txt
 └── README.md
 ```
@@ -42,6 +42,14 @@ mysql -u dev -p < sql/03_restricoes.sql
 
 Ou, pelo MySQL Workbench, abra cada arquivo e execute (⚡) na ordem acima.
 
+> **No Ubuntu**, crie o usuário `dev` entrando pelo terminal com `sudo mysql`
+> (o `root` usa autenticação por *socket* e não aceita senha pelo Workbench):
+> ```sql
+> CREATE USER 'dev'@'localhost' IDENTIFIED BY '123';
+> GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+> ```
+
 > Se usar outro usuário/senha/host, altere apenas as constantes no topo de
 > `app/db.py`.
 
@@ -54,7 +62,7 @@ streamlit run app/main.py
 ```
 
 O navegador abre em `http://localhost:8501`. Use o menu lateral para navegar
-entre os cadastros e a página **Resultados**.
+entre os **Cadastros** e a página de **Resultados**.
 
 ---
 
@@ -81,8 +89,8 @@ compostas de `PEDIDO`→`CIDADE` e `ITEM_PEDIDO`→`OFERTA_SERVICO` —, `CHECK`
 - **Cadastros (2,0):** empresas, clientes, cidades, serviços, pedidos e
   funcionários (mais telefones, ofertas, atuação, vínculos e regras).
 - **Resultados:**
-  1. Histograma de nº de serviços por cidade (0,6)
-  2. Histograma de pagamentos por cidade (0,6)
+  1. Gráfico de barras (histograma) de nº de serviços por cidade (0,6)
+  2. Gráfico de barras (histograma) de pagamentos por cidade (0,6)
   3. Top 5 cidades por valor investido (0,6)
   4. Top 5 cidades por nº de serviços (0,6)
   5. Top 5 empresas por nº de serviços solicitados (0,8)
@@ -98,6 +106,9 @@ compostas de `PEDIDO`→`CIDADE` e `ITEM_PEDIDO`→`OFERTA_SERVICO` —, `CHECK`
   arredondamento.
 - **Preços calculados no banco (triggers), nunca na aplicação:** o banco é a
   fonte única da verdade; a aplicação só envia os dados.
+- **Validação em duas camadas:** `CHECK` no banco (rejeita texto vazio e UF
+  inexistente mesmo que o dado seja inserido por fora do app) somada à validação
+  na aplicação, com mensagens amigáveis e normalização de entradas.
 - **Consultas "por cidade":** usam a cidade de **partida** do pedido.
 - **Contagens** consideram todos os pedidos ("solicitados"); **valores**
   consideram apenas pedidos `ACEITO` ("executados").

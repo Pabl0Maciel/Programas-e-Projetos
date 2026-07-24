@@ -20,6 +20,30 @@ def _proximo_id(tabela, coluna, engine=None):
     return int(df.iloc[0]["prox"])
 
 
+UFS_VALIDAS = {
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
+    "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC",
+    "SP", "SE", "TO",
+}
+
+
+def _exigir(**campos):
+    """Valida campos de texto obrigatórios; levanta ValueError se algum vier
+    vazio ou só com espaços. A mensagem sobe até o app e vira um aviso amigável."""
+    vazios = [nome for nome, val in campos.items()
+              if val is None or not str(val).strip()]
+    if vazios:
+        raise ValueError("Preencha o(s) campo(s): " + ", ".join(vazios) + ".")
+
+
+def _uf(estado):
+    """Normaliza e valida a UF (2 letras, estado brasileiro existente)."""
+    uf = str(estado or "").strip().upper()
+    if uf not in UFS_VALIDAS:
+        raise ValueError(f"Estado (UF) inválido: '{estado}'. Use uma sigla como SP, RJ, MG.")
+    return uf
+
+
 # =====================================================================
 # CIDADE
 # =====================================================================
@@ -30,9 +54,10 @@ def listar_cidades(engine=None):
 
 
 def criar_cidade(estado, nome_cidade, engine=None):
+    _exigir(**{"nome da cidade": nome_cidade})
     return db.execute(
         "INSERT INTO CIDADE (estado, nome_cidade) VALUES (:uf, :c)",
-        {"uf": estado, "c": nome_cidade}, engine=engine)
+        {"uf": _uf(estado), "c": nome_cidade.strip()}, engine=engine)
 
 
 def excluir_cidade(estado, nome_cidade, engine=None):
@@ -51,12 +76,13 @@ def listar_clientes(engine=None):
 
 
 def criar_cliente(cpf, rg, nome_completo, endereco, engine=None):
+    _exigir(**{"CPF": cpf, "nome completo": nome_completo})
     cod = _proximo_id("CLIENTE", "cod_cliente", engine=engine)
     db.execute(
         "INSERT INTO CLIENTE (cod_cliente, cpf, rg, nome_completo, endereco) "
         "VALUES (:cod, :cpf, :rg, :nome, :end)",
-        {"cod": cod, "cpf": cpf, "rg": rg, "nome": nome_completo, "end": endereco},
-        engine=engine)
+        {"cod": cod, "cpf": cpf.strip(), "rg": rg, "nome": nome_completo.strip(),
+         "end": endereco}, engine=engine)
     return cod
 
 
@@ -94,8 +120,9 @@ def listar_empresas(engine=None):
 
 
 def criar_empresa(nome, endereco, engine=None):
+    _exigir(**{"nome da empresa": nome})
     return db.execute("INSERT INTO EMPRESA (nome, endereco) VALUES (:n, :e)",
-                      {"n": nome, "e": endereco}, engine=engine)
+                      {"n": nome.strip(), "e": endereco}, engine=engine)
 
 
 def atualizar_empresa(nome, endereco, engine=None):
@@ -124,6 +151,9 @@ def listar_ofertas(empresa=None, engine=None):
 
 
 def adicionar_oferta(empresa, servico, preco_hora, engine=None):
+    _exigir(**{"empresa": empresa, "serviço": servico})
+    if preco_hora is None or float(preco_hora) <= 0:
+        raise ValueError("O preço/hora deve ser maior que zero.")
     return db.execute(
         "INSERT INTO OFERTA_SERVICO (nome_empresa, nome_servico, preco_hora) "
         "VALUES (:e, :s, :p)", {"e": empresa, "s": servico, "p": preco_hora},
@@ -148,9 +178,10 @@ def listar_atuacao(empresa=None, engine=None):
 
 
 def adicionar_atuacao(empresa, estado, cidade, engine=None):
+    _exigir(**{"empresa": empresa, "cidade": cidade})
     return db.execute(
         "INSERT INTO EMPRESA_ATUA_CIDADE (nome_empresa, estado, nome_cidade) "
-        "VALUES (:e, :uf, :c)", {"e": empresa, "uf": estado, "c": cidade},
+        "VALUES (:e, :uf, :c)", {"e": empresa, "uf": _uf(estado), "c": cidade},
         engine=engine)
 
 
@@ -165,11 +196,12 @@ def listar_funcionarios(engine=None):
 
 def criar_funcionario(cpf, rg, salario, tipo_funcionario, nome_completo,
                       endereco, engine=None):
+    _exigir(**{"CPF": cpf, "nome completo": nome_completo})
     return db.execute(
         "INSERT INTO FUNCIONARIO (cpf, rg, salario, tipo_funcionario, "
         "nome_completo, endereco) VALUES (:cpf, :rg, :sal, :tipo, :nome, :end)",
-        {"cpf": cpf, "rg": rg, "sal": salario, "tipo": tipo_funcionario,
-         "nome": nome_completo, "end": endereco}, engine=engine)
+        {"cpf": cpf.strip(), "rg": rg, "sal": salario, "tipo": tipo_funcionario,
+         "nome": nome_completo.strip(), "end": endereco}, engine=engine)
 
 
 def atualizar_funcionario(cpf, rg, salario, tipo_funcionario, nome_completo,
@@ -228,13 +260,16 @@ def listar_servicos(engine=None):
 
 
 def criar_servico_simples(nome, engine=None):
+    _exigir(**{"nome do serviço": nome})
     return db.execute("INSERT INTO SERVICO (nome_servico) VALUES (:n)",
-                      {"n": nome}, engine=engine)
+                      {"n": nome.strip()}, engine=engine)
 
 
 def criar_guindaste(nome, tamanho_base, altura, bonus_altura, engine=None):
     """Cria o serviço e o registra como GUINDASTE (transação única).
     Se o nome já for TRANSPORTE, o trigger de disjunção barra e nada é gravado."""
+    _exigir(**{"nome do serviço": nome})
+    nome = nome.strip()
     eng = engine or db.ENGINE
     with eng.begin() as conn:
         conn.execute(text("INSERT INTO SERVICO (nome_servico) VALUES (:n)"),
@@ -247,6 +282,8 @@ def criar_guindaste(nome, tamanho_base, altura, bonus_altura, engine=None):
 
 def criar_transporte(nome, engine=None):
     """Cria o serviço e o registra como TRANSPORTE (transação única)."""
+    _exigir(**{"nome do serviço": nome})
+    nome = nome.strip()
     eng = engine or db.ENGINE
     with eng.begin() as conn:
         conn.execute(text("INSERT INTO SERVICO (nome_servico) VALUES (:n)"),
@@ -295,7 +332,8 @@ def listar_pedidos(engine=None):
 
 def listar_itens_pedido(cod_pedido, engine=None):
     return db.fetch_df("""
-        SELECT i.id_item, i.nome_servico_oferta AS servico, i.tempo_demorado,
+        SELECT i.id_item, i.nome_servico_oferta AS servico,
+               TIME_FORMAT(i.tempo_demorado, '%H:%i:%s') AS tempo,
                i.peso, i.data_realizacao, i.preco_servico
         FROM ITEM_PEDIDO i
         WHERE i.cod_pedido = :cod
@@ -315,6 +353,10 @@ def criar_pedido(cliente_cod, empresa, data_solicitacao, status,
     Os preços NÃO são passados: os triggers calculam preco_servico e preco_total.
     Retorna o cod_pedido gerado.
     """
+    if not itens:
+        raise ValueError("O pedido precisa ter pelo menos um item.")
+    if data_resolucao and str(data_resolucao) < str(data_solicitacao):
+        raise ValueError("A data de resolução não pode ser anterior à data de solicitação.")
     eng = engine or db.ENGINE
     with eng.begin() as conn:
         cod = int(conn.execute(

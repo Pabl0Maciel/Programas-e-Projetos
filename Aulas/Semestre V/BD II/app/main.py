@@ -374,6 +374,12 @@ def pagina_pedidos():
         c5, c6 = st.columns(2)
         data_sol = c5.date_input("Data da solicitação")
         status = c6.selectbox("Status", ["PENDENTE", "ACEITO", "REJEITADO"])
+        # Data de resolução só existe quando o pedido foi resolvido (aceito/rejeitado)
+        if status == "PENDENTE":
+            data_res = None
+            st.caption("Pedido pendente: sem data de resolução até ser aceito ou rejeitado.")
+        else:
+            data_res = st.date_input("Data de resolução", value=data_sol)
 
         st.markdown("**Itens do pedido**")
         servs_ofer = list(ofertas_emp["nome_servico"])
@@ -384,19 +390,23 @@ def pagina_pedidos():
             horas = cc1.number_input("Duração (horas)", min_value=0.0, step=0.5, value=1.0)
             peso = cc2.number_input("Peso da carga (kg) — só p/ transporte",
                                     min_value=0.0, step=50.0, value=0.0)
+            data_real = st.date_input("Data de realização (se já executado)", value=None)
             execs = st.multiselect("Funcionários executores (se já executado)",
                                    options=list(opc_func.keys()))
             if st.form_submit_button("➕ Adicionar item"):
                 st.session_state["itens_pedido"].append({
                     "servico": serv, "tempo": horas_para_time(horas),
                     "peso": peso if peso > 0 else None,
+                    "data_realizacao": str(data_real) if data_real else None,
                     "executores": [opc_func[x] for x in execs],
                 })
 
         itens = st.session_state["itens_pedido"]
         if itens:
             st.table([{"serviço": it["servico"], "tempo": it["tempo"],
-                       "peso": it["peso"] or "-", "executores": len(it["executores"])}
+                       "peso": it["peso"] or "-",
+                       "realização": it.get("data_realizacao") or "-",
+                       "executores": len(it["executores"])}
                       for it in itens])
             b1, b2 = st.columns(2)
             if b1.button("💾 Salvar pedido", type="primary"):
@@ -404,6 +414,7 @@ def pagina_pedidos():
                     cod = crud.criar_pedido(
                         cliente_cod=int(cli), empresa=emp,
                         data_solicitacao=str(data_sol), status=status,
+                        data_resolucao=(str(data_res) if data_res else None),
                         estado_partida=opc_cid[part][0], cidade_partida=opc_cid[part][1],
                         estado_destino=opc_cid[dest][0], cidade_destino=opc_cid[dest][1],
                         endereco_partida=end_part or None, endereco_destino=end_dest or None,

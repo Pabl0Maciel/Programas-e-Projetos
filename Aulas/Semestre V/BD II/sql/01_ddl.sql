@@ -7,7 +7,11 @@ USE mudancas;
 CREATE TABLE CIDADE (
     estado      VARCHAR(2)   NOT NULL,
     nome_cidade VARCHAR(100) NOT NULL,
-    PRIMARY KEY (estado, nome_cidade)
+    PRIMARY KEY (estado, nome_cidade),
+    CONSTRAINT chk_cidade_nome CHECK (CHAR_LENGTH(TRIM(nome_cidade)) > 0),
+    CONSTRAINT chk_cidade_uf CHECK (estado IN (
+        'AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA',
+        'PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'))
 ) ENGINE=InnoDB;
 
 CREATE TABLE CLIENTE (
@@ -17,13 +21,16 @@ CREATE TABLE CLIENTE (
     nome_completo VARCHAR(150) NOT NULL,
     endereco      VARCHAR(200),
     PRIMARY KEY (cod_cliente),
-    UNIQUE KEY uq_cliente_cpf (cpf)
+    UNIQUE KEY uq_cliente_cpf (cpf),
+    CONSTRAINT chk_cliente_cpf  CHECK (CHAR_LENGTH(TRIM(cpf)) > 0),
+    CONSTRAINT chk_cliente_nome CHECK (CHAR_LENGTH(TRIM(nome_completo)) > 0)
 ) ENGINE=InnoDB;
 
 CREATE TABLE EMPRESA (
     nome     VARCHAR(100) NOT NULL,
     endereco VARCHAR(200),
-    PRIMARY KEY (nome)
+    PRIMARY KEY (nome),
+    CONSTRAINT chk_empresa_nome CHECK (CHAR_LENGTH(TRIM(nome)) > 0)
 ) ENGINE=InnoDB;
 
 CREATE TABLE FUNCIONARIO (
@@ -34,12 +41,15 @@ CREATE TABLE FUNCIONARIO (
     nome_completo    VARCHAR(150)  NOT NULL,
     endereco         VARCHAR(200),
     PRIMARY KEY (cpf),
-    CONSTRAINT chk_func_salario CHECK (salario IS NULL OR salario >= 0)
+    CONSTRAINT chk_func_salario CHECK (salario IS NULL OR salario >= 0),
+    CONSTRAINT chk_func_cpf  CHECK (CHAR_LENGTH(TRIM(cpf)) > 0),
+    CONSTRAINT chk_func_nome CHECK (CHAR_LENGTH(TRIM(nome_completo)) > 0)
 ) ENGINE=InnoDB;
 
 CREATE TABLE SERVICO (
     nome_servico VARCHAR(60) NOT NULL,
-    PRIMARY KEY (nome_servico)
+    PRIMARY KEY (nome_servico),
+    CONSTRAINT chk_servico_nome CHECK (CHAR_LENGTH(TRIM(nome_servico)) > 0)
 ) ENGINE=InnoDB;
 
 -- ------------------------ Telefones (multivalorados) -----------------
