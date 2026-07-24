@@ -1,0 +1,6 @@
+# Aplicação do Trabalho de BD2 - Sistema de Mudanças
+streamlit>=1.40
+SQLAlchemy>=2.0
+mysql-connector-python>=9.0
+pandas>=2.0
+plotly>=5.20
