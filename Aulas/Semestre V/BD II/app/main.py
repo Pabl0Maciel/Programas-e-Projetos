@@ -1,12 +1,7 @@
 """
-main.py — Interface do Sistema de Empresas de Mudanças (Streamlit).
-
-Navegação agrupada (st.navigation): seção "Cadastros" (uma página por
-entidade) e seção "Consultas" (relatórios). Páginas usam abas (st.tabs)
-para organizar sub-seções.
-
-Rodar:  streamlit run app/main.py
-Depende de db.py, crud.py e queries.py.
+main.py — Interface do Sistema de Empresas de Mudanças (alinhado ao gabarito).
+Navegação agrupada (Cadastros / Consultas). Depende de db, crud, queries.
+Rodar: streamlit run app/main.py
 """
 import streamlit as st
 import plotly.express as px
@@ -16,9 +11,7 @@ import crud
 import queries as q
 
 
-# =====================================================================
-# Utilidades
-# =====================================================================
+# ===================== Utilidades =====================
 def fmt_moeda(v):
     try:
         return "R$ " + f"{float(v):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
@@ -28,15 +21,17 @@ def fmt_moeda(v):
 
 def horas_para_time(horas):
     total = int(round(float(horas) * 3600))
-    h, resto = divmod(total, 3600)
-    m, s = divmod(resto, 60)
+    h, r = divmod(total, 3600)
+    m, s = divmod(r, 60)
     return f"{h:02d}:{m:02d}:{s:02d}"
 
 
 def erro_amigavel(e):
     msg = str(e)
-    if "Disjuncao violada" in msg:
-        return "Restrição de disjunção: esse serviço já pertence ao outro subtipo."
+    if "Disjuncao" in msg:
+        return "Restrição de disjunção: o tipo do serviço não corresponde ao subtipo."
+    if "nao pertence a empresa" in msg:
+        return "A oferta escolhida não pertence à empresa do pedido."
     if "Duplicate entry" in msg:
         return "Registro duplicado: essa chave já existe."
     if "foreign key constraint fails" in msg:
@@ -44,19 +39,21 @@ def erro_amigavel(e):
     return msg
 
 
-# =====================================================================
-# INÍCIO
-# =====================================================================
+def sel_empresa(empresas, key, label="Empresa"):
+    """Selectbox de empresa que mostra o nome mas devolve o id_empresa."""
+    return st.selectbox(label, options=list(empresas["id_empresa"]),
+                        format_func=lambda i: empresas.loc[empresas.id_empresa == i, "nome"].iloc[0],
+                        key=key)
+
+
+# ===================== INÍCIO =====================
 def pagina_inicio():
     st.title("🚚 Sistema de Empresas de Mudanças")
     st.caption("Trabalho Semestral de Banco de Dados 2 — EACH/USP · 2026-I")
-
     ok, msg = db.test_connection()
     (st.success if ok else st.error)(msg)
     if not ok:
         st.stop()
-
-    st.subheader("Visão geral")
     c1, c2, c3 = st.columns(3)
     c1.metric("🏢 Empresas", len(crud.listar_empresas()))
     c2.metric("👤 Clientes", len(crud.listar_clientes()))
@@ -65,39 +62,30 @@ def pagina_inicio():
     c4.metric("🏙️ Cidades", len(crud.listar_cidades()))
     c5.metric("🧰 Serviços", len(crud.listar_servicos()))
     c6.metric("👷 Funcionários", len(crud.listar_funcionarios()))
-
-    st.info("Use o menu à esquerda: **Cadastros** para inserir dados, "
-            "**Consultas** para ver os relatórios.")
+    st.info("Use o menu à esquerda: **Cadastros** para inserir dados, **Consultas** para os relatórios.")
 
 
-# =====================================================================
-# CADASTROS
-# =====================================================================
+# ===================== CADASTROS =====================
 def pagina_cidades():
     st.title("🏙️ Cidades")
     with st.form("form_cidade", clear_on_submit=True):
-        col1, col2 = st.columns([1, 3])
-        estado = col1.text_input("Estado (UF)", max_chars=2).upper()
-        nome = col2.text_input("Nome da cidade")
+        c1, c2 = st.columns([1, 3])
+        estado = c1.text_input("Estado (UF)", max_chars=2).upper()
+        nome = c2.text_input("Nome da cidade")
         if st.form_submit_button("Adicionar cidade", type="primary"):
             try:
                 crud.criar_cidade(estado, nome)
                 st.success(f"Cidade {nome}/{estado} adicionada.")
             except Exception as e:
                 st.error(erro_amigavel(e))
-
     df = crud.listar_cidades()
     st.dataframe(df, width="stretch", hide_index=True)
-
     if not df.empty:
-        opcoes = {f"{r.nome_cidade}/{r.estado}": (r.estado, r.nome_cidade)
-                  for r in df.itertuples()}
-        alvo = st.selectbox("Excluir cidade", options=list(opcoes.keys()))
+        opc = {f"{r.nome_cidade}/{r.estado}": (r.estado, r.nome_cidade) for r in df.itertuples()}
+        alvo = st.selectbox("Excluir cidade", options=list(opc.keys()))
         if st.button("🗑️ Excluir", key="del_cidade"):
             try:
-                crud.excluir_cidade(*opcoes[alvo])
-                st.success("Cidade excluída.")
-                st.rerun()
+                crud.excluir_cidade(*opc[alvo]); st.success("Cidade excluída."); st.rerun()
             except Exception as e:
                 st.error(erro_amigavel(e))
 
@@ -106,32 +94,26 @@ def pagina_clientes():
     st.title("👤 Clientes")
     with st.form("form_cliente", clear_on_submit=True):
         nome = st.text_input("Nome completo")
-        col1, col2 = st.columns(2)
-        cpf = col1.text_input("CPF")
-        rg = col2.text_input("RG")
+        c1, c2 = st.columns(2)
+        cpf = c1.text_input("CPF"); rg = c2.text_input("RG")
         endereco = st.text_input("Endereço")
-        telefone = st.text_input("Telefone (opcional)")
+        tel = st.text_input("Telefone (opcional)")
         if st.form_submit_button("Cadastrar cliente", type="primary"):
             try:
                 cod = crud.criar_cliente(cpf, rg, nome, endereco)
-                if telefone.strip():
-                    crud.adicionar_telefone_cliente(cod, telefone.strip())
+                if tel.strip():
+                    crud.adicionar_telefone_cliente(cod, tel.strip())
                 st.success(f"Cliente cadastrado (código {cod}).")
             except Exception as e:
                 st.error(erro_amigavel(e))
-
     df = crud.listar_clientes()
     st.dataframe(df, width="stretch", hide_index=True)
-
     if not df.empty:
         alvo = st.selectbox("Excluir cliente", options=list(df["cod_cliente"]),
-                            format_func=lambda c: f"{c} — "
-                            f"{df.loc[df.cod_cliente == c, 'nome_completo'].iloc[0]}")
+                            format_func=lambda c: f"{c} — {df.loc[df.cod_cliente==c,'nome_completo'].iloc[0]}")
         if st.button("🗑️ Excluir", key="del_cliente"):
             try:
-                crud.excluir_cliente(int(alvo))
-                st.success("Cliente excluído.")
-                st.rerun()
+                crud.excluir_cliente(int(alvo)); st.success("Cliente excluído."); st.rerun()
             except Exception as e:
                 st.error(erro_amigavel(e))
 
@@ -139,129 +121,113 @@ def pagina_clientes():
 def pagina_empresas():
     st.title("🏢 Empresas")
     empresas = crud.listar_empresas()
-
-    aba_dados, aba_ofertas, aba_atuacao = st.tabs(
-        ["📋 Dados", "💰 Ofertas de serviço", "🗺️ Atuação em cidades"])
+    aba_dados, aba_ofertas = st.tabs(["📋 Dados", "💰 Ofertas (serviço × cidade)"])
 
     with aba_dados:
         with st.form("form_empresa", clear_on_submit=True):
             nome = st.text_input("Nome da empresa (único)")
             endereco = st.text_input("Endereço")
-            telefone = st.text_input("Telefone (opcional)")
+            tel = st.text_input("Telefone (opcional)")
             if st.form_submit_button("Cadastrar empresa", type="primary"):
                 try:
-                    crud.criar_empresa(nome, endereco)
-                    if telefone.strip():
-                        crud.adicionar_telefone_empresa(nome, telefone.strip())
-                    st.success(f"Empresa '{nome}' cadastrada.")
-                    st.rerun()
+                    idx = crud.criar_empresa(nome, endereco)
+                    if tel.strip():
+                        crud.adicionar_telefone_empresa(idx, tel.strip())
+                    st.success(f"Empresa '{nome}' cadastrada (id {idx})."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
         st.dataframe(empresas, width="stretch", hide_index=True)
         if not empresas.empty:
-            alvo = st.selectbox("Excluir empresa", options=list(empresas["nome"]))
+            alvo = sel_empresa(empresas, "del_emp_sel", "Excluir empresa")
             if st.button("🗑️ Excluir", key="del_emp"):
                 try:
-                    crud.excluir_empresa(alvo)
-                    st.success("Empresa excluída.")
-                    st.rerun()
+                    crud.excluir_empresa(int(alvo)); st.success("Empresa excluída."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
 
     if empresas.empty:
         return
-    nomes_emp = list(empresas["nome"])
-
     with aba_ofertas:
-        emp_sel = st.selectbox("Empresa", options=nomes_emp, key="emp_of")
+        st.caption("A oferta é por **empresa × serviço × cidade** (preço/hora pode variar por cidade). "
+                   "As cidades onde a empresa atua vêm das ofertas cadastradas.")
+        emp_id = sel_empresa(empresas, "emp_of")
         servs = list(crud.listar_servicos()["nome_servico"])
-        with st.form("form_oferta", clear_on_submit=True):
-            c1, c2 = st.columns([3, 1])
-            s = c1.selectbox("Serviço", options=servs) if servs else None
-            preco = c2.number_input("Preço/hora (R$)", min_value=0.0, step=10.0)
-            if st.form_submit_button("Adicionar oferta", type="primary") and s:
-                try:
-                    crud.adicionar_oferta(emp_sel, s, preco)
-                    st.success("Oferta adicionada.")
-                    st.rerun()
-                except Exception as e:
-                    st.error(erro_amigavel(e))
-        st.dataframe(crud.listar_ofertas(emp_sel), width="stretch", hide_index=True)
-
-    with aba_atuacao:
-        emp_sel2 = st.selectbox("Empresa", options=nomes_emp, key="emp_at")
         cidades = crud.listar_cidades()
-        opc = {f"{r.nome_cidade}/{r.estado}": (r.estado, r.nome_cidade)
-               for r in cidades.itertuples()}
-        with st.form("form_atua", clear_on_submit=True):
-            alvo = st.selectbox("Cidade", options=list(opc.keys())) if opc else None
-            if st.form_submit_button("Adicionar atuação", type="primary") and alvo:
+        opc_cid = {f"{r.nome_cidade}/{r.estado}": (r.estado, r.nome_cidade) for r in cidades.itertuples()}
+        with st.form("form_oferta", clear_on_submit=True):
+            c1, c2, c3 = st.columns([2, 2, 1])
+            s = c1.selectbox("Serviço", options=servs) if servs else None
+            cid = c2.selectbox("Cidade", options=list(opc_cid.keys())) if opc_cid else None
+            preco = c3.number_input("Preço/hora (R$)", min_value=0.0, step=10.0)
+            if st.form_submit_button("Adicionar oferta", type="primary") and s and cid:
                 try:
-                    uf, cid = opc[alvo]
-                    crud.adicionar_atuacao(emp_sel2, uf, cid)
-                    st.success("Atuação adicionada.")
-                    st.rerun()
+                    uf, nc = opc_cid[cid]
+                    crud.adicionar_oferta(int(emp_id), s, uf, nc, preco)
+                    st.success("Oferta adicionada."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
-        st.dataframe(crud.listar_atuacao(emp_sel2), width="stretch", hide_index=True)
+        ofertas = crud.listar_ofertas(int(emp_id))
+        st.dataframe(ofertas, width="stretch", hide_index=True)
+        if not ofertas.empty:
+            alvo = st.selectbox("Remover oferta", options=list(ofertas["id_oferta"]),
+                                format_func=lambda i: f"{ofertas.loc[ofertas.id_oferta==i,'nome_servico'].iloc[0]} "
+                                f"em {ofertas.loc[ofertas.id_oferta==i,'nome_cidade'].iloc[0]}")
+            if st.button("🗑️ Remover", key="del_of"):
+                try:
+                    crud.remover_oferta(int(alvo)); st.success("Oferta removida."); st.rerun()
+                except Exception as e:
+                    st.error(erro_amigavel(e))
 
 
 def pagina_funcionarios():
     st.title("👷 Funcionários")
     funcs = crud.listar_funcionarios()
-
-    aba_dados, aba_vinculo = st.tabs(["📋 Dados", "🔗 Vínculo com empresa"])
+    empresas = crud.listar_empresas()
+    aba_dados, aba_vinc = st.tabs(["📋 Dados", "🔗 Vínculo com empresa"])
 
     with aba_dados:
         with st.form("form_func", clear_on_submit=True):
             nome = st.text_input("Nome completo")
-            col1, col2 = st.columns(2)
-            cpf = col1.text_input("CPF")
-            rg = col2.text_input("RG")
-            col3, col4 = st.columns(2)
-            tipo = col3.text_input("Tipo (motorista, guincho, gerente...)")
-            salario = col4.number_input("Salário (R$)", min_value=0.0, step=100.0)
+            c1, c2 = st.columns(2)
+            cpf = c1.text_input("CPF"); rg = c2.text_input("RG")
+            c3, c4 = st.columns(2)
+            tipo = c3.text_input("Tipo (motorista, guincho, gerente...)")
+            salario = c4.number_input("Salário (R$)", min_value=0.0, step=100.0)
             endereco = st.text_input("Endereço")
-            telefone = st.text_input("Telefone (opcional)")
+            tel = st.text_input("Telefone (opcional)")
             if st.form_submit_button("Cadastrar funcionário", type="primary"):
                 try:
                     crud.criar_funcionario(cpf, rg, salario, tipo, nome, endereco)
-                    if telefone.strip():
-                        crud.adicionar_telefone_funcionario(cpf, telefone.strip())
-                    st.success(f"Funcionário '{nome}' cadastrado.")
-                    st.rerun()
+                    if tel.strip():
+                        crud.adicionar_telefone_funcionario(cpf, tel.strip())
+                    st.success(f"Funcionário '{nome}' cadastrado."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
         st.dataframe(funcs, width="stretch", hide_index=True)
         if not funcs.empty:
             alvo = st.selectbox("Excluir funcionário", options=list(funcs["cpf"]),
-                                format_func=lambda c: funcs.loc[funcs.cpf == c, 'nome_completo'].iloc[0],
-                                key="del_func_sel")
+                                format_func=lambda c: funcs.loc[funcs.cpf==c, 'nome_completo'].iloc[0], key="del_func_sel")
             if st.button("🗑️ Excluir", key="del_func"):
                 try:
-                    crud.excluir_funcionario(alvo)
-                    st.success("Funcionário excluído.")
-                    st.rerun()
+                    crud.excluir_funcionario(alvo); st.success("Funcionário excluído."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
 
-    with aba_vinculo:
-        if funcs.empty:
-            st.caption("Cadastre um funcionário primeiro.")
+    with aba_vinc:
+        if funcs.empty or empresas.empty:
+            st.caption("Cadastre funcionário e empresa primeiro.")
         else:
-            empresas = list(crud.listar_empresas()["nome"])
             with st.form("form_trabalha", clear_on_submit=True):
                 cpf_sel = st.selectbox("Funcionário", options=list(funcs["cpf"]),
-                                       format_func=lambda c: funcs.loc[funcs.cpf == c, 'nome_completo'].iloc[0])
-                emp_sel = st.selectbox("Empresa", options=empresas) if empresas else None
+                                       format_func=lambda c: funcs.loc[funcs.cpf==c, 'nome_completo'].iloc[0])
+                emp_id = sel_empresa(empresas, "emp_trab")
                 c1, c2 = st.columns(2)
                 horario = c1.text_input("Horário (ex.: 08:00-17:00)")
                 tel_emp = c2.text_input("Telefone da empresa (opcional)")
-                if st.form_submit_button("Vincular", type="primary") and emp_sel:
+                if st.form_submit_button("Vincular", type="primary"):
                     try:
-                        crud.adicionar_trabalha(cpf_sel, emp_sel, horario, tel_emp or None)
-                        st.success("Vínculo criado.")
-                        st.rerun()
+                        crud.adicionar_trabalha(cpf_sel, int(emp_id), horario, tel_emp or None)
+                        st.success("Vínculo criado."); st.rerun()
                     except Exception as e:
                         st.error(erro_amigavel(e))
             st.dataframe(crud.listar_trabalha(), width="stretch", hide_index=True)
@@ -269,15 +235,12 @@ def pagina_funcionarios():
 
 def pagina_servicos():
     st.title("🧰 Serviços")
-    st.caption("Hierarquia parcial e disjunta: um serviço é Simples, Guindaste "
-               "OU Transporte — nunca dois ao mesmo tempo.")
+    st.caption("Hierarquia parcial e disjunta: Simples, Guindaste OU Transporte (o tipo é gravado em tipo_servico).")
     df = crud.listar_servicos()
-
     aba_serv, aba_regras = st.tabs(["🧰 Serviços", "⚖️ Regras de transporte"])
 
     with aba_serv:
-        tipo = st.radio("Tipo a cadastrar", ["Simples", "Guindaste", "Transporte"],
-                        horizontal=True)
+        tipo = st.radio("Tipo a cadastrar", ["Simples", "Guindaste", "Transporte"], horizontal=True)
         with st.form("form_servico", clear_on_submit=True):
             nome = st.text_input("Nome do serviço")
             base = altura = bonus = 0.0
@@ -294,42 +257,35 @@ def pagina_servicos():
                         crud.criar_guindaste(nome, base, altura, bonus)
                     else:
                         crud.criar_transporte(nome)
-                    st.success(f"Serviço '{nome}' ({tipo}) cadastrado.")
-                    st.rerun()
+                    st.success(f"Serviço '{nome}' ({tipo}) cadastrado."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
         st.dataframe(df, width="stretch", hide_index=True)
         if not df.empty:
-            alvo = st.selectbox("Excluir serviço", options=list(df["nome_servico"]),
-                                key="del_serv_sel")
+            alvo = st.selectbox("Excluir serviço", options=list(df["nome_servico"]), key="del_serv_sel")
             if st.button("🗑️ Excluir", key="del_serv"):
                 try:
-                    crud.excluir_servico(alvo)
-                    st.success("Serviço excluído.")
-                    st.rerun()
+                    crud.excluir_servico(alvo); st.success("Serviço excluído."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
 
     with aba_regras:
+        st.caption("O acréscimo é padronizado **por serviço de transporte** (não por empresa).")
         transportes = list(df.loc[df["tipo"] == "TRANSPORTE", "nome_servico"])
-        empresas = list(crud.listar_empresas()["nome"])
-        if transportes and empresas:
+        if transportes:
             with st.form("form_regra", clear_on_submit=True):
-                c1, c2 = st.columns(2)
-                emp = c1.selectbox("Empresa", options=empresas)
-                tr = c2.selectbox("Serviço de transporte", options=transportes)
-                c3, c4 = st.columns(2)
-                pct = c3.number_input("Percentual de acréscimo (%)", min_value=0.0, step=1.0)
-                kg = c4.number_input("Acima de (kg)", min_value=0.0, step=50.0)
+                c1, c2, c3 = st.columns(3)
+                tr = c1.selectbox("Serviço de transporte", options=transportes)
+                pct = c2.number_input("Percentual (%)", min_value=0.0, step=1.0)
+                kg = c3.number_input("Acima de (kg)", min_value=0.0, step=50.0)
                 if st.form_submit_button("Adicionar regra", type="primary"):
                     try:
-                        crud.adicionar_regra_transporte(emp, tr, pct, kg)
-                        st.success("Regra adicionada.")
-                        st.rerun()
+                        crud.adicionar_regra_transporte(tr, pct, kg)
+                        st.success("Regra adicionada."); st.rerun()
                     except Exception as e:
                         st.error(erro_amigavel(e))
         else:
-            st.caption("Cadastre ao menos um serviço de transporte e uma empresa.")
+            st.caption("Cadastre ao menos um serviço de transporte.")
         st.dataframe(crud.listar_regras(), width="stretch", hide_index=True)
 
 
@@ -340,62 +296,62 @@ def pagina_pedidos():
     if clientes.empty or empresas.empty:
         st.warning("Cadastre ao menos um cliente e uma empresa antes de criar pedidos.")
         return
-
     aba_novo, aba_lista = st.tabs(["➕ Novo pedido", "📋 Pedidos cadastrados"])
 
     with aba_novo:
-        col1, col2 = st.columns(2)
-        cli = col1.selectbox("Cliente", options=list(clientes["cod_cliente"]),
-                             format_func=lambda c: clientes.loc[clientes.cod_cliente == c, "nome_completo"].iloc[0])
-        emp = col2.selectbox("Empresa", options=list(empresas["nome"]))
-
-        if st.session_state.get("_ult_empresa") != emp:
-            st.session_state["itens_pedido"] = []
-            st.session_state["_ult_empresa"] = emp
-        st.session_state.setdefault("itens_pedido", [])
-
-        cidades_emp = crud.cidades_da_empresa(emp)
-        ofertas_emp = crud.ofertas_da_empresa(emp)
-        funcs_emp = crud.funcionarios_da_empresa(emp)
-
-        if cidades_emp.empty or ofertas_emp.empty:
-            st.warning("Esta empresa precisa ter cidades de atuação e serviços "
-                       "ofertados (cadastre na página Empresas).")
-            return
-
-        opc_cid = {f"{r.nome_cidade}/{r.estado}": (r.estado, r.nome_cidade)
-                   for r in cidades_emp.itertuples()}
         c1, c2 = st.columns(2)
-        part = c1.selectbox("Cidade de partida", options=list(opc_cid.keys()))
-        dest = c2.selectbox("Cidade de destino", options=list(opc_cid.keys()))
+        with c1:
+            cli = st.selectbox("Cliente", options=list(clientes["cod_cliente"]),
+                               format_func=lambda c: clientes.loc[clientes.cod_cliente==c, "nome_completo"].iloc[0])
+        with c2:
+            emp_id = sel_empresa(empresas, "emp_ped")
+
+        cidades_emp = crud.cidades_da_empresa(int(emp_id))
+        if cidades_emp.empty:
+            st.warning("Esta empresa ainda não tem ofertas (serviço × cidade). Cadastre em Empresas → Ofertas.")
+            return
+        opc_cid = {f"{r.nome_cidade}/{r.estado}": (r.estado, r.nome_cidade) for r in cidades_emp.itertuples()}
+
         c3, c4 = st.columns(2)
-        end_part = c3.text_input("Endereço de partida")
-        end_dest = c4.text_input("Endereço de destino")
+        part = c3.selectbox("Cidade de partida", options=list(opc_cid.keys()))
+        dest = c4.selectbox("Cidade de destino", options=list(opc_cid.keys()))
         c5, c6 = st.columns(2)
-        data_sol = c5.date_input("Data da solicitação")
-        status = c6.selectbox("Status", ["PENDENTE", "ACEITO", "REJEITADO"])
-        # Data de resolução só existe quando o pedido foi resolvido (aceito/rejeitado)
+        end_part = c5.text_input("Endereço de partida")
+        end_dest = c6.text_input("Endereço de destino")
+        c7, c8 = st.columns(2)
+        data_sol = c7.date_input("Data da solicitação")
+        status = c8.selectbox("Status", ["PENDENTE", "ACEITO", "REJEITADO"])
         if status == "PENDENTE":
             data_res = None
-            st.caption("Pedido pendente: sem data de resolução até ser aceito ou rejeitado.")
+            st.caption("Pedido pendente: sem data de resolução.")
         else:
             data_res = st.date_input("Data de resolução", value=data_sol)
 
-        st.markdown("**Itens do pedido**")
-        servs_ofer = list(ofertas_emp["nome_servico"])
+        # Limpa itens ao trocar empresa/partida (o preço depende da cidade de partida)
+        ctx = (int(emp_id), part)
+        if st.session_state.get("_ctx_pedido") != ctx:
+            st.session_state["itens_pedido"] = []
+            st.session_state["_ctx_pedido"] = ctx
+        st.session_state.setdefault("itens_pedido", [])
+
+        uf_p, cid_p = opc_cid[part]
+        ofertas_part = crud.ofertas_empresa_cidade(int(emp_id), uf_p, cid_p)
+        oferta_por_serv = {r.nome_servico: r.id_oferta for r in ofertas_part.itertuples()}
+        funcs_emp = crud.funcionarios_da_empresa(int(emp_id))
         opc_func = {f"{r.nome_completo} ({r.cpf})": r.cpf for r in funcs_emp.itertuples()}
+
+        st.markdown(f"**Itens do pedido** — serviços ofertados em {part}")
         with st.form("form_add_item", clear_on_submit=True):
-            serv = st.selectbox("Serviço", options=servs_ofer)
+            serv = st.selectbox("Serviço", options=list(oferta_por_serv.keys()))
             cc1, cc2 = st.columns(2)
             horas = cc1.number_input("Duração (horas)", min_value=0.0, step=0.5, value=1.0)
-            peso = cc2.number_input("Peso da carga (kg) — só p/ transporte",
-                                    min_value=0.0, step=50.0, value=0.0)
+            peso = cc2.number_input("Peso da carga (kg) — só p/ transporte", min_value=0.0, step=50.0, value=0.0)
             data_real = st.date_input("Data de realização (se já executado)", value=None)
-            execs = st.multiselect("Funcionários executores (se já executado)",
-                                   options=list(opc_func.keys()))
-            if st.form_submit_button("➕ Adicionar item"):
+            execs = st.multiselect("Funcionários executores (se já executado)", options=list(opc_func.keys()))
+            if st.form_submit_button("➕ Adicionar item") and serv:
                 st.session_state["itens_pedido"].append({
-                    "servico": serv, "tempo": horas_para_time(horas),
+                    "id_oferta": int(oferta_por_serv[serv]), "servico": serv,
+                    "tempo": horas_para_time(horas),
                     "peso": peso if peso > 0 else None,
                     "data_realizacao": str(data_real) if data_real else None,
                     "executores": [opc_func[x] for x in execs],
@@ -403,30 +359,27 @@ def pagina_pedidos():
 
         itens = st.session_state["itens_pedido"]
         if itens:
-            st.table([{"serviço": it["servico"], "tempo": it["tempo"],
-                       "peso": it["peso"] or "-",
-                       "realização": it.get("data_realizacao") or "-",
-                       "executores": len(it["executores"])}
+            st.table([{"serviço": it["servico"], "tempo": it["tempo"], "peso": it["peso"] or "-",
+                       "realização": it.get("data_realizacao") or "-", "executores": len(it["executores"])}
                       for it in itens])
             b1, b2 = st.columns(2)
             if b1.button("💾 Salvar pedido", type="primary"):
                 try:
+                    ud, cd = opc_cid[dest]
                     cod = crud.criar_pedido(
-                        cliente_cod=int(cli), empresa=emp,
+                        cliente_cod=int(cli), id_empresa=int(emp_id),
                         data_solicitacao=str(data_sol), status=status,
                         data_resolucao=(str(data_res) if data_res else None),
-                        estado_partida=opc_cid[part][0], cidade_partida=opc_cid[part][1],
-                        estado_destino=opc_cid[dest][0], cidade_destino=opc_cid[dest][1],
+                        estado_partida=uf_p, cidade_partida=cid_p,
+                        estado_destino=ud, cidade_destino=cd,
                         endereco_partida=end_part or None, endereco_destino=end_dest or None,
                         itens=itens)
                     st.session_state["itens_pedido"] = []
-                    st.success(f"Pedido {cod} salvo! (total calculado pelos triggers)")
-                    st.rerun()
+                    st.success(f"Pedido {cod} salvo! (total calculado pelos triggers)"); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
             if b2.button("🗑️ Limpar itens"):
-                st.session_state["itens_pedido"] = []
-                st.rerun()
+                st.session_state["itens_pedido"] = []; st.rerun()
         else:
             st.caption("Adicione pelo menos um item para salvar o pedido.")
 
@@ -435,27 +388,20 @@ def pagina_pedidos():
         if peds.empty:
             st.caption("Nenhum pedido cadastrado ainda.")
         else:
-            vis = peds.copy()
-            vis["preco_total"] = vis["preco_total"].map(fmt_moeda)
+            vis = peds.copy(); vis["preco_total"] = vis["preco_total"].map(fmt_moeda)
             st.dataframe(vis, width="stretch", hide_index=True)
             cod_ver = st.selectbox("Ver itens do pedido", options=list(peds["cod_pedido"]))
-            st.dataframe(crud.listar_itens_pedido(int(cod_ver)),
-                         width="stretch", hide_index=True)
+            st.dataframe(crud.listar_itens_pedido(int(cod_ver)), width="stretch", hide_index=True)
             if st.button("🗑️ Excluir pedido selecionado", key="del_ped"):
                 try:
-                    crud.excluir_pedido(int(cod_ver))
-                    st.success("Pedido excluído.")
-                    st.rerun()
+                    crud.excluir_pedido(int(cod_ver)); st.success("Pedido excluído."); st.rerun()
                 except Exception as e:
                     st.error(erro_amigavel(e))
 
 
-# =====================================================================
-# CONSULTAS (Resultados)
-# =====================================================================
+# ===================== CONSULTAS =====================
 def pagina_resultados():
     st.title("📊 Resultados")
-
     aba_cidade, aba_empresa = st.tabs(["🏙️ Por cidade", "🏢 Por empresa"])
 
     with aba_cidade:
@@ -463,20 +409,16 @@ def pagina_resultados():
         d1 = q.q1_servicos_por_cidade()
         if not d1.empty:
             fig = px.bar(d1, x="cidade", y="num_servicos", text="num_servicos",
-                         color="num_servicos", color_continuous_scale="Blues",
-                         labels={"cidade": "Cidade", "num_servicos": "Nº de serviços"})
+                         color="num_servicos", color_continuous_scale="Blues")
             fig.update_layout(coloraxis_showscale=False)
             st.plotly_chart(fig, width="stretch")
-
         st.subheader("Pagamentos dos serviços por cidade (executados)")
         d2 = q.q2_pagamentos_por_cidade()
         if not d2.empty:
             fig = px.bar(d2, x="cidade", y="total_pago", text_auto=".2f",
-                         color="total_pago", color_continuous_scale="Greens",
-                         labels={"cidade": "Cidade", "total_pago": "Total pago (R$)"})
+                         color="total_pago", color_continuous_scale="Greens")
             fig.update_layout(coloraxis_showscale=False)
             st.plotly_chart(fig, width="stretch")
-
         st.divider()
         col1, col2 = st.columns(2)
         with col1:
@@ -493,39 +435,27 @@ def pagina_resultados():
         st.subheader("Top 5 empresas por nº de serviços solicitados")
         d5 = q.q5_top5_empresas_servicos()
         if not d5.empty:
-            fig = px.bar(d5, x="num_servicos", y="empresa", orientation="h",
-                         text="num_servicos", color="num_servicos",
-                         color_continuous_scale="Purples",
-                         labels={"empresa": "Empresa", "num_servicos": "Nº de serviços"})
-            fig.update_layout(coloraxis_showscale=False,
-                              yaxis={"categoryorder": "total ascending"})
+            fig = px.bar(d5, x="num_servicos", y="empresa", orientation="h", text="num_servicos",
+                         color="num_servicos", color_continuous_scale="Purples")
+            fig.update_layout(coloraxis_showscale=False, yaxis={"categoryorder": "total ascending"})
             st.plotly_chart(fig, width="stretch")
             st.dataframe(d5, width="stretch", hide_index=True)
-
         st.subheader("Top 5 empresas por valores ganhos (executados)")
         d6 = q.q6_top5_empresas_ganhos()
         if not d6.empty:
-            fig = px.bar(d6, x="total_ganho", y="empresa", orientation="h",
-                         text_auto=".2f", color="total_ganho",
-                         color_continuous_scale="Oranges",
-                         labels={"empresa": "Empresa", "total_ganho": "Total ganho (R$)"})
-            fig.update_layout(coloraxis_showscale=False,
-                              yaxis={"categoryorder": "total ascending"})
+            fig = px.bar(d6, x="total_ganho", y="empresa", orientation="h", text_auto=".2f",
+                         color="total_ganho", color_continuous_scale="Oranges")
+            fig.update_layout(coloraxis_showscale=False, yaxis={"categoryorder": "total ascending"})
             st.plotly_chart(fig, width="stretch")
-            d6v = d6.copy()
-            d6v["total_ganho"] = d6v["total_ganho"].map(fmt_moeda)
+            d6v = d6.copy(); d6v["total_ganho"] = d6v["total_ganho"].map(fmt_moeda)
             st.dataframe(d6v, width="stretch", hide_index=True)
 
 
-# =====================================================================
-# Navegação (menu lateral agrupado)
-# =====================================================================
+# ===================== Navegação =====================
 def main():
-    st.set_page_config(page_title="Sistema de Mudanças", page_icon="🚚",
-                       layout="wide")
+    st.set_page_config(page_title="Sistema de Mudanças", page_icon="🚚", layout="wide")
     st.sidebar.title("🚚 Mudanças")
     st.sidebar.caption("BD2 — EACH/USP")
-
     nav = st.navigation({
         "": [st.Page(pagina_inicio, title="Início", icon="🏠", default=True)],
         "Cadastros": [
@@ -536,9 +466,7 @@ def main():
             st.Page(pagina_servicos, title="Serviços", icon="🧰"),
             st.Page(pagina_pedidos, title="Pedidos", icon="📦"),
         ],
-        "Consultas": [
-            st.Page(pagina_resultados, title="Resultados", icon="📊"),
-        ],
+        "Consultas": [st.Page(pagina_resultados, title="Resultados", icon="📊")],
     })
     nav.run()
 
